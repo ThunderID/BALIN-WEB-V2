@@ -72,9 +72,9 @@ abstract class BaseController extends Controller
 		$Mobile_Detect 								= new mobile_detect;
 		if($Mobile_Detect->isMobile() == true || $Mobile_Detect->isTablet() == true)
 		{
-			$this->base_path_view 					= view('web_v2.mobile');
+			$this->base_path_view 					= 'web_v2.mobile.';
 		}else{
-			$this->base_path_view 					= view('web_v2.desktop');
+			$this->base_path_view 					= 'web_v2.desktop.';
 		}
 	}
 
@@ -136,7 +136,7 @@ abstract class BaseController extends Controller
   		$paging					= $this->page_attributes->paginator;
 
 		//initialize view
-		dd($this->base_path_view);
+		// dd($this->base_path_view);
   		$this->layout 			= view($this->base_path_view . $this->page_attributes->source, compact('paging'))
 									->with('breadcrumb', $this->page_attributes->breadcrumb)
 									->with('page_title', $this->page_attributes->title)
