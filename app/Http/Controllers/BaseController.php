@@ -9,6 +9,8 @@ use App\API\Connectors\APIUser;
 use App\API\Connectors\APIConfig;
 use Route, Session, Cache, Input, Redirect;
 
+use App\Http\Controllers\Mobile_Detect;
+
 abstract class BaseController extends Controller
 {
 	protected $page_attributes;
@@ -65,8 +67,17 @@ abstract class BaseController extends Controller
 
 		$this->balin 								= $balin;
 
-		//nanti kalu butuh template lebih dari satu, switch case aja disini.
+		//base layout
 		$this->layout 								= view('web_v2.page_templates.layout');
+
+		//detect mobile or desktop
+		$Mobile_Detect 								= new Mobile_Detect;
+		if($Mobile_Detect->isMobile() == true || $Mobile_Detect->isTablet() == true)
+		{
+			$this->base_path_view 					= view('web_v2.mobile');
+		}else{
+			$this->base_path_view 					= view('web_v2.desktop');
+		}
 	}
 
 	public function generateView()
@@ -127,7 +138,8 @@ abstract class BaseController extends Controller
   		$paging					= $this->page_attributes->paginator;
 
 		//initialize view
-  		$this->layout 			= view($this->page_attributes->source, compact('paging'))
+		dd($this->base_path_view);
+  		$this->layout 			= view($this->base_path_view . $this->page_attributes->source, compact('paging'))
 									->with('breadcrumb', $this->page_attributes->breadcrumb)
 									->with('page_title', $this->page_attributes->title)
 									->with('page_subtitle', $this->page_attributes->subtitle)
