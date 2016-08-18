@@ -1,0 +1,28 @@
+ul.dropdown-user{
+	min-width: 240px !important;
+	width: 240px !important;
+	li {
+		padding: 10px;
+		background-color: transparent;
+		&:hover {
+			background-color: $color1;
+			a {
+				background-color: $color1;
+				color: $white;
+			}
+		}
+	}
+}
+.dropdown-cart {
+	// margin-right: 80px;
+	float: right !important;
+	> ul {
+		width: 280px;
+	}
+}
+
+.navbar-bottom {
+	margin: 0 auto;
+	height:25px; 
+	width:20px; 
+}

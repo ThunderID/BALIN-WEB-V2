@@ -1,0 +1,40 @@
+.step-checkout {
+	div{
+		width: 20%;
+		float: left;
+		border: 1px solid $grey;
+		color: $grey;
+		font-size: 12px;
+		height: 60px;
+		line-height: 60px;
+		padding-left: 0;
+		padding-right: 0;
+		text-transform: uppercase;
+		&.active{
+			border: 1px solid $black;
+			color: $black;
+			font-size: 13px;
+			font-weight: 800;
+		}
+		span{
+			display: inline-block;
+			line-height: normal;
+			vertical-align: middle;
+		}
+		@media screen and (max-width: 767px) {
+			font-size: 11px;
+			height: 60px;
+			line-height: 60px;
+			width: 100%;
+			&.active{
+				font-size: 12px;
+				font-weight: 800;
+			}
+			span {
+				display: inline-block;
+				line-height: normal;
+				vertical-align: middle;
+			}
+		}
+	}
+}
