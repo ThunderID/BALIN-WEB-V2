@@ -1,6 +1,6 @@
-<?php namespace App\Http\Controllers\Modules;
+<?php namespace App\Http\Controllers;
 
-class Mobile_Detect
+class mobile_detect
 {
     /**
      * Mobile detection type.

@@ -9,8 +9,6 @@ use App\API\Connectors\APIUser;
 use App\API\Connectors\APIConfig;
 use Route, Session, Cache, Input, Redirect;
 
-use App\Http\Controllers\Mobile_Detect;
-
 abstract class BaseController extends Controller
 {
 	protected $page_attributes;
@@ -71,7 +69,7 @@ abstract class BaseController extends Controller
 		$this->layout 								= view('web_v2.page_templates.layout');
 
 		//detect mobile or desktop
-		$Mobile_Detect 								= new Mobile_Detect;
+		$Mobile_Detect 								= new mobile_detect;
 		if($Mobile_Detect->isMobile() == true || $Mobile_Detect->isTablet() == true)
 		{
 			$this->base_path_view 					= view('web_v2.mobile');
