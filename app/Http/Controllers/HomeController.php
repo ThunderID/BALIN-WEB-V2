@@ -14,8 +14,8 @@ class HomeController extends BaseController
 		Session::set('API_token', Session::get('API_token_public'));
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'web_v2.pages.home.';
-		$this->page_attributes->breadcrumb			=	[];
+		$this->page_attributes->source 				= 'home.';
+		$this->page_attributes->breadcrumb			= [];
 		$this->take 								= 20;
 	}
 
