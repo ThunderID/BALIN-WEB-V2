@@ -32,7 +32,7 @@
 		
 		@yield('css')
 	</head>
-	<body class="@yield('body_class')" style="background-color: #f5f5f5;">
+	<body class="bg-white">
 		<!-- SECTION NAVBAR -->
 		@include('web_v2.components.nav')
 		<!-- END SECTION NAVBAR -->
