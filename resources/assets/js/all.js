@@ -61,34 +61,6 @@
 	// $(document).scroll(checkOffset);
 /* END CHECK OFFSET FOR DIVIDER FOOTER & NAVBAR SHORTCUT */
 
-/* SECTION OWL CAROUSEL SLIDER PRODCT */
-$('.owl-carousel').owlCarousel({
-	loop:true,
-	margin:10,
-	responsiveClass:true,
-	navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>' ],
-	responsive:{
-		320:{
-			items:1,
-			stagePadding: 0,
-			margin: 0,
-			nav:true
-		},
-		768:{
-			items:1,
-			stagePadding: 0,
-			margin: 0,
-			nav:true
-		},
-		1000:{
-			items:4,
-			nav:true,
-			loop:false
-		}
-	}
-});
-/* END SECTION OWL CAROUSEL SLIDER PRODCT */
-
 /* SECTION EASYZOOM SLIDER PRODUCT */
 // Instantiate EasyZoom instances
 var $easyzoom = $('.easyzoom').easyZoom({loadingNotice:""});
