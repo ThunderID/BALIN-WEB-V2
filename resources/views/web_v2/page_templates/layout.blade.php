@@ -54,6 +54,7 @@
 				<!-- END SECTION CONTENT -->
 			</section>
 		</div>
+		
 		<!-- END SECTION WRAPPER -->
 
 		<!-- SECTION MODAL USER INFORMATION -->
@@ -102,6 +103,7 @@
 		{!! Html::script(elixir('js/balin.js')) !!}
 
 		@yield('js_plugin')
+		
 		<script type="text/javascript">
 			@yield('js')
 			@if (Session::has('msg') || $errors->any())
