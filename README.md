@@ -1,8 +1,8 @@
-## Balin-v2.0
-
 ## NOTICE
 1. Don't push your public
 2. gulp after pull
+
+## Balin-v2.0
 
 setting for .env balin
 
