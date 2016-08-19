@@ -27,38 +27,35 @@ class HomeController extends BaseController
 	public function index()
 	{
 		//get data
-		$APIProduct 							= new APIProduct;
-		$datas['batik_wanita'] 					= $APIProduct->getIndex([
-														'search' 	=> 	[
-																			'recommended' => (Session::has('whoami') ? Session::get('whoami')['id'] : 0),
-																			'tags' => ['wanita'],
-																		],
-														'sort' 		=> 	[
-																			'name'	=> 'asc',
-																		],
-														'take'		=> 4,
-														'skip'		=> '',
-													]);
 
-		$datas['batik_pria'] 					= $APIProduct->getIndex([
-														'search' 	=> 	[
-																			'recommended' => (Session::has('whoami') ? Session::get('whoami')['id'] : 0),
-																			'tags' => ['pria'],
-																		],
-														'sort' 		=> 	[
-																			'name'	=> 'asc',
-																		],
-														'take'		=> 4,
-														'skip'		=> '',
-													]);
+		//temporary data
+		$datas['sliders']						= 	[
+														0 => ['thumbnail' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_0461.JPG', 'image_xs' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_0461.JPG', 'image_sm' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_0461.JPG', 'image_md' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_0461.JPG', 'image_lg' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_0461.JPG', 'value' => json_encode(['button' => ['slider_button_url' => '']])],
+														1 => ['thumbnail' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_236.JPG', 'image_xs' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_236.JPG', 'image_sm' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_236.JPG', 'image_md' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_236.JPG', 'image_lg' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_236.JPG', 'value' => json_encode(['button' => ['slider_button_url' => '']])],
+														2 => ['thumbnail' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_028.JPG', 'image_xs' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_028.JPG', 'image_sm' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_028.JPG', 'image_md' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_028.JPG', 'image_lg' => 'http://www.batikkeris.co.id/image/lookbook/Puspa_Nusa_JKT_Show_028.JPG', 'value' => json_encode(['button' => ['slider_button_url' => '']])],
+													];
 
-		$datas['all'] 							= $APIProduct->getIndex([
-														'search' 	=> 	[
-																			'recommended' => (Session::has('whoami') ? Session::get('whoami')['id'] : 0),
-																		],
-														'take'		=> 4,
-														'skip'		=> 0,
-													]);		
+		$datas['shop_by_style']					= 	[
+														0 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'value' => json_encode(['action_url' => '', 'caption' => 'Preepy', 'position' => 1])],
+														1 => ['thumbnail' => 'http://www.batikkeris.co.id/image/news/%5E8F2E8B3213C5031673D73DB47B26A14B0E32F2E6DCEE0ECFBA%5Epimgpsh_fullsize_distr.jpg', 'image_xs' => 'http://www.batikkeris.co.id/image/news/%5E8F2E8B3213C5031673D73DB47B26A14B0E32F2E6DCEE0ECFBA%5Epimgpsh_fullsize_distr.jpg', 'image_sm' => 'http://www.batikkeris.co.id/image/news/%5E8F2E8B3213C5031673D73DB47B26A14B0E32F2E6DCEE0ECFBA%5Epimgpsh_fullsize_distr.jpg', 'image_md' => 'http://www.batikkeris.co.id/image/news/%5E8F2E8B3213C5031673D73DB47B26A14B0E32F2E6DCEE0ECFBA%5Epimgpsh_fullsize_distr.jpg', 'image_lg' => 'http://www.batikkeris.co.id/image/news/%5E8F2E8B3213C5031673D73DB47B26A14B0E32F2E6DCEE0ECFBA%5Epimgpsh_fullsize_distr.jpg', 'value' => json_encode(['action_url' => '', 'caption' => 'Nineties Chauffeur', 'position' => 2])],
+														2 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12357933_408625009347745_1792439978_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12357933_408625009347745_1792439978_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12357933_408625009347745_1792439978_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12357933_408625009347745_1792439978_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/12357933_408625009347745_1792439978_n.jpg', 'value' => json_encode(['action_url' => '', 'caption' => 'BALIN Gift', 'position' => 3])],
+														3 => ['thumbnail' => 'http://drive.thunder.id/file/public/4/1/2015/12/06/04/a700A0300.jpg', 'image_xs' => 'http://drive.thunder.id/file/public/4/1/2015/12/06/04/a700A0300.jpg', 'image_sm' => 'http://drive.thunder.id/file/public/4/1/2015/12/06/04/a700A0300.jpg', 'image_md' => 'http://drive.thunder.id/file/public/4/1/2015/12/06/04/a700A0300.jpg', 'image_lg' => 'http://drive.thunder.id/file/public/4/1/2015/12/06/04/a700A0300.jpg', 'value' => json_encode(['action_url' => '', 'caption' => 'Hairness The Power', 'position' => 4])],
+														4 => ['thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/21/76711/1.jpg', 'image_xs' => 'http://zalora-media-live-id.s3.amazonaws.com/product/21/76711/1.jpg', 'image_sm' => 'http://zalora-media-live-id.s3.amazonaws.com/product/21/76711/1.jpg', 'image_md' => 'http://zalora-media-live-id.s3.amazonaws.com/product/21/76711/1.jpg', 'image_lg' => 'http://zalora-media-live-id.s3.amazonaws.com/product/21/76711/1.jpg', 'value' => json_encode(['action_url' => '', 'caption' => 'Working Lady', 'position' => 5])],
+													];
+
+		$datas['new_release']					= 	[
+														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg'],
+														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg'],
+														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg'],
+														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg'],
+													];
+
+		$datas['instagram']						= 	[
+														0 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'value' => json_encode(['action' => ''])],
+														1 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12357831_479815148886661_1267031752_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12357831_479815148886661_1267031752_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12357831_479815148886661_1267031752_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12357831_479815148886661_1267031752_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12357831_479815148886661_1267031752_n.jpg', 'value' => json_encode(['action' => ''])],
+														2 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12317888_572084146290875_1268795990_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12317888_572084146290875_1268795990_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12317888_572084146290875_1268795990_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12317888_572084146290875_1268795990_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12317888_572084146290875_1268795990_n.jpg', 'value' => json_encode(['action' => ''])],
+														3 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/10004113_500590986732860_868342938_n.jpg', 'value' => json_encode(['action' => ''])],
+													];
 
 		$this->page_attributes->metas 			= 	[
 														'og:type' 			=> 'website', 
@@ -72,19 +69,8 @@ class HomeController extends BaseController
 
 		$this->page_attributes->controller_name		= $this->controller_name;
 		$this->page_attributes->subtitle 			= 'Fashionable and Modern Batik';
+		
 		$this->page_attributes->data				= $datas;
-		if(isset($this->balin['banners']))
-		{
-			$this->page_attributes->data['banners']	= $this->balin['banners'];
-		}
-		else
-		{
-			$this->page_attributes->data['banners']	= 	[
-															'left_banner' => ['image_lg' => '', 'value' => json_encode(['button' => ['banner_button_url' => '']])],
-															'right_banner' => ['image_lg' => '', 'value' => json_encode(['button' => ['banner_button_url' => '']])],
-															'full_banner' => ['image_lg' => '', 'value' => json_encode(['button' => ['banner_button_url' => '']])],
-														];
-		}
 
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
 
