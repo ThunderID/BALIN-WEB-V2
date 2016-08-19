@@ -1,4 +1,4 @@
-{!! HTML::script('plugins/fadeThis/jquery.fadethis.min.js') !!}
+{!! Html::script('plugins/fadeThis/jquery.fadethis.min.js') !!}
 
 
 <script type="text/javascript">
