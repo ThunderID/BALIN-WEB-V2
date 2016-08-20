@@ -1,10 +1,12 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-{{-- Desktop and Tablet Section --}}
 	<section style="margin-top: 60px;">
 		@include('web_v2/components/slider', ['sliders' => $data['sliders']])
 	</section>
+	
+	<div class="mt-md pt-xl">&nbsp;</div>
+	@include('web_v2.components.tile')
 @stop
 
 @section('js_plugin')
