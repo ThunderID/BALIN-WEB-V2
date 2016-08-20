@@ -214,3 +214,33 @@
   position: relative;
   z-index: 1;
 }
+@media screen and (max-width: 767px) {
+  #slider .owl-wrapper-outer{
+    height: 50vw;
+  } 
+}
+@media screen and (min-width: 768px) {
+  #slider .owl-wrapper-outer{
+    height: 40vw;
+  } 
+}
+#slider .owl-controls .owl-buttons {
+  top: 47.5% !important;
+  transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+}
+#slider .owl-controls .owl-buttons div{
+  opacity: 1;
+  background-color: transparent;
+  font-size: 30px;
+}
+#slider .owl-controls .owl-buttons .owl-prev {
+    float: left;
+}
+#slider .owl-controls .owl-buttons .owl-next {
+    float: right;
+}
+#slider .owl-controls{
+  margin-top: -20px;
+}
