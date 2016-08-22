@@ -1,75 +1,64 @@
-<footer class="container-fluid footer">
-	<div class="row p-l-none p-r-none">
-		<div class="col-md-12 hidden-xs">
+<footer class="container-fluid bg-grey text-black">
+	{{-- -------------------------------- DESKTOP -------------------------------- --}}
+	<div class="row hidden-xs hidden-sm">
+		<div class="col-md-12">
 			<div class="container">
-				<div class="row p-t-xs p-b-md">
-					<div class="col-md-4 col-sm-4 text-left">
-						<a href="{{route('balin.home.index')}}">{!! HTML::image('images/logo-transparent-small.png','', ['class' => 'img-responsive']) !!}</a>
-					</div>
-					<div class="col-sm-4 col-md-4 col-lg-4 text-center m-t-sm">
-						<ul class="list-inline menu-footer">
-							<li><a href="{{route('balin.about.us')}}" class="text-white hover-grey-light">ABOUT US</a></li>
-							<li>|</li>
-							<li><a href="{{route('balin.contact.us')}}" class="text-white hover-grey-light">CONTACT US</a></li>
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Tentang BALIN</h4>
+						<ul class="list-unstyled">
+							<li><a href="#" class="hover-orange">About Us</a></li>
+							<li><a href="#" class="hover-orange">Term &#38; Condition</a></li>
+							<li><a href="#" class="hover-orange">BALIN Point</a></li>
+							<li><a href="#" class="hover-orange">Mengapa BALIN</a></li>
 						</ul>
 					</div>
-					<div class="col-sm-4 col-md-4 col-lg-4 text-right">
-						@if(isset($balin['info']['instagram_url']) && !empty($balin['info']['instagram_url']['value']))
-							<a href="{{$balin['info']['instagram_url']['value']}}" target="blank" class="btn btn-socmed mr-xs"><i class="fa fa-instagram"></i></a>
-						@endif
-						@if(isset($balin['info']['twitter_url']) && !empty($balin['info']['twitter_url']['value']))
-							<a href="{{$balin['info']['twitter_url']['value']}}" target="blank" class="btn btn-socmed mr-xs"><i class="fa fa-twitter"></i></a>
-						@endif
-						@if(isset($balin['info']['facebook_url']) && !empty($balin['info']['facebook_url']['value']))
-							<a href="{{$balin['info']['facebook_url']['value']}}" target="blank" class="btn btn-socmed mr-xs"><i class="fa fa-facebook"></i></a>
-						@endif
+					<div class="col-md-3">
+						<h4>Keep in touch</h4>
+						<ul class="list-unstyled fa-ul ml-0">
+							<li><a href="#" class="hover-orange">Kontak BALIN</a></li>
+							<li><a href="#" class="social-url-footer"><span class="fa-stack fa-lg icon-span"><i class="fa fa-circle fa-stack-2x icon-stack-2"></i><i class="fa fa-facebook fa-stack-1x icon-stack-1"></i></span> Facebook</a></li>
+							<li><a href="#" class="social-url-footer"><span class="fa-stack fa-lg icon-span"><i class="fa fa-circle fa-stack-2x icon-stack-2"></i><i class="fa fa-instagram fa-stack-1x icon-stack-1"></i></span> Instagram</a></li>
+							<li><a href="#" class="social-url-footer"><span class="fa-stack fa-lg icon-span"><i class="fa fa-circle fa-stack-2x icon-stack-2"></i><i class="fa fa-whatsapp fa-stack-1x icon-stack-1"></i></span> Whatsapp</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Cara Pembayaran</h4>
+						<ul class="list-unstyled">
+							<li><a href="#" class="hover-orange" >Credit Card</a></li>
+							<li><a href="#" class="hover-orange">ATM Transfer</a></li>
+							<li><a href="#" class="hover-orange">CIMB Clicks</a></li>
+							<li><a href="#" class="hover-orange">E-pay BRI</a></li>
+							<li><a href="#" class="hover-orange">BCA Klikpay</a></li>
+							<li><a href="#" class="hover-orange">Telkomsel Cash</a></li>
+							<li><a href="#" class="hover-orange">XL Tunai</a></li>
+							<li><a href="#" class="hover-orange">BBM Money</a></li>
+							<li><a href="#" class="hover-orange">Indosat Dompetku</a></li>
+							<li><a href="#" class="hover-orange">Mandiri e-cash</a></li>
+							<li><a href="#" class="hover-orange">Mandiri bill payment</a></li>
+							<li><a href="#" class="hover-orange">Indomaret</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Jasa Pengiriman</h4>
+						<ul class="list-unstyled">
+							<li><a href="#" class="hover-orange">JNE</a></li>
+						</ul>
 					</div>
 				</div>
+				<hr class="border-grey-dark">
 				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-						<p class="footer-title-logo m-t-sm m-b-xxs"><a href="#" class="text-white">Copyright 2016 CV. Balin Indonesia</a></p>
+					<div class="col-md-12 text-center">
+						<span>&copy; 2015-2016 CV. Balin Indonesia</span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="hidden-lg hidden-md hidden-sm col-xs-12 pb-xl">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 m-t-sm text-center">
-						<ul class="list-inline menu-footer">
-							<li><a href="{{route('balin.about.us')}}" class="text-white hover-grey">ABOUT US</a></li>
-							<li>|</li>
-							<li><a href="{{route('balin.contact.us')}}" class="text-white hover-grey">CONTACT US</a></li>
-						</ul>
-					</div>		
-				</div>
-				<div class="row pb-sm text-center">
-					<div class="col-xs-12 pb-xl">
-						<a href="{{ route('balin.home.index') }}">{!! HTML::image('images/logo-transparent-small.png','', ['class' => 'img-responsive']) !!}</a>
-					</div>
-					<div class="col-xs-12">
-						@if(isset($balin['info']['instagram_url']) && !empty($balin['info']['instagram_url']['value']))
-							<a href="{{$balin['info']['instagram_url']['value']}}" target="blank" class="btn btn-socmed mtm-xs mr-xs"><i class="fa fa-instagram"></i></a>
-						@endif
-						@if(isset($balin['info']['twitter_url']) && !empty($balin['info']['twitter_url']['value']))
-							<a href="{{$balin['info']['twitter_url']['value']}}" target="blank" class="btn btn-socmed mtm-xs mr-xs"><i class="fa fa-twitter"></i></a>
-						@endif
-						@if(isset($balin['info']['facebook_url']) && !empty($balin['info']['facebook_url']['value']))
-							<a href="{{$balin['info']['facebook_url']['value']}}" target="blank" class="btn btn-socmed mtm-xs mr-xs"><i class="fa fa-facebook"></i></a>
-						@endif
-					</div>
-				</div>		
-				<div class="row">
-					<div class="col-xs-12 text-center">
-						<p class="footer-title-logo m-t-sm m-b-xxs"><a href="#" class="text-white">Copyright 2016 CV. Balin Indonesia</a></p>
-					</div>
-				</div>	
-				<div class="row">
-					<div class="hidden-lg hidden-md hidden-sm col-xs-12">
-						<div class="clearfix">&nbsp;</div>
-					</div>
-				</div>					
-			</div>	
+	</div>
+	{{-- -------------------------------- MOBILE -------------------------------- --}}
+	<div class="row hidden-md hidden-lg">
+		<div class="col-xs-12 text-center">
+		  	<span class="pt-sm pb-sm">&copy; 2015-2016 CV. Balin Indonesia</span>
 		</div>
 	</div>
 </footer>

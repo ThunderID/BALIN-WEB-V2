@@ -15,14 +15,15 @@ $text-xs:				9px;
 
 // color
 $red:					#d91e18;
-$grey: 					#ccc;
-$grey-dark:				#888;
+$grey: 					#f0f0f0;
+$grey-dark:				#505050;
 $grey-light: 			#e5e5e5;
 $black:					#000;
 $charcoal: 				#333;
 $gold:					#c38322;
 $gold-light:			#e18a07;
 $white:					#fff;
+$orange: 				#ff6600;
 
 // space
 $space-0:				0px;
@@ -53,14 +54,14 @@ $bg-balin: 				"http://drive.thunder.id/file/public/4/10/2016/08/11/15/balin-bg.
 // -----------------
 // 1. FONT
 // -----------------
-.text-xxxl{				font-size: $text-xxxl;}
-.text-xxl{				font-size: $text-xxl;}
-.text-xl{				font-size: $text-xl;}
-.text-lg{				font-size: $text-lg;}
-.text-md{				font-size: $text-md;}
-.text-regular{			font-size: $text-regular;}
-.text-sm{				font-size: $text-sm;}
-.text-xs{				font-size: $text-xs;}
+.text-xxxl{				font-size: $text-xxxl !important;}
+.text-xxl{				font-size: $text-xxl !important;}
+.text-xl{				font-size: $text-xl !important;}
+.text-lg{				font-size: $text-lg !important;}
+.text-md{				font-size: $text-md !important;}
+.text-regular{			font-size: $text-regular !important;}
+.text-sm{				font-size: $text-sm !important;}
+.text-xs{				font-size: $text-xs !important;}
 
 // WEIGHT
 .text-xbold{			font-weight: 800 !important;}
@@ -77,6 +78,7 @@ $bg-balin: 				"http://drive.thunder.id/file/public/4/10/2016/08/11/15/balin-bg.
 .text-grey-dark{		color: $grey-dark !important;}
 .text-grey-light{		color: $grey-light !important;}
 .text-green{			color: green !important;}
+.text-orange{			color: $orange !important;}
 
 // MODIFICATION
 .text-uppercase{		text-transform: uppercase;}
@@ -105,6 +107,7 @@ a.hover-black:hover{			color: $black !important;}
 a.hover-white:hover{			color: $white !important;}
 a.hover-gold:hover{				color: $gold-light !important;}
 a.hover-red:hover{				color: $red !important;}
+a.hover-orange:hover{			color: $orange !important;}
 
 // TEXT
 p{								line-height: 2em;}
@@ -164,6 +167,10 @@ p{								line-height: 2em;}
 .border-grey-light{		border-color: $grey-light !important;}
 
 .border-solid{			border-style: solid !important;}
+.border-size{			
+	border-bottom: 2px solid $grey-dark;
+	width: 20%;
+}
 
 // -----------------
 // 3. SPACING
@@ -499,6 +506,7 @@ p{								line-height: 2em;}
 }
 .bg-black{				background-color: $black !important;}
 .bg-white{				background-color: $white !important;}
+.bg-grey{				background-color: $grey !important;}
 .bg-grey-light{			background-color: $grey-light !important;}
 .bg-grey-dark{			background-color: $grey-dark !important;}
 .bg-transparent{		background-color: transparent !important;}
