@@ -9,7 +9,7 @@
 			<a href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart" style="color: #fff;
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
-				<span>
+				<span class="cart-count">
 					{{ count(Session::get('carts')) }}
 				</span>
 			</a>
@@ -17,70 +17,82 @@
 				{!! HTML::image('images/logo-b.png', null, ['class' => 'img-responsive']) !!}
 			</a>
 		</div>
+
+<!-- 		<div class="nav navbar-nav" style="float:none;color:white;">
+			<a href="#" style="color:white;">Wanita</a>
+			&nbsp; | &nbsp;
+			<a href="#" style="color:white;">Pria</a> 
+		</div> -->
+
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown dropdown-cart  hidden-xs hidden-sm text-light">
 					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart">
-						<i class="fa fa-shopping-cart fa-lg vertical-baseline"></i>
-						<span class="text-regular"><strong>{{ count(Session::get('carts')) }}</strong></span>
+						Shopping Bag
 					</a>
+					<span class="cart-count"><strong>{{ count(Session::get('carts')) }}</strong></span>
 					@include('web_v2.components.cart.cart_dropdown', ['carts' => Session::get('carts')]) 
 				</li>
-				<li class="info-point pull-right mt-sm ml-md mr-md hidden-xs hidden-sm">
+<!-- 				<li class="info-point pull-right mt-sm ml-md mr-md hidden-xs hidden-sm">
 					<span class="title pl-md pr-md text-regular text-uppercase">Jumlah Point</span>
 					<span class="value pl-md pr-md mlm-5 text-regular">
 						@money_indo(Session::has('whoami') ? Session::get('whoami')['total_point'] : '0')
 					</span>
-				</li>
+				</li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li>
-					<a href="{{ route('balin.home.index') }}" class="{{$controller_name == 'home'? 'active':''}}">Home</a>
+					<a href="#" class=""><span style="color:orange">Balin</span>Point</a>
 				</li>
 				<li>
-					<a href="{{ route('balin.product.index') }}" class="{{$controller_name == 'product'? 'active':''}}">Produk</a>
-				</li>
-				{{-- <li>
-					<a href="" data-scroll>Why Join</a>
-				</li> --}}
-				@if (Session::has('whoami'))
-					<li>
-						<a href="{{ route('my.balin.redeem.index') }}">Referal &amp; Point
-							<span class="badge badge-hollow text-white"><i class="fa fa-exclamation"></i></span>
-						</a>
-					</li>
-				@endif
-				@if (!Session::has('whoami'))
-					<li>
-						<a href="{{ route('balin.get.login') }}" class="{{$controller_name == 'Login'? 'active':''}}">Sign In</a>
-					</li>
-				@endif
-				<!-- <li > -->
-					<!-- <a href="" data-scroll>About Us</a> -->
-				<!-- </li> -->
-				<!-- <li>
-					<a href="" data-scroll>Contact Us</a>
-				</li> -->
-				@if (Session::has('whoami'))
-					<li class="dropdown hidden-xs hidden-sm">
-						<a href="javascript:void(0);" class="dropdown-toggle">Akun Anda <span class="caret"></span></a>
-						<ul class="dropdown-menu dropdown-menu-right dropdown-user user_dropdown" style="margin-top: 1px">
-							<li class="p-xs">
-								<a href="{{ route('my.balin.profile') }}" class="dropdown-toggle">Profile</a>
-							</li> 
-							<li class="p-xs">
-								<a href="{{ route('balin.get.logout') }}">Log out</a>
-							</li>
-						</ul>
-					</li> 
-					<li class="dropdown hidden-md hidden-lg">
-						<a href="{{ route('my.balin.profile') }}" class="dropdown-toggle">Profile</a>
-					</li> 
-					<li class="hidden-md hidden-lg">
-						<a href="{{ route('balin.get.logout') }}">Log out</a>
-					</li>
-				@endif
+					<a href="#" class="">Akun</a>
+				</li>				
+				<?php
+				// <li>
+				// 	<a href="{{ route('balin.product.index') }}" class="{{$controller_name == 'product'? 'active':''}}">Produk</a>
+				// </li>
+				// {{-- <li>
+				// 	<a href="" data-scroll>Why Join</a>
+				// </li> --}}
+				// @if (Session::has('whoami'))
+				// 	<li>
+				// 		<a href="{{ route('my.balin.redeem.index') }}">Referal &amp; Point
+				// 			<span class="badge badge-hollow text-white"><i class="fa fa-exclamation"></i></span>
+				// 		</a>
+				// 	</li>
+				// @endif
+				// @if (!Session::has('whoami'))
+				// 	<li>
+				// 		<a href="{{ route('balin.get.login') }}" class="{{$controller_name == 'Login'? 'active':''}}">Sign In</a>
+				// 	</li>
+				// @endif
+				// <!-- <li > -->
+				// 	<!-- <a href="" data-scroll>About Us</a> -->
+				// <!-- </li> -->
+				// <!-- <li>
+				// 	<a href="" data-scroll>Contact Us</a>
+				// </li> -->
+				// @if (Session::has('whoami'))
+				// 	<li class="dropdown hidden-xs hidden-sm">
+				// 		<a href="javascript:void(0);" class="dropdown-toggle">Akun Anda <span class="caret"></span></a>
+				// 		<ul class="dropdown-menu dropdown-menu-right dropdown-user user_dropdown" style="margin-top: 1px">
+				// 			<li class="p-xs">
+				// 				<a href="{{ route('my.balin.profile') }}" class="dropdown-toggle">Profile</a>
+				// 			</li> 
+				// 			<li class="p-xs">
+				// 				<a href="{{ route('balin.get.logout') }}">Log out</a>
+				// 			</li>
+				// 		</ul>
+				// 	</li> 
+				// 	<li class="dropdown hidden-md hidden-lg">
+				// 		<a href="{{ route('my.balin.profile') }}" class="dropdown-toggle">Profile</a>
+				// 	</li> 
+				// 	<li class="hidden-md hidden-lg">
+				// 		<a href="{{ route('balin.get.logout') }}">Log out</a>
+				// 	</li>
+				// @endif
+				?>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

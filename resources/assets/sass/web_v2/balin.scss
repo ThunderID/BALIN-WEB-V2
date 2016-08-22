@@ -101,6 +101,18 @@ body {
 	min-width: 70px;
 }
 
+/* general */
+@media screen and (max-width: 767px) {
+	.desktop-only{
+		display: none;
+	}
+}
+@media screen and (min-width: 768px) {
+	.mobile-only{
+		display: none;
+	}
+}
+
 /* Home Section */
 /** mobile **/
 .shop-by-style-mobile .title{

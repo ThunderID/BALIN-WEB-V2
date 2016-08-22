@@ -7,6 +7,26 @@
 }
 
 /* shopping bag mobile */
+.cart-count{
+    position: absolute;
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    background: orange;
+    padding-top: 1px;	    
+	font-size: 9px;
+	text-align: center;
+}
+@media screen and (min-width: 768px) {
+	.navbar-cart{
+		display: none;
+	}
+	.cart-count{
+	    color: white;
+	    margin-top: -42px;
+	    margin-left: 57px
+	}
+}
 @media screen and (max-width: 767px) {
 	.navbar-brand{
 	    padding-top: 1px;
@@ -14,20 +34,11 @@
 	    left: 50%;
 	    transform: translateX(-50%);
 	}
-	.navbar-cart span{
-	    position: absolute;
+	.cart-count{
 	    margin-top: -30px;
 	    margin-left: 20px;
-	    border-radius: 50%;
-	    width: 13px;
-	    height: 13px;
-	    background: orange;
-	    padding-top: 1px;	    
-		font-size: 9px;
-		text-align: center;
 	}
 }
-
 
 /* menu */
 ul.dropdown-user{
