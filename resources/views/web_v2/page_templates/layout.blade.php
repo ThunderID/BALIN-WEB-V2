@@ -41,19 +41,17 @@
 		<!--SECTION WRAPPER -->
 		<div class="wrapper wrapper_content @yield('wrapper_class')" style=" margin-bottom: 0px;
 			{{ (Route::currentRouteName()!='balin.home.index') ? 'margin-top:51px;' : 'margin-top:0px;' }}  ">
-			<section class="{{ (Route::currentRouteName()!='balin.home.index') ? 'container' : '' }}">
-				@if (Route::currentRouteName()!='balin.home.index')
-					<!-- SECTION BREADCRUMB -->
-					@if(isset($breadcrumb))
-						@include('web_v2.components.breadcrumb')
-					@endif
-					<!-- END SECTION BREADCRUMB -->
+			@if (Route::currentRouteName()!='balin.home.index')
+				<!-- SECTION BREADCRUMB -->
+				@if(isset($breadcrumb))
+					@include('web_v2.components.breadcrumb')
 				@endif
+				<!-- END SECTION BREADCRUMB -->
+			@endif
 
-				<!-- SECTION CONTENT -->
-				@yield('content')
-				<!-- END SECTION CONTENT -->
-			</section>
+			<!-- SECTION CONTENT -->
+			@yield('content')
+			<!-- END SECTION CONTENT -->
 		</div>
 		
 		<!-- END SECTION WRAPPER -->
@@ -99,7 +97,7 @@
 		<!-- END SECTION FOOTER -->
 			
 		<!-- CSS -->
-		{!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css') !!}
+		{!! Html::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css') !!}
 		<!-- JS -->
 		{!! Html::script(elixir('js/balin.js')) !!}
 
