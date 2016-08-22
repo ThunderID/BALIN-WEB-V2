@@ -1,3 +1,35 @@
+/* navbar */
+.navbar-inverse .navbar-toggle {
+    border-color: #000;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #333;
+}
+
+/* shopping bag mobile */
+@media screen and (max-width: 767px) {
+	.navbar-brand{
+	    padding-top: 1px;
+	    position: fixed;
+	    left: 50%;
+	    transform: translateX(-50%);
+	}
+	.navbar-cart span{
+	    position: absolute;
+	    margin-top: -30px;
+	    margin-left: 20px;
+	    border-radius: 50%;
+	    width: 13px;
+	    height: 13px;
+	    background: orange;
+	    padding-top: 1px;	    
+		font-size: 9px;
+		text-align: center;
+	}
+}
+
+
+/* menu */
 ul.dropdown-user{
 	min-width: 240px !important;
 	width: 240px !important;

@@ -6,10 +6,10 @@
 					data-toggle="collapse" aria-controls="#bs-example-navbar-collapse-1" data-target="#bs-example-navbar-collapse-1">
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
-			<a href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class="navbar-toggle border-0 ico_cart" style="color: #fff;
+			<a href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart" style="color: #fff;
 			    ">
-				<i class="fa fa-shopping-cart fa-lg vertical-baseline"></i>
-				<span class="ml-xs">
+				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
+				<span>
 					{{ count(Session::get('carts')) }}
 				</span>
 			</a>
@@ -34,7 +34,7 @@
 					</span>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right mr-md" >
+			<ul class="nav navbar-nav navbar-right" >
 				<li>
 					<a href="{{ route('balin.home.index') }}" class="{{$controller_name == 'home'? 'active':''}}">Home</a>
 				</li>

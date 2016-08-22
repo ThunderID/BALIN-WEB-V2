@@ -192,15 +192,16 @@
 // JavaScript plugin.
 
 .navbar-toggle {
+	padding-top: 2px;
 	position: relative;
-	float: right;
-	margin-right: $navbar-padding-horizontal;
-	padding: 9px 10px;
-	@include navbar-vertical-align(34px);
+	float: left;
+	margin-left: $navbar-padding-horizontal;
+	padding: 0px 10px;
+    margin-top: 12px;
+    margin-bottom: 4px;
 	background-color: transparent;
 	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-	border: 1px solid transparent;
-	border-radius: $border-radius-base;
+	border: none;
 
 	// We remove the `outline` here, but later compensate by attaching `:hover`
 	// styles to `:focus`.
@@ -222,6 +223,19 @@
 	@media (min-width: $grid-float-breakpoint) {
 		display: none;
 	}
+}
+
+.navbar-cart {
+	padding-top: 2px;
+	position: relative;
+	float: right;
+	margin-right: $navbar-padding-horizontal;
+	padding: 1px 10px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+	background-color: transparent;
+	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	border: none;
 }
 
 
@@ -580,10 +594,10 @@
 
 	// Darken the responsive nav toggle
 	.navbar-toggle {
-		border-color: $navbar-inverse-toggle-border-color;
+		border-color: black;
 		&:hover,
 		&:focus {
-			background-color: $navbar-inverse-toggle-hover-bg;
+			background-color: black;
 		}
 		.icon-bar {
 			background-color: $navbar-inverse-toggle-icon-bar-bg;
