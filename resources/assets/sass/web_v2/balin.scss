@@ -98,3 +98,26 @@ body {
 .btn-banner{
 	min-width: 70px;
 }
+
+/* Home Section */
+/** mobile **/
+.shop-by-style-mobile .title{
+	font-family: 'Sacramento', cursive;
+	padding-botom: 0.2rem;
+}
+.shop-by-style-mobile .content{
+	margin-top: 0.5rem;
+	padding-left:25px; 
+	padding-right:25px;
+}
+.shop-by-style-mobile .content img{
+	height: 45vw;
+}
+
+/** desktop **/
+.shop-by-style-desktop .title{
+	font-family: 'Sacramento', cursive;
+	font-size: 6.2rem;
+	padding-top: 0.3rem;
+	padding-bottom: 1.2rem;
+}

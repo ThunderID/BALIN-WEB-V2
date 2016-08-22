@@ -11,14 +11,13 @@
 		@include('web_v2/components/slider', ['sliders' => $data['sliders']])
 	</div>
 
-	<!-- <div class="mt-md pt-xl">&nbsp;</div> -->
-	<div class="container">
-	<h2 class="text-center" style="font-family: 'Sacramento', cursive;">
-		Shop By Style
-	</h2>
-	</div>
-	<div class="container" style="padding-left:25px; padding-right:25px;">
-	@include('web_v2.components.tile')
+	<div class="container shop-by-style-mobile">
+		<h2 class="text-center title">
+			Shop By Style
+		</h2>
+		<div class="content">
+			@include('web_v2.components.tile-mobile')
+		</div>
 	</div>
 </section>
 @stop

@@ -53,12 +53,12 @@
 }
 .carousel .owl-controls .owl-buttons .owl-prev {
     float: left;
-    margin-left: -17px;
+    margin-left: -25px;
     padding: 0px;
 }
 .carousel .owl-controls .owl-buttons .owl-next {
     float: right;
-    margin-right: -17px;
+    margin-right: -25px;
     padding: 0px;
 }
 .carousel .item{
@@ -85,7 +85,7 @@
       autoPlay : 3000,
 			items : 2,
 			singleItem:	false,
-			itemsMobile: [150,1],
+			itemsMobile: [200,1],
 			navigation : true,
 			pagination : false,
     		navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]			
