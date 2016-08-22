@@ -8,6 +8,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<link rel="shortcut icon" href="{{ url('images/favicon.ico') }} "/>
 		{!! Html::style(elixir('css/balin.css')) !!}
+		@yield('font')
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
