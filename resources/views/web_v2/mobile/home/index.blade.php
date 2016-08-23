@@ -39,6 +39,38 @@
 		</div>
 	</div>
 </section>
+
+<section class="container mt-xl">
+	<div class="container">
+		<div class="row pb-xs">
+			<div class="col-md-12 text-center">
+				<p class="m-0">Make sure you follow us on</p>
+				<h3 class="text-uppercase mtm-5 mbm-5">INSTAGRAM</h3>
+				<p class="m-0"><em>@balin.id</em></p>
+			</div>
+		</div>
+
+		<div class="row pt-md pb-md mb-sm instagram-mobile">
+			<div class="row">
+				<div class="carousel">
+
+				@foreach($data['instagram'] as $key => $data)
+					<div class="item">
+						<div class="col-xs-12 pl-0 pr-0">
+							<div class="tile text-center">
+								{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive']) !!}
+								<div class="jumbotron">
+								</div>
+							</div>
+						</div>
+					</div>
+				@endforeach
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 @stop
 
 @section('js_plugin')
