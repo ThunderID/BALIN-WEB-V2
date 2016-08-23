@@ -56,7 +56,7 @@
 		</div>
 	</div>
 	{{-- -------------------------------- MOBILE -------------------------------- --}}
-	<div class="row hidden-md hidden-lg">
+	<div class="row hidden-md hidden-lg footer-mobile">
 		<div class="col-xs-12 text-center">
 		  	<span class="pt-sm pb-sm">&copy; 2015-2016 CV. Balin Indonesia</span>
 		</div>
