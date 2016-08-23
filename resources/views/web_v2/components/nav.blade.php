@@ -1,30 +1,3 @@
-<style>
-
-.center-nav{
-    position: absolute;
-    left: 50vw;
-    transform: translateX(-50%);
-    margin-left: -4px;
-    margin-top: -53px;
-}
-.center-nav .right{
-	width: 120px;
-    text-align: right;
-    /*border-right: white 0.1px solid;*/
-}
-.center-nav .left{
-	width: 120px;
-    text-align: left;
-    /*border-left: white 0.1px solid;*/
-}
-.center-nav .center{
-    width: 1px;
-    background-color: white;
-    height: 41px;
-    margin-top: 8px;
-}
-</style>
-
 <nav class="navbar navbar-inverse navbar-fixed-top pt-5 pb-5 m-b-none" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -33,7 +6,7 @@
 					data-toggle="collapse" aria-controls="#bs-example-navbar-collapse-1" data-target="#bs-example-navbar-collapse-1">
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
-			<a href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart" style="color: #fff;
+			<a href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart";
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span class="cart-count">
@@ -122,7 +95,7 @@
 		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="text-light right">
-					<a href="#" style="color:white;">
+					<a href="#">
 						Wanita
 						<span>
 							{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
@@ -134,7 +107,7 @@
 					</div>
 				</li>>
 				<li class="text-light left">
-					<a href="#" style="color:white;">
+					<a href="#">
 						<span>
 							{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
 						</span>
