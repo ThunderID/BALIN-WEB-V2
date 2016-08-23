@@ -1,3 +1,30 @@
+<style>
+
+.center-nav{
+    position: absolute;
+    left: 50vw;
+    transform: translateX(-50%);
+    margin-left: -4px;
+    margin-top: -53px;
+}
+.center-nav .right{
+	width: 120px;
+    text-align: right;
+    /*border-right: white 0.1px solid;*/
+}
+.center-nav .left{
+	width: 120px;
+    text-align: left;
+    /*border-left: white 0.1px solid;*/
+}
+.center-nav .center{
+    width: 1px;
+    background-color: white;
+    height: 41px;
+    margin-top: 8px;
+}
+</style>
+
 <nav class="navbar navbar-inverse navbar-fixed-top pt-5 pb-5 m-b-none" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -17,12 +44,6 @@
 				{!! HTML::image('images/logo-b.png', null, ['class' => 'img-responsive']) !!}
 			</a>
 		</div>
-
-<!-- 		<div class="nav navbar-nav" style="float:none;color:white;">
-			<a href="#" style="color:white;">Wanita</a>
-			&nbsp; | &nbsp;
-			<a href="#" style="color:white;">Pria</a> 
-		</div> -->
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
@@ -96,5 +117,31 @@
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
+
+
+		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="text-light right">
+					<a href="#" style="color:white;">
+						Wanita
+						<span>
+							{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
+						</span>
+					</a>
+				</li>
+				<li>
+					<div class="center">
+					</div>
+				</li>>
+				<li class="text-light left">
+					<a href="#" style="color:white;">
+						<span>
+							{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
+						</span>
+						Pria
+					</a>
+				</li>					
+			</ul>
+		</div>		
 	</div>
 </nav>

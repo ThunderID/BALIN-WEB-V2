@@ -102,12 +102,12 @@ body {
 }
 
 /* general */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
 	.desktop-only{
 		display: none;
 	}
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 991px) {
 	.mobile-only{
 		display: none;
 	}
@@ -128,7 +128,19 @@ body {
 	height: 39vw;
 }
 
+/** tablet **/
+@media screen and (min-width: 768px) and (max-width: 992px){
+	.home-slider{
+		margin-top: 50px;
+	}
+}
+
 /** desktop **/
+@media screen and (min-width: 993px){
+	.home-slider{
+		margin-top: 60px;
+	}
+}
 .shop-by-style-desktop .title{
 	font-family: 'Sacramento', cursive;
 	font-size: 6.2rem;

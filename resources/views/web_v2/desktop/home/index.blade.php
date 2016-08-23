@@ -5,7 +5,7 @@
 @append
 
 @section('content')
-	<section style="margin-top: 60px;">
+	<section class="home-slider">
 		@include('web_v2/components/slider', ['sliders' => $data['sliders']])
 	</section>
 
@@ -16,7 +16,7 @@
 		@include('web_v2.components.tile-desktop')
 	</div>
 
-	<section class="container-fluid bg-grey mt-xl">
+	<section class="container-fluid bg-grey mt-xl pt-sm">
 		<div class="row mt-sm mb-sm">
 			<div class="col-md-12 text-center">
 				<h3 class="text-uppercase m-0">New Release</h3>
