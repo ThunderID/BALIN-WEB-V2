@@ -13,7 +13,7 @@ use Response, Input, Collection, Session, BalinMail, Route;
  */
 class ProductController extends BaseController 
 {	
-	protected $controller_name 						= 'product';
+	protected $controller_name 						= 'products';
 
 	function __construct()
 	{
@@ -29,7 +29,7 @@ class ProductController extends BaseController
 		}
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'web_v2.pages.product.';
+		$this->page_attributes->source 				= 'products.';
 		$this->page_attributes->breadcrumb			=	[
 															'Produk' 	=> route('balin.product.index'),
 														];

@@ -40,14 +40,9 @@
 
 		<!--SECTION WRAPPER -->
 		<div class="wrapper wrapper_content @yield('wrapper_class')" style=" margin-bottom: 0px;
-			{{ (Route::currentRouteName()!='balin.home.index') ? 'margin-top:51px;' : 'margin-top:0px;' }}  ">
-			@if (Route::currentRouteName()!='balin.home.index')
+			{{ (Route::currentRouteName()!='balin.home.index') ? 'margin-top:60px;' : 'margin-top:0px;' }}  ">
 				<!-- SECTION BREADCRUMB -->
-				@if(isset($breadcrumb))
-					@include('web_v2.components.breadcrumb')
-				@endif
 				<!-- END SECTION BREADCRUMB -->
-			@endif
 
 			<!-- SECTION CONTENT -->
 			@yield('content')
