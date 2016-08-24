@@ -13,7 +13,7 @@
 
 				<div class="row mt-md mb-sm pl-md pr-md">
 					@include('web_v2.components.card', [
-						'data' 	=> $data['new_release'],
+						'data' 	=> $data['product'],
 				  		'col'	=> 'col-md-4 col-sm-3 col-xs-6' 
 					])
 				</div>

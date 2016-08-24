@@ -1,27 +1,29 @@
 <!-- SECTION BREADCRUMB FOR DESKTOP -->
 <div class="hidden-xs">
-	<div class="row mt-md">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
-			<ol class="breadcrumb" style="background:none">
-				@foreach($breadcrumb as $b_title => $b_url)
-					@if ($b_url == head($breadcrumb))
-						<li>
-							<a class="hover-black" href="{{route('balin.home.index')}}">Home</a>
-						</li>
-					@endif
-					@if ($b_url == end($breadcrumb))
-						<li class="active">
-							<a class="hover-gray" href="{{ $b_url }}"><strong>{{$b_title}}</strong></a>
-						</li>
-					@else
-						<li>
-							<a class="hover-black" href="{{ $b_url }}"> {{$b_title}} </a>
-						</li>
-					@endif
-				@endforeach
-			</ol>
+	<section class="container">
+		<div class="row mt-md">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
+				<ol class="breadcrumb" style="background:none">
+					@foreach($breadcrumb as $b_title => $b_url)
+						@if ($b_url == head($breadcrumb))
+							<li>
+								<a class="hover-black" href="{{route('balin.home.index')}}">Home</a>
+							</li>
+						@endif
+						@if ($b_url == end($breadcrumb))
+							<li class="active">
+								<a class="hover-gray" href="{{ $b_url }}"><strong>{{$b_title}}</strong></a>
+							</li>
+						@else
+							<li>
+								<a class="hover-black" href="{{ $b_url }}"> {{$b_title}} </a>
+							</li>
+						@endif
+					@endforeach
+				</ol>
+			</div>
 		</div>
-	</div>
+	</section>
 </div>
 <!-- END SECTION BREADCRUMB FOR DESKTOP -->
 

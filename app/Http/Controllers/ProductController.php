@@ -129,12 +129,16 @@ class ProductController extends BaseController
 
 		//3b. API Category
 		$API_category 								= new APICategory;
-		$get_api_category							= $API_category->getIndex([
-															'search' 	=> 	[],
-															'sort' 		=> 	[
-																				'path'	=> 'asc',
-																			],
-														]);
+		$get_api_category['data']['data']			= 	[
+															['id' => 1, 'name' => 'Wanita','path' => '1', 'slug' => 'wanita'],
+															['id' => 2, 'name' => 'Whats New','path' => '1,2', 'slug' => 'wanita-whats-new'],
+															['id' => 3, 'name' => 'Dress','path' => '1,3', 'slug' => 'wanita-dress'],
+															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
+															['id' => 5, 'name' => 'Pria','path' => '5', 'slug' => 'pria'],
+															['id' => 6, 'name' => 'Whats New','path' => '5,6', 'slug' => 'pria-whats-new'],
+															['id' => 7, 'name' => 'Kemeja','path' => '5,7', 'slug' => 'pria-kemeja'],
+														];
+
 		//3c. API Tag
 		$API_tag 									= new APITag;
 		$get_api_tag								= $API_tag->getIndex([
@@ -177,16 +181,21 @@ class ProductController extends BaseController
 			$breadcrumb['Halaman '.Input::get('page')]	= route('balin.product.index', ['page' => Input::get('page')]);
 		}
 
-		$this->page_attributes->breadcrumb			= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
+		$product['new_release']					= 	[
+														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
+														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'size' => json_encode([0 => '15', 1 => '16'])],
+														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+													];
 
 		//6. Generate view
 		$this->page_attributes->search 				= $searchresult;
 		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
-															'product' 	=> $product,
+															'product' 	=> $product['new_release'],
 															'tag'		=> $tag,
-															'category'	=> $category
+															'category'	=> $get_api_category['data']['data']
 														];
 
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
@@ -219,16 +228,23 @@ class ProductController extends BaseController
 		else
 		{
 			//2. Get Related product
-			$related 								= $API_product->getIndex([
-															'search' 	=> 	[
-																				'name' 	=> Input::get('q'),
-																				'notid' => $product['data']['data'][0]['id'],
-																			],
-															'sort' 		=> 	[
-																				'name'	=> 'asc',
-																			],																		
-															'take'		=> 4,
-														]);	
+			// $related 								= $API_product->getIndex([
+			// 												'search' 	=> 	[
+			// 																	'name' 	=> Input::get('q'),
+			// 																	'notid' => $product['data']['data'][0]['id'],
+			// 																],
+			// 												'sort' 		=> 	[
+			// 																	'name'	=> 'asc',
+			// 																],																		
+			// 												'take'		=> 4,
+			// 											]);	
+
+			$related 								= [
+														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
+														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'size' => json_encode([0 => '15', 1 => '16'])],
+														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+													];
 
 			$carts 									= Session::get('carts');
 

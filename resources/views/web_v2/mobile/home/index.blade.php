@@ -27,7 +27,7 @@
 			<div class="col-md-12">
 				<h3 class="text-uppercase text-left m-0">New Release</h3>
 			</div>
-			<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+			<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 		</div>
 	</div>
 	<div class="container pt-md pb-md mb-sm">
