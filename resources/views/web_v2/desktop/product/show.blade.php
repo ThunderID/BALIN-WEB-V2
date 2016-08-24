@@ -14,20 +14,20 @@
 						<img class="img img-responsive text-center canvas-image"  src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : 'http://drive.thunder.id/file/public/4/1/2015/12/06/05/avani-short-front.jpg' }}" style="width:100%">
 					</a>
 				</div>
-				<div class="row">
-					<div class="col-md-12 col-lg-12 hidden-xs hidden-sm">
+				<div class="row mb-lg">
+					<div class="col-md-12 col-lg-12 hidden-xs hidden-sm mt-xs">
 						@if (count($data['product']['data']['data'][0]['images']) != 0)
 							<div class="owl-carousel gallery-product">
 								@foreach ($data['product']['data']['data'][0]['images'] as $i => $img)
 									<div class="item-carousel">
 										<a href="{{ $img['thumbnail'] }}" data-standard="{{ $img['thumbnail'] }}">
-											<img class="img img-responsive canvasSource" id="canvasSource{{ $i }}" src="{{ $img['thumbnail'] }}" alt="">
+											<img class="img img-responsive canvasSource pull-left" id="canvasSource{{ $i }}" src="{{ $img['thumbnail'] }}" alt="">
 										</a>
 									</div>
 								@endforeach
 							</div>
 						@else
-							<img class="img img-responsive canvasSource" src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : 'http://drive.thunder.id/file/public/4/1/2015/12/06/05/avani-short-front.jpg' }}" alt="{{ $data['product']['data']['data'][0]['name'] }}" style="width:50px">
+							<img class="img img-responsive canvasSource pull-left" src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : 'http://drive.thunder.id/file/public/4/1/2015/12/06/05/avani-short-front.jpg' }}" alt="{{ $data['product']['data']['data'][0]['name'] }}" style="width:50px">
 						@endif
 					</div>
 					<div class="col-xs-12 col-sm-12 pl-0 pr-0 hidden-md hidden-lg">
@@ -47,162 +47,159 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">&nbsp;</div>
+			<!-- <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">&nbsp;</div> -->
 			<!-- END SECTION IMAGE SLIDER PRODUCT -->
 
 			<!-- SECTION INFO DETAIL PRODUCT -->
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pl-lg">
+			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pl-lg">
 				<!-- SECTION DESCRIPTION PRODUCT -->
-				<div class="row">
+				<div class="row mb-lg">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<h3 class="mt-0">{{ $data['product']['data']['data'][0]['name'] }}</h3>
-						<h4>Atasan Wanita</h4>
-						<h4 class="text-light mt-sm">
-							@money_indo( (isset($data['product']['data']['data'][0]['promo_price'])&&($data['product']['data']['data'][0]['promo_price']!=0)) ? $data['product']['data']['data'][0]['promo_price'] : $data['product']['data']['data'][0]['price'] )
-						</h4>
-						@if (isset($data['product']['data']['data'][0]['promo_price'])&&($data['product']['data']['data'][0]['promo_price']!=0))
-							<span class="text-md text-strikethrough mtm-md">@money_indo( $data['product']['data']['data'][0]['price'] )</span>
-						@endif
-
-						<h4 class="mt-xl">DESKRIPSI</h4>
-						<?php  $description = isset($data['product']['data']['data'][0]['description']) ? json_decode($data['product']['data']['data'][0]['description'], true) : ['description' => '', 'fit' => '']; ?>
-						<p class="text-superlight">{!! $description['description'] !!}</p>
+						<h4 class="mt-0 mb-0">{{ $data['product']['data']['data'][0]['name'] }}</h4>
 					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<p class="mb-0">Atasan Wanita</p>
+						<p class="card-text mt-0">
+							@if (1 != 0)
+								<del>@money_indo(299000)</del>
+								<span class="text-orange">@money_indo(249000)</span>
+							@else
+								<span>@money_indo(299000)</span>
+							@endif
+						</p>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<p class="mb-0">Time left to buy</p>
+						<h3 class="text-orange mt-0">05 : 24 : 36</h3>
+					</div>					
 				</div>
-				<!-- END SECTION DESCRTIPION PRODUCT -->
 
-				<!-- SECTION SIZE & FIT -->
+
+				<!-- START SECTION TRANSACTION MENU -->
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<h4 class="mt-xl">UKURAN & FIT</h4>
-						{!! $description['fit'] !!}
-						<?php 
-							// HTML::image('images/'.$data['product']['data']['data'][0]['size_fit'].'.png', null, ['class' => 'img-responsive']) 
-						?>
-					</div>
-				</div>
-				<!-- END SECTION SIZE & FIT -->
+					<div class="col-md-12">
+						<div class="panel-group product-detail" id="accordion" role="tablist" aria-multiselectable="true">
 
-				<!-- SECTION FORM ADD TO CART -->
-				{!! Form::open(['url' => route('balin.cart.store', $data['product']['data']['data'][0]['slug']), 'class' => 'form_addtocart']) !!}
-					{!! Form::hidden('slug', $data['product']['data']['data'][0]['slug'], ['class' => 'slug_form']) !!}
-					{!! Form::hidden('name', $data['product']['data']['data'][0]['name'], ['class' => 'name_form']) !!}
-					<!-- SECTION SIZE CHOICE -->
-					<div class="row mb-xxl">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<h4 class="mt-xl mb-xl">PILIH UKURAN</h4>
-							@foreach($data['product']['data']['data'][0]['varians'] as $k => $v)
-								<div class="row border-1 border-solid border-grey text-regular mr-0 ml-0 p-5 mb-xs">
-									<div class="col-xs-6 col-sm-6 col-md-5 col-lg-5">
-										<p class="mt-5 mb-0">
-											@if (strpos($v['size'], '.')==true)
-												<?php $frac = explode('.', $v['size']); ?>
-												{{ $frac[0].' &frac12;'}}
-											@else
-												{{ $v['size'] }}
-											@endif
-										</p>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-7 col-lg-7 text-right size-product">
-										<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black btn-sm mrm-3 btn_number minus"
-											data-field="qty-{{ strtolower($v['size']) }}[1]"
-											data-page="product" 
-											data-type="minus" disabled
-											>&ndash;</a>
-										<input type="hidden" name="varianids[{{ $v['id'] }}]" class="form-control pvarians" value="{{ $v['id'] }}">
-										<input type="number" name="qty[{{ $v['id'] }}]" class="text-center text-regular size-input pqty input_number" 
-											value=
-											"@if(isset($data['carts'][$data['product']['data']['data'][0]['id']]) && $data['carts'][$data['product']['data']['data'][0]['id']]['slug'] == $data['product']['data']['data'][0]['slug'])@if(isset($data['carts'][$data['product']['data']['data'][0]['id']]['varians'][$v['id']]) && ($data['carts'][$data['product']['data']['data'][0]['id']]['varians'][$v['id']]['varian_id']  == $v['id'])){{$data['carts'][$data['product']['data']['data'][0]['id']]['varians'][$v['id']]['quantity']}}@else{{'0'}}@endif{{''}}@else{{'0'}}@endif" 
-											min="0" 
-											max="{{ (20>=$v['current_stock']) ? $v['current_stock'] : 20 }}"
-											data-id="{{ $v['id'] }}"
-											data-name="qty-{{ strtolower($v['size']) }}[1]"
-											data-stock="{{ $v['current_stock'] }}"
-											data-price="{{ (isset($data['product']['data']['data'][0]['promo_price'])&&($data['product']['data']['data'][0]['promo_price']!=0)) ? $data['product']['data']['data'][0]['promo_price'] : $data['product']['data']['data'][0]['price'] }}"
-											data-total="@if(isset($data['carts'][$data['product']['data']['data'][0]['id']]) && $data['carts'][$data['product']['data']['data'][0]['id']]['slug'] == $data['product']['data']['data'][0]['slug'])@if(isset($data['carts'][$data['product']['data']['data'][0]['id']]['varians'][$v['id']]) && ($data['carts'][$data['product']['data']['data'][0]['id']]['varians'][$v['id']]['varian_id']  == $v['id'])){{($data['carts'][$data['product']['data']['data'][0]['id']]['price']-$data['carts'][$data['product']['data']['data'][0]['id']]['discount'])*$data['carts'][$data['product']['data']['data'][0]['id']]['varians'][$v['id']]['quantity']}}@else{{'0'}}@endif{{''}}@else{{'0'}}@endif"
-											data-oldValue="" 
-											data-toggle="tooltip" 
-											data-placement="left"
-											data-page="product"
-											{{ ($v['current_stock']==0) ? 'disabled' : ''}}
-											>
-										<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black btn-sm mlm-5 btn_number plus"
-											data-field="qty-{{ strtolower($v['size']) }}[1]"
-											data-page="product"
-											data-type="plus"
-											{{ ($v['current_stock']==0) ? 'disabled' : ''}}
-											>&#43;</a>
+					<!-- START SECTION DESCRIPTION -->
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										<h4 class="panel-title">
+											Description
+											<span class="pull-right">
+												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+											</span>
+										</h4>
+									</a>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body">
+										<?php  $description = isset($data['product']['data']['data'][0]['description']) ? json_decode($data['product']['data']['data'][0]['description'], true) : ['description' => '', 'fit' => '']; ?>
+										<p class="text-superlight">{!! $description['description'] !!}</p>
 									</div>
 								</div>
-							@endforeach
-						</div>
-					</div>
-					<!-- END SECTION SIZE CHOICE -->
-					<div class="clearfix">&nbsp;</div>
-					<!-- SECTION TOTAL PRICE -->
-					<div class="row border-top-1 border-bottom-1 border-right-0 border-left-0 border-solid mt-xl ml-0 mr-0">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<h4>TOTAL</h4>
-						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
-							<h4 class="price_all_product">
-								<?php 
-									$price 	= $data['product']['data']['data'][0]['price']; 
-									$total = 0;
-								?>
+							</div>
+					<!-- END SECTION DESCRIPTION -->
 
-								@if (!empty($data['carts']))
-									@foreach ($data['carts'] as $k => $item)
-										@if ($k==$data['product']['data']['data'][0]['id'])
-											<?php
-												$qty 			= 0;
-												foreach ($item['varians'] as $key => $value) 
-												{
-													$qty 		= $qty + $value['quantity'];
-												}
-												$total += (($price-$item['discount'])*$qty); 
-											?>
-										@endif
-									@endforeach
-									@money_indo($total)
-								@else
-									@money_indo( isset($data['product']['data']['data'][0]['promo_price']) ? $data['product']['data']['data'][0]['promo_price'] : $data['product']['data']['data'][0]['price'])
-								@endif
-							</h4>
-						</div>
-					</div>
-					<!-- END SECTION TOTAL PRICE -->
+					<!-- START SECTION FIT & MEASUREMENT -->
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingTwo">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										<h4 class="panel-title">
+											Fit & Measurement
+											<span class="pull-right">
+												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+											</span>											
+										</h4>
+									</a>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+									<div class="panel-body">
+										{!! $description['fit'] !!}
+									</div>
+								</div>
+							</div>
+					<!-- END SECTION FIT & MEASUREMENT-->
 
-					<!-- SECTION BUTTON ADD TO CART -->
-					<div class="row mt-sm mb-md">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
-							<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black addto_cart" data-route="{{ route('balin.cart.index') }}">Tambahkan ke Cart</a>
+					<!-- START SECTION CARE-->
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingThree">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+										<h4 class="panel-title">
+											Care
+											<span class="pull-right">
+												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+											</span>											
+										</h4>
+									</a>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+									<div class="panel-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								</div>
+							</div>
+					<!-- END SECTION CARE-->
+
+					<!-- START SECTION SIZE-->
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingFour">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+										<h4 class="panel-title">
+											Size
+											<span class="pull-right">
+												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+											</span>											
+										</h4>
+									</a>
+								</div>
+								<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+									<div class="panel-body">
+										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									</div>
+								</div>
+							</div>	
+					<!-- END SECTION SIZE-->
+
+					<!-- START SECTION TOTAL -->
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<h4 class="panel-title">
+										Total
+										<span class="pull-right">
+											IDR 0
+										</span>
+									</h4>
+								</div>
+							</div>
+					<!-- START SECTION TOTAL -->
+
+
 						</div>
 					</div>
-					<!-- END SECTION BUTTON ADD TO CART -->
-				{!! Form::close() !!}
-				<!-- END SECTION FORM ADD TO CART -->
+				</div>
+				<!-- END SECTION TRANSACTION MENU -->
+
+				<div class="row">
+					<div class="col-md-12 text-right">
+						<a href="javascript:void(0);" class="btn btn-orange addto-cart">Add To Cart</a>
+					</div>
+				</div>
+
 			</div>
 			<!-- END SECTION INFO DETAIL PRODUCT -->
 		</div>
 
 		<!-- SECTION RELATED PRODUCT -->
 		<div class="row">
-<!-- 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-xxl mb-none">
-				<h3>PILIHAN LAIN</h3>
-			</div>
-			<p>Lihat Semua</p> -->
 			<div class="container text-left mt-xxl mb-sm">
 				<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
 				<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 			</div>			
-			<?php
-				// dd($data['related']);
-			?>
-			  	@include('web_v2.components.card', [
-			  		'data' 	=> $data['related'],
-			  		'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
-			  	])
+				@include('web_v2.components.card', [
+					'data' 	=> $data['related'],
+					'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
+				])
 		</div>
 		<!-- END SECTION RELATED PRODUCT -->
 
