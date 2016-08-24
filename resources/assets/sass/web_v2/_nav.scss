@@ -35,11 +35,10 @@
 .cart-count{
     position: absolute;
     border-radius: 50%;
-    width: 13px;
-    height: 13px;
-    background: orange;
-    padding-top: 1px;	    
-	font-size: 9px;
+    width: 15px;
+    height: 15px;
+    background: $orange;
+	font-size: 10px;
 	text-align: center;
 	color: white;
 }

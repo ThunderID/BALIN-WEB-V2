@@ -37,7 +37,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li>
-					<a href="#" class=""><span style="color:orange">Balin</span>Point</a>
+					<a href="#" class=""><span class="text-orange">Balin</span>Point</a>
 				</li>
 				<li>
 					<a href="#" class="">Akun</a>
