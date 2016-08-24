@@ -29,7 +29,7 @@ class ProductController extends BaseController
 		}
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'web_v2.pages.product.';
+		$this->page_attributes->source 				= 'product.';
 		$this->page_attributes->breadcrumb			=	[
 															'Produk' 	=> route('balin.product.index'),
 														];
@@ -223,16 +223,23 @@ class ProductController extends BaseController
 		else
 		{
 			//2. Get Related product
-			$related 								= $API_product->getIndex([
-															'search' 	=> 	[
-																				'name' 	=> Input::get('q'),
-																				'notid' => $product['data']['data'][0]['id'],
-																			],
-															'sort' 		=> 	[
-																				'name'	=> 'asc',
-																			],																		
-															'take'		=> 4,
-														]);	
+			// $related 								= $API_product->getIndex([
+			// 												'search' 	=> 	[
+			// 																	'name' 	=> Input::get('q'),
+			// 																	'notid' => $product['data']['data'][0]['id'],
+			// 																],
+			// 												'sort' 		=> 	[
+			// 																	'name'	=> 'asc',
+			// 																],																		
+			// 												'take'		=> 4,
+			// 											]);	
+
+			$related 								= [
+														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
+														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'size' => json_encode([0 => '15', 1 => '16'])],
+														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+													];
 
 			$carts 									= Session::get('carts');
 
