@@ -11,7 +11,7 @@
 		  			  		<li class="" style="width:12em;"><a href="#">Setelan</a></li>
 		  			  		<li class="" style="width:12em;"><a href="#">Atasan</a></li>
 		  			  		<li class="" style="width:12em;"><a href="#">Jumpsuit</a></li>
-		  			  		<li class="" style="width:12em;"><a href="#">SALE</a></li>
+		  			  		<li class="" style="width:12em;"><a href="#" class="text-orange">SALE</a></li>
 		  			  	</ul>
 		  			</div>
 		  		</div>

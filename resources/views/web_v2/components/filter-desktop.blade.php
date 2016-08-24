@@ -8,7 +8,7 @@
 </div>
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
-		<h4>Fitting</h4>
+		<h4 class="mb-5">Fitting</h4>
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
@@ -21,7 +21,7 @@
 </div>
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
-		<h4>Lengan</h4>
+		<h4 class="mb-5">Lengan</h4>
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
@@ -40,7 +40,7 @@
 </div>
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
-		<h4>Ukuran</h4>
+		<h4 class="mb-5">Ukuran</h4>
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
@@ -65,7 +65,7 @@
 </div>
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
-		<h4>Motif</h4>
+		<h4 class="mb-5">Motif</h4>
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
@@ -96,7 +96,7 @@
 </div>
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
-		<h4>Warna</h4>
+		<h4 class="mb-5">Warna</h4>
 		<ul class="list-inline">
 			<li>
 				<div class="checkbox-custom">

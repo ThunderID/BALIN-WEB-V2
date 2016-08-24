@@ -37,10 +37,10 @@
     border-radius: 50%;
     width: 15px;
     height: 15px;
-    background: $orange;
+    background: darken($grey, 10%);
 	font-size: 10px;
 	text-align: center;
-	color: white;
+	color: $black;
 }
 @media screen and (min-width: 992px) {
 	.navbar-cart{
