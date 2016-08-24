@@ -249,7 +249,7 @@ class AuthController extends BaseController
 		$this->page_attributes->controller_name		= $this->controller_name;
 		$this->page_attributes->breadcrumb			= $breadcrumb;
 		$this->page_attributes->type_form			= 'login';
-		$this->page_attributes->source 				= 'web_v2.pages.login.index';
+		$this->page_attributes->source 				= 'login.index';
 
 		return $this->generateView();
 	}
