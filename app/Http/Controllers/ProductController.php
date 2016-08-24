@@ -129,12 +129,16 @@ class ProductController extends BaseController
 
 		//3b. API Category
 		$API_category 								= new APICategory;
-		$get_api_category							= $API_category->getIndex([
-															'search' 	=> 	[],
-															'sort' 		=> 	[
-																				'path'	=> 'asc',
-																			],
-														]);
+		$get_api_category['data']['data']			= 	[
+															['id' => 1, 'name' => 'Wanita','path' => '1', 'slug' => 'wanita'],
+															['id' => 2, 'name' => 'Whats New','path' => '1,2', 'slug' => 'wanita-whats-new'],
+															['id' => 3, 'name' => 'Dress','path' => '1,3', 'slug' => 'wanita-dress'],
+															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
+															['id' => 5, 'name' => 'Pria','path' => '5', 'slug' => 'pria'],
+															['id' => 6, 'name' => 'Whats New','path' => '5,6', 'slug' => 'pria-whats-new'],
+															['id' => 7, 'name' => 'Kemeja','path' => '5,7', 'slug' => 'pria-kemeja'],
+														];
+
 		//3c. API Tag
 		$API_tag 									= new APITag;
 		$get_api_tag								= $API_tag->getIndex([
