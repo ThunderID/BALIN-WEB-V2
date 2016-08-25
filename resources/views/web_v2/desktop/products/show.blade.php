@@ -69,7 +69,7 @@
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 						<p class="mb-0">Time left to buy</p>
-						<h3 class="text-orange mt-0">05 : 24 : 36</h3>
+						<h3 class="text-orange mt-0 countdown" data-seconds-left=1800></h3>
 					</div>					
 				</div>
 
@@ -85,7 +85,7 @@
 									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 										<h4 class="panel-title">
 											Description
-											<span class="pull-right">
+											<span class="pull-right active">
 												<i class="fa fa-chevron-right" aria-hidden="true"></i>
 											</span>
 										</h4>
@@ -208,9 +208,17 @@
 
 @section('js_plugin')
 	@include('web_v2.plugins.notif', ['data' => ['title' => 'Terima Kasih', 'content' => 'Produk telah ditambahkan di cart']])
+	@include('web_v2.plugins.countdown')
 @stop
 
 @section('js')
 	data_action1 = '{{ route('balin.cart.store', $data['product']['data']['data'][0]['slug']) }}';
 	data_action2 = '{{ route('balin.cart.list') }}';
+
+	$('.panel').on('hide.bs.collapse', function (e) {
+		$(e.currentTarget).find('span').removeClass('active');
+	})
+	$('.panel').on('show.bs.collapse', function (e) {
+		$(e.currentTarget).find('span').addClass('active');
+	})	
 @stop
