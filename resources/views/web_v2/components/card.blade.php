@@ -1,7 +1,7 @@
 @foreach ($data as $k => $v)
 	<div class="{{ $col }}">
 		<div class="card">
-			<a href="#">
+			<a href="#" style="width: 95%">
 				{!! Html::image($v['thumbnail'], $v['name'], ['class' => 'card-img-top center-block img-responsive']) !!}
 				<div class="hover"></div>
 			</a>

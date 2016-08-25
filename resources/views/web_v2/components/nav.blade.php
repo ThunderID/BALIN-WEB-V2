@@ -95,7 +95,7 @@
 		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="text-light right">
-					<a href="#">
+					<a href="{{ route('balin.product.index', ['type' => 'women']) }}" class="text-orange">
 						Wanita
 						<span>
 							{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
@@ -107,7 +107,7 @@
 					</div>
 				</li>>
 				<li class="text-light left">
-					<a href="#">
+					<a href="{{ route('balin.product.index', ['type' => 'men']) }}">
 						<span>
 							{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
 						</span>
