@@ -1,6 +1,9 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
+	<?php
+		// dd($data);
+	?>
 	@include('web_v2.components.category-desktop')
 	@include('web_v2.components.breadcrumb')
 
@@ -56,7 +59,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<h4 class="mt-0 mb-0">{{ $data['product']['data']['data'][0]['name'] }}</h4>
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+					<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
 						<p class="mb-0">Atasan Wanita</p>
 						<p class="card-text mt-0">
 							@if (1 != 0)
@@ -67,7 +70,7 @@
 							@endif
 						</p>
 					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 pl-0">
 						<p class="mb-0">Time left to buy</p>
 						<h3 class="text-orange mt-0 countdown" data-seconds-left=1800></h3>
 					</div>					
@@ -80,13 +83,13 @@
 						<div class="panel-group product-detail" id="accordion" role="tablist" aria-multiselectable="true">
 
 					<!-- START SECTION DESCRIPTION -->
-							<div class="panel panel-default">
+							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 										<h4 class="panel-title">
 											Description
 											<span class="pull-right active">
-												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>
 										</h4>
 									</a>
@@ -94,20 +97,20 @@
 								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 										<?php  $description = isset($data['product']['data']['data'][0]['description']) ? json_decode($data['product']['data']['data'][0]['description'], true) : ['description' => '', 'fit' => '']; ?>
-										<p class="text-superlight">{!! $description['description'] !!}</p>
+										{!! $description['description'] !!}
 									</div>
 								</div>
 							</div>
 					<!-- END SECTION DESCRIPTION -->
 
 					<!-- START SECTION FIT & MEASUREMENT -->
-							<div class="panel panel-default">
+							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingTwo">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 										<h4 class="panel-title">
 											Fit & Measurement
 											<span class="pull-right">
-												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
 										</h4>
 									</a>
@@ -121,13 +124,13 @@
 					<!-- END SECTION FIT & MEASUREMENT-->
 
 					<!-- START SECTION CARE-->
-							<div class="panel panel-default">
+							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingThree">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 										<h4 class="panel-title">
 											Care
 											<span class="pull-right">
-												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
 										</h4>
 									</a>
@@ -141,13 +144,13 @@
 					<!-- END SECTION CARE-->
 
 					<!-- START SECTION SIZE-->
-							<div class="panel panel-default">
+							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingFour">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 										<h4 class="panel-title">
 											Size
 											<span class="pull-right">
-												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
 										</h4>
 									</a>
@@ -161,7 +164,7 @@
 					<!-- END SECTION SIZE-->
 
 					<!-- START SECTION TOTAL -->
-							<div class="panel panel-default">
+							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<h4 class="panel-title">
 										Total
