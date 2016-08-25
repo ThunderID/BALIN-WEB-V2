@@ -1,11 +1,10 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<?php 
-	// dd($data); 
+	@include('web_v2.components.category-desktop')
+	@include('web_v2.components.breadcrumb')
 
-	?>
-	<section class="container">
+	<section class="container mt-0 mb-lg">
 		<div class="row">
 			<!-- SECTION IMAGE SLIDER PRODUCT -->
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
