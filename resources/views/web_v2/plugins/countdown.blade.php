@@ -1,5 +1,11 @@
 <script>
   $(function(){
-    $('.countdown').startTimer();
+    $('.countdown').startTimer({
+      onComplete: function(){
+      	location.reload();
+      }
+    });
   });
 </script>
+
+location.reload();
