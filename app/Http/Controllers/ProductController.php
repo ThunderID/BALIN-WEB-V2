@@ -208,7 +208,7 @@ class ProductController extends BaseController
 	 * 
 	 * @return view, redirect route
 	 */
-	public function show($slug = null)
+	public function show($type = null, $slug = null)
 	{
 		//1. Check product
 		$API_product 							= new APIProduct;
