@@ -11,6 +11,9 @@ $color3: #f8afad;
 @import "variable";
 @import "nav";
 @import "breadcrumb";
+@import "buttons";
+@import "collapse";
+@import "countdown";
 @import "productgrid";
 @import "filter_product";
 @import "search_product";
@@ -118,6 +121,7 @@ body {
 .home-product-more{
     float: right;
     margin-top: -20px;
+    margin-right: 13px;
 }
 
 /** mobile **/
@@ -161,4 +165,11 @@ body {
 	font-size: 6.2rem;
 	padding-top: 0.3rem;
 	padding-bottom: 1.2rem;
+}
+
+/** Product Show **/
+.cart-remove.not-active, .cart-add.not-active {
+   color: #c0c0c0 !important;
+   pointer-events: none;
+   cursor: default;
 }

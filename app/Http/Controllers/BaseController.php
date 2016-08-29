@@ -140,7 +140,6 @@ abstract class BaseController extends Controller
   		$paging_to 				= $this->page_attributes->paginator_item_to;
 
 		//initialize view
-		// dd($this->base_path_view);
   		$this->layout 			= view($this->base_path_view . $this->page_attributes->source, compact('paging', 'paging_from', 'paging_to'))
 									->with('breadcrumb', $this->page_attributes->breadcrumb)
 									->with('page_title', $this->page_attributes->title)
