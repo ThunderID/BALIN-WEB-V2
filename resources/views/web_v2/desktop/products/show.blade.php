@@ -2,7 +2,7 @@
 
 @section('content')
 	<?php
-		// dd($data);
+		// dd($data['product']['data']['data'][0]['varians']);
 	?>
 	@include('web_v2.components.category-desktop')
 	@include('web_v2.components.breadcrumb')
@@ -88,13 +88,13 @@
 									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 										<h4 class="panel-title">
 											Description
-											<span class="pull-right active">
+											<span class="pull-right">
 												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>
 										</h4>
 									</a>
 								</div>
-								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body">
 										<?php  $description = isset($data['product']['data']['data'][0]['description']) ? json_decode($data['product']['data']['data'][0]['description'], true) : ['description' => '', 'fit' => '']; ?>
 										{!! $description['description'] !!}
@@ -148,19 +148,42 @@
 								<div class="panel-heading" role="tab" id="headingFour">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 										<h4 class="panel-title">
-											Size
-											<span class="pull-right">
+											Pilih Ukuran
+											<span class="pull-right active">
 												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
 										</h4>
 									</a>
 								</div>
-								<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+								<div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
 									<div class="panel-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										@foreach($data['product']['data']['data'][0]['varians'] as $varian)
+											<div class="row {{ end($data['product']['data']['data'][0]['varians']) != $varian ? 'mb-sm' : '' }}">
+												<div class="col-md-12 col-sm-12 col-xs-12 pl-sm pr-sm text-left">
+													<div class="col-xs-9 col-sm-10 col-md-10">
+													{{$varian['size']}}
+													</div>
+													@if($varian['current_stock'] > 0)
+														<div class="col-xs-3 col-sm-2 col-md-2 text-center" data-sku="$varian['sku']">	
+															<a href="javascript:void(0);" class="pull-left cart-remove not-active">
+																<strong>-</strong>
+															</a> 
+															<span data-stock="{{$varian['current_stock']}}" class="cart">0</span>
+															<a href="javascript:void(0);" class="pull-right cart-add"> 
+																<strong>+</strong>
+															</a>
+														</div>
+													@else
+														<div class="col-xs-3 col-sm-2 col-md-2 text-center">
+															Habis	
+														</div>
+													@endif
+												</div>
+											</div>
+										@endforeach
 									</div>
 								</div>
-							</div>	
+							</div>
 					<!-- END SECTION SIZE-->
 
 					<!-- START SECTION TOTAL -->
@@ -184,7 +207,10 @@
 
 				<div class="row">
 					<div class="col-md-12 text-right">
-						<a href="javascript:void(0);" class="btn btn-orange addto-cart">Add To Cart</a>
+						<a href="javascript:void(0);" class="btn btn-orange addto-cart pl-sm pr-sm">
+							<i class="fa fa-shopping-bag" aria-hidden="true"></i>
+							&nbsp;Buy Now
+						</a>
 					</div>
 				</div>
 
@@ -223,5 +249,50 @@
 	})
 	$('.panel').on('show.bs.collapse', function (e) {
 		$(e.currentTarget).find('span').addClass('active');
+	})
+
+
+	function addStock ($current, $stock){
+		if($current < $stock){
+			return $current + 1;
+		}else{
+			return $current;
+		}
+	}
+	function removeStock ($current){
+		if($current > 0){
+			return $current - 1;
+		}else{
+			return $current;
+		}
+	}	
+
+	$('.cart-add').click(function() {
+		var prev = parseInt($(this).parent().find('.cart').text());
+		var stock = parseInt($(this).parent().find('.cart').data("stock"));
+		var current = addStock(prev,stock);
+		$(this).parent().find('.cart').text(current);
+
+		if(current < stock){
+			if(current > 0){
+				$(this).siblings('.cart-remove').removeClass('not-active');
+			}	
+		}else{
+			$(this).addClass('not-active');
+		}
 	})	
+	$('.cart-remove').click(function() {
+		var prev = parseInt($(this).parent().find('.cart').text());
+		var stock = parseInt($(this).parent().find('.cart').data("stock"));
+		var current = removeStock(prev);
+		$(this).parent().find('.cart').text(current);
+
+		if(current > 0){
+			if(current < stock){
+				$(this).siblings('.cart-add').removeClass('not-active');
+			}		
+		}else{
+			$(this).addClass('not-active');
+		}
+	})		
 @stop
