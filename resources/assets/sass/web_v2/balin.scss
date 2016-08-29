@@ -160,11 +160,16 @@ body {
 		margin-top: 60px;
 	}
 }
-
-/** Product Show **/
 .shop-by-style-desktop .title{
 	font-family: 'Sacramento', cursive;
 	font-size: 6.2rem;
 	padding-top: 0.3rem;
 	padding-bottom: 1.2rem;
+}
+
+/** Product Show **/
+.cart-remove.not-active, .cart-add.not-active {
+   color: #c0c0c0 !important;
+   pointer-events: none;
+   cursor: default;
 }
