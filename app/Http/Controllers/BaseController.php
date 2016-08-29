@@ -86,6 +86,8 @@ abstract class BaseController extends Controller
   		if (!isset($this->page_attributes->subtitle)){ $this->page_attributes->subtitle = null; }
   		if (!isset($this->page_attributes->data)){ $this->page_attributes->data = null; }
   		if (!isset($this->page_attributes->paginator)){$this->page_attributes->paginator = null;}
+  		if (!isset($this->page_attributes->paginator_item_from)){$this->page_attributes->paginator_item_from = null;}
+  		if (!isset($this->page_attributes->paginator_item_to)){$this->page_attributes->paginator_item_to = null;}
   		if (!isset($this->page_attributes->type_form)){$this->page_attributes->type_form = null;}
   		if (!isset($this->page_attributes->metas)){$this->page_attributes->metas = null;}
   		if (!isset($this->page_attributes->controller_name)){$this->page_attributes->controller_name = null;}
@@ -134,10 +136,12 @@ abstract class BaseController extends Controller
   		
 		//paginator
   		$paging					= $this->page_attributes->paginator;
+  		$paging_from 			= $this->page_attributes->paginator_item_from;
+  		$paging_to 				= $this->page_attributes->paginator_item_to;
 
 		//initialize view
 		// dd($this->base_path_view);
-  		$this->layout 			= view($this->base_path_view . $this->page_attributes->source, compact('paging'))
+  		$this->layout 			= view($this->base_path_view . $this->page_attributes->source, compact('paging', 'paging_from', 'paging_to'))
 									->with('breadcrumb', $this->page_attributes->breadcrumb)
 									->with('page_title', $this->page_attributes->title)
 									->with('page_subtitle', $this->page_attributes->subtitle)
@@ -186,6 +190,25 @@ abstract class BaseController extends Controller
 
 		$this->page_attributes->paginator 			= new LengthAwarePaginator($count, $count, $this->take, $current);
 	    $this->page_attributes->paginator->setPath($route);
+
+	    // get item from to
+	    $paginate 									= $this->page_attributes->paginator;
+	    $paginate_item_from 						= ($paginate->currentPage()-1)*($paginate->perPage()+1);
+	    $paginate_item_to 							= ($paginate->currentPage())*($paginate->perPage());
+
+	    if ($paginate_item_from == 0)
+	    {
+	    	$paginate_item_from						= 1;
+	    }
+
+	    if ($paginate_item_to > $paginate->total())
+	    {
+	    	$paginate_item_to 						= $paginate->total();	
+	    }
+	    
+
+	    $this->page_attributes->paginator_item_from	= $paginate_item_from;
+	    $this->page_attributes->paginator_item_to	= $paginate_item_to;
 	}
 
 	public function getcolorchart()

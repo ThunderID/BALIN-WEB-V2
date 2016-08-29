@@ -17,9 +17,9 @@
 						<h4>Keep in touch</h4>
 						<ul class="list-unstyled fa-ul ml-0">
 							<li><a href="#" class="hover-orange">Kontak BALIN</a></li>
-							<li><a href="#" class="social-url-footer"><span class="fa-stack fa-lg icon-span"><i class="fa fa-circle fa-stack-2x icon-stack-2"></i><i class="fa fa-facebook fa-stack-1x icon-stack-1"></i></span> Facebook</a></li>
-							<li><a href="#" class="social-url-footer"><span class="fa-stack fa-lg icon-span"><i class="fa fa-circle fa-stack-2x icon-stack-2"></i><i class="fa fa-instagram fa-stack-1x icon-stack-1"></i></span> Instagram</a></li>
-							<li><a href="#" class="social-url-footer"><span class="fa-stack fa-lg icon-span"><i class="fa fa-circle fa-stack-2x icon-stack-2"></i><i class="fa fa-whatsapp fa-stack-1x icon-stack-1"></i></span> Whatsapp</a></li>
+							<li><a href="#" class="social-url-footer">Facebook</a></li>
+							<li><a href="#" class="social-url-footer">Instagram</a></li>
+							<li><a href="#" class="social-url-footer">Whatsapp</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

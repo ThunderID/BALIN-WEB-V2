@@ -3,16 +3,17 @@
 		<span>Filter</span>
 	</div>
 	<div class="col-md-6 text-right">
-		<a href="#" class="hover-orange">clear all</a>
+		<a href="#" class="hover-orange clearall-filter">clear all</a>
 	</div>
 </div>
+<!-- <hr class="border-grey-dark mtm-5"> -->
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
 		<h4 class="mb-5">Fitting</h4>
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('fitting', 'slimfit', null, ['id' => 'slimfit']) !!} 
+					{!! Form::checkbox('fitting', 'slimfit', null, ['id' => 'slimfit', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!} 
 					<label for="slimfit">Slimfit</label>
 				</div>
 			</li>
@@ -25,13 +26,13 @@
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('lengan', 'panjang', null, ['id' => 'lengan']) !!}
-					<label for="slimfit">Panjang</label>
+					{!! Form::checkbox('tag[]', 'panjang', null, ['id' => 'panjang', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
+					<label for="panjang">Panjang</label>
 				</div>
 			</li>
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('lengan', 'pendek', null, ['id' => 'pendek']) !!}
+					{!! Form::checkbox('tag[]', 'pendek', null, ['id' => 'pendek', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="pendek">Pendek</label>
 				</div>
 			</li>
@@ -44,19 +45,19 @@
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('size', '15', null, ['id' => '15']) !!}
+					{!! Form::checkbox('varians[]', '15', null, ['id' => '15', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="15">15</label>
 				</div>
 			</li>
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('size', '15.5', null, ['id' => '15.5']) !!}
+					{!! Form::checkbox('varians[]', '15.5', null, ['id' => '15.5', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="15.5">15.5</label>
 				</div>
 
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('size', '16', null, ['id' => '16']) !!}
+					{!! Form::checkbox('varians[]', '16', null, ['id' => '16', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="16">16</label>
 				</div>
 			</li>
@@ -69,25 +70,25 @@
 		<ul class="list-unstyled">
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('motif', 'parang', null, ['id' => 'parang']) !!}
+					{!! Form::checkbox('tag[]', 'parang', null, ['id' => 'parang', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="parang">Parang</label>
 				</div>
 			</li>
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('motif', 'sekar_jagad', null, ['id' => 'sekar-jagad']) !!}
+					{!! Form::checkbox('tag[]', 'sekar_jagad', null, ['id' => 'sekar-jagad', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="sekar-jagad">Sekar Jagad</label>
 				</div>
 			</li>
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('motif', 'Keraton', null, ['id' => 'keraton']) !!}
+					{!! Form::checkbox('tag[]', 'Keraton', null, ['id' => 'keraton', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="keraton">Keraton</label>
 				</div>
 			</li>
 			<li>
 				<div class="checkbox-custom">
-					{!! Form::checkbox('motif', 'sidomukti', null, ['id' => 'sidomukti']) !!}
+					{!! Form::checkbox('tag[]', 'sidomukti', null, ['id' => 'sidomukti', 'class' => 'checkbox-filter', 'data-name' => 'filter']) !!}
 					<label for="sidomukti">Sidomukti</label>
 				</div>
 			</li>
@@ -97,30 +98,22 @@
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
 		<h4 class="mb-5">Warna</h4>
-		<ul class="list-inline">
+		<ul class="list-inline checkbox-color">
 			<li>
-				<div class="checkbox-custom">
-					{!! Form::checkbox('color', 'blue', null, ['id' => 'blue']) !!}
-					<label class="color" for="blue" data-color="blue">&nbsp;</label>
-				</div>
+				{!! Form::checkbox('tag[]', 'red', null, ['class' => 'checkbox-color hide', 'data-name' => 'filter']) !!}
+				<span class="color-item" style="background-color: red" data-color="red">&nbsp;</span>
 			</li>
 			<li>
-				<div class="checkbox-custom">
-					{!! Form::checkbox('color', 'red', null, ['id' => 'red']) !!}
-					<label class="color" for="red" data-color="red">&nbsp;</label>
-				</div>
+				{!! Form::checkbox('tag[]', 'blue', null, ['class' => 'checkbox-color hide', 'data-name' => 'filter']) !!}
+				<span class="color-item" style="background-color: blue" data-color="blue">&nbsp;</span>
 			</li>
 			<li>
-				<div class="checkbox-custom">
-					{!! Form::checkbox('color', 'black', null, ['id' => 'black']) !!}
-					<label class="color" for="black" data-color="black">&nbsp;</label>
-				</div>
+				{!! Form::checkbox('tag[]', 'brown', null, ['class' => 'checkbox-color hide', 'data-name' => 'filter']) !!}
+				<span class="color-item" style="background-color: brown" data-color="brown">&nbsp;</span>
 			</li>
 			<li>
-				<div class="checkbox-custom">
-					{!! Form::checkbox('color', 'brown', null, ['id' => 'brown']) !!}
-					<label class="color" for="brown" data-color="brown">&nbsp;</label>
-				</div>
+				{!! Form::checkbox('tag[]', 'black', null, ['class' => 'checkbox-color hide', 'data-name' => 'filter']) !!}
+				<span class="color-item" style="background-color: black" data-color="black">&nbsp;</span>
 			</li>
 		</ul>
 	</div>

@@ -1,3 +1,7 @@
+@mixin card-image($width, $height) {
+	width: $width;
+	height: $height;
+}
 .card{
 	a {
 		display: block;

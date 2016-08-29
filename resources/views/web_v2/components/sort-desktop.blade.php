@@ -1,6 +1,8 @@
 <div class="row mt-xs pl-sm pr-sm">
 	<div class="col-md-6">
-		<p class="">Showing 1-6 of 30 results</p>
+		<p class="">
+			Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results
+		</p>
 	</div>
 	<div class="col-md-6 text-right">
 		<p class="mr-sm">

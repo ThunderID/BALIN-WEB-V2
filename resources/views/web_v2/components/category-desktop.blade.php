@@ -6,11 +6,11 @@
 		  		<div class="row">
 		  			<div class="col-md-12 text-center">
 		  			  	<ul class="list-inline p-sm m-0">
-		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange">What's New</a></li>
-		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange">Dress</a></li>
-		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange">Setelan</a></li>
-		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange">Atasan</a></li>
-		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange">Jumpsuit</a></li>
+		  			  		@foreach ($data['category'] as $k => $v)
+		  			  			<li class="" style="width:12em;">
+		  			  				<a href="#" class="hover-orange">{{ $v['name'] }}</a>
+		  			  			</li>
+		  			  		@endforeach
 		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange text-orange">SALE</a></li>
 		  			  	</ul>
 		  			</div>

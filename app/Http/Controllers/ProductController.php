@@ -13,7 +13,7 @@ use Response, Input, Collection, Session, BalinMail, Route;
  */
 class ProductController extends BaseController 
 {	
-	protected $controller_name 						= 'products';
+	protected $controller_name 						= 'product';
 
 	function __construct()
 	{
@@ -29,11 +29,11 @@ class ProductController extends BaseController
 		}
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'products.';
+		$this->page_attributes->source 				= 'product.';
 		$this->page_attributes->breadcrumb			=	[
 															'Produk' 	=> route('balin.product.index'),
 														];
-		$this->take 								= 12;
+		$this->take 								= 6;
 	}
 
 	/**
@@ -47,7 +47,7 @@ class ProductController extends BaseController
 	 * 6. Generate view
 	 * @return view
 	 */
-	public function index()
+	public function index($type = null)
 	{
 		//1. Check filter
 		$filters 									= null;
@@ -121,8 +121,8 @@ class ProductController extends BaseController
 		$APIProduct 								= new APIProduct;
 
 		$product 									= $APIProduct->getIndex([
-															'search' 	=> 	$search,
-															'sort' 		=> 	$sort,
+															'search' 	=> $search,
+															'sort' 		=> $sort,
 															'take'		=> $this->take,
 															'skip'		=> ($page - 1) * $this->take,
 														]);
@@ -134,9 +134,6 @@ class ProductController extends BaseController
 															['id' => 2, 'name' => 'Whats New','path' => '1,2', 'slug' => 'wanita-whats-new'],
 															['id' => 3, 'name' => 'Dress','path' => '1,3', 'slug' => 'wanita-dress'],
 															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
-															['id' => 5, 'name' => 'Pria','path' => '5', 'slug' => 'pria'],
-															['id' => 6, 'name' => 'Whats New','path' => '5,6', 'slug' => 'pria-whats-new'],
-															['id' => 7, 'name' => 'Kemeja','path' => '5,7', 'slug' => 'pria-kemeja'],
 														];
 
 		//3c. API Tag
@@ -169,7 +166,7 @@ class ProductController extends BaseController
 		$tag 										= $collection_tag->sortBy('name')->all();
 
 		//4. Generate paginator
-		$this->paginate(route('balin.product.index'), $product['data']['count'], $page);
+		$this->paginate(route('balin.product.index', ['type' => $type]), $product['data']['count'], $page);
 
 		//5. Generate breadcrumb
 		$breadcrumb										= 	[
@@ -193,7 +190,8 @@ class ProductController extends BaseController
 		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
-															'product' 	=> $product['new_release'],
+															'product' 	=> $product['data']['data'],
+															'type'		=> $type,
 															'tag'		=> $tag,
 															'category'	=> $get_api_category['data']['data']
 														];
