@@ -28,8 +28,8 @@
 <!-- END SECTION BREADCRUMB FOR DESKTOP -->
 
 <!-- SECTION BREADCRUMB FOR MOBILE, TABLET -->
-<div class="hidden-lg hidden-md hidden-sm">
-	<div class="row mt-sm">
+<div class="hidden-lg hidden-md hidden-sm" style="margin-left: 15px;margin-right: 15px;margin-top :-10px;">
+	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pl-0 pr-0">
 			<ol class="breadcrumb bg-none mt-xs mb-xs">
 				<?php $ctr = 0;?>
@@ -41,7 +41,9 @@
 					@endif
 					@if($b_url == end($breadcrumb))
 						@if($ctr > 0)
-							</br>
+							<?php 
+								// </br>
+							?>
 						@endif
 						<li class="active">
 							<a class="hover-gray" href="{{ $b_url }}"><strong>{{$b_title}}</strong></a>
@@ -52,7 +54,9 @@
 							<a class="hover-black" href="{{ $b_url }}">{{$b_title}} </a>
 						</li>
 						@if($ctr == count($breadcrumb)-1 && $ctr > 0)
-							<li></li>
+							<?php
+								// <li></li>
+							?>
 						@endif
 					@endif
 				@endforeach

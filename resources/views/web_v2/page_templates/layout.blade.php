@@ -132,6 +132,9 @@
 			// 		Session::put('click_iteration', $ev_click);
 			// 	?>
 			// });
+			$('.ico_cart').click(function() {
+				$('.cart_dropdown').toggle({'display': 'block'});
+			});
 		</script>
 	</body>
 </html>
