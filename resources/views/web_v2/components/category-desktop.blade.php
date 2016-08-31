@@ -6,7 +6,7 @@
 		  		<div class="row">
 		  			<div class="col-md-12 text-center">
 		  			  	<ul class="list-inline p-sm m-0">
-		  			  		@foreach ($data['category'] as $k => $v)
+		  			  		@foreach ($data['category'][0] as $k => $v)
 		  			  			<li class="" style="width:12em;">
 		  			  				<a href="#" class="hover-orange">{{ $v['name'] }}</a>
 		  			  			</li>
