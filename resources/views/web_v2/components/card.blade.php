@@ -2,7 +2,7 @@
 	<div class="{{ $col }}">
 		<div class="card">
 			<a href="#">
-				{!! Html::image($v['image_sm'], $v['name'], ['class' => 'card-img-top center-block card-image img-responsive']) !!}
+				{!! Html::image($v['thumbnail'], $v['name'], ['class' => 'card-img-top center-block card-image img-responsive']) !!}
 				<div class="hover"></div>
 			</a>
 			<div class="card-block">
