@@ -190,9 +190,9 @@ class ProductController extends BaseController
 		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
-															'product' 	=> $product['data']['data'],
+															'product' 	=> $product['new_release'],
 															'type'		=> $type,
-															'tag'		=> $tag,
+															// 'tag'		=> $tag,
 															'category'	=> $get_api_category['data']['data']
 														];
 
