@@ -1,10 +1,9 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	@include('web_v2.components.category-desktop')
 	@include('web_v2.components.breadcrumb')
 
-	<section class="container mt-0 mb-lg">
+		<section class="container mt-0 mb-lg">
 		<div class="row">
 			<!-- SECTION IMAGE SLIDER PRODUCT -->
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
@@ -241,8 +240,7 @@
 			?>
 				@include('web_v2.components.card', [
 					'card' 	=> $data['related'],
-					'col'	=> 'col-md-3 col-sm-3 col-xs-6',
-					'data'	=> ['type' => 'women']
+					'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
 				])
 		</div>
 		<!-- END SECTION RELATED PRODUCT -->

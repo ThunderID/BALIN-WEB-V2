@@ -36,6 +36,8 @@
   margin-top: -20px;
 }
 
+
+
 /*carousel*/
 .carousel .owl-controls .owl-buttons {
   	top: 47.5% !important;
@@ -65,6 +67,62 @@
     margin-left:2px;
     margin-right:2px;
 }
+
+
+.carousel-single .owl-controls .owl-buttons {
+  top: 47.5% !important;
+  transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+}
+.carousel-single .owl-controls .owl-buttons div{
+  opacity: 1;
+  background-color: transparent;
+  font-size: 30px;
+}
+.carousel-single .owl-controls .owl-buttons .owl-prev {
+    float: left;
+    color: black;
+
+}
+.carousel-single .owl-controls .owl-buttons .owl-next {
+    float: right;
+    color: black;
+}
+.carousel-single .owl-controls{
+  margin-top: -20px;
+}
+
+
+.carousel-stacked .owl-controls .owl-buttons {
+    top: 47.5% !important;
+    transform: translateY(-50%);
+    position: absolute;
+    width: 100%;
+    font-size: 30px;
+    z-index: -1;
+}
+.carousel-stacked .owl-controls .owl-buttons div{
+    opacity: 1;
+    background-color: transparent;
+    font-size: 30px;
+    color: black;
+}
+.carousel-stacked .owl-controls .owl-buttons .owl-prev {
+    float: left;
+    margin-left: -25px;
+    padding: 0px;
+}
+.carousel-stacked .owl-controls .owl-buttons .owl-next {
+    float: right;
+    margin-right: -25px;
+    padding: 0px;
+}
+.carousel-stacked .item{
+    margin-left:2px;
+    margin-right:2px;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -74,11 +132,11 @@
 			navigation : true,
 			slideSpeed : 300,
 			paginationSpeed : 400,
-    		transitionStyle:"fade",
-    		goToFirstSpeed : 2000,
-    		scrollPerPage : false,
-    		singleItem: true,
-    		navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]
+  		transitionStyle:"fade",
+  		goToFirstSpeed : 2000,
+  		scrollPerPage : false,
+  		singleItem: true,
+  		navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]
 		});
 
 		$(".carousel").owlCarousel({
@@ -88,8 +146,22 @@
 			itemsMobile: [200,1],
 			navigation : true,
 			pagination : false,
-    		navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]			
+  		navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]			
 		});
+
+    $(".carousel-stacked").owlCarousel({
+      singleItem: false,
+      navigation : true,
+      pagination : false,
+      navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]      
+    });
+
+    $(".carousel-single").owlCarousel({
+      navigation : true,
+      singleItem: true,
+      pagination : false,
+      navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]
+    });    
 	});	
 </script>
 

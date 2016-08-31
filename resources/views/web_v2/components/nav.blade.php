@@ -6,10 +6,10 @@
 					data-toggle="collapse" aria-controls="#bs-example-navbar-collapse-1" data-target="#bs-example-navbar-collapse-1">
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
-			<a href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart";
+			<a id="cart-mobile"  href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart";
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
-				<span class="cart-count">
+				<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
 					{{ count(Session::get('carts')) }}
 				</span>
 			</a>
@@ -21,11 +21,11 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown dropdown-cart  hidden-xs hidden-sm text-light">
+				<li id="cart-desktop" class="dropdown dropdown-cart  hidden-xs hidden-sm text-light">
 					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart">
 						Shopping Bag
 					</a>
-					<span class="cart-count"><strong>{{ count(Session::get('carts')) }}</strong></span>
+					<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}"><strong>{{ count(Session::get('carts')) }}</strong></span>
 					@include('web_v2.components.cart.cart_dropdown', ['carts' => Session::get('carts')]) 
 				</li>
 <!-- 				<li class="info-point pull-right mt-sm ml-md mr-md hidden-xs hidden-sm">

@@ -153,6 +153,16 @@ class CartController extends BaseController
 
 		foreach ($varianids as $key => $value) 
 		{
+			//add current cart counts
+			$prod_id 						= $product['data']['data'][0]['id'];
+			if(isset($carts[$prod_id]['varians'][$value]['quantity'])){
+				$cur_qty					= $carts[$prod_id]['varians'][$value]['quantity'];
+			}else{
+				$cur_qty					= 0;
+			}
+			$qty[$key]						= $qty[$key] + $cur_qty;
+			// end add current cart counts
+
 			$varians[$value] 				= $value;
 			$qtys[$value]					= $qty[$key];
 		}
