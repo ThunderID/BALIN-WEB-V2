@@ -19,8 +19,8 @@
 				</p>
 				<div class="border-size mb-xs"></div>
 				<ul class="list-inline">
-					@foreach ($v['varians'] as $k2 => $v2)
-						<li>{{ $v2['size'] }}</li>
+					@foreach (json_decode($v['size']) as $k2 => $v2)
+						<li>{{ $v2 }}</li>
 					@endforeach
 				</ul>
 			</div>

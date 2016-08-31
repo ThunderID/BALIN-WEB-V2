@@ -224,8 +224,11 @@
 				<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
 				<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 			</div>			
+			<?php
+				// dd($data['related']);
+			?>
 				@include('web_v2.components.card', [
-					'data' 	=> $data['related'],
+					'card' 	=> $data['related'],
 					'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
 				])
 		</div>
