@@ -1,9 +1,50 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<div class="container-fluid">
+<style>
+	.background{
+		background-color: rgba(0, 0, 0, .8);
+	}
+	.preface{
+		padding-top: 5vh;
+		color:white;
+		font-style: italic;
+		font-weight: 300;
+	}
+	.preface .logo{
+		width:250px;
+	}
+	.preface .tagline{
+		margin-top: -5px;
+		font-size: 12px;
+	}
+	.preface .large{
+		font-size: 24px;
+	}
+
+</style>
+
+	<div class="container-fluid background">
 		<div class="row">
-			<div class="hidden-xs hidden-sm col-md-7 col-lg-7">&nbsp;</div>
+			<div class="hidden-xs hidden-sm col-md-7 col-lg-7 text-center preface">
+				<div class="row">
+					{!! Html::image('images/logo-b.png', null, ['class' => 'logo']) !!}
+				</div>
+				<div class="row mb-md">
+					<p class="tagline">Fashionable and Modern Batik</p>
+				</div>
+				<div class="row mb-lg">
+					<p class="large">Sign Up Now. </br> Experiaence Our Best In Everything.</p>
+				</div>
+				<div class="row mb-md">
+					<p>We Crafting Best Batik For You</p>
+				</div>
+				<div class="row">
+					<p>100% Cotton Or Premium Cotton</p>
+					<p>Modern Pattern</p>
+					<p>Fashionable Model</p>
+				</div>
+			</div>
 			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 				<div class="row panel panel-default p-xs mt-md">
 					<div class="col-md-12">
