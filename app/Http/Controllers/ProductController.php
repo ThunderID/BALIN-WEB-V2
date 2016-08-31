@@ -29,7 +29,7 @@ class ProductController extends BaseController
 		}
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'product.';
+		$this->page_attributes->source 				= 'products.';
 		$this->page_attributes->breadcrumb			=	[
 															'Produk' 	=> route('balin.product.index'),
 														];
@@ -251,6 +251,22 @@ class ProductController extends BaseController
 															'Produk' 							=> route('balin.product.index'),
 															$product['data']['data'][0]['name'] => route('balin.product.show', $product['data']['data'][0]['slug'])
 														];
+
+			//get category
+			$API_category 							= new APICategory;
+			$get_api_category['data']['data']		= 	[
+															['id' => 1, 'name' => 'Wanita','path' => '1', 'slug' => 'wanita'],
+															['id' => 2, 'name' => 'Whats New','path' => '1,2', 'slug' => 'wanita-whats-new'],
+															['id' => 3, 'name' => 'Dress','path' => '1,3', 'slug' => 'wanita-dress'],
+															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
+														];
+
+			$collection_category					= new Collection;
+			$collection_category->add($get_api_category['data']['data']);
+
+			$category 								= $collection_category->sortBy('name')->all();
+
+
 			//generate View
 			$this->page_attributes->subtitle 		= $product['data']['data'][0]['name'];
 			$this->page_attributes->controller_name = $this->controller_name;
@@ -258,6 +274,7 @@ class ProductController extends BaseController
 															'product' 	=> $product,
 															'related'	=> $related,
 															'carts'		=> $carts,
+															'category'	=> $category
 														];
 
 			$this->page_attributes->breadcrumb		= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
