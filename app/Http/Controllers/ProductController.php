@@ -156,14 +156,14 @@ class ProductController extends BaseController
 		}
 
 		//3e. Manage data in collection
-		$collection_category						= new Collection;
-		$collection_category->add($get_api_category['data']['data']);
+		// $collection_category						= new Collection;
+		// $collection_category->add($get_api_category['data']['data']);
 
-		$collection_tag 							= new Collection;
-		$collection_tag->add($get_api_tag['data']['data']);
+		// $collection_tag 							= new Collection;
+		// $collection_tag->add($get_api_tag['data']['data']);
 
-		$category 									= $collection_category->sortBy('name')->all();
-		$tag 										= $collection_tag->sortBy('name')->all();
+		// $category 									= $collection_category->sortBy('name')->all();
+		// $tag 										= $collection_tag->sortBy('name')->all();
 
 		//4. Generate paginator
 		$this->paginate(route('balin.product.index', ['type' => $type]), $product['data']['count'], $page);
@@ -261,12 +261,6 @@ class ProductController extends BaseController
 															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
 														];
 
-			$collection_category					= new Collection;
-			$collection_category->add($get_api_category['data']['data']);
-
-			$category 								= $collection_category->sortBy('name')->all();
-
-
 			//generate View
 			$this->page_attributes->subtitle 		= $product['data']['data'][0]['name'];
 			$this->page_attributes->controller_name = $this->controller_name;
@@ -274,7 +268,7 @@ class ProductController extends BaseController
 															'product' 	=> $product,
 															'related'	=> $related,
 															'carts'		=> $carts,
-															'category'	=> $category
+															'category'	=> $get_api_category['data']['data']	
 														];
 
 			$this->page_attributes->breadcrumb		= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
