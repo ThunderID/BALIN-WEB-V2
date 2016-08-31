@@ -52,7 +52,7 @@
 	}
 }
 @media screen and (max-width: 991px) {
-	.navbar-cart{
+	.navbar-cart, .navbar-cart:hover, .navbar-cart:active{
 		color: white;
 	}
 	.navbar-brand{
@@ -98,4 +98,14 @@ ul.dropdown-user{
 	margin: 0 auto;
 	height:34px; 
 	width:22px; 
+}
+.cart_dropdown{
+	margin-top:5px !important;
+}
+
+/* submenu */
+@media screen and (max-width: 991px) {
+	.submenu{
+		margin-top:-10px;
+	} 
 }

@@ -1,7 +1,7 @@
 {{-- -------------------------------- DESKTOP -------------------------------- --}}
-<section class="container-fluid bg-grey">
+<section class="container-fluid bg-grey submenu">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12 hidden-xs">
 		  	<div class="container">
 		  		<div class="row">
 		  			<div class="col-md-12 text-center">
