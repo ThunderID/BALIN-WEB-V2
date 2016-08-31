@@ -1,3 +1,6 @@
+<?php 
+	// dd($data['product']); 
+?>
 @extends('web_v2.page_templates.layout')
 
 @section('content')
@@ -6,42 +9,29 @@
 	<section class="container mt-lg mb-lg">
 		<div class="row form mr-0 ml-0">
 			<div class="col-md-3 bg-grey">
-				@include('web_v2.components.filter-desktop')
+				{!! Form::open(['url' => route('balin.product.index', ['type' => $data['type']]), 'method' => 'get', 'class' => 'form-filter']) !!}
+					@include('web_v2.components.filter-desktop')
+				{!! Form::close() !!}
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9 content-data">
 				@include('web_v2.components.sort-desktop')
 
 				<div class="row mt-md mb-sm pl-md pr-md">
 					@include('web_v2.components.card', [
-						'data' 	=> $data['product'],
-				  		'col'	=> 'col-md-4 col-sm-3 col-xs-6' 
+						'card' 	=> $data['product'],
+				  		'col'	=> 'col-lg-4 col-md-4 col-sm-4 col-xs-6' 
 					])
 				</div>
 
 				<div class="row mt-sm mb-md">
 					<div class="col-md-12 text-center">
-						<nav aria-label="Page navigation">
-							<ul class="pagination">
-								<li>
-									<a href="#" aria-label="Previous">
-										<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-									</a>
-								</li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li>
-									<a href="#" aria-label="Next">
-										<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-									</a>
-								</li>
-							</ul>
-						</nav>
+						@include('web_v2.components.ajax_page')
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			@include('web_v2.plugins.ajaxPaging')
 		</div>
 	</section>
 @stop
@@ -50,10 +40,28 @@
 @stop
 
 @section('js')  
+	$(document).ready(function(){
+		$('span.color-item').click(function(){
+			item = $(this).parent();
+			color = $(this).attr('data-color');
+			checkboxcolor = $(this).parent().find('.checkbox-color');
 
-		$(document).ready(function(){
-			$('input[type=checkbox]').change(function(){
-				console.log($(this));
-			});
+			if (item.hasClass('active')) {
+				item.removeClass('active');
+				checkboxcolor.prop('checked', false);
+			} else {
+				item.addClass('active');
+				checkboxcolor.prop('checked', true);
+			}
+			<!-- $('.form-filter').submit(); -->
 		});
+		$('input.checkbox-filter').change(function(){
+			<!-- $('.form-filter').submit(); -->
+		});
+		$('.clearall-filter').click(function(){
+			$('.checkbox-filter').prop('checked', false);
+			$('.checkbox-color').prop('checked', false);
+			$('span.color-item').parent().removeClass('active');
+		});
+	});
 @stop

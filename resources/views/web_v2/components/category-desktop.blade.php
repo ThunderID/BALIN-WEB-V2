@@ -5,13 +5,13 @@
 		  	<div class="container">
 		  		<div class="row">
 		  			<div class="col-md-12 text-center">
-		  			  	<ul class="list-inline p-sm m-0">
+		  			  	<ul class="list-inline p-sm m-0 category-list">
 		  			  		@foreach ($data['category'][0] as $k => $v)
-		  			  			<li class="" style="width:12em;">
+		  			  			<li class="" style="width:8em;">
 		  			  				<a href="#" class="hover-orange">{{ $v['name'] }}</a>
 		  			  			</li>
 		  			  		@endforeach
-		  			  		<li class="" style="width:12em;"><a href="#" class="hover-orange text-orange">SALE</a></li>
+		  			  		<li class="" style="width:8em;"><a href="#" class="hover-orange text-orange">SALE</a></li>
 		  			  	</ul>
 		  			</div>
 		  		</div>

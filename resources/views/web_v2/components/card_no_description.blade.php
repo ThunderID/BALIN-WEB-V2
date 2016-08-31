@@ -1,4 +1,4 @@
-@foreach ($data as $k => $v)
+@foreach ($card as $k => $v)
 	<div class="{{ $col }}">
 		<div class="card">
 			<a href="#">
