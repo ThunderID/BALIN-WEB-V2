@@ -7,7 +7,7 @@
 			</a>
 			<div class="card-block">
 				<h4 class="card-title mb-5">
-					<a href="#" class="hover-orange">{{ $v['name'] }}</a>
+					<a href="{{ route('balin.product.show', ['type' => $data['type'], 'slug' => $v['slug']]) }}" class="hover-orange">{{ $v['name'] }}</a>
 				</h4>
 				<p class="card-text mb-5">
 					@if ($v['promo_price'] != 0)

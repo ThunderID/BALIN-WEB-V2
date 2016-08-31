@@ -229,7 +229,8 @@
 			?>
 				@include('web_v2.components.card', [
 					'card' 	=> $data['related'],
-					'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
+					'col'	=> 'col-md-3 col-sm-3 col-xs-6',
+					'data'	=> ['type' => 'women']
 				])
 		</div>
 		<!-- END SECTION RELATED PRODUCT -->

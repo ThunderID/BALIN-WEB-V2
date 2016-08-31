@@ -28,11 +28,7 @@
 			},
 			success: function(data) {
 				$('.content-data').html($(data).find('.content-data').html());
-				// $('#filters').html($(data).find('#filters').html());
-				// $('#' + e).html($(data).find('#' + e).html());
 				$('.content-data').fadeIn(300);
-				// $("#filters").show(400);
-				// $("#" + e).show(400);
 				tmpData = data;
 			},
 			error: function(){
@@ -45,62 +41,62 @@
 	};
 
 	/**
-	 * [ajaxRemoveFilter clear all filter]
-	 * @param  {[type]} e [description]
-	 * @return {[type]}   [description]
-	 */
-	function ajaxRemoveFilter(e) {
-		var type 	= $(e).attr("data-type").toLowerCase();
-		var filter 	= $(e).attr("data-filter").toLowerCase();
-		filter 		= filter.replace(" ","%20"); 
+	* [clearSort description]
+	* @return {[type]} [description]
+	*/
+	function clearFlag(param, content, title) {
+		if ((param == 'desktop') && (content == 'sort')) {
+			$('.ajaxDataSort').find(".fa").removeClass("fa-check");
+		}
+		{{-- UNTUK SORT MOBILE --}}
+		else if ((param == 'mobile') && (content == 'sort')) {
+			$('.sort-info').fadeOut(400);
+			$('.sort-info').html('');
 
-		var url     = window.location.href;
-		url 		= url.replace('%C2%BD', '½');
-
-		var toRemove= type + "[]=" + filter;
-		var toUrl	= url.replace(toRemove, '');	
-
-		toUrl 		= toUrl.replace(/(sort)[^\&]+/, '');
-
-		toUrl		= toUrl.replace(/(page)[^\&]+/, '');
-
-		toUrl		= toUrl.replace('?&', '?');
-
-		$(e).removeClass("active");
-		$(e).find(".fa").removeClass("fa-check-circle");
-		$(e).find(".fa").addClass("fa-refresh fa-spin");
-
-		var id 		= $(e).parent().attr('id');
-
-		clearSort();
-
-		ajaxPage(toUrl, id);
-		window.history.pushState("", "", toUrl);
+			// if (title !== null) {
+			// 	display = '<label class="btn btn-transparent btn-xs sort-info-action"> ' + title + ' <i class="fa fa-times-circle"></i></label>';
+			// 	$('.sort-info').fadeIn(400);
+			// 	setTimeout(function(){
+			// 		$('.sort-info').html(display);
+			// 	}, 400);
+			// 	$('.sort-info-action').on('click', function(e) {
+			// 		e.stopPropagation();
+			// 		alert('halo');
+			// 	});
+			// }
+		}
+		else if ((param == 'mobile') && (content == 'filter')) {
+			$('.filter-info').fadeOut(400);
+			$('.filter-info').html('');
+		}
 	}
 
 	/**
 	 * [ajaxSorting description]
-	 * @param  {[type]} e [description]
-	 * @return {[type]}   [description]
+	 * @param  {[type]} e     [description]
+	 * @param  {[type]} param [for mobile or desktop]
+	 * @return {[type]}       [description]
 	 */
-	function ajaxSorting(e) {
+	function ajaxSorting(e, param) {
 		var type 	= $(e).attr("data-sort").toLowerCase();
+		var title 	= $(e).attr('data-title');
 
 		var url 	= window.location.href;
 
 		if (url.indexOf("sort=" + type) == -1) {
-			ajaxAddSort(e);
+			ajaxAddSort(e, param, title);
 		} else {
-			ajaxRemoveSort(e);
+			ajaxRemoveSort(e, param, null);
 		}
 	}
 
 	/**
 	 * [ajaxAddSort description]
-	 * @param  {[type]} e [description]
-	 * @return {[type]}   [description]
+	 * @param  {[type]} e     [description]
+	 * @param  {[type]} param [for desktop or mobile]
+	 * @return {[type]}       [description]
 	 */
-	function ajaxAddSort(e) {
+	function ajaxAddSort(e, param, title) {
 		var type 	= $(e).attr("data-sort").toLowerCase();
 		var id 		= $('.sort-content');
 		var url     = window.location.href;
@@ -117,17 +113,29 @@
 		toUrl		= toUrl.replace('??', '?');
 		toUrl		= toUrl.replace('&&', '&');
 
-		clearSort();
+		clearFlag(param, 'sort', title);
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);
 	}
 
-	 /**
-	  * [clearSort description]
-	  * @return {[type]} [description]
-	  */
-	function clearSort() {
-		$('.ajaxDataSort').find(".fa").removeClass("fa-check");
+	/**
+	 * [ajaxRemoveSort description]
+	 * @param  {[type]} e     [description]
+	 * @param  {[type]} param [for desktop or mobile]
+	 * @return {[type]}       [description]
+	 */
+	function ajaxRemoveSort(e, param) {
+		var type 	= $(e).attr("data-sort").toLowerCase();
+		var id 		= $(e).parent().attr('id');
+
+		var url     = window.location.href;
+		var toUrl	= url.replace(/(sort)[^\&]+/, '');
+
+		toUrl		= toUrl.replace('?&', '?');
+		toUrl		= toUrl.replace('&&', '&');
+
+		ajaxPage(toUrl, id);
+		window.history.pushState("", "", toUrl);	
 	}
 
 	/**

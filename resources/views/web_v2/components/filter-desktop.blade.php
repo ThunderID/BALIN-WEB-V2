@@ -6,7 +6,6 @@
 		<a href="#" class="hover-orange clearall-filter">clear all</a>
 	</div>
 </div>
-<!-- <hr class="border-grey-dark mtm-5"> -->
 <div class="row mt-sm mb-sm">
 	<div class="col-md-12">
 		<h4 class="mb-5">Fitting</h4>
@@ -100,19 +99,19 @@
 		<h4 class="mb-5">Warna</h4>
 		<ul class="list-inline checkbox-color">
 			<li class="{{ (Input::has('warna') && in_array("red", Input::get('warna'))) ? 'active' : null }}">
-				{!! Form::checkbox('tag[]', 'red', (Input::has('warna') && in_array("red", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'red', 'onClick' => 'ajaxFilter(this);']) !!}
+				{!! Form::checkbox('tag[]', 'red', (Input::has('warna') && in_array("red", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'red']) !!}
 				<span class="color-item" style="background-color: red" data-color="red">&nbsp;</span>
 			</li>
 			<li class="{{ (Input::has('warna') && in_array("blue", Input::get('warna'))) ? 'active' : null }}">
-				{!! Form::checkbox('tag[]', 'blue', (Input::has('warna') && in_array("blue", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'blue', 'onClick' => 'ajaxFilter(this);']) !!}
+				{!! Form::checkbox('tag[]', 'blue', (Input::has('warna') && in_array("blue", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'blue']) !!}
 				<span class="color-item" style="background-color: blue" data-color="blue">&nbsp;</span>
 			</li>
 			<li class="{{ (Input::has('warna') && in_array("brown", Input::get('warna'))) ? 'active' : null }}">
-				{!! Form::checkbox('tag[]', 'brown', (Input::has('warna') && in_array("brown", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'brown', 'onClick' => 'ajaxFilter(this);']) !!}
+				{!! Form::checkbox('tag[]', 'brown', (Input::has('warna') && in_array("brown", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'brown']) !!}
 				<span class="color-item" style="background-color: brown" data-color="brown">&nbsp;</span>
 			</li>
 			<li class="{{ (Input::has('warna') && in_array("black", Input::get('warna'))) ? 'active' : null }}">
-				{!! Form::checkbox('tag[]', 'black', (Input::has('warna') && in_array("black", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'black', 'onClick' => 'ajaxFilter(this);']) !!}
+				{!! Form::checkbox('tag[]', 'black', (Input::has('warna') && in_array("black", Input::get('warna'))) ? true : null, ['class' => 'checkbox-color hide', 'data-type' => 'warna', 'data-filter' => 'black']) !!}
 				<span class="color-item" style="background-color: black" data-color="black">&nbsp;</span>
 			</li>
 		</ul>

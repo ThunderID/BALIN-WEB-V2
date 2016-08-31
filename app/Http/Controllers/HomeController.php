@@ -30,12 +30,12 @@ class HomeController extends BaseController
 		$APIProduct 								= new APIProduct;
 		$sort										= ['name' => 'asc'];
 		$page 										= 1;
-		$product 									= $APIProduct->getIndex([
-															'search' 	=> null,
-															'sort' 		=> $sort,
-															'take'		=> $this->take,
-															'skip'		=> ($page - 1) * $this->take,
-														]);
+		// $product 									= $APIProduct->getIndex([
+		// 													'search' 	=> null,
+		// 													'sort' 		=> $sort,
+		// 													'take'		=> $this->take,
+		// 													'skip'		=> ($page - 1) * $this->take,
+		// 												]);
 		//temporary data
 		$datas['sliders']						= 	[
 														0 => ['thumbnail' => 'http://drive.thunder.id/file/public/4/10/2016/08/19/14/bln1.jpg', 'image_xs' => 'http://drive.thunder.id/file/public/4/10/2016/08/19/14/bln1.jpg', 'image_sm' => 'http://drive.thunder.id/file/public/4/10/2016/08/19/14/bln1.jpg', 'image_md' => 'http://drive.thunder.id/file/public/4/10/2016/08/19/14/bln1.jpg', 'image_lg' => 'http://drive.thunder.id/file/public/4/10/2016/08/19/14/bln1.jpg', 'value' => json_encode(['button' => ['slider_button_url' => '']])],
@@ -66,13 +66,12 @@ class HomeController extends BaseController
 															];
 		}
 
-		$datas['new_release']					= 	$product['data']['data'];
-		// $datas['new_release']					= 	[
-		// 												0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'varians' => [0 => '15', 1 => '15.5', 2 => '16']],
-		// 												1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'varians' => [0 => '15', 1 => '15.5']],
-		// 												2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'varians' => [0 => '15', 1 => '16']],
-		// 												3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'varians' => [0 => '15', 1 => '15.5', 2 => '16']],
-													// ];
+		$datas['new_release']					= 	[
+														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
+														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'size' => json_encode([0 => '15', 1 => '16'])],
+														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
+													];
 
 		$datas['instagram']						= 	[
 														0 => ['thumbnail' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_xs' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_sm' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_md' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'image_lg' => 'https://scontent-sit4-1.cdninstagram.com/t51.2885-15/e35/12354067_1682481895329676_870122315_n.jpg', 'value' => json_encode(['action' => ''])],
