@@ -3,6 +3,7 @@
 @section('content')
 	<div class="container-fluid background">
 		<div class="row">
+			{{-- signup preface --}}
 			<div class="hidden-xs hidden-sm col-md-7 col-lg-7 text-center preface">
 				<div class="row">
 					{!! Html::image('images/white_logo_balin.png', null, ['class' => 'logo']) !!}
@@ -41,6 +42,8 @@
 					</div>
 				</div>
 			</div>
+
+			{{-- signup , signin , register --}}
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<div class="row panel-akun p-xs mt-md">
 					<div class="col-md-12">

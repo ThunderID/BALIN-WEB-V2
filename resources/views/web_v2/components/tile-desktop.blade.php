@@ -34,7 +34,7 @@
 		</div>
 	</div>
 </div>
-<div class="row mt-lg hidden-xs">
+<div class="row mt-xl hidden-xs">
 	<div class="col-md-12">
 		<div class="row">
 {{-- -------------------------------- tile 3 -------------------------------- --}}
