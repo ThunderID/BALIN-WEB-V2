@@ -1,13 +1,13 @@
 @foreach ($card as $k => $v)
 	<div class="{{ $col }}">
 		<div class="card">
-			<a href="#">
+			<a href="{{ route('balin.product.show', ['slug' => $v['slug']]) }}">
 				{!! Html::image($v['thumbnail'], $v['name'], ['class' => 'card-img-top center-block card-image img-responsive']) !!}
 				<div class="hover"></div>
 			</a>
 			<div class="card-block">
 				<h4 class="card-title mb-5">
-					<a href="{{ route('balin.product.show', ['type' => $data['type'], 'slug' => $v['slug']]) }}" class="hover-orange">{{ $v['name'] }}</a>
+					<a href="{{ route('balin.product.show', ['slug' => $v['slug']]) }}" class="hover-orange">{{ $v['name'] }}</a>
 				</h4>
 				<p class="card-text mb-5">
 					@if ($v['promo_price'] != 0)
@@ -19,8 +19,8 @@
 				</p>
 				<div class="border-size mb-xs"></div>
 				<ul class="list-inline">
-					@foreach (json_decode($v['size']) as $k2 => $v2)
-						<li>{{ $v2 }}</li>
+					@foreach ($v['varians'] as $k2 => $v2)
+						<li>{{ $v2['size'] }}</li>
 					@endforeach
 				</ul>
 			</div>
