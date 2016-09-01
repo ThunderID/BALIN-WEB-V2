@@ -42,7 +42,7 @@
 			<div class="col-md-12 text-center">
 				<p class="m-0">Make sure you follow us on</p>
 				<h3 class="text-uppercase mtm-5 mbm-5">INSTAGRAM</h3>
-				<p class="m-0"><em><a href="{{$balin['info']['instagram_url']['value']}}" class="text-black">@balin.id</a></em></p>
+				<p class="m-0"><em><a href="{{$balin['info']['instagram_url']['value']}}" class="hover-orange">@balin.id</a></em></p>
 			</div>
 		</div>
 		<div class="row pt-md pb-md mb-sm">
