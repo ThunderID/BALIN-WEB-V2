@@ -61,7 +61,9 @@
 		<!-- END SECTION BOTTOM BAR FOR MOBILE HOME, PRODUCT & PROFILE -->
 		<div class="divider_footer"></div>
 		<!-- SECTION FOOTER  -->
-			@include('web_v2.components.footer')
+		@if(strtolower($controller_name) != 'login')
+  			@include('web_v2.components.footer')
+ 		@endif
 		<!-- END SECTION FOOTER -->
 			
 		<!-- CSS -->
