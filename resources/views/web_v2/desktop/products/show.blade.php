@@ -72,7 +72,9 @@
 						<h4 class="mt-0 mb-0">{{ $data['product']['data']['data'][0]['name'] }}</h4>
 					</div>
 					<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
-						<p class="mb-0">Atasan Wanita</p>
+						@foreach($data['product']['data']['data'][0]['categories'] as $key => $value)
+							<p class="mb-0">{{ucwords(str_replace('-', ' ', $value['name']))}}</p>
+						@endforeach
 						<p class="card-text mt-0">
 							@if ($data['product']['data']['data'][0]['promo_price'] != 0)
 								<del>@money_indo($data['product']['data']['data'][0]['price'])</del>
@@ -82,10 +84,12 @@
 							@endif
 						</p>
 					</div>
-					<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 pl-0">
-						<p class="mb-0">Time left to buy</p>
-						<h3 class="text-orange mt-0 countdown" data-seconds-left=1800></h3>
-					</div>					
+					@if ($data['product']['data']['data'][0]['promo_price'] != 0 && !is_null($data['product']['data']['data'][0]['price_end']))
+						<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 pl-0">
+							<p class="mb-0">Time left to buy</p>
+							<h3 class="text-orange mt-0 countdown" data-seconds-left={{\Carbon\Carbon::parse($data['product']['data']['data'][0]['price_end'])->second}}></h3>
+						</div>
+					@endif					
 				</div>
 
 
@@ -135,6 +139,7 @@
 							</div>
 					<!-- END SECTION FIT & MEASUREMENT-->
 
+					@if(isset($description['care']))
 					<!-- START SECTION CARE-->
 							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingThree">
@@ -149,12 +154,13 @@
 								</div>
 								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 									<div class="panel-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										{!! $description['care'] !!}
 									</div>
 								</div>
 							</div>
 					<!-- END SECTION CARE-->
-
+					@endif
+					
 					<!-- START SECTION SIZE-->
 							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingFour">
@@ -230,23 +236,23 @@
 			<!-- END SECTION INFO DETAIL PRODUCT -->
 		</div>
 
-		<!-- SECTION RELATED PRODUCT -->
-		<div class="row">
-			<div class="container text-left mt-xxl mb-sm">
-				<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
-				<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
-			</div>			
-			<?php
-				// dd($data['related']);
-			?>
-				@include('web_v2.components.card', [
-					'card' 	=> $data['related'],
-					'col'	=> 'col-md-3 col-sm-3 col-xs-6',
-					'data'	=> ['type' => 'women']
-				])
-		</div>
-		<!-- END SECTION RELATED PRODUCT -->
-
+		@if(count($data['related']))
+			<!-- SECTION RELATED PRODUCT -->
+			<div class="row">
+				<div class="container text-left mt-xxl mb-sm">
+					<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
+					<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
+				</div>			
+				<?php
+					// dd($data['related']);
+				?>
+					@include('web_v2.components.card', [
+						'card' 	=> $data['related'],
+						'col'	=> 'col-md-3 col-sm-3 col-xs-6',
+					])
+			</div>
+			<!-- END SECTION RELATED PRODUCT -->
+		@endif
 		<div class="row">
 			<div class="container text-center mt-xxl mb-sm hidden-sm hidden-md hidden-lg">
 				<a href="#" class="btn btn-orange buy pl-xl pr-xl">
