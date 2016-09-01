@@ -31,7 +31,7 @@ class HomeController extends BaseController
 		$sort										= ['name' => 'asc'];
 		$page 										= 1;
 		$product 									= $APIProduct->getIndex([
-															'search' 	=> ['tags' => ['new-release', 'fabric-premium-cotton']],
+															'search' 	=> ['tags' => ['fabric-premium-cotton']],
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,

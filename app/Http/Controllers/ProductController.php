@@ -189,7 +189,7 @@ class ProductController extends BaseController
 	 * 
 	 * @return view, redirect route
 	 */
-	public function show($type = null, $slug = null)
+	public function show($slug = null)
 	{
 		//1. Check product
 		$API_product 							= new APIProduct;
@@ -198,6 +198,9 @@ class ProductController extends BaseController
 																			'slug' 	=> $slug,
 																		],
 													]);
+
+		$type 									= 'pria';
+
 		if($product['status'] != 'success')
 		{
 			$this->errors						= $product['message'];
@@ -208,24 +211,33 @@ class ProductController extends BaseController
 		}
 		else
 		{
-			//2. Get Related product
-			// $related 								= $API_product->getIndex([
-			// 												'search' 	=> 	[
-			// 																	'name' 	=> Input::get('q'),
-			// 																	'notid' => $product['data']['data'][0]['id'],
-			// 																],
-			// 												'sort' 		=> 	[
-			// 																	'name'	=> 'asc',
-			// 																],																		
-			// 												'take'		=> 4,
-			// 											]);	
+			$categories 						= $product['data']['data'][0]['categories'];
+			$slug								= [];
 
-			$related 								= [
-														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
-														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
-														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'size' => json_encode([0 => '15', 1 => '16'])],
-														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
-													];
+			foreach ($categories as $key => $value) 
+			{
+				$slug[]							= $value['slug'];
+
+				if(str_is('pria*', $value['slug']) )
+				{
+					$type 						= 'pria';
+				}
+				else
+				{
+					$type 						= 'wanita';
+				}
+			}
+			//2. Get Related product
+			$related 								= $API_product->getIndex([
+															'search' 	=> 	[
+																				'categories' 	=> $slug,
+																				'notid' 		=> $product['data']['data'][0]['id'],
+																			],
+															'sort' 		=> 	[
+																				'name'	=> 'asc',
+																			],																		
+															'take'		=> 4,
+														]);	
 
 			$carts 									= Session::get('carts');
 
@@ -249,9 +261,10 @@ class ProductController extends BaseController
 			$this->page_attributes->controller_name = $this->controller_name;
 			$this->page_attributes->data			= 	[
 															'product' 	=> $product,
-															'related'	=> $related,
+															'related'	=> $related['data']['data'],
 															'carts'		=> $carts,
-															'category'	=> $get_api_category['data']['data']	
+															'category'	=> $get_api_category['data']['data'],
+															'type' 		=> $type,
 														];
 
 			$this->page_attributes->breadcrumb		= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
