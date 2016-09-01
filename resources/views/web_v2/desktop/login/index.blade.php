@@ -46,14 +46,14 @@
 			{{-- signup , signin , register --}}
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<div class="row panel-akun p-xs mt-md">
-					<div class="col-md-12">
+					<div class="col-md-12 text-center">
 						<div class="signin" style="@if (Session::has('type')) {{ (Session::get('type')=='login') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='login') || (Input::get('type')=='login')) ? 'display:block;' : 'display:none;' }} @endif">
 							<h2 class="text-center mb-lg">Sign In</h2>
-							@include('web_v2.components.login.form')
+							@include('web_v2.components.signup.form')
 						</div>
 						<div class="signup" style="@if (Session::has('type') && (Session::get('type')=='signup') || (isset($type) && ($type=='signup'))) display:block; @else display:none; @endif">
 							<h3>Sign Up</h3>
-							@include('web_v2.components.signup.form')
+							@include('web_v2.components.login.form')
 						</div>
 						<div class="forgot" style="display:none">
 							<h2 class="text-center mb-lg">Reset Password</h2>

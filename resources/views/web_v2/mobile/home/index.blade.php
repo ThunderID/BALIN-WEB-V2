@@ -33,7 +33,7 @@
 	<div class="container pt-md pb-md mb-sm">
 		<div class="row">
 		  	@include('web_v2.components.card', [
-		  		'data' 	=> $data['new_release'],
+		  		'card' 	=> $data['new_release'],
 		  		'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
 		  	])
 		</div>
