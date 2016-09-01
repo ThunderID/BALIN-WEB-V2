@@ -54,7 +54,9 @@
 		<!-- SECTION MODAL USER INFORMATION -->
 		<!-- END SECTION MODAL USER INFORMATION -->
 
-		@include('web_v2.components.alert')
+<?php
+		// @include('web_v2.components.alert')
+?>
 
 		<!-- SECTION BOTTOM BAR FOR MOBILE HOME, PRODUCT & PROFILE -->
 		@include('web_v2.components.navbar_shortcut')
