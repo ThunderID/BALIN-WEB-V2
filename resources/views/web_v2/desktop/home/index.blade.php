@@ -16,11 +16,13 @@
 		@include('web_v2.components.tile-desktop')
 	</div>
 
+	@if(count($data['new_release']))
 	<section class="container-fluid bg-grey mt-xl pt-sm">
 		<div class="row mt-sm mb-sm">
 			<div class="container text-center">
-				<h3 class="text-uppercase m-0">New Release</h3>
-				<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
+				<h5 class="text-uppercase m-0 text-orange">NEW RELEASE</h5>
+				<h3 class="text-uppercase m-0">PREMIUM COTTON</h3>
+				<a class="home-product-more" href="{{route('balin.product.index')}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 			</div>
 		</div>
 		<div class="container pt-md pb-md mb-sm">
@@ -33,13 +35,14 @@
 			</div>
 		</div>
 	</section>
-
+	@endif
+	
 	<section class="container mt-xl">
 		<div class="row pb-xs">
 			<div class="col-md-12 text-center">
 				<p class="m-0">Make sure you follow us on</p>
 				<h3 class="text-uppercase mtm-5 mbm-5">INSTAGRAM</h3>
-				<p class="m-0"><em>@balin.id</em></p>
+				<p class="m-0"><em><a href="{{$balin['info']['instagram_url']['value']}}" class="text-black">@balin.id</a></em></p>
 			</div>
 		</div>
 		<div class="row pt-md pb-md mb-sm">

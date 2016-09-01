@@ -7,6 +7,7 @@ use App\API\API;
 use App\API\Connectors\APIProduct;
 use App\API\Connectors\APIUser;
 use App\API\Connectors\APIConfig;
+use App\API\Connectors\APICategory;
 use Route, Session, Cache, Input, Redirect;
 
 abstract class BaseController extends Controller
@@ -132,6 +133,9 @@ abstract class BaseController extends Controller
   			$recommend 			= [];
   		}
 
+		$APICategory 			= new APICategory;
+		$category 				= $APICategory->getIndex();
+
   		$balin 					= $this->balin;
   		
 		//paginator
@@ -147,6 +151,7 @@ abstract class BaseController extends Controller
 									->with('data', $this->page_attributes->data)
 									->with('balin', $balin)
 									->with('recommend', $recommend)
+									->with('category', $category['data']['data'])
 									->with('metas', $this->page_attributes->metas)
 									->with('controller_name', $this->page_attributes->controller_name)
 									->with('type', $this->page_attributes->type_form)

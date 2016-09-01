@@ -7,42 +7,40 @@
 					<div class="col-md-3">
 						<h4>Tentang BALIN</h4>
 						<ul class="list-unstyled">
-							<li><a href="#" class="hover-orange">About Us</a></li>
-							<li><a href="#" class="hover-orange">Term &#38; Condition</a></li>
-							<li><a href="#" class="hover-orange">BALIN Point</a></li>
-							<li><a href="#" class="hover-orange">Mengapa BALIN</a></li>
+							<li><a href="{{route('balin.info.index', ['type' => 'about-us'])}}" class="hover-orange">About Us</a></li>
+							<li><a href="{{route('balin.info.index', ['type' => 'terms-conditions'])}}" class="hover-orange">Terms &#38; Conditions</a></li>
+							<li><a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange">BALIN Point</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h4>Keep in touch</h4>
 						<ul class="list-unstyled fa-ul ml-0">
-							<li><a href="#" class="hover-orange">Kontak BALIN</a></li>
-							<li><a href="#" class="social-url-footer">Facebook</a></li>
-							<li><a href="#" class="social-url-footer">Instagram</a></li>
-							<li><a href="#" class="social-url-footer">Whatsapp</a></li>
+							<li><a href="{{route('balin.contact.us')}}" class="hover-orange">Kontak BALIN</a></li>
+							<li><a href="{{$balin['info']['facebook_url']['value']}}" class="social-url-footer">Facebook</a></li>
+							<li><a href="{{$balin['info']['instagram_url']['value']}}" class="social-url-footer">Instagram</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h4>Cara Pembayaran</h4>
 						<ul class="list-unstyled">
-							<li><a href="#" class="hover-orange" >Credit Card</a></li>
-							<li><a href="#" class="hover-orange">ATM Transfer</a></li>
-							<li><a href="#" class="hover-orange">CIMB Clicks</a></li>
-							<li><a href="#" class="hover-orange">E-pay BRI</a></li>
-							<li><a href="#" class="hover-orange">BCA Klikpay</a></li>
-							<li><a href="#" class="hover-orange">Telkomsel Cash</a></li>
-							<li><a href="#" class="hover-orange">XL Tunai</a></li>
-							<li><a href="#" class="hover-orange">BBM Money</a></li>
-							<li><a href="#" class="hover-orange">Indosat Dompetku</a></li>
-							<li><a href="#" class="hover-orange">Mandiri e-cash</a></li>
-							<li><a href="#" class="hover-orange">Mandiri bill payment</a></li>
-							<li><a href="#" class="hover-orange">Indomaret</a></li>
+							<li>Credit Card</li>
+							<li>ATM Transfer</li>
+							<li>CIMB Clicks</li>
+							<li>E-pay BRI</li>
+							<li>BCA Klikpay</li>
+							<li>Telkomsel Cash</li>
+							<li>XL Tunai</li>
+							<li>BBM Money</li>
+							<li>Indosat Dompetku</li>
+							<li>Mandiri e-cash</li>
+							<li>Mandiri bill payment</li>
+							<li>Indomaret</li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h4>Jasa Pengiriman</h4>
 						<ul class="list-unstyled">
-							<li><a href="#" class="hover-orange">JNE</a></li>
+							<li>JNE</li>
 						</ul>
 					</div>
 				</div>
