@@ -127,6 +127,17 @@ class ProductController extends BaseController
 															'skip'		=> ($page - 1) * $this->take,
 														]);
 
+		$offer['data']['data'] 						= [];
+		if(!count($product['data']['data']))
+		{
+			$offer 									= $APIProduct->getIndex([
+														'search' 	=> [],
+														'sort' 		=> ['newest' => 'desc'],
+														'take'		=> 3,
+														'skip'		=> 0,
+													]);
+		}
+
 		//3c. API Tag
 		$API_tag 									= new APITag;
 		$get_api_tag								= $API_tag->getIndex([
@@ -174,6 +185,7 @@ class ProductController extends BaseController
 		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
+															'offer' 	=> $offer['data']['data'],
 															'product' 	=> $product['data']['data'],
 															'type'		=> explode('0', Input::get('categories')[0])[0],
 															'tag'		=> $get_api_tag['data']['data']
@@ -231,7 +243,7 @@ class ProductController extends BaseController
 			//2. Get Related product
 			$related 							= $API_product->getIndex([
 														'search' 	=> 	[
-																			'categories' 	=> Input::get('categories'),
+																			'categories' 	=> $slugs,
 																			'notid' 		=> $product['data']['data'][0]['id'],
 																		],
 														'sort' 		=> 	[
@@ -240,6 +252,20 @@ class ProductController extends BaseController
 														'take'		=> 4,
 													]);	
 	
+			if(!count($related['data']['data']))
+			{
+				$related 						= $API_product->getIndex([
+														'search' 	=> 	[
+																			'categories' 	=> $type,
+																			'notid' 		=> $product['data']['data'][0]['id'],
+																		],
+														'sort' 		=> 	[
+																			'name'	=> 'asc',
+																		],																		
+														'take'		=> 4,
+													]);	
+			}
+
 			$carts 									= Session::get('carts');
 
 			//breadcrumb
