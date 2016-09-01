@@ -72,9 +72,11 @@
 						<h4 class="mt-0 mb-0">{{ $data['product']['data']['data'][0]['name'] }}</h4>
 					</div>
 					<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
-						@foreach($data['product']['data']['data'][0]['categories'] as $key => $value)
-							<p class="mb-0">{{ucwords(str_replace('-', ' ', $value['name']))}}</p>
-						@endforeach
+						<p class="mb-0">
+							@foreach($data['product']['data']['data'][0]['categories'] as $key => $value)
+								{{ucwords(str_replace('-', ' ', $value['name']))}}
+							@endforeach
+						</p>
 						<p class="card-text mt-0">
 							@if ($data['product']['data']['data'][0]['promo_price'] != 0)
 								<del>@money_indo($data['product']['data']['data'][0]['price'])</del>
@@ -84,10 +86,10 @@
 							@endif
 						</p>
 					</div>
-					@if ($data['product']['data']['data'][0]['promo_price'] != 0 && !is_null($data['product']['data']['data'][0]['price_end']))
+					@if ($data['product']['data']['data'][0]['promo_price'] != 0 && (!is_null($data['product']['data']['data'][0]['price_end']) && \Carbon\Carbon::parse($data['product']['data']['data'][0]['price_end'])->format('Y-m-d') == \Carbon\Carbon::now()->format('Y-m-d') ))
 						<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 pl-0">
 							<p class="mb-0">Time left to buy</p>
-							<h3 class="text-orange mt-0 countdown" data-seconds-left={{\Carbon\Carbon::parse($data['product']['data']['data'][0]['price_end'])->second}}></h3>
+							<h3 class="text-orange mt-0 countdown" data-seconds-left={{\Carbon\Carbon::now()->diffInSeconds(\Carbon\Carbon::parse($data['product']['data']['data'][0]['price_end']))}}></h3>
 						</div>
 					@endif					
 				</div>

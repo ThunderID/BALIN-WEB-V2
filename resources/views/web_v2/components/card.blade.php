@@ -1,7 +1,13 @@
 @foreach ($card as $k => $v)
 	<div class="{{ $col }}">
 		<div class="card">
-			<a href="{{ route('balin.product.show', ['slug' => $v['slug']]) }}">
+			<?php $categories = [];?>
+			
+			@foreach($v['categories'] as $key => $value)
+				<?php $categories['categories'][] = $value['slug'];?>
+			@endforeach
+			
+			<a href="{{ route('balin.product.show', array_merge(['slug' => $v['slug']], $categories) ) }}">
 				{!! Html::image($v['thumbnail'], $v['name'], ['class' => 'card-img-top center-block card-image img-responsive']) !!}
 				<div class="hover"></div>
 			</a>

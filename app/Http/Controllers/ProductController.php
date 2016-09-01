@@ -212,11 +212,11 @@ class ProductController extends BaseController
 		else
 		{
 			$categories 						= $product['data']['data'][0]['categories'];
-			$slug								= [];
+			$slugs								= [];
 
 			foreach ($categories as $key => $value) 
 			{
-				$slug[]							= $value['slug'];
+				$slugs[]						= $value['slug'];
 
 				if(str_is('pria*', $value['slug']) )
 				{
@@ -227,33 +227,25 @@ class ProductController extends BaseController
 					$type 						= 'wanita';
 				}
 			}
-			//2. Get Related product
-			$related 								= $API_product->getIndex([
-															'search' 	=> 	[
-																				'categories' 	=> $slug,
-																				'notid' 		=> $product['data']['data'][0]['id'],
-																			],
-															'sort' 		=> 	[
-																				'name'	=> 'asc',
-																			],																		
-															'take'		=> 4,
-														]);	
 
+			//2. Get Related product
+			$related 							= $API_product->getIndex([
+														'search' 	=> 	[
+																			'categories' 	=> Input::get('categories'),
+																			'notid' 		=> $product['data']['data'][0]['id'],
+																		],
+														'sort' 		=> 	[
+																			'name'	=> 'asc',
+																		],																		
+														'take'		=> 4,
+													]);	
+	
 			$carts 									= Session::get('carts');
 
 			//breadcrumb
 			$breadcrumb								= 	[	
-															'Produk' 							=> route('balin.product.index'),
+															ucwords($type)						=> route('balin.product.index', ['categories' => [$type]]),
 															$product['data']['data'][0]['name'] => route('balin.product.show', $product['data']['data'][0]['slug'])
-														];
-
-			//get category
-			$API_category 							= new APICategory;
-			$get_api_category['data']['data']		= 	[
-															['id' => 1, 'name' => 'Wanita','path' => '1', 'slug' => 'wanita'],
-															['id' => 2, 'name' => 'Whats New','path' => '1,2', 'slug' => 'wanita-whats-new'],
-															['id' => 3, 'name' => 'Dress','path' => '1,3', 'slug' => 'wanita-dress'],
-															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
 														];
 
 			//generate View
@@ -263,11 +255,10 @@ class ProductController extends BaseController
 															'product' 	=> $product,
 															'related'	=> $related['data']['data'],
 															'carts'		=> $carts,
-															'category'	=> $get_api_category['data']['data'],
 															'type' 		=> $type,
 														];
 
-			$this->page_attributes->breadcrumb		= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
+			$this->page_attributes->breadcrumb		= array_merge($breadcrumb);
 			$this->page_attributes->source 			=  $this->page_attributes->source . 'show';
 
 			return $this->generateView();
