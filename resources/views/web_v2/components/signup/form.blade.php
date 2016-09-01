@@ -1,10 +1,4 @@
-<?php
-	function isMobile() {
-		return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-	}
-?>	
-
-{!! Form::open(['url' => (isset($data['code']) && isset($data['link'])) ? route('balin.invitation.post', ['code' => $data['code'], 'link' => $data['link']]) : route('balin.post.signup'), 'class' => 'form']) !!}
+{!! Form::open(['url' => (isset($data['code']) && isset($data['link'])) ? route('balin.invitation.post', ['code' => $data['code'], 'link' => $data['link']]) : route('balin.post.signup'), 'class' => 'hollow-login']) !!}
 	<div class="form-group">
 		<div class="input-group input-group-custom">
 			<div class="input-group-addon bg-grey-dark border-transparent text-white text-lg"><i class="fa fa-envelope"></i></div>
@@ -32,12 +26,12 @@
 		</div>
 	</div>
 	<div class="form-group mt-lg">
-		<button type="submit" class="btn btn-orange pl-xl pr-xl" tabindex="4">Sign Up</button>
+		<button type="submit" class="btn btn-orange btn-lg text-lg pl-xxl pr-xxl" tabindex="4">Sign Up</button>
 	</div>
 	<p class="text-light"><em>atau</em></p>
 	<a href="#" class="btn btn-facebook btn-social btn-block btn-lg text-lg">
 		<span class="fa fa-facebook"></span>
 		Daftar Menggunakan Facebook
 	</a>
-	<p class="text-light mt-lg">Sudah terdaftar ? <a href="#" class="text-orange">Login</a></p>
+	<p class="text-light mt-lg hidden-md hidden-lg">Sudah terdaftar ? <a href="#" class="text-orange">Login</a></p>
 {!! Form::close() !!}

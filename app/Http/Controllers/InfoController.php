@@ -19,7 +19,7 @@ class InfoController extends BaseController
 		Session::set('API_token', Session::get('API_token_public'));
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'web_v2.pages.info.';
+		$this->page_attributes->source 				= '.info.';
 		$this->page_attributes->breadcrumb			=	[
 														];
 	}
@@ -62,7 +62,6 @@ class InfoController extends BaseController
 
 		//2. generate view
 		$this->page_attributes->subtitle 			= 'Fashionable and Modern Batik';
-		$this->page_attributes->data				= 	[];
 		$this->page_attributes->metas 				= 	[
 															'og:type' 			=> 'website', 
 															'og:title' 			=> 'BALIN.ID', 
