@@ -29,12 +29,34 @@ class InfoController extends BaseController
 	 *
 	 * @return view
 	 */
-	public function aboutus()
+	public function info($type)
 	{
 		//1. generate breadcrumb
-		$breadcrumb									= 	[
-															'About Us' 	=> route('balin.about.us'),
+		switch (strtolower($type)) 
+		{
+			case 'about-us':
+				$content 							= $this->balin['about_us']['value'];
+				$breadcrumb							= 	[
+															'About Us' 	=> route('balin.info.index', ['type' => 'about-us']),
 														];
+				break;
+			case 'terms-conditions':
+				$content 							= $this->balin['term_and_condition']['value'];
+				$breadcrumb							= 	[
+															'Terms & Conditions' 	=> route('balin.info.index', ['type' => 'terms-conditions']),
+														];
+				break;
+			case 'why-join':
+				$content 							= $this->balin['why_join']['value'];
+				$breadcrumb							= 	[
+															'BALIN Point' 	=> route('balin.info.index', ['type' => 'why-join']),
+														];
+				break;
+			default:
+				\App::abort();
+				break;
+		}
+
 
 		$this->page_attributes->breadcrumb			= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
 
@@ -50,7 +72,9 @@ class InfoController extends BaseController
 															'og:site_name' 		=> 'balin.id',
 															'fb:app_id' 		=> Config::get('fb_app.id'),
 														];
-		$this->page_attributes->source 				=  $this->page_attributes->source . 'about_us';
+		
+		$this->page_attributes->data				= 	['content' => $content];
+		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
 
 		return $this->generateView();
 	}

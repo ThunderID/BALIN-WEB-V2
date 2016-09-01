@@ -6,12 +6,18 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<ul class="list-inline p-sm m-0 category-list">
-							@foreach ($data['category'] as $k => $v)
-								<li class="" style="width:8em;">
-									<a href="#" class="hover-orange">{{ $v['name'] }}</a>
-								</li>
+							@foreach ($category as $k => $v)
+								@if($v['category_id']!=0 && str_is(strtolower($data['type']).'*', $v['slug']))
+									@if(isset(Input::get('categories')[1]) && Input::get('categories')[1] == $v['slug'])
+										<?php $class	= 'text-orange';?>
+									@else
+										<?php $class	= 'hover-orange';?>
+									@endif
+									<li class="" style="width:8em;">
+										<a href="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $data['type'], 'categories[1]' => $v['slug']]))}}" class="{{$class}}">{{ strtoupper($v['name']) }}</a>
+									</li>
+								@endif
 							@endforeach
-							<li class="" style="width:8em;"><a href="#" class="hover-orange text-orange">SALE</a></li>
 						</ul>
 					</div>
 				</div>

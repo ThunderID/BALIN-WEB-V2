@@ -37,10 +37,14 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li>
-					<a href="#" class=""><span class="text-orange">Balin</span>Point</a>
+					<a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange">Balin Point</a>
 				</li>
 				<li>
-					<a href="#" class="">Akun</a>
+					@if (Session::has('whoami'))
+						<a href="{{route('my.balin.profile')}}" class="hover-orange">{{Session::get('whoami')['name']}}</a>
+					@else
+						<a href="{{route('balin.get.login')}}" class="hover-orange">LOGIN</a>
+					@endif
 				</li>				
 				<?php
 				// <li>
@@ -95,7 +99,7 @@
 		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="text-light right">
-					<a href="{{ route('balin.product.index', ['type' => 'women']) }}" class="text-orange">
+					<a href="{{ route('balin.product.index', ['categories[]' => 'wanita']) }}" class="text-orange">
 						Wanita
 						<span>
 							{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
@@ -107,7 +111,7 @@
 					</div>
 				</li>>
 				<li class="text-light left">
-					<a href="{{ route('balin.product.index', ['type' => 'men']) }}">
+					<a href="{{ route('balin.product.index', ['categories[]' => 'pria']) }}">
 						<span>
 							{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
 						</span>

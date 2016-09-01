@@ -1,17 +1,29 @@
 {!! Form::open(['url' => route('balin.post.login'), 'class' => 'hollow-login']) !!}
-    <div class="form-group">
-        <label for="email" style="font-weight:400">Email</label>
-        {!! Form::email('email', null, ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Email', 'required' => 'required', 'tabindex' => 1]) !!}
+
+
+    <div class="form-group input-group">
+		<span class="input-group-addon" id="basic-addon1">
+			<div class="text-center" style="width:30px;">
+				<i class="fa fa-envelope fa-lg aria-hidden="true"></i>
+			</div>
+		</span>
+        {!! Form::email('email', null, ['class' => 'form-control hollow email', 'placeholder' => 'Masukkan Email', 'required' => 'required', 'tabindex' => 1]) !!}
     </div>
-    <div class="form-group">
-	    <label for="pwd" style="font-weight:400">Password</label>
-	    {!! Form::password('password', ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Password', 'required' => 'required', 'tabindex' => 2]) !!}
-	</div>
+
+    <div class="form-group input-group">
+		<span class="input-group-addon" id="basic-addon2">
+			<div class="text-center" style="width:30px;">
+			<i class="fa fa-lock fa-lg aria-hidden="true"></i>
+			</div>
+		</span>
+        {!! Form::password('password', ['class' => 'form-control hollow password', 'placeholder' => 'Masukkan Password', 'required' => 'required', 'tabindex' => 2]) !!}
+    </div>
+
 	<div class="form-group">
 		<a href="javascript:void(0);" class="btn-forgot t-xs hover-black ml-5 text-black" tabindex="3">Lupa Password?</a>
-	    <button type="submit" class="pull-right btn btn-black-hover-white-border-black" tabindex="4">Sign In</button>
+	    <button type="submit" class="pull-right btn btn-orange pl-xl pr-xl" tabindex="4">Sign In</button>
 	</div>
-	<div class="clearfix">&nbsp;</div>
+<!-- 	<div class="clearfix">&nbsp;</div>
 	<h3 style="margin-top:3px;">Join Us</h3>
 	<p class="text-light text-grey-dark">
 		Connect dengan akun Facebook Anda atau daftarkan email Anda untuk menikmati penawaran spesial dari Kami.
@@ -44,7 +56,7 @@
 				</div>
 			</a>
 		</div>
-	</div>	
+	</div>	 -->
 	<div class="clearfix">&nbsp;</div>
 	<div class="clearfix">&nbsp;</div>
 {!! Form::close() !!}
