@@ -1,8 +1,8 @@
 <div class="dropdown">
 	<a class="dropdown-toggle label-sort" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		@if (Input::get('sort') == 'date-asc')
+		@if (Input::get('sort') == 'newest-asc')
 			Terbaru
-		@elseif (Input::get('sort') == 'date-desc')
+		@elseif (Input::get('sort') == 'newest-desc')
 			Terlama
 		@elseif (Input::get('sort') == 'name-asc')
 			Nama A-Z
@@ -19,13 +19,13 @@
 	</a>
 	<ul class="dropdown-menu dropdown-menu-right ajaxDataSort" aria-labelledby="dropdownMenu1" style="min-width: 200px;">
 		<li>
-			<a href="javascript:void(0);" data-sort="date-asc" onClick="ajaxSorting(this, 'desktop')">
-				{!! (Input::get('sort') == 'date-asc') ? '<i class="fa fa-check"></i>' : '' !!} Terbaru
+			<a href="javascript:void(0);" data-sort="newest-asc" onClick="ajaxSorting(this, 'desktop')">
+				{!! (Input::get('sort') == 'newest-asc') ? '<i class="fa fa-check"></i>' : '' !!} Terbaru
 			</a>
 		</li>
 		<li>
-			<a href="javascript:void(0);" data-sort="date-desc" onClick="ajaxSorting(this, 'desktop')">
-				{!! (Input::get('sort') == 'date-desc') ? '<i class="fa fa-check"></i>' : '' !!} Terlama
+			<a href="javascript:void(0);" data-sort="newest-desc" onClick="ajaxSorting(this, 'desktop')">
+				{!! (Input::get('sort') == 'newest-desc') ? '<i class="fa fa-check"></i>' : '' !!} Terlama
 			</a>
 		</li>
 		<li>

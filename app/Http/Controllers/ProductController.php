@@ -47,7 +47,7 @@ class ProductController extends BaseController
 	 * 6. Generate view
 	 * @return view
 	 */
-	public function index($type = null)
+	public function index()
 	{
 		//1. Check filter
 		$filters 									= null;
@@ -63,15 +63,15 @@ class ProductController extends BaseController
 		}
 		
 		//1b. Filter of category
-		if(Input::has('category'))
+		if(Input::has('categories'))
 		{
-			$search['categories']					= Input::get('category');
+			$search['categories']					= Input::get('categories');
 		}
 
 		//1c. Filter of tag
-		if(Input::has('tag'))
+		if(Input::has('tags'))
 		{
-			$search['tags']							= Input::get('tag');
+			$search['tags']							= Input::get('tags');
 		}
 
 		//1d. Filter of label
@@ -127,15 +127,6 @@ class ProductController extends BaseController
 															'skip'		=> ($page - 1) * $this->take,
 														]);
 
-		//3b. API Category
-		$API_category 								= new APICategory;
-		$get_api_category['data']['data']			= 	[
-															['id' => 1, 'name' => 'Wanita','path' => '1', 'slug' => 'wanita'],
-															['id' => 2, 'name' => 'Whats New','path' => '1,2', 'slug' => 'wanita-whats-new'],
-															['id' => 3, 'name' => 'Dress','path' => '1,3', 'slug' => 'wanita-dress'],
-															['id' => 4, 'name' => 'Setelan','path' => '1,4', 'slug' => 'wanita-setelan'],
-														];
-
 		//3c. API Tag
 		$API_tag 									= new APITag;
 		$get_api_tag								= $API_tag->getIndex([
@@ -166,7 +157,7 @@ class ProductController extends BaseController
 		// $tag 										= $collection_tag->sortBy('name')->all();
 
 		//4. Generate paginator
-		$this->paginate(route('balin.product.index', ['type' => $type]), $product['data']['count'], $page);
+		$this->paginate(route('balin.product.index'), $product['data']['count'], $page);
 
 		//5. Generate breadcrumb
 		$breadcrumb										= 	[
@@ -178,24 +169,14 @@ class ProductController extends BaseController
 			$breadcrumb['Halaman '.Input::get('page')]	= route('balin.product.index', ['page' => Input::get('page')]);
 		}
 
-		$product['new_release']					= 	[
-														0 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
-														1 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
-														2 => ['name' => 'Kemeja Pria Anuradha', 'price' => 349000, 'promo_price' => 299000, 'slug' => 'kemeja-pria-anuradha', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/51/24021/1.jpg', 'size' => json_encode([0 => '15', 1 => '16'])],
-														3 => ['name' => 'Kemeja Pria Cendric', 'price' => 349000, 'promo_price' => 0, 'slug' => 'kemeja-pria-cendric', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/03/05711/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
-														4 => ['name' => 'Dress Wanita Gantara', 'price' => 399000, 'promo_price' => 0, 'slug' => 'dress-wanita-gantara', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/93/22121/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5', 2 => '16'])],
-														5 => ['name' => 'Atasan Wanita Akasa', 'price' => 299000, 'promo_price' => 0, 'slug' => 'atasan-wanita-akasa', 'thumbnail' => 'http://zalora-media-live-id.s3.amazonaws.com/product/68/74511/1.jpg', 'size' => json_encode([0 => '15', 1 => '15.5'])],
-													];
-
 		//6. Generate view
 		$this->page_attributes->search 				= $searchresult;
 		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
-															'product' 	=> $product['new_release'],
-															'type'		=> $type,
-															// 'tag'		=> $tag,
-															'category'	=> $get_api_category['data']['data']
+															'product' 	=> $product['data']['data'],
+															'type'		=> explode('0', Input::get('categories')[0])[0],
+															'tag'		=> $get_api_tag['data']['data']
 														];
 
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
