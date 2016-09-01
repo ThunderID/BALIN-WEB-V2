@@ -2289,6 +2289,22 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%; }
 
+.btn-social {
+  position: relative;
+  padding-left: 65px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: ellipsis; }
+  .btn-social span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 45px;
+    line-height: 40px;
+    text-align: center; }
+
 .fade {
   opacity: 0;
   transition: opacity 0.15s linear; }
@@ -5261,6 +5277,9 @@ p {
 .border-grey-light {
   border-color: #e5e5e5 !important; }
 
+.border-transparent {
+  border-color: transparent !important; }
+
 .border-solid {
   border-style: solid !important; }
 
@@ -5732,6 +5751,10 @@ p {
   background: url("http://drive.thunder.id/file/public/4/10/2016/08/11/15/balin-bg.jpg") no-repeat 50% 25%;
   background-size: cover; }
 
+.bg-login-page-mobile {
+  background: url("/images/balin-bg-mobile.jpg") no-repeat center center;
+  background-size: cover; }
+
 .bg-campaign-page {
   background: url("http://drive.thunder.id/file/public/4/10/2016/08/11/15/balin-bg.jpg") no-repeat 50% 25%;
   background-size: cover; }
@@ -5906,13 +5929,36 @@ ul.dropdown-user {
   font-weight: 400; }
 
 .btn-orange, .btn-orange:focus {
-  background: white;
-  border-color: #ff6600;
-  color: #ff6600; }
+  color: #ffa500;
+  background-color: transparent;
+  border-color: #ffa500; }
 
 .btn-orange:hover, .btn-orange:active {
-  background: #ff6600;
-  color: white; }
+  color: #fff;
+  background-color: #ffa500;
+  border-color: inherit; }
+
+.btn-orange-full, .btn-orange-full:focus {
+  color: #fff;
+  background-color: #ffa500;
+  border-color: #ffa500; }
+
+.btn-orange-full:hover, .btn-orange-full:active {
+  color: #fff;
+  background-color: #e69500;
+  border-color: #ffa500; }
+
+.btn-facebook, .btn-facebook:focus {
+  color: #fff;
+  background-color: #3B5998;
+  border-color: #3B5998; }
+  .btn-facebook span, .btn-facebook:focus span {
+    border-right: 1px solid #1e2e4f; }
+
+.input-group-custom {
+  width: 100%; }
+  .input-group-custom .input-group-addon {
+    width: 55px; }
 
 .panel-title {
   font-family: "Lato", sans-serif;
@@ -6073,65 +6119,6 @@ ul.dropdown-user {
     background-color: transparent !important;
     color: #000 !important;
     transition: 0.4s ease; }
-
-.select {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 15px;
-  width: 100%; }
-
-.select select {
-  display: inline-block;
-  width: 100%;
-  cursor: pointer;
-  padding: 10px 15px;
-  outline: 0;
-  border: 0;
-  border-radius: 0;
-  background: #e6e6e6;
-  color: #7b7b7b;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
-
-.select select::-ms-expand {
-  display: none; }
-
-.select select:hover,
-.select select:focus {
-  color: #000;
-  background: #ccc; }
-
-.select select:disabled {
-  opacity: 0.5;
-  pointer-events: none; }
-
-.select__arrow {
-  position: absolute;
-  top: 16px;
-  right: 15px;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  border-style: solid;
-  border-width: 8px 5px 0 5px;
-  border-color: #7b7b7b transparent transparent transparent; }
-
-.select select:hover ~ .select__arrow,
-.select select:focus ~ .select__arrow {
-  border-top-color: #000; }
-
-.select select:disabled ~ .select__arrow {
-  border-top-color: #ccc; }
-
-select.form-control {
-  border-radius: 0;
-  outline: none;
-  box-shadow: none;
-  overflow: hidden;
-  background: #fff url("../../../../images/select2x2.png") no-repeat right -90px top -6px;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
 
 input[type=number] {
   -moz-appearance: textfield;

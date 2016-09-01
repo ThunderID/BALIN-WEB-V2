@@ -29,7 +29,7 @@
 		<button type="submit" class="btn btn-orange btn-lg text-lg pl-xxl pr-xxl" tabindex="4">Sign Up</button>
 	</div>
 	<p class="text-light"><em>atau</em></p>
-	<a href="#" class="btn btn-facebook btn-social btn-block btn-lg text-lg">
+	<a href="{{route('balin.get.sso')}}" class="btn btn-facebook btn-social btn-block btn-lg text-lg">
 		<span class="fa fa-facebook"></span>
 		Daftar Menggunakan Facebook
 	</a>
