@@ -1,9 +1,24 @@
+@mixin btn-custom($background, $color, $border) {
+	color: $color;
+	background-color: $background;
+		border-color: $border;
+}
+
 .btn-orange, .btn-orange:focus{
-	background: #white;
-	border-color: #ff6600;
-    color: #ff6600;
+	@include btn-custom(transparent, $orange, $orange);
 }
 .btn-orange:hover, .btn-orange:active{
-	background: #ff6600;
-    color: white;
+	@include btn-custom($orange, $white, inherit);
+}
+.btn-orange-full, .btn-orange-full:focus{
+	@include btn-custom($orange, $white, $orange);
+}
+.btn-orange-full:hover, .btn-orange-full:active{
+	@include btn-custom(darken($orange, 5%), $white, $orange);
+}
+.btn-facebook, .btn-facebook:focus {
+	@include btn-custom($facebook, $white, $facebook);
+	span {
+		border-right: 1px solid darken($facebook, 20%);
+	}
 }

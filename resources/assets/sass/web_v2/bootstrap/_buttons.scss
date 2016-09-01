@@ -65,7 +65,9 @@ a.btn {
 
 // Alternate buttons
 // --------------------------------------------------
-
+// .btn-orange {
+//   @include button-variant($white, $orange, $orange);
+// }
 .btn-transparent {
   @include button-variant($btn-default-color, transparent, $btn-default-border);
 }
@@ -168,5 +170,24 @@ input[type="reset"],
 input[type="button"] {
   &.btn-block {
     width: 100%;
+  }
+}
+
+// button social
+.btn-social {
+  position: relative;
+  padding-left: 65px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-transform: ellipsis;
+  span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 45px;
+    line-height: 40px;
+    text-align: center;
   }
 }

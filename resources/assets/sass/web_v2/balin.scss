@@ -24,6 +24,10 @@ $gold:					#c38322;
 $gold-light:			#e18a07;
 $white:					#fff;
 $orange: 				#ffa500;
+$color1: 				#000;
+$color2: 				#dedede;
+$color3: 				#f8afad;
+$facebook: 				#3B5998;
 
 // space
 $space-0:				0px;
@@ -41,16 +45,15 @@ $space-xxl:				35px;
 $space-xxxl:			40px;
 
 $bg-balin: 				"http://drive.thunder.id/file/public/4/10/2016/08/11/15/balin-bg.jpg";
+$bg-balin-mobile: 		"/images/balin-bg-mobile.jpg";
 
-$color1: #000;
-$color2: #dedede;
-$color3: #f8afad;
 
 @import "bootstrap";
 @import "variable";
 @import "nav";
 @import "breadcrumb";
 @import "buttons";
+@import "input-groups";
 @import "collapse";
 @import "countdown";
 @import "productgrid";

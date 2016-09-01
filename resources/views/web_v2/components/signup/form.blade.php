@@ -6,49 +6,38 @@
 
 {!! Form::open(['url' => (isset($data['code']) && isset($data['link'])) ? route('balin.invitation.post', ['code' => $data['code'], 'link' => $data['link']]) : route('balin.post.signup'), 'class' => 'form']) !!}
 	<div class="form-group">
-		<label for="" style="font-weight:400">Name</label>
-		{!! Form::text('name', null, ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Nama', 'required', 'tabindex' => 1]) !!}
-	</div>
-	<div class="form-group">
-		<label for="" style="font-weight:400">Email</label>
-		{!! Form::email('email', null, ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Email', 'required', 'tabindex' => 2]) !!}
-	</div>
-	<div class="form-group">
-		<label for="" style="font-weight:400">Password</label>
-		{!! Form::password('password', ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Password', 'required', 'tabindex' => 3]) !!}
-	</div>
-	<div class="form-group">
-		<label for="" style="font-weight:400">Konfirmasi Password</label>
-		{!! Form::password('password_confirmation', ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Konfirmasi Password', 'required', 'tabindex' => 4]) !!}
-	</div>
-	<div class="form-group">
-		<label for="" style="font-weight:400">Tanggal Lahir</label>
-		@if (isMobile())
-			{!! Form::input('date', 'date_of_birth', null, ['class' => 'form-control hollow date_format', 'placeholder' => 'Masukkan Tanggal Lahir (dd-mm-yyyy)', 'required', 'tabindex' => 5]) !!}
-		@else
-			{!! Form::text('date_of_birth', null, ['class' => 'form-control hollow date_format', 'placeholder' => 'Masukkan Tanggal Lahir (dd-mm-yyyy)', 'required', 'tabindex' => 5]) !!}
-		@endif		
-	</div>
-	<div class="form-group">
-		<label for="" style="font-weight:400">Jenis Kelamin</label>
-		{!! Form::select('gender', ['male' => 'Laki-laki', 'female' => "Perempuan"], null, ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Jenis Kelamin', 'required', 'tabindex' => 6]) !!}
-	</div>
-	@if (isset($is_invitation))
-		<div class="form-group">
-			<label for="" style="font-weight:400">Promo Referral</label>
-			{!! Form::text('voucher', null, ['class' => 'form-control hollow', 'placeholder' => 'Masukkan Promo Referral', 'required', 'tabindex' => 7]) !!}
+		<div class="input-group input-group-custom">
+			<div class="input-group-addon bg-grey-dark border-transparent text-white text-lg"><i class="fa fa-envelope"></i></div>
+			{!! Form::email('email', null, ['class' => 'form-control input-lg text-lg', 'placeholder' => 'Email', 'required' => 'required', 'tabindex' => 1]) !!}
 		</div>
-	@endif
-		
-	<label class="control control--checkbox"> 
-		Saya menyetujui <a href="javascript:void(0);" class="link-black unstyle" data-toggle="modal" data-target="#tnc"><strong>Syarat & Ketentuan</strong></a> untuk melakukan pendaftaran.
-	    <input type="checkbox" value="1" name="term" required tabindex="8" />
-	    <div class="control__indicator"></div>
-	</label>
-	<div class="form-group text-right">
-		@if (!isset($type) || ($type == 'login'))
-			<a href="#" class="hover-grey btn-cancel" tabindex="10">Cancel</a>&nbsp;&nbsp;&nbsp;
-		@endif
-		<button type="submit" class="btn btn-black-hover-white-border-black" tabindex="9">Sign Up</button>
 	</div>
+	<div class="form-group">
+		<div class="input-group input-group-custom">
+			<div class="input-group-addon bg-grey-dark border-transparent text-white text-lg"><i class="fa fa-lock"></i></div>
+			{!! Form::password('password', ['class' => 'form-control input-lg text-lg', 'placeholder' => 'Password', 'required' => 'required', 'tabindex' => 2]) !!}
+		</div>
+	</div>
+	<div class="form-group row ml-0 mr-0">
+		<div class="col-xs-3 col-sm-3 pl-0 pr-5">
+			{!! Form::select('title', [0 => 'Mr.', 1 => 'Mrs.'], null, ['class' => 'form-control input-lg text-lg text-center', 'required' => 'required', 'tabindex' => '']) !!}
+		</div>
+		<div class="col-xs-9 col-sm-9 pl-5 pr-0">
+			{!! Form::text('name', null, ['class' => 'form-control input-lg text-lg', 'placeholder' => 'Name', 'required' => 'required', 'tabindex' => 1]) !!}
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group input-group-custom">
+			<div class="input-group-addon bg-grey-dark border-transparent text-white text-lg"><i class="fa fa-calendar-o"></i></div>
+			{!! Form::text('dob', null, ['class' => 'form-control input-lg text-lg', 'placeholder' => 'Tanggal Lahir', 'required' => 'required', 'tabindex' => 2]) !!}
+		</div>
+	</div>
+	<div class="form-group mt-lg">
+		<button type="submit" class="btn btn-orange pl-xl pr-xl" tabindex="4">Sign Up</button>
+	</div>
+	<p class="text-light"><em>atau</em></p>
+	<a href="#" class="btn btn-facebook btn-social btn-block btn-lg text-lg">
+		<span class="fa fa-facebook"></span>
+		Daftar Menggunakan Facebook
+	</a>
+	<p class="text-light mt-lg">Sudah terdaftar ? <a href="#" class="text-orange">Login</a></p>
 {!! Form::close() !!}

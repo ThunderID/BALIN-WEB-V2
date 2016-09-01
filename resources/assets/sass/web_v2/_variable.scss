@@ -121,6 +121,7 @@ p{								line-height: 2em;}
 .border-grey{			border-color: $grey !important;}
 .border-grey-dark{		border-color: $grey-dark !important;}
 .border-grey-light{		border-color: $grey-light !important;}
+.border-transparent{	border-color: transparent !important;}
 
 .border-solid{			border-style: solid !important;}
 .border-size{			
@@ -448,6 +449,13 @@ p{								line-height: 2em;}
 // -----------------
 .bg-login-page{
 	background: url($bg-balin) no-repeat 50% 25%;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.bg-login-page-mobile{
+	background: url($bg-balin-mobile) no-repeat center center;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-webkit-background-size: cover;
