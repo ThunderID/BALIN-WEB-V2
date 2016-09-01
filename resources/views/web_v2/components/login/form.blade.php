@@ -20,7 +20,7 @@
     </div>
 
 	<div class="form-group">
-		<a href="javascript:void(0);" class="btn-forgot t-xs hover-black ml-5 text-black" tabindex="3">Lupa Password?</a>
+		<a href="javascript:void(0);" class="btn-forgot t-xs hover-black text-black pull-left" tabindex="3">Lupa Password?</a>
 	    <button type="submit" class="pull-right btn btn-orange pl-xl pr-xl" tabindex="4">Sign In</button>
 	</div>
 <!-- 	<div class="clearfix">&nbsp;</div>

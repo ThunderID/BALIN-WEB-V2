@@ -33,12 +33,24 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 auth">
-						<p>
+						<p class="signup">
 							Sudah Terdaftar?
-							<a href="#">
+							<a href="javascript:void(0);" class="btn-signin">
 								Sign In
 							</a> 
 						</p>
+						<p class="signin" style="display:none;">
+							Belum Punya Akun?
+							<a href="javascript:void(0);" class="btn-signup">
+								Sign Up
+							</a> 
+						</p>
+						<p class="forgot" style="display:none;">
+							Belum Punya Akun?
+							<a href="javascript:void(0);" class="btn-signup">
+								Sign Up
+							</a> 
+						</p>												
 					</div>
 				</div>
 			</div>
@@ -47,14 +59,14 @@
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<div class="row panel-akun p-xs mt-md">
 					<div class="col-md-12 text-center">
-						<div class="signin" style="@if (Session::has('type')) {{ (Session::get('type')=='login') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='login') || (Input::get('type')=='login')) ? 'display:block;' : 'display:none;' }} @endif">
-							<h2 class="text-center mb-lg">Sign In</h2>
+						<div class="signup" style="@if (Session::has('type')) {{ (Session::get('type')=='login') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='login') || (Input::get('type')=='login')) ? 'display:block;' : 'display:none;' }} @endif">
+							<h2 class="text-center mb-lg">Sign Up</h2>
 							@include('web_v2.components.signup.form')
 						</div>
-						<div class="signup" style="@if (Session::has('type') && (Session::get('type')=='signup') || (isset($type) && ($type=='signup'))) display:block; @else display:none; @endif">
-							<h3>Sign Up</h3>
+						<div class="signin" style="@if (Session::has('type') && (Session::get('type')=='signup') || (isset($type) && ($type=='signin'))) display:block; @else display:none; @endif">
+							<h2 class="text-center mb-lg">Sign In</h2>
 							@include('web_v2.components.login.form')
-						</div>
+						</div>						
 						<div class="forgot" style="display:none">
 							<h2 class="text-center mb-lg">Reset Password</h2>
 							@include('web_v2.components.forgot.form')
@@ -96,6 +108,11 @@
 @stop
 
 @section('js')
+	$('.btn-signin').click( function() {
+		$('.signup').hide();
+		$('.signin').toggle();
+		$('.forgot').hide();
+	});
 	$('.btn-signup').click( function() {
 		$('.signup').show();
 		$('.signin').hide();
