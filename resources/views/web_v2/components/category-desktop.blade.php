@@ -14,7 +14,7 @@
 										<?php $class	= 'hover-orange';?>
 									@endif
 									<li class="" style="width:8em;">
-										<a href="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $data['type'], 'categories[1]' => $v['slug']]))}}" class="{{$class}}">{{ strtoupper($v['name']) }}</a>
+										<a href="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $v['category']['slug'], 'categories[1]' => $v['slug']]))}}" class="{{$class}}">{{ strtoupper($v['name']) }}</a>
 									</li>
 								@endif
 							@endforeach

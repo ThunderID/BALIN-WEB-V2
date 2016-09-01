@@ -99,7 +99,7 @@
 		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="text-light right">
-					<a href="{{ route('balin.product.index', ['categories[]' => 'wanita']) }}" class="text-orange">
+					<a href="{{ route('balin.product.index', ['categories[]' => 'wanita']) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange @endif">
 						Wanita
 						<span>
 							{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
@@ -111,7 +111,7 @@
 					</div>
 				</li>>
 				<li class="text-light left">
-					<a href="{{ route('balin.product.index', ['categories[]' => 'pria']) }}">
+					<a href="{{ route('balin.product.index', ['categories[]' => 'pria']) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange @endif">
 						<span>
 							{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
 						</span>
