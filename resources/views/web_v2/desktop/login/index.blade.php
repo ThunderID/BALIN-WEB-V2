@@ -59,16 +59,19 @@
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<div class="row panel-akun p-xs mt-md">
 					<div class="col-md-12 text-center">
-						<div class="signup" style="@if (Session::has('type')) {{ (Session::get('type')=='login') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='login') || (Input::get('type')=='login')) ? 'display:block;' : 'display:none;' }} @endif">
+						<div class="signup" style="@if (Session::has('type')) {{ (Session::get('type')=='signup') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='signup') || (Input::get('type')=='signup')) ? 'display:block;' : 'display:none;' }} @endif">
 							<h2 class="text-center mb-lg">Sign Up</h2>
+							@include('web_v2.components.alert-box')
 							@include('web_v2.components.signup.form')
 						</div>
-						<div class="signin" style="@if (Session::has('type') && (Session::get('type')=='signup') || (isset($type) && ($type=='signin'))) display:block; @else display:none; @endif">
+						<div class="signin" style="@if (Session::has('type') && (Session::get('type')=='login') || (isset($type) && ($type=='login'))) display:block; @else display:none; @endif">
 							<h2 class="text-center mb-lg">Sign In</h2>
+							@include('web_v2.components.alert-box')
 							@include('web_v2.components.login.form')
 						</div>						
 						<div class="forgot" style="display:none">
 							<h2 class="text-center mb-lg">Reset Password</h2>
+							@include('web_v2.components.alert-box')
 							@include('web_v2.components.forgot.form')
 						</div>
 					</div>	
@@ -103,7 +106,7 @@
 					</div>
 				</div>
 			</div>
-		</div>			
+		</div>
 	</div>
 @stop
 
