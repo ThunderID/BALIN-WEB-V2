@@ -54,7 +54,7 @@ class AuthController extends BaseController
 		
 		if (Input::has('password') || is_null($id))
 		{
-			$validator 					= Validator::make(Input::only('password', 'password_confirmation'), ['password' => 'required|min:8|confirmed']);
+			$validator 					= Validator::make(Input::only('password'), ['password' => 'required|min:8']);
 
 			if (!$validator->passes())
 			{
