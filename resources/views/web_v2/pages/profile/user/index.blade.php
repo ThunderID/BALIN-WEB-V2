@@ -4,6 +4,10 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
+	<div class="clearfix">&nbsp;</div>
+	<div class="clearfix hidden-xs hidden-sm">&nbsp;</div>
+
+	<section class="container">
 	<!-- SECTION INFO NO ACTIVE -->
 		@if ($data['me']['data']['is_active']==0)
 			<div class="row">
@@ -533,6 +537,7 @@
 		</div>
 	</div>
 	<!-- END SECTION MODAL INFORMATION & FUNCTION REFERAAL CODE -->
+	</section>
 @stop
 
 @section('js')
