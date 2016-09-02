@@ -243,7 +243,7 @@
 			<div class="row">
 				<div class="container text-left mt-xxl mb-sm">
 					<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
-					<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
+					<a class="home-product-more" href="{{route('balin.product.index', ['categories' => [$data['type']]])}}">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 				</div>			
 				<?php
 					// dd($data['related']);
