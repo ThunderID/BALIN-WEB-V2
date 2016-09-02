@@ -35,11 +35,11 @@ class AuthController extends BaseController
 	{
 		if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
 		{
-			$dob						= Carbon::createFromFormat('Y-m-d', Input::get('date_of_birth'))->format('Y-m-d H:i:s');
+			$dob						= Carbon::createFromFormat('Y-m-d', Input::get('dob'))->format('Y-m-d H:i:s');
 		}
 		else
 		{
-			$dob						= Carbon::createFromFormat('d-m-Y', Input::get('date_of_birth'))->format('Y-m-d H:i:s');
+			$dob						= Carbon::createFromFormat('d-m-Y', Input::get('dob'))->format('Y-m-d H:i:s');
 		}
 		
 		$data 							=	[
