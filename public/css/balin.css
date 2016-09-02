@@ -6640,9 +6640,9 @@ label.warning {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.35);
     color: #fff; }
-    .tile div.jumbotron h4 {
+    .tile div.jumbotron h2, .tile div.jumbotron h4 {
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
       font-weight: 300; }
