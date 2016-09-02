@@ -415,6 +415,6 @@
 				total = total + (parseInt($(this).text()) * price);
 			}
 		});
-		$('.total').text(total);
+		$('.total').text(number_format(total));
 	});
 @stop

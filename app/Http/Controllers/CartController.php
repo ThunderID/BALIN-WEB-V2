@@ -20,7 +20,7 @@ class CartController extends BaseController
 	{
 		parent::__construct();
 
-		if(Session::has('whoami'))
+		if (Session::has('whoami'))
 		{
 			Session::put('API_token', Session::get('API_token_private'));
 		}
@@ -30,7 +30,7 @@ class CartController extends BaseController
 		}
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'web_v2.pages.cart.';
+		$this->page_attributes->source 				= 'cart.';
 		$this->page_attributes->breadcrumb			=	[
 															'Cart' 	=> route('balin.cart.index'),
 														];

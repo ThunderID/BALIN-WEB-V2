@@ -899,3 +899,114 @@ EVENT & FUNCTION OTHER
 		}
 		return s.join(dec);
 	}
+
+
+
+
+	/**
+	 * New function cart items
+	 */
+	
+	/**
+	 * [addStock in cart]
+	 * @param {[type]} current [description]
+	 * @param {[type]} stock   [description]
+	 */
+	function addStock (current, stock) {
+		if (current < stock) {
+			return current + 1;
+		} else {
+			return current;
+		}
+	}
+
+	/**
+	 * [removeStock in cart]
+	 * @param  {[type]} current [description]
+	 * @return {[type]}         [description]
+	 */
+	function removeStock (current) {
+		if (current > 0) {
+			return current - 1;
+		} else {
+			return current;
+		}
+	}
+
+	/**
+	 * [button add +1 item in cart]
+	 * @param  {[type]} ) {		prev      [description]
+	 * @return {[type]}   [description]
+	 */
+	$(document).on('click', '.qty-plus', function() {
+		prev = parseInt($(this).parent().find('.qty').text());
+		stock = parseInt($(this).parent().find('.qty').data('stock'));
+		current = addStock(prev, stock);
+		$(this).parent().find('.qty').text(current);
+		$(this).parent().find('.qty').trigger('change');
+
+		if (current < stock) {
+			if (current > 0 ) {
+				$(this).siblings('.qty-minus').removeClass('not-active');
+			}
+		} else {
+			$(this).addClass('not-active');
+		}
+	});
+
+	/**
+	 * [button -1 item size in cart]
+	 * @param  {[type]} ) {		prev      [description]
+	 * @return {[type]}   [description]
+	 */
+	$(document).on('click', '.qty-minus', function() {
+		prev = parseInt($(this).parent().find('.qty').text());
+		stock = parseInt($(this).parent().find('.qty').data('stock'));
+		current = removeStock(prev);
+		$(this).parent().find('.qty').text(current);
+		$(this).parent().find('.qty').trigger('change');
+
+		if (current > 0) {
+			if (current < stock) {
+				$(this).siblings('.qty-plus').removeClass('not-active');
+			}
+		} else {
+			$(this).addClass('not-active');
+		}
+	});
+
+	/**
+	 * [check label qty on change and get total price]
+	 * @param  {[type]} ) {		total     [description]
+	 * @return {[type]}   [description]
+	 */
+	$(document).on('change', '.qty', function() {
+		total = 0;
+		price = $(this).data('price');
+		discount = $(this).data('discount');
+		action = $(this).data('action');
+		root_parent = $(this).parent().parent().parent().parent().parent();
+
+		// if ($(this).text() > 0) {
+			total = total + (parseInt($(this).text()) * (price - discount));
+		// }
+		$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
+		$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
+		$(this).parent().parent().find('.total_per_pieces').trigger('change');
+
+		// send_ajax_update(parseInt($(this).text()), action);
+		console.log(parseInt(root_parent.find('.total_per_pieces').text()));
+		// if (parseInt(root_parent.find('.qty').text()) != 0) {
+		// 	console.log('yes');
+		// } else {
+		// 	console.log('no');
+		// }
+	});
+
+	$(document).on('change', '.total_per_pieces', function() {
+		total_all = 0;
+		$('.total_per_pieces').each( function() {
+			total_all = total_all + parseInt($(this).data('total-piece'));
+		});
+		$('.total_all').text('IDR ' + number_format(total_all));
+	});
