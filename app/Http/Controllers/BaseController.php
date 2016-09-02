@@ -71,7 +71,7 @@ abstract class BaseController extends Controller
 
 		//detect mobile or desktop
 		$Mobile_Detect 								= new mobile_detect;
-		if($Mobile_Detect->isMobile() == true || $Mobile_Detect->isTablet() == true)
+		if($Mobile_Detect->isMobile() == true && $Mobile_Detect->isTablet() == false)
 		{
 			$this->base_path_view 					= 'web_v2.mobile.';
 		}else{
