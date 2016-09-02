@@ -33,7 +33,7 @@ class CheckoutController extends BaseController
 		Session::put('API_token', Session::get('API_token_private'));
 
 		$this->page_attributes->title 			= 'BALIN.ID';
-		$this->page_attributes->source 			= 'web_v2.pages.checkout.';
+		$this->page_attributes->source 			= '.checkout.';
 		$this->page_attributes->breadcrumb		=	[
 														'Checkout' 	=> route('my.balin.checkout.get'),
 													];
@@ -107,6 +107,7 @@ class CheckoutController extends BaseController
 														'courier'			=> $courier['data']['data'],
 													];
 
+		$this->page_attributes->controller_name	= $this->controller_name;
 		$this->page_attributes->subtitle 		= 'Checkout';
 		$this->page_attributes->source 			=  $this->page_attributes->source . 'index';
 
