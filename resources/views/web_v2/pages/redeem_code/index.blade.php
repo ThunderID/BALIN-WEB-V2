@@ -16,7 +16,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-0 p-md ">
 						<h4 class="pull-left">Referal Code 
 							<small>
-								<a href="#" class="hover-black text-grey mtm-5" 
+								<a href="#" class="hover-orange text-black mtm-5" 
 									data-toggle="modal" 
 									data-target=".modal-referral-code">
 									<i class="fa fa-question-circle"></i>
@@ -46,7 +46,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-0 pb-0 p-md">
 						<h4 class="pull-left">Balin Point Anda 
 							<small>
-								<a href="#" class="hover-black text-grey help" 
+								<a href="#" class="hover-orange text-black help" 
 									data-toggle="modal" 
 									data-target=".modal-balin-point">
 									<i class="fa fa-question-circle fa-1x"></i>

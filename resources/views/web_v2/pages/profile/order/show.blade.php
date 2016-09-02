@@ -44,7 +44,7 @@
 	<div class="clearfix">&nbsp;</div>
 	<div class="row ml-0 mr-0 pl-sm pr-sm">
 		<!-- normal tablet -->
-		<div class="col-md-12 col-sm-12 hidden-xs chart-div">
+		<div class="col-md-12 col-sm-12 chart-div">
 			<div class="col-md-12">
 				<div class="row border-1 border-solid border-grey-light">
 					<div class="col-md-1 col-sm-1 hidden-xs">
@@ -128,7 +128,7 @@
 		<!-- mobile -->
 	</div>
 	<div class="row ml-0 mr-0 pl-sm pr-sm">
-		<div class="col-md-12 col-sm-12 hidden-xs">
+		<div class="col-md-12 col-sm-12">
 			<table class="table table-bordered table-hover table-striped">
 				<tbody>
 					@if (isset($data['order']['transactiondetails']))
