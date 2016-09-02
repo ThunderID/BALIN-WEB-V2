@@ -1,7 +1,7 @@
 biru,#3399cc
 merah,#9C2A00
 coklat,#A46B36
-krem,#F6EDF0
+krem,#FFF1D0
 peach,#FF7660
 pink,#ffc0d0
 kuning,#FFFF32
