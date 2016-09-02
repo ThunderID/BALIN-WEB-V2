@@ -22,7 +22,7 @@
 	<div class="form-group">
 		<div class="input-group input-group-custom">
 			<div class="input-group-addon bg-grey-dark border-transparent text-white text-lg"><i class="fa fa-calendar-o"></i></div>
-			{!! Form::text('dob', null, ['class' => 'form-control input-lg text-lg', 'placeholder' => 'Tanggal Lahir', 'required' => 'required', 'tabindex' => 5]) !!}
+			{!! Form::text('dob', null, ['class' => 'form-control input-lg text-lg date_format', 'placeholder' => 'Tanggal Lahir', 'required' => 'required', 'tabindex' => 5]) !!}
 		</div>
 	</div>
 	<div class="form-group mt-lg">
