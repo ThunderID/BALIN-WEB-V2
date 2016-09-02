@@ -359,6 +359,7 @@
 								$('.cart-remove').addClass('not-active');
 								$('.cart-add').removeClass('not-active');
 
+
 								$('.total').text(0);
 								$('.dropdown-menu').toggle({'display': 'block'});
 						   	},
@@ -415,6 +416,7 @@
 				total = total + (parseInt($(this).text()) * price);
 			}
 		});
+		total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 		$('.total').text(total);
 	});
 @stop
