@@ -33,13 +33,13 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 auth">
-						<p class="signup">
+						<p class="signup" style="@if (Session::has('type')) {{ (Session::get('type')=='signup') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='signup') || (Input::get('type')=='signup')) ? 'display:block;' : 'display:none;' }} @endif">
 							Sudah Terdaftar?
 							<a href="javascript:void(0);" class="btn-signin">
 								Sign In
 							</a> 
 						</p>
-						<p class="signin" style="display:none;">
+						<p class="signin" style="@if (Session::has('type') && (Session::get('type')=='login') || (isset($type) && ($type=='login'))) display:block; @else display:none; @endif">
 							Belum Punya Akun?
 							<a href="javascript:void(0);" class="btn-signup">
 								Sign Up
