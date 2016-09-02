@@ -5,7 +5,7 @@
 				Category &nbsp;
 				<span class="category-info">
 					@if (Input::has('categories'))
-						@foreach (Input::has('categories') as $k => $v)
+						@foreach (Input::get('categories') as $k => $v)
 							<label class="btn btn-transparent btn-xs category-info-action mb-5"> {{ str_replace('-', ' ', $v) }} <i class="fa fa-times-circle"></i></label>
 						@endforeach
 					@endif
