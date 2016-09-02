@@ -86,6 +86,7 @@ class UserController extends BaseController
 														];
 		$this->page_attributes->subtitle 			= 'Profile';
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
+		$this->base_path_view 						= '';
 
 		return $this->generateView();
 	}

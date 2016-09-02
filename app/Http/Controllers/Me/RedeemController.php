@@ -50,6 +50,7 @@ class RedeemController extends BaseController
 		$this->page_attributes->subtitle 			= 'Redeem Code';
 		$this->page_attributes->breadcrumb			= array_merge($this->page_attributes->breadcrumb);
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
+		$this->base_path_view 						= '';
 
 		return $this->generateView();
 	}
