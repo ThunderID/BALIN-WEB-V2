@@ -25,9 +25,9 @@
 	<div class="row mt-sm mb-sm">
 		<div class="container text-center">
 			<div class="col-md-12">
-				<h3 class="text-uppercase text-left m-0">New Release</h3>
+				<h5 class="text-uppercase m-0 text-orange">NEW RELEASE</h5>
+				<h3 class="text-uppercase m-0">PREMIUM COTTON</h3>
 			</div>
-			<a class="home-product-more" href="#">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 		</div>
 	</div>
 	<div class="container pt-md pb-md mb-sm">
@@ -38,6 +38,17 @@
 		  	])
 		</div>
 	</div>
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-md-12">
+				<a href="{{route('balin.product.index')}}" class="btn btn-orange buy">
+					Lihat Semua
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">&nbsp;</div>
+	<div class="clearfix">&nbsp;</div>
 </section>
 
 <section class="container mt-xl">
@@ -46,7 +57,7 @@
 			<div class="col-md-12 text-center">
 				<p class="m-0">Make sure you follow us on</p>
 				<h3 class="text-uppercase mtm-5 mbm-5">INSTAGRAM</h3>
-				<p class="m-0"><em>@balin.id</em></p>
+				<p class="m-0"><em><a href="{{$balin['info']['instagram_url']['value']}}" class="hover-orange">@balin.id</a></em></p>
 			</div>
 		</div>
 
