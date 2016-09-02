@@ -19,6 +19,7 @@
 								'data-action'	=> route('my.balin.checkout.voucher')
 							]) !!}
 						</div>
+							<label id="voucher-error" class="warning" for="voucher" style="display:none;">Kode Voucher yang Anda masukkan tidak valid. Silahkan cek ulang kode Anda atau kosongkan untuk melanjutkan.</label>
 					</div>
 				</div>
 			@else
@@ -48,7 +49,7 @@
 				Kembali</a>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 text-right">
-				<a href="javascript:void(0);" class="btn btn-orange btn_step" 
+				<a href="javascript:void(0);" class="btn btn-orange btn_step next_voucher" 
 				data-action="{{ route('my.balin.checkout.voucher') }}" 
 				data-target="#sc3"  
 				data-value="#sc2"
