@@ -1,5 +1,5 @@
 <div class="row ml-0 mr-0 panel_form_voucher">
-	<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div class="content_checkout">
 			<div class="row ml-0 mr-0 pt-xs mt-md hidden-xs">
 				<div class="col-md-2 col-sm-2 border-bottom-1 border-grey-light text-grey-dark">
@@ -166,11 +166,14 @@
 					data-value="#sc5"
 					data-param="0"
 					data-type="prev"
-					data-url="{{ route('my.balin.checkout.get', ['section' => 'sc4']) }}">Kembali</a>
+					data-url="{{ route('my.balin.checkout.get', ['section' => 'sc4']) }}">
+					<i class="fa fa-angle-double-left" aria-hidden="true"></i>
+					&nbsp;
+					Kembali</a>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
 				
-					<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black btn_step"
+					<a href="javascript:void(0);" class="btn btn-orange-full btn_step"
 					data-action="{{ route('my.balin.checkout.post') }}" 
 					data-param="submit"
 					data-type="next"

@@ -1,5 +1,5 @@
 <div class="row ml-0 mr-0">
-	<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div class="row pt-md pb-sm">
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<h3 class="mt-0 text-normal">Packaging Option</h3>
@@ -66,17 +66,23 @@
 				data-value="#sc3"
 				data-param="0"
 				data-type="prev"
-				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc2']) }}">Kembali</a>
+				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc2']) }}">
+				<i class="fa fa-angle-double-left" aria-hidden="true"></i>
+				&nbsp;
+				Kembali</a>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 text-right">
-				<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black btn_step" 
+				<a href="javascript:void(0);" class="btn btn-orange btn_step" 
 				data-action="{{ route('my.balin.checkout.extension') }}" 
 				data-target="#sc4"  
 				data-value="#sc3"
 				data-param="3"
 				data-type="next"
 				data-event="gift"
-				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc4']) }}">Tambahkan & Lanjutkan</a>
+				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc4']) }}">Lanjutkan
+				&nbsp;
+				<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+				</a>
 			</div>
 		</div>
 	</div>
