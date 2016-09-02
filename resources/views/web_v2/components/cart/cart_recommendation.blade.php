@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-xs-9 pl-sm">
 				<h4 class="mt-0 text-md">
-					<a href="{{ route('balin.product.show', $label_slug) }}" class="link-black hover-grey">
+					<a href="{{ route('balin.product.show', $label_slug) }}" class="link-black hover-orange">
 						{{ $label_name }}
 					</a>
 				</h4>

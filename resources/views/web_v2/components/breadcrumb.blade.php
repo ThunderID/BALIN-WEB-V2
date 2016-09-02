@@ -12,11 +12,11 @@
 						@endif
 						@if ($b_url == end($breadcrumb))
 							<li class="active">
-								<a class="hover-gray" href="{{ $b_url }}"><strong>{{$b_title}}</strong></a>
+								<a class="hover-orange" href="{{ $b_url }}"><strong>{{$b_title}}</strong></a>
 							</li>
 						@else
 							<li>
-								<a class="hover-black" href="{{ $b_url }}"> {{$b_title}} </a>
+								<a class="hover-orange" href="{{ $b_url }}"> {{$b_title}} </a>
 							</li>
 						@endif
 					@endforeach

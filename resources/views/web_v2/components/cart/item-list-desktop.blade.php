@@ -1,13 +1,13 @@
 <!-- SECTION CART LIST ITEM DESKTOP -->
-<div class="row chart-item border-right-1 border-left-1 border-bottom-1 border-grey-light pb-xs ml-0 mr-0">
-	<div class="col-md-1 col-lg-1">
+<div class="row cart-item border-right-1 border-left-1 border-bottom-1 border-grey-light pb-xs ml-0 mr-0">
+	<div class="col-sm-1 col-md-1 col-lg-1">
 		<a href="#">
 			<img class="img-responsive mt-sm"  src="{{ $item_thumbnail }}" >
 		</a>
 	</div>
-	<div class="col-md-11 col-lg-11 p-b-sm">
+	<div class="col-sm-11 col-md-11 col-lg-11 p-b-sm">
 		<div class="row">
-			<div class="col-sm-12 col-xs-12">
+			<div class="col-sm-12 col-md-12 col-lg-12">
 				<h4 class="text-md mt-sm">
 					<a href="{{ route('balin.product.show', $item_slug) }}" class="title link-black hover-orange"><strong>{{ $item_name }}</strong></a>
 				</h4>
@@ -18,18 +18,18 @@
 			<div class="row p-xs list_vid" 
 				data-vid="{{ $value['varian_id'] }}" 
 				data-cid="{{ $item_id }}">
-				<div class="col-md-3 col-lg-3 qty-{{ strtolower($value['size']) }}" 
+				<div class="col-sm-3 col-md-3 col-lg-3 qty-{{ strtolower($value['size']) }}" 
 					data-get-flag="qty-{{ strtolower($value['size']) }}">
 					<p class="m-b-none" style="line-height:20px">{{ $value['size'] }}</p>
 				</div>
-				<div class="col-md-2 col-lg-2 text-left pr-md qty-{{ strtolower($value['size']) }} label_price" 
+				<div class="col-sm-2 col-md-2 col-lg-2 text-left pr-md qty-{{ strtolower($value['size']) }} label_price" 
 					data-price="{{ $item_price }}" 
 					data-get-price="qty-{{ strtolower($value['size']) }}" 
 					data-get-flag="qty-{{ strtolower($value['size']) }}">
 					@money_indo( $item_price )
 				</div>
-				<div class="col-md-1 col-lg-1">&nbsp;</div>
-				<div class="col-md-1 col-lg-1 text-center qty-{{ strtolower($value['size']) }}" 
+				<div class="col-sm-1 col-md-1 col-lg-1">&nbsp;</div>
+				<div class="col-sm-1 col-md-1 col-lg-1 text-center qty-{{ strtolower($value['size']) }}" 
 					data-get-flag="qty-{{ strtolower($value['size']) }}">
 					<a href="javascript:void(0);" class="pull-left qty-minus not-active">
 						<strong>-</strong>
@@ -44,13 +44,13 @@
 						<strong>+</strong>
 					</a>
 				</div>
-				<div class="col-md-3 col-lg-3 text-right pr-md label-price qty-{{ strtolower($value['size']) }}" 
+				<div class="col-sm-3 col-md-3 col-lg-3 text-right pr-md label-price qty-{{ strtolower($value['size']) }}" 
 					data-price="{{ $item_price }}" 
 					data-get-price="qty-{{ strtolower($value['size']) }}" 
 					data-get-flag="qty-{{ strtolower($value['size']) }}">
 					<span class="mr-lg">@money_indo( $item_discount )</span>
 				</div>
-				<div class="col-md-2 col-lg-2 text-right qty-{{ strtolower($value['size']) }}" 
+				<div class="col-sm-2 col-md-2 col-lg-2 text-right qty-{{ strtolower($value['size']) }}" 
 					data-total="{{ ($item_price - $item_discount) * $value['quantity'] }}" 
 					data-get-total="qty-{{ strtolower($value['size']) }}" 
 					data-get-flag="qty-{{ strtolower($value['size']) }}" data-subtotal="{{ $item_total }}">

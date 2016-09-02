@@ -86,21 +86,23 @@ class CartController extends BaseController
 			}
 		}
 
-		foreach ($carts as $key => $value) 
-		{
-			if(isset($value['varians']))
+		if (!empty($carts)) {
+			foreach ($carts as $key => $value) 
 			{
-				foreach ($value['varians'] as $key2 => $value2) 
+				if(isset($value['varians']))
 				{
-					if($value2['quantity'] < 1)
+					foreach ($value['varians'] as $key2 => $value2) 
 					{
-						unset($carts[$key]['varians'][$key2]);
+						if($value2['quantity'] < 1)
+						{
+							unset($carts[$key]['varians'][$key2]);
+						}
 					}
-				}
 
-				if(count($value['varians'])<1)
-				{
-					unset($carts[$key]);
+					if(count($value['varians'])<1)
+					{
+						unset($carts[$key]);
+					}
 				}
 			}
 		}
@@ -119,7 +121,7 @@ class CartController extends BaseController
 
 		$this->page_attributes->subtitle 			= 'Carts';
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
-		$this->base_path_view 						= '';
+		// $this->base_path_view 						= '';
 
 		return $this->generateView();
 	}

@@ -3,25 +3,26 @@
 @section('content')
 	<section class="container pt-xxl pb-lg">
 		<div class="row">
-			<div class="col-xs-12 col-md-12 col-sm-12">
+			<div class="col-sm-12 col-md-12 col-lg-12">
 				<!-- SECTION HEADER TABLE CART -->
 				<div class="row border-1 border-solid border-grey-light p-sm ml-0 mr-0">
-					<div class="col-md-4 col-lg-4 text-uppercase">
+					<div class="col-sm-4 col-md-4 col-lg-4 text-uppercase">
 						<span class="ml-sm">Produk</span>
 					</div>
-					<div class="col-md-2 col-lg-2 text-uppercase">
+					<div class="col-sm-2 col-md-2 col-lg-2 text-uppercase">
 						<span class="mr-xxl">Harga</span>
 					</div>
-					<div class="col-md-2 col-md-2 text-uppercase text-center">
+					<div class="col-sm-2 col-md-2 col-md-2 text-uppercase text-center">
 						<span>Kuantitas</span>
 					</div>
-					<div class="col-md-2 col-lg-2 text-uppercase text-center">
+					<div class="col-sm-2 col-md-2 col-lg-2 text-uppercase text-center">
 						<span>Diskon</span>
 					</div>
-					<div class="col-md-2 col-lg-2 text-uppercase text-center">
+					<div class="col-sm-2 col-md-2 col-lg-2 text-uppercase text-center">
 						<span>Total</span>
 					</div>
 				</div>
+				<div class="cart-append"></div>
 				<!-- END SECTION HEADER TABLE CART -->
 			
 				<!-- SECTION CONTENT TABLE CART -->
@@ -57,12 +58,12 @@
 					@endforeach
 				@else
 					<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm hidden-xs">
-						<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
 							<h4 class="text-center text-md">Tidak ada item di cart</h4>
 						</div>
 					</div>
 					<div class="row mr-0 ml-0 p-sm hidden-sm hidden-md hidden-lg">
-						<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="col-sm-12 col-md-12 col-sm-12 col-xs-12">
 							<h4 class="text-center text-md">Tidak ada item di cart</h4>
 						</div>
 					</div>
@@ -72,11 +73,11 @@
 				<!-- SECTION TABLE FOOTER CART -->
 				<!-- SECTION FOOTER CART DESKTOP -->
 				@if (!empty($data['carts']))
-					<div class="row border-right-1 border-left-1 border-bottom-1 border-grey-light p-sm chart-footer ml-0 mr-0">
-						<div class="col-md-8 col-lg-8">
+					<div class="row border-right-1 border-left-1 border-bottom-1 border-grey-light p-sm cart-footer ml-0 mr-0">
+						<div class="col-sm-8 col-md-8 col-lg-8">
 							<h4 class="text-uppercase text-right">Sub Total</h4>
 						</div>
-						<div class="col-lg-4 col-lg-4">
+						<div class="col-sm-4 col-md-4 col-lg-4">
 							<h4 class="text-right grand_total" data-total-item="{{ $total }}">
 								@if ($total)
 									<strong class="total_all">@money_indo($total)</strong>
@@ -95,7 +96,7 @@
 								Lihat Produk Lainnya
 							</a>
 							@if (!empty($data['carts']))
-								<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full btn-lg text-lg pull-right">
+								<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full btn-lg text-lg pull-right btn-checkout">
 									Checkout
 								</a>			
 							@endif				

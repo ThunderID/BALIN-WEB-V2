@@ -14,7 +14,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<h5 class="mt-0">
-							<a href="{{ route('balin.product.show', $label_id) }}" class="link-black hover-grey unstyle">
+							<a href="{{ route('balin.product.show', $label_id) }}" class="link-black hover-orange unstyle">
 								{{ $label_name }}
 							</a>
 						</h5>	

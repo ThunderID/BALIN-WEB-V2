@@ -44,8 +44,8 @@
 			<li class="p-xs">
 				<div class="row">
 					<div class="col-xs-12 text-center" style=" ">
-						<a href="{{ route('balin.cart.index') }}" class="btn btn-black-hover-white-border-black mr-sm">Lihat Cart</a>
-						<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-black-hover-white-border-black ml-sm">Checkout</a>
+						<a href="{{ route('balin.cart.index') }}" class="btn btn-orange mr-sm">Lihat Cart</a>
+						<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full ml-sm">Checkout</a>
 					</div>
 				</div>
 			</li> 

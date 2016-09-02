@@ -847,7 +847,10 @@ EVENT & FUNCTION OTHER
 			data: {qty: item_qty},
 			success: function(result) {
 				count_cart 	= Object.keys(result.carts).length; 
-				$('.ico_cart').find('span').html(count_cart);
+				$('.cart-count').find('strong').html(count_cart);
+				if (count_cart == 0){
+					$('.cart-count').removeClass('bg-orange');
+				}
 
 				// $.each(result.carts, function(k, v) {
 				// 	$.each(v.varians, function(k2, v2) {
@@ -985,22 +988,36 @@ EVENT & FUNCTION OTHER
 		price = $(this).data('price');
 		discount = $(this).data('discount');
 		action = $(this).data('action');
-		root_parent = $(this).parent().parent().parent().parent().parent();
+		row_varian = $(this).parent().parent();
 
-		// if ($(this).text() > 0) {
-			total = total + (parseInt($(this).text()) * (price - discount));
-		// }
+		total = total + (parseInt($(this).text()) * (price - discount));
+
 		$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
 		$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
 		$(this).parent().parent().find('.total_per_pieces').trigger('change');
 
-		// send_ajax_update(parseInt($(this).text()), action);
-		console.log(parseInt(root_parent.find('.total_per_pieces').text()));
-		// if (parseInt(root_parent.find('.qty').text()) != 0) {
-		// 	console.log('yes');
-		// } else {
-		// 	console.log('no');
-		// }
+		send_ajax_update(parseInt($(this).text()), action);
+
+		if (parseInt($(this).text()) == 0) {
+			if (row_varian.parent().find('.list_vid').length == 1) {
+				if (row_varian.parent().parent().parent().find('.cart-item').length == 1) {
+					row_varian.parent().parent().parent().find('.cart-item').remove();
+					$('.cart-footer').remove();
+					html = '<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm hidden-xs"> \
+								<div class="col-md-12 col-sm-12 col-xs-12"> \
+									<h4 class="text-center text-md">Tidak ada item di cart</h4> \
+								</div> \
+							</div>';
+							console.log(html);
+					$('.cart-append').html(html);
+					$('.btn-checkout').addClass('hide');
+				} else {
+					row_varian.parent().parent().remove();
+				}
+			} else {
+				row_varian.remove();
+			}
+		}
 	});
 
 	$(document).on('change', '.total_per_pieces', function() {
