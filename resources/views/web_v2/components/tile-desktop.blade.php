@@ -10,7 +10,7 @@
 					<div class="tile text-center">
 						{!! Html::image($data['shop_by_style'][1]['images']['image_lg'], null, ['class' => 'tile-row-1 img-responsive']) !!}
 						<div class="jumbotron">
-							<h4>{{ $data['shop_by_style'][1]['caption'] }}</h4>
+							<h2 class="text-uppercase">{{ $data['shop_by_style'][1]['caption'] }}</h2>
 						</div>
 					</div>
 				</a>
@@ -24,7 +24,7 @@
 					<div class="tile text-center">
 						{!! Html::image($data['shop_by_style'][2]['images']['image_lg'], null, ['class' => 'tile-row-1 img-responsive']) !!}
 						<div class="jumbotron">
-							<h4>{{ $data['shop_by_style'][2]['caption'] }}</h4>
+							<h2 class="text-uppercase">{{ $data['shop_by_style'][2]['caption'] }}</h2>
 						</div>
 					</div>
 				</a>
@@ -44,7 +44,7 @@
 						<div class="tile text-center">
 							{!! Html::image($data['shop_by_style'][3]['images']['image_lg'], null, ['class' => 'tile-row-2 img-responsive']) !!}
 							<div class="jumbotron">
-								<h4>{{ $data['shop_by_style'][3]['caption'] }}</h4>
+								<h2 class="text-uppercase">{{ $data['shop_by_style'][3]['caption'] }}</h2>
 							</div>
 						</div>
 					</a>
@@ -58,7 +58,7 @@
 						<div class="tile text-center">
 							{!! Html::image($data['shop_by_style'][4]['images']['image_lg'], null, ['class' => 'tile-row-2 img-responsive']) !!}
 							<div class="jumbotron">
-								<h4>{{ $data['shop_by_style'][4]['caption'] }}</h4>
+								<h2 class="text-uppercase">{{ $data['shop_by_style'][4]['caption'] }}</h2>
 							</div>
 						</div>
 					</a>
@@ -72,7 +72,7 @@
 						<div class="tile text-center">
 							{!! Html::image($data['shop_by_style'][5]['images']['image_lg'], null, ['class' => 'tile-row-2 img-responsive']) !!}
 							<div class="jumbotron">
-								<h4>{{ $data['shop_by_style'][5]['caption'] }}</h4>
+								<h2 class="text-uppercase">{{ $data['shop_by_style'][5]['caption'] }}</h2>
 							</div>
 						</div>
 					</a>
