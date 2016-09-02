@@ -398,12 +398,13 @@
 	 * @return {return false/true }
 	 */
 	function check_ajax_choice(ajax, e) {
-				param_check = false;
+		param_check = false;
 		if (ajax=='address') {
 			param_check = check_address(e);
 		}
 		else if (ajax=='voucher') {
 			input_voucher = $('#content_voucher').find('.voucher_desktop');
+			$('#voucher-error').hide();
 			if (typeof(input_voucher.val()) != "undefined" && input_voucher.val() != '') {
 				var result = get_voucher(input_voucher)
 				if(result != "undefined" && result != '' ){
