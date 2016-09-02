@@ -12,3 +12,4 @@ putih,#FFFFFF
 plum,#DDA0DD
 magenta,#FFF4FF
 ungu,#800080
+oranye,#FFA500
