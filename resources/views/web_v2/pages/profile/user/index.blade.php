@@ -12,7 +12,7 @@
 		@if ($data['me']['data']['is_active']==0)
 			<div class="row">
 			    <div class="col-lg-12">
-			        <div class="alert alert-danger alert-dismissable text-red">
+			        <div class="alert alert-danger alert-dismissable text-white">
 			            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		                Anda belum konfirmasi email, silahkan klik <a href="{{ route('my.balin.profile.activate') }}" class="text-bold text-black hover-grey-dark">Kirim Ulang Email Aktivasi</a> jika anda belum menerima email konfirmasi.
 			        </div>
