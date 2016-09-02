@@ -10,10 +10,10 @@
 	<section class="container">
 		<div class="row bg-grey ml-0 mr-0">
 			<!-- SECTION REFERRAL CODE & BALIN POINT -->
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg border-top-1 border-white">
 				<div class="row">
 					<!-- SECTION REFERAAL CODE -->
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-0 p-md">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-0 p-md ">
 						<h4 class="pull-left">Referal Code 
 							<small>
 								<a href="#" class="hover-black text-grey mtm-5" 
@@ -30,7 +30,7 @@
 					<div class="hidden-md hidden-lg mtm-xs mbm-xs">&nbsp;</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mtm-xs mb-sm pr-md">
 						<p class="mtm-xs pull-right">
-							<a class="hover-grey text-sm" href="#" 
+							<a class="hover-orange text-sm" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.invitation.create') }}" 
@@ -41,7 +41,6 @@
 					</div>
 				</div>
 				<!-- END SECTION REFERRAL CODE -->
-
 				<!-- SECTION BALIN POINT -->
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-0 pb-0 p-md">
@@ -59,7 +58,7 @@
 					<div class="hidden-md hidden-lg mtm-xs mbm-xs">&nbsp;</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mtm-xs mb-sm pr-md">
 						<p class="mtm-xs pull-right">
-							<a class="hover-grey text-sm" href="#" 
+							<a class="hover-orange text-sm" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 
@@ -73,7 +72,7 @@
 			<!-- END SECTION REFERRAL CODE & BALIN POINT -->
 
 			<!-- SECTION FORM INPUT REFERRAL CODE -->
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg border-top-1 border-white">
 				<div class="row">
 					<div class="col-md-12 p-md">
 						<h4 class="m-t-sm">Punya Referal Code ?</h4>
