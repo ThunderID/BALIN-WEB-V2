@@ -1,6 +1,6 @@
 <!-- SECTION CART LIST ITEM DESKTOP -->
 <div class="hidden-xs">
-	<div class="row chart-item border-right-1 border-left-1 border-bottom-1 border-grey-light pb-xs ml-0 mr-0">
+	<div class="row chart-item pb-xs ml-0 mr-0">
 		<div class="col-sm-2 col-md-2">
 			<a href="#">
 				<img class="img-responsive mt-sm" style="width:60%; margin: 0 auto;"  src="{{ $item_list_image }}" >

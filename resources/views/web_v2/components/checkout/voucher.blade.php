@@ -1,5 +1,5 @@
 <div class="row ml-0 mr-0">
-	<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light ">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div id="content_voucher">
 			@if (!isset($data['order']['data']['voucher']))
 				<div class="row pt-md pb-sm panel_form_voucher">
@@ -7,10 +7,10 @@
 						<span class="text-lg voucher-title">Punya Kode Voucher ?</span>
 					</div>	
 					<div class="col-md-12 mb-xs">
-						<span class="text-regular">Jika anda punya kode voucher, masukkan kode voucher anda dapatkan hadiahnya.</span>
+						<span class="text-regular">Masukkan kode voucher Anda dan dapatkan diskon terbaik dari kami. </br> <span style="font-size:10px;">*Kosongkan bila tidak ada</span></span>
 						<div class="mt-xs" style="position:relative">
 							<div class="text-center hide loading loading_voucher" style="z-index:99;">
-								{!! HTML::image('images/loading.gif', null, []) !!}
+								{!! Html::image('images/loading.gif', null, []) !!}
 							</div>
 							{!! Form::text('voucher', null, [
 								'class' 		=> 'form-control transaction-input-voucher-code text-regular voucher_desktop',
@@ -19,6 +19,7 @@
 								'data-action'	=> route('my.balin.checkout.voucher')
 							]) !!}
 						</div>
+							<label id="voucher-error" class="warning" for="voucher" style="display:none;">Kode Voucher yang Anda masukkan tidak valid. Silahkan cek ulang kode Anda atau kosongkan untuk melanjutkan.</label>
 					</div>
 				</div>
 			@else
@@ -42,17 +43,22 @@
 				data-value="#sc2"
 				data-param="0"
 				data-type="prev"
-				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc1']) }}">Kembali</a>
+				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc1']) }}">
+				<i class="fa fa-angle-double-left" aria-hidden="true"></i>
+				&nbsp;
+				Kembali</a>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 text-right">
-				<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black btn_step" 
+				<a href="javascript:void(0);" class="btn btn-orange btn_step next_voucher" 
 				data-action="{{ route('my.balin.checkout.voucher') }}" 
 				data-target="#sc3"  
 				data-value="#sc2"
 				data-param="2"
 				data-type="next"
 				data-event="voucher"
-				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc3']) }}">Gunakan & Lanjutkan</a>
+				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc3']) }}">Lanjutkan
+				&nbsp;
+				<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 			</div>
 		</div>
 	</div>

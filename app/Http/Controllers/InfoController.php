@@ -74,6 +74,7 @@ class InfoController extends BaseController
 		
 		$this->page_attributes->data				= 	['content' => $content];
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
+		$this->base_path_view 						= 'web_v2.pages';
 
 		return $this->generateView();
 	}
@@ -105,6 +106,7 @@ class InfoController extends BaseController
 														'fb:app_id' 		=> Config::get('fb_app.id'),
 													];
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'contact_us';
+		$this->base_path_view 						= 'web_v2.pages';
 
 		return $this->generateView();
 	}

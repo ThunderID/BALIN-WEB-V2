@@ -147,22 +147,23 @@
 	 * @return gv {return dari json}
 	 */
 	function get_voucher (e) {
-		voucher_value = e.val();
+		value = e.val();
 		action = e.attr('data-action');
-
-		return $.ajax({
+		gv = '';
+		$.ajax({
 			url: action,
-			type: 'post',
-			dataType: 'json',
+			type: 'get',
+			dataType: 'json', 
 			async: false,
-			data: {voucher: voucher_value},
-			beforeSend: function() {
-				$('.loading_voucher').removeClass('hide');
-			},
+			data: {voucher: value},
 			success: function(data) {
-				
+				gv = data;
+			},
+			error: function(){
+				gv = false;
 			}
 		});
+		return gv;
 	}
 
 	/**
@@ -172,37 +173,49 @@
 	 * @param  p {elemet input dari kode voucher}
 	 */
 	function show_voucher (e, p) {
-		msg = '';
-		modal_alert = $('#alert_window');
-
-		if (e.type=='success') {
+		if (e.type=='success')
+		{
 			error = false;
 			panel_voucher = $('.panel_form_voucher');
-			msg = e.msg;
-			panel_voucher.html('<p class="pl-sm pr-sm mb-0">'+msg+'</p>');
+			modal_notif = $('.modal-notif');
+			modal_notif.find('.title').children().html('');
+			modal_notif.find('.content').html(e.msg);
 
-			reload_view(e, 'desktop');
-			reload_view(e, 'mobile');
+			set_voucher_id(p);
+
+			if (e.discount==true) {
+				$('.shipping_cost').text('IDR 0');
+				$('.shipping_cost').attr('data-s', 0);
+				$('.shipping_cost').attr('data-v', 1);
+			}
+
+			setTimeout( function() {
+				$('.loading_voucher').addClass('hide');
+				panel_voucher.html('<p class="pl-sm pr-sm mb-0">'+e.msg+'</p>');
+			}, 2000);
+
+			$('#notif_window').modal('show');
 		}
-		else if (e.type=='error') {
+		else if (e.type=='error')
+		{
 			error = true;
-			$.each(e.msg, function (index, value) {
-				msg += '<p class="mb-5"> - '+ value +'</p>';
-			});
+			setTimeout( function() {
+				$('.loading_voucher').addClass('hide');
+			}, 2000);
+			
+			$('#voucher-error').show();
 		}
-
-		modal_alert.find('.content').html('<p class="border-bottom-1 border-grey-light">Info</p>'+msg);
-		modal_alert.modal('show');
-
-		setTimeout( function() {
-			$('.loading_voucher').addClass('hide');
-		}, 2000);
-
-		setTimeout( function() {
-			modal_alert.modal('hide');
-		}, 2000);
 
 		return error;
+	}
+
+	/*
+	*	function set voucher id
+	*	@param input code object 
+	*/
+	function set_voucher_id (e) {
+		val = e.val();
+		$('.voucher_code').val(val);
 	}
 
 	function add_gift(e) {
@@ -391,12 +404,12 @@
 		}
 		else if (ajax=='voucher') {
 			input_voucher = $('#content_voucher').find('.voucher_desktop');
+			$('#voucher-error').hide();
 			if (typeof(input_voucher.val()) != "undefined" && input_voucher.val() != '') {
-				get_voucher(input_voucher).done(function(data) {
-					param_check = show_voucher(data, input_voucher);
-				}).fail(function() {
-					console.log('gagal');
-				});
+				var result = get_voucher(input_voucher)
+				if(result != "undefined" && result != '' ){
+					param_check = show_voucher(result, input_voucher);
+				}
 			}
 		}
 		else if (ajax=='gift') {

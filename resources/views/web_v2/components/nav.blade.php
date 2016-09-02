@@ -95,7 +95,6 @@
 		</div>
 		<!-- /.navbar-collapse -->
 
-
 		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="text-light right">

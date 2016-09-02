@@ -70,6 +70,7 @@ class PasswordController extends BaseController
 			$this->page_attributes->subtitle 			= 'Lupa Password';
 			$this->page_attributes->breadcrumb			= array_merge($breadcrumb);
 			$this->page_attributes->source 				= 'web_v2.pages.profile.password.forgot';
+			$this->base_path_view 						= '';
 
 			return $this->generateView();
 		}
@@ -104,6 +105,7 @@ class PasswordController extends BaseController
 			$this->page_attributes->subtitle 			= 'Lupa Password';
 			$this->page_attributes->breadcrumb			= [];
 			$this->page_attributes->source 				= 'web_v2.pages.profile.password.reset';
+			$this->base_path_view 						= '';
 
 			return $this->generateView();
 		}
@@ -161,6 +163,7 @@ class PasswordController extends BaseController
 			$this->page_attributes->subtitle 			= 'Reset Password';
 			$this->page_attributes->breadcrumb			= array_merge($breadcrumb);
 			$this->page_attributes->source 				= 'web_v2.pages.profile.password.changed';
+			$this->base_path_view 						= '';
 
 			return $this->generateView();
 		}

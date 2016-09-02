@@ -5,100 +5,103 @@
 
 @section('content')
 	<div class="clearfix">&nbsp;</div>
-	<div class="row bg-white ml-0 mr-0">
-		<!-- SECTION REFERRAL CODE & BALIN POINT -->
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg border-right-divider-to-bottom">
-			<div class="row">
-				<!-- SECTION REFERAAL CODE -->
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-0 p-md">
-					<h4 class="pull-left">Referal Code 
-						<small>
-							<a href="#" class="hover-black text-grey mtm-5" 
+	<div class="clearfix hidden-xs hidden-sm">&nbsp;</div>
+	<div class="clearfix hidden-xs hidden-sm">&nbsp;</div>
+	<section class="container">
+		<div class="row bg-grey ml-0 mr-0">
+			<!-- SECTION REFERRAL CODE & BALIN POINT -->
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg border-top-1 border-white">
+				<div class="row">
+					<!-- SECTION REFERAAL CODE -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pb-0 p-md ">
+						<h4 class="pull-left">Referal Code 
+							<small>
+								<a href="#" class="hover-orange text-black mtm-5" 
+									data-toggle="modal" 
+									data-target=".modal-referral-code">
+									<i class="fa fa-question-circle"></i>
+								</a>
+							</small>
+						</h4>	
+						<p class="pull-right mt-5 mb-5 text-uppercase text-bold">
+							{{ isset($data['me']['data']['code_referral']) ? $data['me']['data']['code_referral'] : '' }}
+						</p>
+					</div>
+					<div class="hidden-md hidden-lg mtm-xs mbm-xs">&nbsp;</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mtm-xs mb-sm pr-md">
+						<p class="mtm-xs pull-right">
+							<a class="hover-orange text-sm" href="#" 
 								data-toggle="modal" 
-								data-target=".modal-referral-code">
-								<i class="fa fa-question-circle"></i>
-							</a>
-						</small>
-					</h4>	
-					<p class="pull-right mt-5 mb-5 text-uppercase text-bold">
-						{{ isset($data['me']['data']['code_referral']) ? $data['me']['data']['code_referral'] : '' }}
-					</p>
-				</div>
-				<div class="hidden-md hidden-lg mtm-xs mbm-xs">&nbsp;</div>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mtm-xs mb-sm pr-md">
-					<p class="mtm-xs pull-right">
-						<a class="hover-grey text-sm" href="#" 
-							data-toggle="modal" 
-							data-target=".modal-user-information" 
-							data-action="{{ route('my.balin.invitation.create') }}" 
-							data-modal-title="Bagikan via Email" 
-							data-from="{{ Route::currentRouteName() }}"
-							data-view="modal-lg">[ Bagikan via Email ]</a>
-					</p>
-				</div>
-			</div>
-			<!-- END SECTION REFERRAL CODE -->
-
-			<!-- SECTION BALIN POINT -->
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-0 pb-0 p-md">
-					<h4 class="pull-left">Balin Point Anda 
-						<small>
-							<a href="#" class="hover-black text-grey help" 
-								data-toggle="modal" 
-								data-target=".modal-balin-point">
-								<i class="fa fa-question-circle fa-1x"></i>
-							</a>
-						</small>
-					</h4>
-					<p class="mt-5 mb-5 pull-right text-bold">@money_indo($data['me']['data']['total_point'])</p>
-				</div>
-				<div class="hidden-md hidden-lg mtm-xs mbm-xs">&nbsp;</div>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mtm-xs mb-sm pr-md">
-					<p class="mtm-xs pull-right">
-						<a class="hover-grey text-sm" href="#" 
-							data-toggle="modal" 
-							data-target=".modal-user-information" 
-							data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 
-							data-modal-title="History Point Anda" 
-							data-view="modal-lg">[ History ]</a>
-					</p>
-				</div>
-			</div>
-			<!-- END SECTION BALIN POINT -->
-		</div>
-		<!-- END SECTION REFERRAL CODE & BALIN POINT -->
-
-		<!-- SECTION FORM INPUT REFERRAL CODE -->
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg">
-			<div class="row">
-				<div class="col-md-12 p-md">
-					<h4 class="m-t-sm">Punya Referal Code ?</h4>
-				</div>	
-			</div>
-			{!! Form::open(['url' => route('my.balin.redeem.store')]) !!}
-				{!! Form::hidden('to', Route::currentRouteName()) !!}
-				<div class="row mb-sm">
-					<div class="col-md-11 pl-md pr-md mb-md">
-						<div class="input-group" style="position:relative">
-							<div class="loading-voucher text-center hide">
-								{!! HTML::image('images/loading.gif', null, ['style' => 'width:20px']) !!}
-							</div>
-							{!! Form::hidden('from', 'my.balin.redeem.index') !!}
-							{!! Form::input('text', 'referral_code', null, [
-									'class' => 'form-control hollow transaction-input-voucher-code m-b-sm check-voc-ref',
-									'placeholder' => 'Referal code referensi',
-							]) !!}
-							<span class="input-group-btn">
-								<button type="submit" class="btn btn-black-hover-white-border-black" data-action="">Gunakan</button>
-							</span>
-						</div>
+								data-target=".modal-user-information" 
+								data-action="{{ route('my.balin.invitation.create') }}" 
+								data-modal-title="Bagikan via Email" 
+								data-from="{{ Route::currentRouteName() }}"
+								data-view="modal-lg">[ Bagikan via Email ]</a>
+						</p>
 					</div>
 				</div>
-			{!! Form::close() !!}
+				<!-- END SECTION REFERRAL CODE -->
+				<!-- SECTION BALIN POINT -->
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-0 pb-0 p-md">
+						<h4 class="pull-left">Balin Point Anda 
+							<small>
+								<a href="#" class="hover-orange text-black help" 
+									data-toggle="modal" 
+									data-target=".modal-balin-point">
+									<i class="fa fa-question-circle fa-1x"></i>
+								</a>
+							</small>
+						</h4>
+						<p class="mt-5 mb-5 pull-right text-bold">@money_indo($data['me']['data']['total_point'])</p>
+					</div>
+					<div class="hidden-md hidden-lg mtm-xs mbm-xs">&nbsp;</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mtm-xs mb-sm pr-md">
+						<p class="mtm-xs pull-right">
+							<a class="hover-orange text-sm" href="#" 
+								data-toggle="modal" 
+								data-target=".modal-user-information" 
+								data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 
+								data-modal-title="History Point Anda" 
+								data-view="modal-lg">[ History ]</a>
+						</p>
+					</div>
+				</div>
+				<!-- END SECTION BALIN POINT -->
+			</div>
+			<!-- END SECTION REFERRAL CODE & BALIN POINT -->
+
+			<!-- SECTION FORM INPUT REFERRAL CODE -->
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pt-lg pb-lg border-top-1 border-white">
+				<div class="row">
+					<div class="col-md-12 p-md">
+						<h4 class="m-t-sm">Punya Referal Code ?</h4>
+					</div>	
+				</div>
+				{!! Form::open(['url' => route('my.balin.redeem.store')]) !!}
+					{!! Form::hidden('to', Route::currentRouteName()) !!}
+					<div class="row mb-sm">
+						<div class="col-md-11 pl-md pr-md mb-md">
+							<div class="input-group" style="position:relative">
+								<div class="loading-voucher text-center hide">
+									{!! Html::image('images/loading.gif', null, ['style' => 'width:20px']) !!}
+								</div>
+								{!! Form::hidden('from', 'my.balin.redeem.index') !!}
+								{!! Form::input('text', 'referral_code', null, [
+										'class' => 'form-control hollow transaction-input-voucher-code m-b-sm check-voc-ref',
+										'placeholder' => 'Referal code referensi',
+								]) !!}
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-black-hover-white-border-black" data-action="">Gunakan</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				{!! Form::close() !!}
+			</div>
+			<!-- END SECTION FORM INPUT REFERRAL CODE -->
 		</div>
-		<!-- END SECTION FORM INPUT REFERRAL CODE -->
-	</div>
+	</section>
 	<div class="clearfix">&nbsp;</div>
 	<div class="clearfix">&nbsp;</div>
 	<div class="clearfix">&nbsp;</div>

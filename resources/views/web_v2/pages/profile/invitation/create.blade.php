@@ -21,7 +21,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<p>
 					Lihat daftar yang telah dibagikan 
-					<a class="text-grey-dark hover-black text-underline" href="#" 
+					<a class="hover-orange text-grey-dark hover-black text-underline" href="#" 
 						data-toggle="modal" 
 						data-target=".modal-sub-user-information" 
 						data-action="{{ route('my.balin.invitation.index') }}" 

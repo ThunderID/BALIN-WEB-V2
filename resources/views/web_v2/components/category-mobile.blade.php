@@ -5,7 +5,9 @@
 				Category &nbsp;
 				<span class="category-info">
 					@if (Input::has('categories'))
-						<label class="btn btn-transparent btn-xs category-info-action mb-5"> {{ Input::get('categories') }} <i class="fa fa-times-circle"></i></label>
+						@foreach (Input::get('categories') as $k => $v)
+							<label class="btn btn-transparent btn-xs category-info-action mb-5"> {{ str_replace('-', ' ', $v) }} <i class="fa fa-times-circle"></i></label>
+						@endforeach
 					@endif
 				</span>
 				<span class="pull-right">
@@ -17,12 +19,18 @@
 	<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 		<div class="panel-body">
 			<ul class="list-unstyled m-0 category-list">
-				@foreach ($data['category'] as $k => $v)
-					<li class="p-5" style="width:8em;">
-						<a href="#" class="hover-orange {{ $v['slug'] == Input::get('categories') ? 'text-underline' : null }}">{{ $v['name'] }}</a>
-					</li>
+				@foreach ($category as $k => $v)
+					@if($v['category_id']!=0 && str_is(strtolower($data['type']).'*', $v['slug']))
+						@if(isset(Input::get('categories')[1]) && Input::get('categories')[1] == $v['slug'])
+							<?php $class	= 'text-orange';?>
+						@else
+							<?php $class	= 'hover-orange';?>
+						@endif
+						<li class="p-5" style="width:8em;">
+							<a href="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $v['category']['slug'], 'categories[1]' => $v['slug']]))}}" class="{{$class}}">{{ strtoupper($v['name']) }}</a>
+						</li>
+					@endif
 				@endforeach
-				<li class="p-5" style="width:8em;"><a href="#" class="hover-orange text-orange">SALE</a></li>
 			</ul>
 		</div>
 	</div>

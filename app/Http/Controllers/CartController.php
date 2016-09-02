@@ -119,6 +119,7 @@ class CartController extends BaseController
 
 		$this->page_attributes->subtitle 			= 'Carts';
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
+		$this->base_path_view 						= '';
 
 		return $this->generateView();
 	}
