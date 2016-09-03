@@ -6885,11 +6885,11 @@ body {
   min-width: 70px; }
 
 /* general */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
   .desktop-only {
     display: none; } }
 
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 992px) {
   .mobile-only {
     display: none; } }
 
