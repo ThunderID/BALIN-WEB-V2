@@ -1,21 +1,39 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<div class="container-fluid background pt-lg pb-lg mtm-xs">
+<?php
+//get type
+if(Session::has('type')){
+	$type = Session::get('type');
+}elseif(Request::input('type')){
+	$type = Request::input('type');
+}else{
+	$type = 'login'; 
+}
+?>
+	<div class="container-fluid background pt-0 pb-lg mtm-xs">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 text-center text-white">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12">
-							<div class="signin" style="@if (Session::has('type')) {{ (Session::get('type')=='login') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='login') || (Input::get('type')=='login')) ? 'display:block;' : 'display:none;' }} @endif">
+							<div class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
+								<h2 class="text-superlight mb-xl">Sign In</h2>
+								@include('web_v2.components.alert-box')
 								@include('web_v2.components.login.form')
+
+								<div class="col-xs-12">
+									<p class="text-light mt-lg hidden-md hidden-lg btn-signup">Belum mendaftar ? <a href="#" class="text-orange">Sign Up</a></p>
+								</div>
 							</div>
-							<div class="signup" style="@if (Session::has('type') && (Session::get('type')=='signup') || (isset($type) && ($type=='signup'))) display:block; @else display:none; @endif">
+							<div class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
 								<h2 class="text-superlight mb-xl">Sign Up</h2>
+								@include('web_v2.components.alert-box')
 								@include('web_v2.components.signup.form')
 							</div>
-							<div class="forgot" style="display:none">
-								<h3>Reset Password</h3>
+							<div class="forgot" style="display:none; color:white !important;">
+								<h2 class="text-superlight mb-xl">Reset Password</h2>
+								@include('web_v2.components.alert-box')
 								@include('web_v2.components.forgot.form')
 							</div>
 						</div>
@@ -58,6 +76,11 @@
 @stop
 
 @section('js')
+	$('.btn-signin').click( function() {
+		$('.signup').hide();
+		$('.signin').toggle();
+		$('.forgot').hide();
+	});
 	$('.btn-signup').click( function() {
 		$('.signup').show();
 		$('.signin').hide();
@@ -72,7 +95,7 @@
 		$('.signup').hide();
 		$('.signin').hide();
 		$('.forgot').show();
-	});	
+	});
 @stop
 
 @section('wrapper_class')

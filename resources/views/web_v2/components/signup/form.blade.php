@@ -25,6 +25,10 @@
 			{!! Form::text('dob', null, ['class' => 'form-control input-lg text-lg date_format', 'placeholder' => 'Tanggal Lahir', 'required' => 'required', 'tabindex' => 5]) !!}
 		</div>
 	</div>
+    <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+	    <div class="row clearfix mb-sm">
+	    </div>
+    </div>		
 	<div class="form-group mt-lg">
 		<button type="submit" class="btn btn-orange btn-lg text-lg pl-xxl pr-xxl" tabindex="6">Sign Up</button>
 	</div>
@@ -33,5 +37,5 @@
 		<span class="fa fa-facebook"></span>
 		Daftar Menggunakan Facebook
 	</a>
-	<p class="text-light mt-lg hidden-md hidden-lg">Sudah terdaftar ? <a href="#" class="text-orange">Login</a></p>
+	<p class="text-light mt-lg hidden-md hidden-lg btn-signin">Sudah terdaftar ? <a href="javascript:void(0)" class="text-orange">Login</a></p>
 {!! Form::close() !!}
