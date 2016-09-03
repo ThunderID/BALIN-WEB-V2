@@ -15,22 +15,17 @@
 			</div>
 		</div>
 		@foreach($item_size as $key => $value)
-			<div class="row p-xs list_vid" 
+			<div class="row p-xs list-varian" 
 				data-vid="{{ $value['varian_id'] }}" 
 				data-cid="{{ $item_id }}">
-				<div class="col-sm-3 col-md-3 col-lg-3 qty-{{ strtolower($value['size']) }}" 
-					data-get-flag="qty-{{ strtolower($value['size']) }}">
+				<div class="col-sm-3 col-md-3 col-lg-3">
 					<p class="m-b-none" style="line-height:20px">{{ $value['size'] }}</p>
 				</div>
-				<div class="col-sm-2 col-md-2 col-lg-2 text-left pr-md qty-{{ strtolower($value['size']) }} label_price" 
-					data-price="{{ $item_price }}" 
-					data-get-price="qty-{{ strtolower($value['size']) }}" 
-					data-get-flag="qty-{{ strtolower($value['size']) }}">
+				<div class="col-sm-2 col-md-2 col-lg-2 text-left pr-md label_price">
 					@money_indo( $item_price )
 				</div>
 				<div class="col-sm-1 col-md-1 col-lg-1">&nbsp;</div>
-				<div class="col-sm-1 col-md-1 col-lg-1 text-center qty-{{ strtolower($value['size']) }}" 
-					data-get-flag="qty-{{ strtolower($value['size']) }}">
+				<div class="col-sm-1 col-md-1 col-lg-1 text-center">
 					<a href="javascript:void(0);" class="pull-left qty-minus not-active">
 						<strong>-</strong>
 					</a>
@@ -44,16 +39,10 @@
 						<strong>+</strong>
 					</a>
 				</div>
-				<div class="col-sm-3 col-md-3 col-lg-3 text-right pr-md label-price qty-{{ strtolower($value['size']) }}" 
-					data-price="{{ $item_price }}" 
-					data-get-price="qty-{{ strtolower($value['size']) }}" 
-					data-get-flag="qty-{{ strtolower($value['size']) }}">
+				<div class="col-sm-3 col-md-3 col-lg-3 text-right pr-md label-price">
 					<span class="mr-lg">@money_indo( $item_discount )</span>
 				</div>
-				<div class="col-sm-2 col-md-2 col-lg-2 text-right qty-{{ strtolower($value['size']) }}" 
-					data-total="{{ ($item_price - $item_discount) * $value['quantity'] }}" 
-					data-get-total="qty-{{ strtolower($value['size']) }}" 
-					data-get-flag="qty-{{ strtolower($value['size']) }}" data-subtotal="{{ $item_total }}">
+				<div class="col-sm-2 col-md-2 col-lg-2 text-right">
 					<span class="total_per_pieces" 
 						data-total-piece="{{ ($item_price - $item_discount) * $value['quantity'] }}">
 						@money_indo( ($item_price - $item_discount) * $value['quantity'] )
