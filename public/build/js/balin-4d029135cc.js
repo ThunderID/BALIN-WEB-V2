@@ -1102,7 +1102,10 @@ EVENT & FUNCTION OTHER
 			data: {qty: item_qty},
 			success: function(result) {
 				count_cart 	= Object.keys(result.carts).length; 
-				$('.ico_cart').find('span').html(count_cart);
+				$('.cart-count').find('strong').html(count_cart);
+				if (count_cart == 0){
+					$('.cart-count').removeClass('bg-orange');
+				}
 
 				// $.each(result.carts, function(k, v) {
 				// 	$.each(v.varians, function(k2, v2) {
@@ -1154,6 +1157,131 @@ EVENT & FUNCTION OTHER
 		}
 		return s.join(dec);
 	}
+
+
+
+
+	/**
+	 * New function cart items
+	 */
+	
+	/**
+	 * [addStock in cart]
+	 * @param {[type]} current [description]
+	 * @param {[type]} stock   [description]
+	 */
+	function addStock (current, stock) {
+		if (current < stock) {
+			return current + 1;
+		} else {
+			return current;
+		}
+	}
+
+	/**
+	 * [removeStock in cart]
+	 * @param  {[type]} current [description]
+	 * @return {[type]}         [description]
+	 */
+	function removeStock (current) {
+		if (current > 0) {
+			return current - 1;
+		} else {
+			return current;
+		}
+	}
+
+	/**
+	 * [button add +1 item in cart]
+	 * @param  {[type]} ) {		prev      [description]
+	 * @return {[type]}   [description]
+	 */
+	$(document).on('click', '.qty-plus', function() {
+		prev = parseInt($(this).parent().find('.qty').text());
+		stock = parseInt($(this).parent().find('.qty').data('stock'));
+		current = addStock(prev, stock);
+		$(this).parent().find('.qty').text(current);
+		$(this).parent().find('.qty').trigger('change');
+
+		if (current < stock) {
+			if (current > 0 ) {
+				$(this).siblings('.qty-minus').removeClass('not-active');
+			}
+		} else {
+			$(this).addClass('not-active');
+		}
+	});
+
+	/**
+	 * [button -1 item size in cart]
+	 * @param  {[type]} ) {		prev      [description]
+	 * @return {[type]}   [description]
+	 */
+	$(document).on('click', '.qty-minus', function() {
+		prev = parseInt($(this).parent().find('.qty').text());
+		stock = parseInt($(this).parent().find('.qty').data('stock'));
+		current = removeStock(prev);
+		$(this).parent().find('.qty').text(current);
+		$(this).parent().find('.qty').trigger('change');
+
+		if (current > 0) {
+			if (current < stock) {
+				$(this).siblings('.qty-plus').removeClass('not-active');
+			}
+		} else {
+			$(this).addClass('not-active');
+		}
+	});
+
+	/**
+	 * [check label qty on change and get total price]
+	 * @param  {[type]} ) {		total     [description]
+	 * @return {[type]}   [description]
+	 */
+	$(document).on('change', '.qty', function() {
+		total = 0;
+		price = $(this).data('price');
+		discount = $(this).data('discount');
+		action = $(this).data('action');
+		row_varian = $(this).parent().parent();
+
+		total = total + (parseInt($(this).text()) * (price - discount));
+
+		$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
+		$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
+		$(this).parent().parent().find('.total_per_pieces').trigger('change');
+
+		send_ajax_update(parseInt($(this).text()), action);
+
+		if (parseInt($(this).text()) == 0) {
+			if (row_varian.parent().find('.list_vid').length == 1) {
+				if (row_varian.parent().parent().parent().find('.cart-item').length == 1) {
+					row_varian.parent().parent().parent().find('.cart-item').remove();
+					$('.cart-footer').remove();
+					html = '<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm hidden-xs"> \
+								<div class="col-md-12 col-sm-12 col-xs-12"> \
+									<h4 class="text-center text-md">Tidak ada item di cart</h4> \
+								</div> \
+							</div>';
+							console.log(html);
+					$('.cart-append').html(html);
+					$('.btn-checkout').addClass('hide');
+				} else {
+					row_varian.parent().parent().remove();
+				}
+			} else {
+				row_varian.remove();
+			}
+		}
+	});
+
+	$(document).on('change', '.total_per_pieces', function() {
+		total_all = 0;
+		$('.total_per_pieces').each( function() {
+			total_all = total_all + parseInt($(this).data('total-piece'));
+		});
+		$('.total_all').text('IDR ' + number_format(total_all));
+	});
 	/**
 	 * [function pilih address]
 	 */
@@ -1303,22 +1431,23 @@ EVENT & FUNCTION OTHER
 	 * @return gv {return dari json}
 	 */
 	function get_voucher (e) {
-		voucher_value = e.val();
+		value = e.val();
 		action = e.attr('data-action');
-
-		return $.ajax({
+		gv = '';
+		$.ajax({
 			url: action,
-			type: 'post',
-			dataType: 'json',
+			type: 'get',
+			dataType: 'json', 
 			async: false,
-			data: {voucher: voucher_value},
-			beforeSend: function() {
-				$('.loading_voucher').removeClass('hide');
-			},
+			data: {voucher: value},
 			success: function(data) {
-				
+				gv = data;
+			},
+			error: function(){
+				gv = false;
 			}
 		});
+		return gv;
 	}
 
 	/**
@@ -1328,37 +1457,49 @@ EVENT & FUNCTION OTHER
 	 * @param  p {elemet input dari kode voucher}
 	 */
 	function show_voucher (e, p) {
-		msg = '';
-		modal_alert = $('#alert_window');
-
-		if (e.type=='success') {
+		if (e.type=='success')
+		{
 			error = false;
 			panel_voucher = $('.panel_form_voucher');
-			msg = e.msg;
-			panel_voucher.html('<p class="pl-sm pr-sm mb-0">'+msg+'</p>');
+			modal_notif = $('.modal-notif');
+			modal_notif.find('.title').children().html('');
+			modal_notif.find('.content').html(e.msg);
 
-			reload_view(e, 'desktop');
-			reload_view(e, 'mobile');
+			set_voucher_id(p);
+
+			if (e.discount==true) {
+				$('.shipping_cost').text('IDR 0');
+				$('.shipping_cost').attr('data-s', 0);
+				$('.shipping_cost').attr('data-v', 1);
+			}
+
+			setTimeout( function() {
+				$('.loading_voucher').addClass('hide');
+				panel_voucher.html('<p class="pl-sm pr-sm mb-0">'+e.msg+'</p>');
+			}, 2000);
+
+			$('#notif_window').modal('show');
 		}
-		else if (e.type=='error') {
+		else if (e.type=='error')
+		{
 			error = true;
-			$.each(e.msg, function (index, value) {
-				msg += '<p class="mb-5"> - '+ value +'</p>';
-			});
+			setTimeout( function() {
+				$('.loading_voucher').addClass('hide');
+			}, 2000);
+			
+			$('#voucher-error').show();
 		}
-
-		modal_alert.find('.content').html('<p class="border-bottom-1 border-grey-light">Info</p>'+msg);
-		modal_alert.modal('show');
-
-		setTimeout( function() {
-			$('.loading_voucher').addClass('hide');
-		}, 2000);
-
-		setTimeout( function() {
-			modal_alert.modal('hide');
-		}, 2000);
 
 		return error;
+	}
+
+	/*
+	*	function set voucher id
+	*	@param input code object 
+	*/
+	function set_voucher_id (e) {
+		val = e.val();
+		$('.voucher_code').val(val);
 	}
 
 	function add_gift(e) {
@@ -1547,12 +1688,12 @@ EVENT & FUNCTION OTHER
 		}
 		else if (ajax=='voucher') {
 			input_voucher = $('#content_voucher').find('.voucher_desktop');
+			$('#voucher-error').hide();
 			if (typeof(input_voucher.val()) != "undefined" && input_voucher.val() != '') {
-				get_voucher(input_voucher).done(function(data) {
-					param_check = show_voucher(data, input_voucher);
-				}).fail(function() {
-					console.log('gagal');
-				});
+				var result = get_voucher(input_voucher)
+				if(result != "undefined" && result != '' ){
+					param_check = show_voucher(result, input_voucher);
+				}
 			}
 		}
 		else if (ajax=='gift') {
