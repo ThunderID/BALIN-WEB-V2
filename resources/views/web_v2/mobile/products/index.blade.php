@@ -24,7 +24,7 @@
 			<div class="clearfix">&nbsp;</div>
 			<div class="row">
 				<div class="col-md-12">
-					<h4 class="">Anda Mungkin Suka</h4>
+					<h4 class="mt-md mb-sm pl-sm pr-sm">Anda Mungkin Suka</h4>
 				</div>
 			</div>
 			<div class="row mt-md mb-sm pl-sm pr-sm">
