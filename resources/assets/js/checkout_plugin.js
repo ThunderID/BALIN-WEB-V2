@@ -419,7 +419,6 @@
 			input_choice_payment = $('input[type=radio][name=choice_payment]:checked').val();
 			action = e.attr('data-action');
 			if (typeof(input_choice_payment) != "undefined" && input_choice_payment != '') {
-				parsing_choice_payment(data, input_choice_payment);
 				$.ajax({
 					url: action,
 					type: 'post',
