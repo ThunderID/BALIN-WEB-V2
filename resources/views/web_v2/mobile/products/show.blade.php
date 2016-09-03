@@ -411,7 +411,7 @@
 				total = total + (parseInt($(this).text()) * price);
 			}
 		});
-		total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-		$('.total').text(total);
+		<!-- total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") -->
+		$('.total').text(number_format(total));
 	});
 @stop
