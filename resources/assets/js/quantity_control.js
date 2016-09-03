@@ -838,6 +838,12 @@ EVENT & FUNCTION OTHER
 		});
 	});
 
+	/**
+	 * [send_ajax_update cart on page cart index]
+	 * @param  {[type]} item_qty [description]
+	 * @param  {[type]} action   [description]
+	 * @return {[type]}          [description]
+	 */
 	function send_ajax_update(item_qty, action) {
 		$.ajax({
 			url: action,
@@ -851,16 +857,6 @@ EVENT & FUNCTION OTHER
 				if (count_cart == 0){
 					$('.cart-count').removeClass('bg-orange');
 				}
-
-				// $.each(result.carts, function(k, v) {
-				// 	$.each(v.varians, function(k2, v2) {
-				// 		if (v2.message!=='') {
-				// 			flg = 1;
-				// 			show_tooltip($('.input_number').find('[data-id="'+v2.varian_id+'"]'), flg);
-				// 		}
-				// 	});
-				// });
-				
 				$.ajax({
 					url: data_action2,
 					beforeSend: function() {
@@ -874,9 +870,14 @@ EVENT & FUNCTION OTHER
 		});
 	}
 
-	/*============================================= 
-	[ FUNCTION NUMBER FORMAT ]
-	=============================================*/
+	/**
+	 * [number_format for money]
+	 * @param  {[type]} number        [description]
+	 * @param  {[type]} decimals      [description]
+	 * @param  {[type]} dec_point     [description]
+	 * @param  {[type]} thousands_sep [description]
+	 * @return {[type]}               [description]
+	 */
 	function number_format(number, decimals, dec_point, thousands_sep) {
 	  number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
 
@@ -985,41 +986,74 @@ EVENT & FUNCTION OTHER
 	 */
 	$(document).on('change', '.qty', function() {
 		total = 0;
+		total_mobile = 0;
 		price = $(this).data('price');
 		discount = $(this).data('discount');
 		action = $(this).data('action');
-		row_varian = $(this).parent().parent();
-
+		row_varian_desktop = $(this).parent().parent();
+		row_varian_mobile = $(this).parent().parent();
 		total = total + (parseInt($(this).text()) * (price - discount));
 
+		row_varian_mobile.parent().find('.list-varian').each(function() {
+			qty = $(this).find('span.qty');
+			qty = parseInt(qty.text());
+			total_mobile = total_mobile + (qty * (price-discount));
+		});
+
+		// for desktop & tablet
 		$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
 		$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
 		$(this).parent().parent().find('.total_per_pieces').trigger('change');
 
+		// for mobile
+		$(this).parent().parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total_mobile));
+		$(this).parent().parent().parent().find('.total_per_pieces').data('total-piece', total_mobile);
+		$(this).parent().parent().parent().find('.total_per_pieces').trigger('change');
+
 		send_ajax_update(parseInt($(this).text()), action);
 
+		// qty 0
 		if (parseInt($(this).text()) == 0) {
-			if (row_varian.parent().find('.list_vid').length == 1) {
-				if (row_varian.parent().parent().parent().find('.cart-item').length == 1) {
-					row_varian.parent().parent().parent().find('.cart-item').remove();
+			// desktop & tablet check total list varian 
+			if (row_varian_desktop.parent().find('.list-varian').length == 1) {
+				// total item 1
+				if (row_varian_desktop.parent().parent().parent().find('.cart-item').length == 1) {
+					row_varian_desktop.parent().parent().parent().find('.cart-item').remove();
 					$('.cart-footer').remove();
-					html = '<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm hidden-xs"> \
+
+					html = '<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm desktop-tablet"> \
 								<div class="col-md-12 col-sm-12 col-xs-12"> \
 									<h4 class="text-center text-md">Tidak ada item di cart</h4> \
 								</div> \
 							</div>';
-							console.log(html);
+
+					html_mobile = '<div class="row mr-0 ml-0 pt-lg pb-lg mt-lg mb-lg" style="margin-top:"> \
+										<div class="col-xs-12"> \
+											<h4 class="text-center text-md">Tidak ada item di cart</h4> \
+										</div> \
+									</div>';
+
 					$('.cart-append').html(html);
+					$('.cart-append-mobile').html(html_mobile);
+					$('.cart-append-mobile').parent().parent().css({'margin-top': '35vh', 'transform': 'translateY(-50%)'});
+					$('html, body').animate({scrollTop: 0}, 600);
 					$('.btn-checkout').addClass('hide');
+				// total item > 1
 				} else {
-					row_varian.parent().parent().remove();
+					row_varian_desktop.parent().parent().remove();
 				}
+			// total list varian > 1
 			} else {
-				row_varian.remove();
+				row_varian_desktop.remove();
 			}
 		}
 	});
 
+	/**
+	 * [check total per all item]
+	 * @param  {[type]} ) {		total_all [description]
+	 * @return {[type]}   [description]
+	 */
 	$(document).on('change', '.total_per_pieces', function() {
 		total_all = 0;
 		$('.total_per_pieces').each( function() {

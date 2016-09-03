@@ -106,46 +106,6 @@
 					<div class="clearfix">&nbsp;</div>
 				</div>
 				<!-- END SECTION FOOTER CART DESKTOP -->
-
-				<!-- SECTION FOOTER CART MOBILE -->
-				<div class="row hidden-lg hidden-md hidden-sm border-bottom-1 solid border-white bg-black pb-lg">
-					<div class="col-xs-12" >
-						@if (!empty($data['carts']))
-							<div class="row p-t-xs m-b-none">
-								<div class="col-xs-12">
-									<h3 class="text-center text-white">SubTotal</h3>
-								</div>
-							</div>
-							<div class="row empty-cart-mobile">
-								<div class="col-xs-12">
-									<h2 class="text-center text-white grand_total_mobile" data-get-total="{{ $total }}">
-										@if (isset($total))
-											@money_indo($total)
-										@endif
-									</h2>
-								</div>
-							</div>
-						@endif
-						<div class="clearfix">&nbsp;</div>
-						@if (!empty($data['carts']))
-							<div class="row mt-sm mb-sm empty-cart-mobile">
-								<div class="col-xs-12">
-									<a href="{{ route('my.balin.checkout.get') }}" class="btn bnt-orange-full btn-block btn-lg text-uppercase">
-										Checkout
-									</a>
-								</div>
-							</div>
-						@endif
-						<div class="row mt-sm mb-sm">
-							<div class="col-xs-12">
-								<a href="{{ route('balin.product.index') }}" class="btn btn-black-border-white-hover-white btn-block btn-lg text-uppercase">
-									Pilih Produk Lain
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- END SECTION FOOTER CART MOBILE -->
 				<!-- END SECTION TABLE FOOTER CART -->
 			</div>
 		</div>
