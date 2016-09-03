@@ -33,6 +33,11 @@
 					{!!Html::image('http://drive.thunder.id/file/public/4/10/2016/08/12/16/payment_transfer.png', 'veritrans', ['style' => 'max-width:80px;'])!!}
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+				 	<label id="choice_payment_error" class="warning" for="voucher" style="display:none;">Anda belum memilih metode pembayaran</label>
+				</div>
+			</div>
 		</form>
 		<div class="row pt-md pb-md">
 			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
