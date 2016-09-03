@@ -1493,7 +1493,6 @@ EVENT & FUNCTION OTHER
 	function show_voucher (e, p) {
 		if (e.type=='success')
 		{
-			error = false;
 			panel_voucher = $('.panel_form_voucher');
 			modal_notif = $('.modal-notif');
 			modal_notif.find('.title').children().html('');
