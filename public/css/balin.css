@@ -5958,6 +5958,22 @@ ul.dropdown-user {
   .btn-facebook span, .btn-facebook:focus span {
     border-right: 1px solid #1e2e4f; }
 
+@media screen and (max-width: 767px) {
+  .no-border-xs {
+    border-style: none !important; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .no-border-sm {
+    border-style: none !important; } }
+
+@media screen and (min-width: 992px) and (max-width: 1170px) {
+  .no-border-md {
+    border-style: none !important; } }
+
+@media screen and (max-width: 1171) {
+  .no-border-lg {
+    border-style: none !important; } }
+
 .input-group-custom {
   width: 100%; }
   .input-group-custom .input-group-addon {
