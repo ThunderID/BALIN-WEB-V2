@@ -8,11 +8,11 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12">
 							<div class="signin" style="@if (Session::has('type')) {{ (Session::get('type')=='login') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='login') || (Input::get('type')=='login')) ? 'display:block;' : 'display:none;' }} @endif">
-								<h2 class="text-superlight mb-xl">Sign Up</h2>
-								@include('web_v2.components.signup.form')
+								@include('web_v2.components.login.form')
 							</div>
 							<div class="signup" style="@if (Session::has('type') && (Session::get('type')=='signup') || (isset($type) && ($type=='signup'))) display:block; @else display:none; @endif">
-								@include('web_v2.components.login.form')
+								<h2 class="text-superlight mb-xl">Sign Up</h2>
+								@include('web_v2.components.signup.form')
 							</div>
 							<div class="forgot" style="display:none">
 								<h3>Reset Password</h3>
