@@ -66,10 +66,13 @@
 				<div class="carousel">
 
 				@foreach($data['instagram'] as $key => $data)
+				<?php $link = json_decode($data['value'], true);?>
 					<div class="item">
 						<div class="col-xs-12 pl-0 pr-0">
 							<div class="tile text-center">
-								{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive']) !!}
+								<a href="{{$link['action']}}">
+									{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive']) !!}
+								</a>
 								<div class="jumbotron">
 								</div>
 							</div>
