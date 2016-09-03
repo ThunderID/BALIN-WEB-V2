@@ -418,21 +418,26 @@
 		else if (ajax=='choice_payment') {
 			input_choice_payment = $('input[type=radio][name=choice_payment]:checked').val();
 			action = e.attr('data-action');
-
-			$.ajax({
-				url: action,
-				type: 'post',
-				dataType: 'json',
-				data: {choice_payment: input_choice_payment},
-				success: function(data) {
-					if (typeof(data.type) == 'eror') {
-						msg = false;
+			if (typeof(input_choice_payment) != "undefined" && input_choice_payment != '') {
+				$.ajax({
+					url: action,
+					type: 'post',
+					dataType: 'json',
+					data: {choice_payment: input_choice_payment},
+					success: function(data) {
+						if (typeof(data.type) == 'eror') {
+							param_check = false;
+						}
+						else {
+							param_check = true;
+						}
 					}
-					else {
-						msg = true;
-					}
-				}
-			});
+				});
+				$('#choice_payment_error').hide();
+			}else{
+				param_check = true;
+				$('#choice_payment_error').show();
+			}
 		}
 		else if (ajax=='submit') {
 

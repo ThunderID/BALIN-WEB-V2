@@ -86,7 +86,7 @@
 						</p>
 					</div>
 					@if ($data['product']['data']['data'][0]['promo_price'] != 0 && (!is_null($data['product']['data']['data'][0]['price_end']) && \Carbon\Carbon::parse($data['product']['data']['data'][0]['price_end'])->format('Y-m-d') == \Carbon\Carbon::now()->format('Y-m-d') ))
-						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pl-0">
+						<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 							<p class="mb-0">Time left to buy</p>
 							<h3 class="text-orange mt-0 countdown" data-seconds-left={{\Carbon\Carbon::now()->diffInSeconds(\Carbon\Carbon::parse($data['product']['data']['data'][0]['price_end']))}}></h3>
 						</div>					
