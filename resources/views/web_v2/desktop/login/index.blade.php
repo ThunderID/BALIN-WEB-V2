@@ -1,6 +1,16 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
+<?php
+//get type
+if(Session::has('type')){
+	$type = Session::get('type');
+}elseif(Request::input('type')){
+	$type = Request::input('type');
+}else{
+	$type = 'login'; 
+}
+?>
 	<div class="container-fluid background">
 		<div class="row">
 			{{-- signup preface --}}
@@ -33,19 +43,19 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 auth">
-						<p class="signup" style="@if (Session::has('type')) {{ (Session::get('type')=='signup') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='signup') || (Input::get('type')=='signup')) ? 'display:block;' : 'display:none;' }} @endif">
+						<p class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
 							Sudah Terdaftar?
 							<a href="javascript:void(0);" class="btn-signin">
 								Sign In
 							</a> 
 						</p>
-						<p class="signin" style="@if (Session::has('type') && (Session::get('type')=='login') || (isset($type) && ($type=='login'))) display:block; @else display:none; @endif">
+						<p class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
 							Belum Punya Akun?
 							<a href="javascript:void(0);" class="btn-signup">
 								Sign Up
 							</a> 
 						</p>
-						<p class="forgot" style="display:none;">
+						<p class="forgot" style="display:none; color:white !important;">
 							Belum Punya Akun?
 							<a href="javascript:void(0);" class="btn-signup">
 								Sign Up
@@ -59,17 +69,17 @@
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 				<div class="row panel-akun p-xs mt-md">
 					<div class="col-md-12 text-center">
-						<div class="signup" style="@if (Session::has('type')) {{ (Session::get('type')=='signup') ? 'display:block;' : 'display:none;' }} @else {{ (isset($type) && ($type=='signup') || (Input::get('type')=='signup')) ? 'display:block;' : 'display:none;' }} @endif">
+						<div class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
 							<h2 class="text-center mb-lg">Sign Up</h2>
 							@include('web_v2.components.alert-box')
 							@include('web_v2.components.signup.form')
 						</div>
-						<div class="signin" style="@if (Session::has('type') && (Session::get('type')=='login') || (isset($type) && ($type=='login'))) display:block; @else display:none; @endif">
+						<div class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
 							<h2 class="text-center mb-lg">Sign In</h2>
 							@include('web_v2.components.alert-box')
 							@include('web_v2.components.login.form')
 						</div>						
-						<div class="forgot" style="display:none">
+						<div class="forgot" style="display:none; color:white !important;">
 							<h2 class="text-center mb-lg">Reset Password</h2>
 							@include('web_v2.components.alert-box')
 							@include('web_v2.components.forgot.form')
