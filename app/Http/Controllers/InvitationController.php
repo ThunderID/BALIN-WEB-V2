@@ -44,7 +44,10 @@ class InvitationController extends BaseController
 		$this->page_attributes->breadcrumb			= $breadcrumb;
 		$this->page_attributes->source 				= 'login.index';
 		$this->page_attributes->type_form			= 'signup';
+		$this->page_attributes->controller_name		= 'signup';
 		$this->page_attributes->data 				= ['code' => $code, 'link' => $link];
+
+		Session::put('type', 'signup');
 
 		return $this->generateView();
 	}
