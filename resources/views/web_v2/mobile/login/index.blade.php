@@ -15,7 +15,7 @@ if(Session::has('type')){
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 text-center text-white">
 				<div class="container">
-					<div class="row">
+					<div class="row panel-akun">
 						<div class="col-xs-12 col-sm-12">
 							<div class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
 								<h2 class="text-superlight mb-xl">Sign In</h2>
