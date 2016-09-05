@@ -211,7 +211,6 @@ class CheckoutController extends BaseController
 		{
 			return Response::json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'], 200);
 		}
-
 		//2. Store voucher
 		$voucher 										= Input::get('voucher');
 		$me_order_in_cart['data']['voucher']['code']	= $voucher;
@@ -234,7 +233,7 @@ class CheckoutController extends BaseController
 		}
 		else
 		{
-			return Response::json(['type' => 'success', 'msg' => 'Selamat! Voucher Anda konversikan menjadi point untuk pembayaran.', 'discount' => false, 'action' => route('my.balin.checkout.get.order', $result['data']['id'])], 200);
+			return Response::json(['type' => 'success', 'msg' => 'Selamat! Voucher Anda di konversikan menjadi point untuk pembayaran.', 'discount' => false, 'action' => route('my.balin.checkout.get.order', $result['data']['id'])], 200);
 		}
 	}
 
