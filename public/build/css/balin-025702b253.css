@@ -3568,13 +3568,13 @@ a.thumbnail.active {
     color: inherit; }
 
 .alert-success {
-  background-color: transparent;
-  border-color: #000;
-  color: #000; }
+  background-color: #489a4a;
+  border-color: #489a4a;
+  color: white; }
   .alert-success hr {
-    border-top-color: black; }
+    border-top-color: #408942; }
   .alert-success .alert-link {
-    color: black; }
+    color: #e6e6e6; }
 
 .alert-info {
   background-color: transparent;
