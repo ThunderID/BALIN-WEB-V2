@@ -37,7 +37,11 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li>
+					@if (Session::has('whoami'))
+					<a href="{{route('my.balin.redeem.index')}}" class="hover-orange">Balin Point</a>
+					@else
 					<a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange">Balin Point</a>
+					@endif
 				</li>
 				<li>
 					@if (Session::has('whoami'))
