@@ -22,7 +22,7 @@ if(Session::has('type')){
 					<p class="tagline">Fashionable and Modern Batik</p>
 				</div>
 				<div class="row mb-xl">
-					<p class="large">Sign Up Now. </br> Experiaence Our Best In Everything.</p>
+					<p class="large">Sign Up Now. </br> Experience Our Best In Everything.</p>
 				</div>
 				<div class="row mb-sm">
 					<p>We Crafting Best Batik For You</p>

@@ -41,13 +41,11 @@ class InvitationController extends BaseController
 		$breadcrumb									= ['Sign Up' => route('balin.get.login')];
 
 		$this->page_attributes->subtitle 			= 'Sign Up';
+		$this->page_attributes->controller_name		= 'signup';
 		$this->page_attributes->breadcrumb			= $breadcrumb;
 		$this->page_attributes->source 				= 'login.index';
 		$this->page_attributes->type_form			= 'signup';
-		$this->page_attributes->controller_name		= 'signup';
 		$this->page_attributes->data 				= ['code' => $code, 'link' => $link];
-
-		Session::put('type', 'signup');
 
 		return $this->generateView();
 	}
@@ -82,13 +80,16 @@ class InvitationController extends BaseController
 		
 		if (Input::has('password'))
 		{
-			$validator 					= Validator::make(Input::only('password', 'password_confirmation'), ['password' => 'required|min:8|confirmed']);
+			$validator 					= Validator::make(Input::only('password'), ['password' => 'required|min:8']);
 
 			if (!$validator->passes())
 			{
 				$this->errors			= $validator->errors();
 				$type 					= 'signup';
+
+				return $this->generateRedirectRoute('balin.invitation.get', ['code' => $code, 'link' => $link, 'type' => 'signup']);
 			}
+
 		}
 
 		Session::set('API_token', Session::get('API_token_public'));
@@ -121,11 +122,11 @@ class InvitationController extends BaseController
 				$type 							= 'signup';
 			}
 
-			$type 						= 'login';
+			$type 								= 'login';
 		}
 
 		$this->page_attributes->success 		= "Terima kasih sudah mendaftar, Balin telah mengirimkan hadiah selamat datang untuk Anda melalui email Anda.";
 
-		return $this->generateRedirectRoute('balin.get.login', ['type' => $type]);
+		return $this->generateRedirectRoute('balin.invitation.get', ['code' => $code, 'link' => $link, 'type' => $type]);
 	}
 }	
