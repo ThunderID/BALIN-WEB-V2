@@ -5889,6 +5889,10 @@ p {
     margin-top: -30px;
     margin-left: 20px; } }
 
+.cart-content {
+  height: 30vh;
+  overflow-y: scroll; }
+
 /* menu */
 ul.dropdown-user {
   min-width: 240px !important;
