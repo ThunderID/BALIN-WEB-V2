@@ -121,21 +121,21 @@ class InvitationController extends BaseController
 		}
 		else
 		{
-			$infos 								= [];
-			foreach ($this->balin['info'] as $key => $value) 
-			{
-				$infos[$value['type']]			= $value['value'];
-			}
+			// $infos 								= [];
+			// foreach ($this->balin['info'] as $key => $value) 
+			// {
+			// 	$infos[$value['type']]			= $value['value'];
+			// }
 
-			$infos['action']					= route( env('ROUTE_BALIN_INVITATION_GET'), $whoami['data']['code_referral']);
+			// $infos['action']					= route( env('ROUTE_BALIN_INVITATION_GET'), $whoami['data']['code_referral']);
 
-			$mail 								= new APISendMail;
-			$result								= $mail->invitation($whoami['data'], $emails, $infos);
+			// $mail 								= new APISendMail;
+			// $result								= $mail->invitation($whoami['data'], $emails, $infos);
 			
-			if (isset($result['message']))
-			{
-				$this->errors					= $result['message'];
-			}
+			// if (isset($result['message']))
+			// {
+			// 	$this->errors					= $result['message'];
+			// }
 
 			$this->page_attributes->success 	= 'Anda telah mengirimkan  '.count($emails).' undangan kepada teman Anda';
 		}
