@@ -132,7 +132,7 @@ class PasswordController extends BaseController
 
 			if(!$validator->passes())
 			{
-				return Redirect::route('balin.home.index')->withErrors($validator->errors())->with('msg-type', 'danger');
+				return Redirect::route('balin.get.login', ['type' => 'forgot'])->withErrors($validator->errors())->with('msg-type', 'danger');
 			}
 
 			$password 								= Input::get('password');
