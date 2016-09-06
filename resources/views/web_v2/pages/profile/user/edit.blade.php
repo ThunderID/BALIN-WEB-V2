@@ -26,7 +26,7 @@
 					<div class="form-group">
 						<label class="hollow-label">Tanggal Lahir</label>
 						@if (isMobile())
-							{!! Form::input('date','date_of_birth', ($data['date_of_birth'] >= '0000-00-00') ? Carbon::parse($data['date_of_birth'])->format('d-m-Y') : '', ['class' => 'form-control hollow mod_dob date-format', 'id' => 'coba', 'tabindex' => '3', 'placeholder' => 'Masukkan tanggal lahir', 'data-date' => '01-01-1950'] ) !!}
+							{!! Form::input('text','date_of_birth', ($data['date_of_birth'] >= '0000-00-00') ? Carbon::parse($data['date_of_birth'])->format('d-m-Y') : '', ['class' => 'form-control hollow mod_dob date-format', 'id' => 'coba', 'tabindex' => '3', 'placeholder' => 'Masukkan tanggal lahir', 'data-date' => '01-01-1950'] ) !!}
 						@else
 							{!! Form::text('date_of_birth', ($data['date_of_birth'] >= '0000-00-00') ? Carbon::parse($data['date_of_birth'])->format('d-m-Y') : '', ['class' => 'form-control hollow mod_dob date_format', 'id' => 'coba', 'tabindex' => '3', 'placeholder' => 'Masukkan tanggal lahir', 'data-date' => '01-01-1950'] ) !!}
 						@endif
