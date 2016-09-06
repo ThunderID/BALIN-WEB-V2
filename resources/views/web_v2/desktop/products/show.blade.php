@@ -283,23 +283,6 @@
 		$(e.currentTarget).find('span').addClass('active');
 	})
 
-
-	function addStock ($current, $stock){
-		if($current < $stock){
-			return $current + 1;
-		}else{
-			return $current;
-		}
-	}
-	function removeStock ($current){
-		if($current > 0){
-			return $current - 1;
-		}else{
-			return $current;
-		}
-	}
-
-
 	$('.buy').click(function() {
 		<!-- check if busy -->
 		if($(this).children().hasClass('fa-pulse')){
