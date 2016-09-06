@@ -283,23 +283,6 @@
 		$(e.currentTarget).find('span').addClass('active');
 	})
 
-
-	function addStock ($current, $stock){
-		if($current < $stock){
-			return $current + 1;
-		}else{
-			return $current;
-		}
-	}
-	function removeStock ($current){
-		if($current > 0){
-			return $current - 1;
-		}else{
-			return $current;
-		}
-	}
-
-
 	$('.buy').click(function() {
 		<!-- check if busy -->
 		if($(this).children().hasClass('fa-pulse')){
@@ -349,7 +332,7 @@
 						   	type:'GET',
 						   	success: function(data){
 						    	$('#size-section').html($(data).find('#size-section').html());
-						    	$('#cart-desktop').html($(data).find('#cart-desktop').html());
+						    	$('#cart-desktop').find('.cart-count').html($(data).find('#cart-desktop').find('.cart-count').html());
 						    	$('#cart-mobile').html($(data).find('#cart-mobile').html());
 
 								<!-- reset ui -->

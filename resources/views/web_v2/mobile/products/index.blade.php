@@ -36,7 +36,7 @@
 				])
 			</div>
 			<div class="col-md-12 text-center">
-				<a class="btn btn-orange" href="{{route('balin.product.index')}}">Lihat Semua</a>
+				<a class="btn btn-orange" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Semua</a>
 			</div>
 		@else
 			<div class="row">

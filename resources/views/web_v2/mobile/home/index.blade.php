@@ -41,7 +41,7 @@
 	<div class="container text-center">
 		<div class="row">
 			<div class="col-md-12">
-				<a href="{{route('balin.product.index')}}" class="btn btn-orange buy">
+				<a href="{{route('balin.product.index', $data['linked_search'])}}" class="btn btn-orange buy">
 					Lihat Semua
 				</a>
 			</div>

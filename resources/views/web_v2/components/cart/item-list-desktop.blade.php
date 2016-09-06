@@ -18,31 +18,35 @@
 			<div class="row p-xs list-varian" 
 				data-vid="{{ $value['varian_id'] }}" 
 				data-cid="{{ $item_id }}">
-				<div class="col-sm-3 col-md-3 col-lg-3">
+				<div class="col-sm-2 col-md-3 col-lg-3">
 					<p class="m-b-none" style="line-height:20px">{{ $value['size'] }}</p>
 				</div>
-				<div class="col-sm-2 col-md-2 col-lg-2 text-left pr-md label_price">
-					@money_indo( $item_price )
+				<div class="col-sm-4 col-md-3 col-lg-3 text-center label_price">
+					@if ($item_discount != 0)
+						<del>@money_indo($item_price)</del>
+						<span class="col-sm-12 hidden-md hidden-lg"><br/></span>
+						<span class="text-orange">@money_indo($item_price - $item_discount)</span>
+					@else
+						<span>@money_indo($item_price)</span>
+					@endif
 				</div>
-				<div class="col-sm-1 col-md-1 col-lg-1">&nbsp;</div>
-				<div class="col-sm-1 col-md-1 col-lg-1 text-center">
-					<a href="javascript:void(0);" class="pull-left qty-minus not-active">
+				<div class="hidden-sm col-md-1 col-lg-1">&nbsp;</div>
+				<div class="col-sm-3 col-md-2 col-lg-2 text-center pl-xxl pr-xxl">
+					<a href="javascript:void(0);" class="pull-left cart-remove qty-minus">
 						<strong>-</strong>
 					</a>
-					<span class="qty"
+					<span class="qty cart"
 						data-action="{{ route('balin.cart.update', ['slug' => $item_slug, 'varian_id' => $value['varian_id']]) }}"
 						data-id="{{ $value['varian_id'] }}"  
 						data-stock="{{ $value['current_stock'] }}"
 						data-price="{{ $item_price }}"
 						data-discount="{{ $item_discount }}">{{ $value['quantity'] }}</span>
-					<a href="javascript:void(0);" class="pull-right qty-plus"> 
+					<a href="javascript:void(0);" class="pull-right cart-add qty-plus {{ $value['quantity'] == $value['current_stock'] ? 'not-active' : ''}}"> 
 						<strong>+</strong>
 					</a>
 				</div>
-				<div class="col-sm-3 col-md-3 col-lg-3 text-right pr-md label-price">
-					<span class="mr-lg">@money_indo( $item_discount )</span>
-				</div>
-				<div class="col-sm-2 col-md-2 col-lg-2 text-right">
+				<div class="hidden-sm col-md-1 col-lg-1">&nbsp;</div>
+				<div class="col-sm-3 col-md-2 col-lg-2 text-right">
 					<span class="total_per_pieces" 
 						data-total-piece="{{ ($item_price - $item_discount) * $value['quantity'] }}">
 						@money_indo( ($item_price - $item_discount) * $value['quantity'] )
