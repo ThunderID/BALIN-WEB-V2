@@ -39,4 +39,19 @@
 			transform: translate(-50%, -50%);
 		}
 	}
+	h4.font {
+		@media screen and (max-width: 767px) {
+			font-size: 16px;
+		}
+	}
+	p.font {
+		@media screen and (max-width: 767px) {
+			font-size: 12px;
+		}
+	}
+	ul.font {
+		@media screen and (max-width: 767px) {
+			font-size: 12px;
+		}
+	}
 }

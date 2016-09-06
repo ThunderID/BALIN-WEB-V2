@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container pt-md pb-md mb-sm">
+	<div class="container pt-md pb-sm">
 		<div class="row">
 		  	@include('web_v2.components.card', [
 		  		'card' 	=> $data['new_release'],
@@ -66,18 +66,18 @@
 				<div class="carousel">
 
 				@foreach($data['instagram'] as $key => $data)
-				<?php $link = json_decode($data['value'], true);?>
-					<div class="item">
-						<div class="col-xs-12 pl-0 pr-0">
-							<div class="tile text-center">
-								<a href="{{$link['action']}}">
-									{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive']) !!}
-								</a>
-								<div class="jumbotron">
+					<?php $link = json_decode($data['value'], true); ?>
+					<a class="link" href="{{$link['action']}}">
+						<div class="item">
+							<div class="col-xs-12 pl-0 pr-0">
+								<div class="tile text-center">
+										{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive']) !!}
+									<div class="jumbotron">
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				@endforeach
 
 				</div>
