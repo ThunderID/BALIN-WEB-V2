@@ -12,10 +12,10 @@
 				<div class="hover"></div>
 			</a>
 			<div class="card-block">
-				<h4 class="card-title mb-5">
+				<h4 class="card-title mb-5 font">
 					<a href="{{ route('balin.product.show', ['slug' => $v['slug']]) }}" class="hover-orange">{{ $v['name'] }}</a>
 				</h4>
-				<p class="card-text mb-5">
+				<p class="card-text mb-5 font">
 					@if ($v['promo_price'] != 0)
 						<del>@money_indo($v['price'])</del>
 						<span class="text-orange">@money_indo($v['promo_price'])</span>
@@ -24,7 +24,7 @@
 					@endif
 				</p>
 				<div class="border-size mb-xs"></div>
-				<ul class="list-inline">
+				<ul class="list-inline font">
 					@foreach ($v['varians'] as $k2 => $v2)
 						<li>{{ $v2['size'] }}</li>
 					@endforeach

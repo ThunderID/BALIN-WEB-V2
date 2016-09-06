@@ -102,14 +102,23 @@ class AuthController extends BaseController
 		$sso 								= (array)Socialite::driver('facebook')->user();
 
 		$api_url 							= '/oauth/access_token';
-		$api_data 							= 	[
-													'email' 		=> $sso['email'],
-													'password' 		=> 'facebook',
-													'sso' 			=> $sso,
-													'grant_type'	=> 'password',
-													'client_id'		=> env('CLIENT_ID'),
-													'client_secret'	=> env('CLIENT_SECRET'),
-												];
+
+		if(Session::has('invitation'))
+		{
+			$sso['reference_code']			= Session::get('invitation')['code'];
+			$sso['invitation_link']			= Session::get('invitation')['link'];
+		
+			Session::forget('invitation');
+		}
+
+		$api_data 						= 	[
+												'email' 			=> $sso['email'],
+												'password' 			=> 'facebook',
+												'sso' 				=> $sso,
+												'grant_type'		=> 'password',
+												'client_id'			=> env('CLIENT_ID'),
+												'client_secret'		=> env('CLIENT_SECRET'),
+											];
 
 		$api 								= new API;
 		$result 							= json_decode($api->post($api_url, $api_data), true);
