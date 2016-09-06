@@ -49,7 +49,7 @@ class PasswordController extends BaseController
 		//check if reset password fail
 		if ($whoami['status'] != 'success')
 		{
-			return Redirect::route('balin.home.index')->withErrors($whoami['message'])->with('msg-type', 'danger');
+			return Redirect::route('balin.get.login', ['type' => 'forgot'])->withErrors($whoami['message'])->with('msg-type', 'danger');
 		}
 		else
 		{
@@ -92,7 +92,7 @@ class PasswordController extends BaseController
 															]);
 		if (isset($result['message']))
 		{
-			return Redirect::route('balin.home.index')->withErrors($result['message'])->with('msg-type', 'danger');
+			return Redirect::route('balin.get.login', ['type' => 'forgot'])->withErrors($result['message'])->with('msg-type', 'danger');
 		}
 		else
 		{
@@ -152,7 +152,7 @@ class PasswordController extends BaseController
 
 		if (isset($result['message']))
 		{
-			return Redirect::route('balin.home.index')->withErrors($result['message'])->with('msg-type', 'danger');
+			return Redirect::route('balin.get.login', ['type' => 'forgot'])->withErrors($result['message'])->with('msg-type', 'danger');
 		}
 		else
 		{
