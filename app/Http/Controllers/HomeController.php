@@ -42,6 +42,8 @@ class HomeController extends BaseController
 				$categories[] 						= 'wanita';
 			}
 
+			$linked_search 							= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+
 			$product 								= $APIProduct->getIndex([
 															'search' 	=> ['tags' => ['fabric-premium-cotton'], 'categories' => $categories],
 															'sort' 		=> $sort,
@@ -51,6 +53,8 @@ class HomeController extends BaseController
 		}
 		else
 		{
+			$linked_search 							= ['tags' => ['fabric-premium-cotton']];
+
 			$product 								= $APIProduct->getIndex([
 															'search' 	=> ['tags' => ['fabric-premium-cotton']],
 															'sort' 		=> $sort,
@@ -89,6 +93,7 @@ class HomeController extends BaseController
 		}
 
 		$datas['new_release']					= 	$product['data']['data'];
+		$datas['linked_search']					= 	$linked_search;
 
 		$this->page_attributes->metas 			= 	[
 														'og:type' 			=> 'website', 
