@@ -23,7 +23,7 @@
 					<div class="row mt-xs mb-xs pl-sm pr-sm">
 						<div class="col-md-12 text-left">
 							<h4 class="">Anda Mungkin Suka</h4>
-							<a class="home-product-more" href="{{route('balin.product.index')}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
+							<a class="home-product-more" href="{{route('balin.product.index', $linked_search)}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 						</div>
 					</div>
 					<div class="row mt-md mb-sm pl-sm pr-sm">
