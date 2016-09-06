@@ -30,12 +30,39 @@ class HomeController extends BaseController
 		$APIProduct 								= new APIProduct;
 		$sort										= ['name' => 'asc'];
 		$page 										= 1;
-		$product 									= $APIProduct->getIndex([
+
+		if(Session::has('whoami'))
+		{
+			if(Session::get('whoami')['gender']=='male')
+			{
+				$categories[] 						= 'pria';
+			}
+			else
+			{
+				$categories[] 						= 'wanita';
+			}
+
+			$linked_search 							= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+
+			$product 								= $APIProduct->getIndex([
+															'search' 	=> ['tags' => ['fabric-premium-cotton'], 'categories' => $categories],
+															'sort' 		=> $sort,
+															'take'		=> 4,
+															'skip'		=> 0,
+														]);
+		}
+		else
+		{
+			$linked_search 							= ['tags' => ['fabric-premium-cotton']];
+
+			$product 								= $APIProduct->getIndex([
 															'search' 	=> ['tags' => ['fabric-premium-cotton']],
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
 														]);
+		}
+
 		//temporary data
 		$datas['sliders']							= 	$this->balin['sliders'];
 
@@ -66,6 +93,7 @@ class HomeController extends BaseController
 		}
 
 		$datas['new_release']					= 	$product['data']['data'];
+		$datas['linked_search']					= 	$linked_search;
 
 		$this->page_attributes->metas 			= 	[
 														'og:type' 			=> 'website', 

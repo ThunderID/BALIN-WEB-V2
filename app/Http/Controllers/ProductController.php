@@ -127,11 +127,20 @@ class ProductController extends BaseController
 															'skip'		=> ($page - 1) * $this->take,
 														]);
 
+		if(Input::has('categories'))
+		{
+			$linked_search 							= ['categories' => [Input::get('categories')[0]]];
+		}
+		else
+		{
+			$linked_search 							= [];
+		}
+
 		$offer['data']['data'] 						= [];
 		if(!count($product['data']['data']))
 		{
 			$offer 									= $APIProduct->getIndex([
-														'search' 	=> [],
+														'search' 	=> $linked_search,
 														'sort' 		=> ['newest' => 'desc'],
 														'take'		=> 3,
 														'skip'		=> 0,
@@ -185,10 +194,11 @@ class ProductController extends BaseController
 		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
-															'offer' 	=> $offer['data']['data'],
-															'product' 	=> $product['data']['data'],
-															'type'		=> explode('0', Input::get('categories')[0])[0],
-															'tag'		=> $get_api_tag['data']['data']
+															'offer' 			=> $offer['data']['data'],
+															'product' 			=> $product['data']['data'],
+															'type'				=> explode('0', Input::get('categories')[0])[0],
+															'tag'				=> $get_api_tag['data']['data'],
+															'linked_search'		=> $linked_search
 														];
 
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
