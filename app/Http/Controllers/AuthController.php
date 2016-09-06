@@ -105,30 +105,20 @@ class AuthController extends BaseController
 
 		if(Session::has('invitation'))
 		{
-			$api_data 						= 	[
-													'email' 			=> $sso['email'],
-													'password' 			=> 'facebook',
-													'sso' 				=> $sso,
-													'grant_type'		=> 'password',
-													'client_id'			=> env('CLIENT_ID'),
-													'client_secret'		=> env('CLIENT_SECRET'),
-													'reference_code'	=> Session::get('invitation')['code'],
-													'invitation_link'	=> Session::get('invitation')['link'],
-												];
-
+			$sso['reference_code']			= Session::get('invitation')['code'];
+			$sso['invitation_link']			= Session::get('invitation')['link'];
+		
 			Session::forget('invitation');
 		}
-		else
-		{
-			$api_data 						= 	[
-													'email' 			=> $sso['email'],
-													'password' 			=> 'facebook',
-													'sso' 				=> $sso,
-													'grant_type'		=> 'password',
-													'client_id'			=> env('CLIENT_ID'),
-													'client_secret'		=> env('CLIENT_SECRET'),
-												];
-		}
+
+		$api_data 						= 	[
+												'email' 			=> $sso['email'],
+												'password' 			=> 'facebook',
+												'sso' 				=> $sso,
+												'grant_type'		=> 'password',
+												'client_id'			=> env('CLIENT_ID'),
+												'client_secret'		=> env('CLIENT_SECRET'),
+											];
 
 		$api 								= new API;
 		$result 							= json_decode($api->post($api_url, $api_data), true);
