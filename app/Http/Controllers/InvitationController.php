@@ -46,6 +46,8 @@ class InvitationController extends BaseController
 		$this->page_attributes->source 				= 'login.index';
 		$this->page_attributes->type_form			= 'signup';
 		$this->page_attributes->data 				= ['code' => $code, 'link' => $link];
+		
+		Session::put('invitation', $this->page_attributes->data);
 
 		return $this->generateView();
 	}
@@ -127,6 +129,8 @@ class InvitationController extends BaseController
 
 		$this->page_attributes->success 		= "Terima kasih sudah mendaftar, Balin telah mengirimkan hadiah selamat datang untuk Anda melalui email Anda.";
 
+		Session::forget('invitation');
+		
 		return $this->generateRedirectRoute('balin.invitation.get', ['code' => $code, 'link' => $link, 'type' => $type]);
 	}
 }	
