@@ -6,7 +6,7 @@
 					data-toggle="collapse" aria-controls="#bs-example-navbar-collapse-1" data-target="#bs-example-navbar-collapse-1">
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
-			<a id="cart-mobile"  href="{{ (Session::has('carts')) ? route('balin.cart.index') : '#' }}" class=" border-0 ico_cart navbar-cart";
+			<a id="cart-mobile"  href="{{ route('balin.cart.index') }}" class=" border-0 ico_cart navbar-cart";
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">

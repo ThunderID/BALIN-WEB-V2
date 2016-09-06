@@ -6,20 +6,25 @@
 			<div class="col-sm-12 col-md-12 col-lg-12">
 				<!-- SECTION HEADER TABLE CART -->
 				<div class="row border-1 border-solid border-grey-light p-sm ml-0 mr-0">
-					<div class="col-sm-4 col-md-4 col-lg-4 text-uppercase">
-						<span class="ml-sm">Produk</span>
+					<div class="col-sm-1 col-md-1 col-lg-1">
+						<span class="text-uppercase">Produk</span>
 					</div>
-					<div class="col-sm-2 col-md-2 col-lg-2 text-uppercase">
-						<span class="mr-xxl">Harga</span>
-					</div>
-					<div class="col-sm-2 col-md-2 col-md-2 text-uppercase text-center">
-						<span>Kuantitas</span>
-					</div>
-					<div class="col-sm-2 col-md-2 col-lg-2 text-uppercase text-center">
-						<span>Diskon</span>
-					</div>
-					<div class="col-sm-2 col-md-2 col-lg-2 text-uppercase text-center">
-						<span>Total</span>
+					<div class="col-sm-11 col-md-11 col-lg-11">
+						<div class="row">
+							<div class="col-sm-2 col-md-3 col-lg-3 text-uppercase">
+							</div>
+							<div class="col-sm-4 col-md-3 col-lg-3 text-uppercase text-center">
+								<span>Harga</span>
+							</div>
+							<div class="hidden-sm col-md-1 col-lg-1"></div>
+							<div class="col-sm-3 col-md-2 col-lg-2 text-uppercase text-center">
+								<span>Kuantitas</span>
+							</div>
+							<div class="hidden-sm col-md-1 col-lg-1"></div>
+							<div class="col-sm-3 col-md-2 col-lg-2 text-uppercase text-right">
+								<span>Total</span>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="cart-append"></div>
@@ -49,7 +54,7 @@
 							"item_qty"			=> $qty,
 							"item_price"		=> $item['price'],
 							"item_size"			=> $item['varians'],
-							"item_discount"		=> $item['discount']!=0 ? $item['price']-$item['discount'] : $item['discount'],
+							"item_discount"		=> $item['discount'],
 							"item_total"		=> $item['discount']!=0 ? (($item['price']-$item['discount'])*$qty) : ($item['price']*$qty),
 							"item_slug"			=> $item['slug'],
 							"item_mode"			=> 'new',
@@ -75,7 +80,7 @@
 				@if (!empty($data['carts']))
 					<div class="row border-right-1 border-left-1 border-bottom-1 border-grey-light p-sm cart-footer ml-0 mr-0">
 						<div class="col-sm-8 col-md-8 col-lg-8">
-							<h4 class="text-uppercase text-right">Sub Total</h4>
+							<h4 class="text-uppercase text-left">Sub Total</h4>
 						</div>
 						<div class="col-sm-4 col-md-4 col-lg-4">
 							<h4 class="text-right grand_total" data-total-item="{{ $total }}">
