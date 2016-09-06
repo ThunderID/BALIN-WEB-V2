@@ -33,6 +33,7 @@ class AuthController extends BaseController
 	 */
 	public function postSignUp($id = "")
 	{
+		$type 							= 'login';
 		if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
 		{
 			$dob						= Carbon::createFromFormat('d-m-Y', Input::get('dob'))->format('Y-m-d H:i:s');
@@ -59,6 +60,8 @@ class AuthController extends BaseController
 			if (!$validator->passes())
 			{
 				$this->errors			= $validator->errors();
+		
+				return $this->generateRedirectRoute('balin.get.login', ['type' => 'signup']);
 			}
 		}
 
@@ -71,11 +74,12 @@ class AuthController extends BaseController
 		if ($user['status'] != 'success')
 		{
 			$this->errors 				= $user['message'];
+			$type 						= 'signup';
 		}
 
 		$this->page_attributes->success 			= "Terima kasih sudah mendaftar, Balin telah mengirimkan hadiah selamat datang untuk Anda melalui email Anda.";
 
-		return $this->generateRedirectRoute('balin.get.login', ['type' => 'signup']);
+		return $this->generateRedirectRoute('balin.get.login', ['type' => $type]);
 	}
 
 	/**
@@ -225,7 +229,7 @@ class AuthController extends BaseController
 		}
 		else
 		{
-			return Redirect::route('balin.get.login', ['type' => 'login'])
+			return Redirect::route('balin.get.login', ['type' => 'signup'])
 							->withErrors(['Maaf email yang ada pada facebook anda sudah terdaftar.'])
 							->with('msg-type', 'danger');
 		}
