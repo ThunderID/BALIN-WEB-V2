@@ -30,12 +30,35 @@ class HomeController extends BaseController
 		$APIProduct 								= new APIProduct;
 		$sort										= ['name' => 'asc'];
 		$page 										= 1;
-		$product 									= $APIProduct->getIndex([
+
+		if(Session::has('whoami'))
+		{
+			if(Session::get('whoami')['gender']=='male')
+			{
+				$categories[] 						= 'pria';
+			}
+			else
+			{
+				$categories[] 						= 'wanita';
+			}
+
+			$product 								= $APIProduct->getIndex([
+															'search' 	=> ['tags' => ['fabric-premium-cotton'], 'categories' => $categories],
+															'sort' 		=> $sort,
+															'take'		=> 4,
+															'skip'		=> 0,
+														]);
+		}
+		else
+		{
+			$product 								= $APIProduct->getIndex([
 															'search' 	=> ['tags' => ['fabric-premium-cotton']],
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
 														]);
+		}
+
 		//temporary data
 		$datas['sliders']							= 	$this->balin['sliders'];
 
