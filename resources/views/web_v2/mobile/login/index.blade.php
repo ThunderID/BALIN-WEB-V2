@@ -23,7 +23,7 @@ if(Session::has('type')){
 								@include('web_v2.components.login.form')
 
 								<div class="col-xs-12">
-									<p class="text-light mt-lg hidden-md hidden-lg btn-signup">Belum mendaftar ? <a href="#" class="text-orange">Sign Up</a></p>
+									<p class="text-light mt-md hidden-md hidden-lg btn-signup">Belum mendaftar ? <a href="#" class="text-orange">Sign Up</a></p>
 								</div>
 							</div>
 							<div class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
