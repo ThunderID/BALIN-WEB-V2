@@ -6962,7 +6962,7 @@ body {
 /** Page Akun **/
 .background {
   background-color: rgba(0, 0, 0, 0.8);
-  min-height: calc(100vh - 60px); }
+  min-height: calc(100vh - 59px); }
 
 .preface {
   padding-top: 8vh;
