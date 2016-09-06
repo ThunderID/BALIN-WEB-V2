@@ -6648,6 +6648,12 @@ select {
       transform: translateX(-50%) translateY(-50%);
       font-weight: 300; }
 
+.row-card {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap; }
+
 .card a {
   display: block;
   position: relative;

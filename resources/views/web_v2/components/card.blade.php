@@ -1,5 +1,5 @@
 @foreach ($card as $k => $v)
-	<div class="{{ $col }}">
+	<div class="{{ $col }} {{ (isset($last) && (end($card)==$v)) ? 'hide' : '' }}">
 		<div class="card">
 			<?php $categories = [];?>
 			

@@ -1,21 +1,21 @@
 <div class="panel panel-default mt-0 border-grey">
 	<div class="panel-heading" role="tab" id="headingThree">
-		<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+		<a role="button" data-target="#collapseThree" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0);" aria-expanded="true" aria-controls="collapseThree">
 			<h4 class="panel-title">
 				Sort By &nbsp; 
 				<span class="sort-info">
 					@if (Input::get('sort') == 'date-asc')
-						<label class="btn btn-transparent btn-xs sort-info-action"> Terbaru <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" onClick="ajaxSorting(this, 'mobile')"> Terbaru <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'date-desc')
-						<label class="btn btn-transparent btn-xs sort-info-action"> Terlama <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" onClick="ajaxSorting(this, 'mobile')"> Terlama <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'name-asc')
-						<label class="btn btn-transparent btn-xs sort-info-action"> Nama A-Z <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action"> Nama A-Z <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'name-desc')
-						<label class="btn btn-transparent btn-xs sort-info-action"> Nama Z-A <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action"> Nama Z-A <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'price-asc')
-						<label class="btn btn-transparent btn-xs sort-info-action"> Harga Termurah <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action"> Harga Termurah <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'price-desc')
-						<label class="btn btn-transparent btn-xs sort-info-action"> Harga Termahal <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action"> Harga Termahal <i class="fa fa-times-circle"></i></label>
 					@endif
 				</span>
 				<span class="pull-right">

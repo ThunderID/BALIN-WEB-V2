@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<div class="container pt-md pb-sm">
-		<div class="row">
+		<div class="row row-card">
 		  	@include('web_v2.components.card', [
 		  		'card' 	=> $data['new_release'],
 		  		'col'	=> 'col-md-3 col-sm-3 col-xs-6' 

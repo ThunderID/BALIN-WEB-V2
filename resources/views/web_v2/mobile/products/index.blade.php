@@ -27,11 +27,12 @@
 					<h4 class="mt-md mb-sm pl-sm pr-sm">Anda Mungkin Suka</h4>
 				</div>
 			</div>
-			<div class="row mt-md mb-sm pl-sm pr-sm">
+			<div class="row row-card mt-md mb-sm pl-sm pr-sm">
 				{{-- DATA GRID CARD PRODUCT --}}
 				@include('web_v2.components.card', [
 					'card' 	=> $data['offer'],
-			  		'col'	=> 'col-xs-6 col-sm-6'
+			  		'col'	=> 'col-xs-6 col-sm-6',
+			  		'last' => true
 				])
 			</div>
 			<div class="col-md-12 text-center">
@@ -45,10 +46,10 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 content-data">
-					<div class="row pl-xs pr-xs">
+					<div class="row row-card pl-xs pr-xs">
 						@include('web_v2.components.card', [
 							'card' 	=> $data['product'],
-					  		'col'	=> 'col-xs-6 col-sm-6'
+					  		'col'	=> 'col-xs-6 col-sm-6 '
 						])
 					</div>
 					<div class="row mt-sm mb-sm">
@@ -92,7 +93,7 @@
 			ajaxFilter(checkboxcolor);
 		});
 
-		$('.filter-info-action').on('click', function(e) {
+		$('.panel-action').on('click', function(e) {
 			e.stopPropagation();
 			$(this).remove();
 		});

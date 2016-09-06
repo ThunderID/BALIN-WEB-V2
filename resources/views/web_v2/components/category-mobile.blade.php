@@ -1,12 +1,12 @@
 <div class="panel panel-default mt-0 border-grey">
 	<div class="panel-heading" role="tab" id="headingOne">
-		<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		<a role="button" data-target="#collapseOne" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0);" aria-expanded="true" aria-controls="collapseOne">
 			<h4 class="panel-title">
 				Category &nbsp;
 				<span class="category-info">
 					@if (Input::has('categories'))
 						@foreach (Input::get('categories') as $k => $v)
-							<label class="btn btn-transparent btn-xs category-info-action mb-5"> {{ str_replace('-', ' ', $v) }} <i class="fa fa-times-circle"></i></label>
+							<label class="btn btn-transparent btn-xs panel-action mb-5"> {{ str_replace('-', ' ', $v) }} <i class="fa fa-times-circle"></i></label>
 						@endforeach
 					@endif
 				</span>

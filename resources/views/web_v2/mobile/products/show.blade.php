@@ -240,14 +240,13 @@
 		<div class="row">
 			<div class="container text-left mt-xxl mb-sm">
 				<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
-			</div>			
-			<?php
-				// dd($data['related']);
-			?>
-				@include('web_v2.components.card', [
-					'card' 	=> $data['related'],
-					'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
-				])
+			</div>
+		</div>
+		<div class="row row-card">	
+			@include('web_v2.components.card', [
+				'card' 	=> $data['related'],
+				'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
+			])
 		</div>
 		<!-- END SECTION RELATED PRODUCT -->
 

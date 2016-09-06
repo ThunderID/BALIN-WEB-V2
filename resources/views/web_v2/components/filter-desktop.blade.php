@@ -18,18 +18,16 @@
 			<div class="col-md-12">
 				<h4 class="mb-5">{{$value['name']}}</h4>
 				@if(str_is('warna*', $value['slug'])) 
-					<ul class="list-inline">
+					<ul class="list-inline checkbox-color">
 				@else
 					<ul class="list-unstyled">
 				@endif
 	@endif
 	@if($value['category_id']!=0)
 		@if(str_is('warna*', $value['slug'])) 
-			<li class="pl-0 pr-0">
-					{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-color hide', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
-					<label for="{{$value['slug']}}">
-						<span class="color-item" style="background-color: {{$value['code']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					</label>
+			<li class="pl-0 pr-0 {{ (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? 'active' : '' }}">
+				{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-color hide', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
+				<span class="color-item" style="background-color: {{$value['code']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			</li>
 		@else
 			<li>

@@ -2,6 +2,10 @@
 	width: $width;
 	height: $height;
 }
+.row-card {
+	display: flex;
+	flex-flow: row wrap;
+}
 .card{
 	a {
 		display: block;

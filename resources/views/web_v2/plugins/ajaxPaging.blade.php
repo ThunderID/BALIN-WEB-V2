@@ -144,17 +144,18 @@
 	 * @return {[type]}   [description]
 	 */
 	function ajaxFilter(e) {
-	var type 	= $(e).attr("data-type").toLowerCase();
-	var filter 	= $(e).attr("data-filter").toLowerCase();	
+		var type 	= $(e).attr("data-type").toLowerCase();
+		var filter 	= $(e).attr("data-filter").toLowerCase();	
 
-	var url     = window.location.href;
+		var url     = window.location.href;
 
-	url 		= url.replace('%C2%BD', '½');
+		url 		= url.replace('%C2%BD', '½');
 
-	if (url.indexOf(type + "[]=" + filter) == -1) {
-		ajaxAddFilter(e);
-	} else {
-		ajaxRemoveFilter(e);
+		if (url.indexOf(type + "[]=" + filter) == -1) {
+			ajaxAddFilter(e);
+		} else {
+			ajaxRemoveFilter(e);
+		}
 	}
 
 	/**
@@ -212,7 +213,5 @@
 
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);
-	 }
-
- }
+	}
 </script>
