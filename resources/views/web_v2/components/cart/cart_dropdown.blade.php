@@ -30,7 +30,7 @@
 				</li>
 				<!-- END SECTION CART DROPDOWN ITEM -->
 
-				<?php $total += (($item['discount']!=0 ? ($item['price'] - ($item['price']-$item['discount'])) : $item['price'])*$qty); $i++; ?>
+				<?php $total += ($item['discount']!=0 ? ($item['price'] - $item['discount'])*$qty : $item['price']*$qty); ?>
 			@endforeach
 		</div>
 		<div class="cart-bottom">

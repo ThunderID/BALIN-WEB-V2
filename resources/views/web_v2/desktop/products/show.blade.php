@@ -332,7 +332,7 @@
 						   	type:'GET',
 						   	success: function(data){
 						    	$('#size-section').html($(data).find('#size-section').html());
-						    	$('#cart-desktop').html($(data).find('#cart-desktop').html());
+						    	$('#cart-desktop').find('.cart-count').html($(data).find('#cart-desktop').find('.cart-count').html());
 						    	$('#cart-mobile').html($(data).find('#cart-mobile').html());
 
 								<!-- reset ui -->
