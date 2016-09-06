@@ -29,6 +29,13 @@
 	    <button type="submit" class="pull-right btn btn-orange pl-xl pr-xl" tabindex="4">Sign In</button>
 	</div>
 
-	<div class="clearfix">&nbsp;</div>
-	<div class="clearfix">&nbsp;</div>
+	<div class="clearfix mb-sm">&nbsp;</div>
+
+	<p class="text-light"><em>atau</em></p>
+		<a href="{{route('balin.get.sso')}}" class="btn btn-facebook btn-social btn-block btn-lg text-lg">
+		<span class="fa fa-facebook"></span>
+		Login Menggunakan Facebook
+	</a>
+
+	<div class="clearfix mb-md">&nbsp;</div>
 {!! Form::close() !!}
