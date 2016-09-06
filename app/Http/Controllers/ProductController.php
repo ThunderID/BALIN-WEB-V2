@@ -130,8 +130,17 @@ class ProductController extends BaseController
 		$offer['data']['data'] 						= [];
 		if(!count($product['data']['data']))
 		{
+			if(Input::has('categories'))
+			{
+				$search 							= ['categories' => [Input::get('categories')[0]]];
+			}
+			else
+			{
+				$search 							= [];
+			}
+
 			$offer 									= $APIProduct->getIndex([
-														'search' 	=> [],
+														'search' 	=> $search,
 														'sort' 		=> ['newest' => 'desc'],
 														'take'		=> 3,
 														'skip'		=> 0,
