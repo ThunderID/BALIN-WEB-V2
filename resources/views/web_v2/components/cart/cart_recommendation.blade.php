@@ -7,17 +7,17 @@
 				</a>
 			</div>
 			<div class="col-xs-9 pl-sm">
-				<h4 class="mt-0 text-md">
-					<a href="{{ route('balin.product.show', $label_slug) }}" class="link-black hover-orange">
-						{{ $label_name }}
-					</a>
+				<h4 class="card-title mt-0 mb-5 font text-lg">
+					<a href="{{ route('balin.product.show', ['slug' => $label_slug]) }}" class="hover-orange">{{ $label_name }}</a>
 				</h4>
-				@if ($label_promo==0)
-					<span class="text-product">@money_indo($label_price)</span>
-				@else
-					<span class="text-product">@money_indo($label_promo)</span><br>
-					<span class="text-regular text-strikethrough">@money_indo( $label_price )</span>
-				@endif
+				<p class="card-text mb-5 font">
+					@if ($label_promo != 0)
+						<del>@money_indo($label_price)</del>
+						<span class="text-orange">@money_indo($label_promo)</span>
+					@else
+						<span>@money_indo($label_price)</span>
+					@endif
+				</p>
 			</div> 
 		</div>
 	</div>

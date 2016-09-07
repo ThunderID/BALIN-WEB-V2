@@ -71,7 +71,7 @@
 						'label_image'			=> $item['image_lg'],
 						'label_name'			=> $item['name'],
 						'label_price'			=> $item['price'],
-						//'label_qty'				=> $item['varians'],
+						'label_size'			=> $item['varians'],
 						'label_promo'			=> $item['promo_price'],
 						'label_slug'			=> $item['slug'],
 					])
