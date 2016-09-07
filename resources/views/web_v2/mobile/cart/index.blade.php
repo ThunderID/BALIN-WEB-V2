@@ -31,7 +31,7 @@
 							"item_qty"			=> $qty,
 							"item_price"		=> $item['price'],
 							"item_size"			=> $item['varians'],
-							"item_discount"		=> $item['discount']!=0 ? $item['price']-$item['discount'] : $item['discount'],
+							"item_discount"		=> $item['discount'],
 							"item_total"		=> $item['discount']!=0 ? (($item['price']-$item['discount'])*$qty) : ($item['price']*$qty),
 							"item_slug"			=> $item['slug'],
 							"item_mode"			=> 'new',

@@ -25,7 +25,7 @@
 					<p>{{ $value['size'] }}</p>
 				</div>
 				<div class="col-xs-3 text-center">
-					<a href="javascript:void(0);" class="pull-left qty-minus not-active">
+					<a href="javascript:void(0);" class="pull-left qty-minus cart-remove">
 						<strong>-</strong>
 					</a>
 					<span class="qty"
@@ -34,7 +34,7 @@
 						data-stock="{{ $value['current_stock'] }}"
 						data-price="{{ $item_price }}"
 						data-discount="{{ $item_discount }}">{{ $value['quantity'] }}</span>
-					<a href="javascript:void(0);" class="pull-right qty-plus"> 
+					<a href="javascript:void(0);" class="pull-right cart-add qty-plus {{ $value['quantity'] == $value['current_stock'] ? 'not-active' : ''}}"> 
 						<strong>+</strong>
 					</a>
 				</div>

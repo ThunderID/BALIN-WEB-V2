@@ -72,12 +72,15 @@ if(Session::has('type')){
 						<div class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
 							<h2 class="text-center mb-lg">Sign Up</h2>
 							@include('web_v2.components.alert-box')
-							@include('web_v2.components.signup.form')
+							@include('web_v2.components.signup.form')						
 						</div>
 						<div class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
 							<h2 class="text-center mb-lg">Sign In</h2>
 							@include('web_v2.components.alert-box')
 							@include('web_v2.components.login.form')
+							<div class="col-sm-12 hidden-md hidden-lg">
+								<p class="text-light mt-0 hidden-md hidden-lg btn-signup">Belum mendaftar ? <a href="#" class="text-orange">Sign Up</a></p>
+							</div>								
 						</div>						
 						<div class="forgot" style="{{ $type == 'forgot' ? 'display:block;' : 'display:none;' }}">
 							<h2 class="text-center mb-lg">Reset Password</h2>

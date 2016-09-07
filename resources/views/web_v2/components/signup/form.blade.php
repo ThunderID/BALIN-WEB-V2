@@ -35,7 +35,7 @@
 	<p class="text-light"><em>atau</em></p>
 	<a href="{{route('balin.get.sso')}}" class="btn btn-facebook btn-social btn-block btn-lg text-lg">
 		<span class="fa fa-facebook"></span>
-		Daftar Menggunakan Facebook
+		Gunakan Facebook
 	</a>
 	<p class="text-light mt-lg hidden-md hidden-lg btn-signin">Sudah terdaftar ? <a href="javascript:void(0)" class="text-orange">Login</a></p>
 {!! Form::close() !!}

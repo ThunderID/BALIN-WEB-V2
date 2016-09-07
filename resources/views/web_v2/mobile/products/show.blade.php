@@ -340,6 +340,8 @@
 
 								$('.total').text(0);
 								$('.dropdown-menu').toggle({'display': 'block'});
+
+								$('#notif_window').modal('show');
 						   	},
 						   	error: function(){
 								location.reload();
