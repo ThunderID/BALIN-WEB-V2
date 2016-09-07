@@ -15,7 +15,7 @@ use Input, Session, Redirect, Auth, Socialite, Validator, App, BalinMail;
  */
 class PasswordController extends BaseController 
 {
-	protected $controller_name 				= 'Password';
+	protected $controller_name 				= 'password';
 
 	public function __construct()
 	{
@@ -23,7 +23,8 @@ class PasswordController extends BaseController
 
 		Session::set('API_token', Session::get('API_token_private'));
 		
-		$this->page_attributes->title		= 'BALIN.ID';
+		$this->page_attributes->title				= 'BALIN.ID';
+		$this->page_attributes->controller_name		= $this->controller_name;
 	}
 
 	/**
@@ -105,6 +106,7 @@ class PasswordController extends BaseController
 			$this->page_attributes->subtitle 			= 'Lupa Password';
 			$this->page_attributes->breadcrumb			= [];
 			$this->page_attributes->source 				= 'web_v2.pages.profile.password.reset';
+			$this->page_attributes->controller_name		= 'reset';
 			$this->base_path_view 						= '';
 
 			return $this->generateView();
