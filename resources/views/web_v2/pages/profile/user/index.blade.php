@@ -400,7 +400,7 @@
 							@endif
 
 							@if ($v['status'] == 'wait' || $v['status'] == 'veritrans_processing_payment')
-								<?php $due_date = Carbon::parse($v['transact_at'])->addDay(); ?>
+								<?php $due_date = Carbon::parse($v['transact_at'].' '.$balin['info']['expired_cart']['value'])->format('Y-m-d'); ?>
 								<span class="text-regular">Info :</span>
 								<p>
 									<small class="mt-0">

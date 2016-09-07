@@ -36,6 +36,12 @@
 							{{ $status[$data['order']['status']] }} 
 						</td>
 					</tr>
+					@if($data['order']['status'] == 'wait' || $data['order']['status'] == 'veritrans_processing_payment')
+					<tr class="row">
+						<td class="col-sm-6" valign="middle"><strong>Due Date</strong></td>
+						<td valign="middle">@date_indo(Carbon::parse($data['order']['transact_at'].' '.$balin['info']['expired_cart']['value'])->format('Y-m-d'))</td>
+					</tr>
+					@endif
 				</tbody>
 			</table>
 		</div>
