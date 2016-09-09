@@ -61,28 +61,36 @@
 								<span class="info">:</span>
 							</div>
 							<div class="col-xs-8 text-right">
-								<span class="info">@money_indo($label_price)</span>
+								<span class="info">
+									@if($label_discount > 0)
+										<del>@money_indo($label_price)</del>
+									@else
+										@money_indo($label_price)
+									@endif
+								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- END SECTION PRICE PER PRODUCT -->
+				@if($label_discount > 0)
 				<!-- SECTION DISCOUNT PER PRODUCT -->
 				<div class="row text-regular">
 					<div class="col-xs-12">
 						<div class="row">
 							<div class="col-xs-2">
-								<span class="info">Disc</span>
+								<span class="info"></span>
 							</div>
 							<div class="col-xs-1">
-								<span class="info">:</span>
+								<span class="info"></span>
 							</div>
 							<div class="col-xs-8 text-right">
-								<span class="info">@money_indo($label_discount * $qty)</span>
+								<span class="text-orange">@money_indo($label_price - $label_discount)</span>
 							</div>
 						</div>
 					</div>
 				</div>
+				@endif
 				<!-- END SECTION DISCOUT -->
 				<?php
 				// <!-- SECTION TOTAL PRICE PRODUCT -->
