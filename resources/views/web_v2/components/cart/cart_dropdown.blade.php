@@ -1,7 +1,7 @@
 <?php 
 	// dd($carts); 
 ?>
-<ul class="dropdown-menu dropdown-menu-right text-regular cart_dropdown" aria-labelledby="dLabel">
+<ul id="desktop-cart-content" class="dropdown-menu dropdown-menu-right text-regular cart_dropdown" aria-labelledby="dLabel">
 	@if (!empty($carts))
 		<?php $total = 0; $i=0; ?>
 		<div class="cart-content">

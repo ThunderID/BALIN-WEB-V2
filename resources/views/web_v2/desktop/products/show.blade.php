@@ -3,7 +3,6 @@
 @section('content')
 	@include('web_v2.components.category-desktop')
 	@include('web_v2.components.breadcrumb')
-
 	<section class="container mt-0 mb-lg">
 		<div class="row">
 			<!-- SECTION IMAGE SLIDER PRODUCT -->
@@ -332,8 +331,10 @@
 						   	type:'GET',
 						   	success: function(data){
 						    	$('#size-section').html($(data).find('#size-section').html());
-						    	$('#cart-desktop').find('.cart-count').html($(data).find('#cart-desktop').find('.cart-count').html());
-						    	$('#cart-mobile').html($(data).find('#cart-mobile').html());
+						    	$('#mobile-cart-count').html($(data).find('#mobile-cart-count').html());
+						    	$('#desktop-cart-count').html($(data).find('#desktop-cart-count').html());
+						    	$('#mobile-cart-count').html($(data).find('#mobile-cart-count').html());
+						    	$('#desktop-cart-content').html($(data).find('#desktop-cart-content').html());
 
 								<!-- reset ui -->
 								$('.buy').children().removeClass('fa-spinner fa-pulse');
@@ -344,7 +345,15 @@
 
 
 								$('.total').text(0);
-								$('.dropdown-menu').toggle({'display': 'block'});
+								<!-- alerting -->
+								if( $( window ).width() <= 991){
+									$('#notif_window').modal('show');
+								}else{
+									var display = $('#desktop-cart-content').css('display');
+									if(display != 'block'){
+										$('.dropdown-menu').toggle({'display': 'block'});
+									}
+								}
 						   	},
 						   	error: function(){
 								location.reload();
