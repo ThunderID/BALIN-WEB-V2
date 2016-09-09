@@ -110,7 +110,7 @@ class CartController extends BaseController
 		Session::put('carts', $carts);
 
 		$breadcrumb									= 	[
-															'Cart' => route('balin.cart.index')
+															'Shopping Bag' => route('balin.cart.index')
 														];
 
 		$this->page_attributes->breadcrumb			= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
@@ -119,7 +119,7 @@ class CartController extends BaseController
 															'carts' 	=> $carts,
 														];
 
-		$this->page_attributes->subtitle 			= 'Carts';
+		$this->page_attributes->subtitle 			= 'Shopping Bag';
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
 		// $this->base_path_view 						= '';
 

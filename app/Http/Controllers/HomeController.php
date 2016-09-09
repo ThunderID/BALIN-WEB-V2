@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\API\Connectors\APIProduct;
-use Session, Config;
+use Session, Config, Input;
 
 class HomeController extends BaseController 
 {	
@@ -110,7 +110,75 @@ class HomeController extends BaseController
 		
 		$this->page_attributes->data				= $datas;
 
-		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
+		$this->page_attributes->source 				= $this->page_attributes->source . 'index';
+
+		return $this->generateView();
+	}
+
+
+	/**
+	 * function to generate view and display products of balin
+	 * 
+	 * 1. Check filter
+	 * 2. Check page
+	 * 3. Get data from API
+	 * 4. Generate paginator
+	 * 5. Generate breadcrumb
+	 * 6. Generate view
+	 * @return view
+	 */
+	public function notfound()
+	{
+		$APIProduct 								= new APIProduct;
+		$sort										= ['name' => 'asc'];
+		$page 										= 1;
+
+		if(Session::has('whoami'))
+		{
+			if(Session::get('whoami')['gender']=='male')
+			{
+				$categories[] 						= 'pria';
+				$type 								= 'pria';
+			}
+			else
+			{
+				$categories[] 						= 'wanita';
+				$type 								= 'wanita';
+			}
+
+			$linked_search 							= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+
+			$product 								= $APIProduct->getIndex([
+															'search' 	=> ['tags' => ['fabric-premium-cotton'], 'categories' => $categories],
+															'sort' 		=> $sort,
+															'take'		=> 4,
+															'skip'		=> 0,
+														]);
+		}
+		else
+		{
+			$linked_search 							= ['tags' => ['fabric-premium-cotton']];
+
+			$product 								= $APIProduct->getIndex([
+															'search' 	=> ['tags' => ['fabric-premium-cotton']],
+															'sort' 		=> $sort,
+															'take'		=> 4,
+															'skip'		=> 0,
+														]);
+
+			$type 									= explode('0', Input::get('categories')[0])[0];
+		}
+
+		//6. Generate view
+		$this->page_attributes->subtitle 			= 'Produk Batik Modern';
+		$this->page_attributes->controller_name 	= $this->controller_name;
+		$this->page_attributes->data				= 	[
+															'offer' 			=> $product['data']['data'],
+															'linked_search' 	=> $linked_search,
+															'type'				=> $type,
+														];
+
+		$this->page_attributes->source 				=  $this->page_attributes->source . '404';
 
 		return $this->generateView();
 	}
