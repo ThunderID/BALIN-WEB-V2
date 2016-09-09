@@ -18,6 +18,12 @@
 						<span>@money_indo($label_price)</span>
 					@endif
 				</p>
+				<div class="border-size mb-5 mt-xs"></div>
+				<ul class="list-inline font">
+					@foreach ($label_size as $k2 => $v2)
+						<li>{{ $v2['size'] }}</li>
+					@endforeach
+				</ul>
 			</div> 
 		</div>
 	</div>
