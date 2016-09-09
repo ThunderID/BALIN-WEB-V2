@@ -4,11 +4,12 @@
 			<h4 class="panel-title">
 				Category &nbsp;
 				<span class="category-info">
-					@if (Input::has('categories'))
-						@foreach (Input::get('categories') as $k => $v)
-							<label class="btn btn-transparent btn-xs panel-action mb-5"> {{ str_replace('-', ' ', $v) }} <i class="fa fa-times-circle"></i></label>
-						@endforeach
-					@endif
+					@forelse (Input::get('categories') as $k => $v)
+						@if (($v != 'pria') && ($v != 'wanita'))
+							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}"> {{ last(explode('-', $v)) }} <i class="fa fa-times-circle"></i></label>
+						@endif
+					@empty
+					@endforelse
 				</span>
 				<span class="pull-right">
 					<i class="fa fa-angle-right " aria-hidden="true"></i>
@@ -20,14 +21,14 @@
 		<div class="panel-body">
 			<ul class="list-unstyled m-0 category-list">
 				@foreach ($category as $k => $v)
-					@if($v['category_id']!=0 && str_is(strtolower($data['type']).'*', $v['slug']))
-						@if(isset(Input::get('categories')[1]) && Input::get('categories')[1] == $v['slug'])
+					@if ($v['category_id']!=0 && str_is(strtolower($data['type']).'*', $v['slug']))
+						@if (isset(Input::get('categories')[1]) && Input::get('categories')[1] == $v['slug'])
 							<?php $class	= 'text-orange';?>
 						@else
 							<?php $class	= 'hover-orange';?>
 						@endif
 						<li class="p-5" style="width:8em;">
-							<a href="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $v['category']['slug'], 'categories[1]' => $v['slug']]))}}" class="{{$class}}">{{ strtoupper($v['name']) }}</a>
+							<a href="javascript:void(0);" class="{{ $class }}" data-categories="{{ Input::get('categories')[0] }}" data-type="categories[]" data-action="{{ $v['slug'] }}" data-url="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $v['category']['slug'], 'categories[1]' => $v['slug']]))}}" onClick="ajaxCategory(this);">{{ strtoupper($v['name']) }}</a>
 						</li>
 					@endif
 				@endforeach
