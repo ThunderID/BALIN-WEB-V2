@@ -29,7 +29,6 @@
 			@include('web_v2.components.card', [
 				'card' 	=> $data['offer'],
 		  		'col'	=> 'col-xs-6 col-sm-6',
-		  		'last' => true
 			])
 		</div>
 		<div class="col-md-12 text-center">
