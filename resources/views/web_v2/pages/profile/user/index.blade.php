@@ -404,7 +404,7 @@
 								<span class="text-regular">Info :</span>
 								<p>
 									<small class="mt-0">
-										Pembayaran harus dilakukan sebelum <div class="hidden-xs">&nbsp;</div> @datetime_indo_with_name_month($due_date)
+										Pembayaran harus dilakukan sebelum <div class="hidden-sm hidden-lg hidden-md">&nbsp;</div>@datetime_indo_with_name_month($due_date)
 									</small>
 								</p>
 							@endif
