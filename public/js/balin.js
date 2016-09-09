@@ -1255,15 +1255,17 @@ EVENT & FUNCTION OTHER
 			total_mobile = total_mobile + (qty * (price-discount));
 		});
 
-		// for desktop & tablet
-		$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
-		$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
-		$(this).parent().parent().find('.total_per_pieces').trigger('change');
-
-		// for mobile
-		$(this).parent().parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total_mobile));
-		$(this).parent().parent().parent().find('.total_per_pieces').data('total-piece', total_mobile);
-		$(this).parent().parent().parent().find('.total_per_pieces').trigger('change');
+		if($(this).parent().parent().find('.total_per_pieces').length != 0){
+			// for desktop & tablet
+			$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
+			$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
+			$(this).parent().parent().find('.total_per_pieces').trigger('change');
+		}else{
+			// for mobile
+			$(this).parent().parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total_mobile));
+			$(this).parent().parent().parent().find('.total_per_pieces').data('total-piece', total_mobile);
+			$(this).parent().parent().parent().find('.total_per_pieces').trigger('change');
+		}
 
 		send_ajax_update(parseInt($(this).text()), action);
 
