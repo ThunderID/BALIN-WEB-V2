@@ -4,7 +4,7 @@
 		<div class="row">
 
 {{-- -------------------------------- tile 1 -------------------------------- --}}
-			<div class="col-sm-4 col-md-3">
+			<div class="col-sm-6">
 				@if(array_key_exists('1', $data['shop_by_style']) == true)
 				<a href="{{ $data['shop_by_style'][1]['action_url'] }}">
 					<div class="tile text-center">
@@ -18,7 +18,7 @@
 			</div>
 
 {{-- -------------------------------- tile 2 -------------------------------- --}}
-			<div class="col-sm-8 col-md-9">
+			<div class="col-sm-6">
 				@if(array_key_exists('2', $data['shop_by_style']) == true)
 				<a href="{{ $data['shop_by_style'][2]['action_url'] }}">
 					<div class="tile text-center">
