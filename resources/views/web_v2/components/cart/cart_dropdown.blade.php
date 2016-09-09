@@ -44,7 +44,7 @@
 			<li class="p-xs">
 				<div class="row">
 					<div class="col-xs-12 text-center" style=" ">
-						<a href="{{ route('balin.cart.index') }}" class="btn btn-orange mr-sm">Lihat Cart</a>
+						<a href="{{ route('balin.cart.index') }}" class="btn btn-orange mr-sm">Lihat Shopping Bag</a>
 						<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full ml-sm">Checkout</a>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 		</div>
 	@else
 		<li class=" solid text-center">
-			<h4 class="pt-md pb-md mt-0 mb-0 text-md text-light">Belum ada item di Cart</h4>
+			<h4 class="pt-md pb-md mt-0 mb-0 text-md text-light">Belum ada item di Shopping Bag</h4>
 		</li>
 		<li class="bg-black text-white">
 			<div class="row">
