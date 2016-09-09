@@ -373,7 +373,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 {{ ($v['status'] != 'canceled') ? '' : '' }}">
 							<p class="mt-xs mb-0 text-regular">
-								Tgl order : @datetime_indo_with_name_month($v['transact_at'])
+								Tanggal order : @datetime_indo_with_name_month($v['transact_at'])
 							</p>	
 							<p class="mt-0 mb-xxs">
 								<strong>{{ $v['ref_number'] }}</strong>
@@ -404,7 +404,8 @@
 								<span class="text-regular">Info :</span>
 								<p>
 									<small class="mt-0">
-										Pembayaran harus dilakukan sebelum @datetime_indo_with_name_month($due_date)
+										Pembayaran harus dilakukan sebelum 
+										@datetime_indo_with_name_month($due_date)
 									</small>
 								</p>
 							@endif
