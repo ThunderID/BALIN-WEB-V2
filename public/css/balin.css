@@ -6910,7 +6910,11 @@ body {
 .home-product-more {
   float: right;
   margin-top: -20px;
-  margin-right: 13px; }
+  margin-right: 13px;
+  color: black; }
+
+.home-product-more:hover {
+  color: #ffa500; }
 
 /** mobile **/
 .shop-by-style-mobile .title {
