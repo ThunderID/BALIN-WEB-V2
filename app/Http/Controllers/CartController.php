@@ -313,21 +313,48 @@ class CartController extends BaseController
 					unset($temp_carts[$product['id']]['varians']);
 				}
 
-				$temp_carts[$product['id']]['varians'][$varianp['id']]		= 	
-												[	
-													'varian_id' 		=> $varianp['id'], 
-													'sku'				=> $varianp['sku'],
-													'quantity' 			=> $validqty, 
-													'size' 				=> $varianp['size'], 
-													'current_stock' 	=> $varianp['current_stock'],
-												];
+				$temp_cart						= 	
+													[	
+														'varian_id' 		=> $varianp['id'], 
+														'sku'				=> $varianp['sku'],
+														'quantity' 			=> $validqty, 
+														'size' 				=> $varianp['size'], 
+														'current_stock' 	=> $varianp['current_stock'],
+													];
+				
+				if(isset($temp_carts[$product['id']]['varians'])){
+
+					//sort by varian size
+					$tmp 						= $temp_carts[$product['id']]['varians'];
+
+					//empty current cart
+					$temp_carts[$product['id']]['varians'] = [];
+
+					//sorting
+					foreach ($tmp as $key => $value) {
+						$sizeComparison 		= new Helpers\SizeComparison;
+
+						if($sizeComparison->isSmaller($temp_cart['size'],$value['size']) == true){
+							$temp_carts[$product['id']]['varians'][$varianp['id']] = $temp_cart;
+							$temp_carts[$product['id']]['varians'][$value['varian_id']] = $value;
+						}else{
+							$temp_carts[$product['id']]['varians'][$value['varian_id']] = $value;
+
+							//last array and current is larger
+							if(end($tmp)['varian_id'] == $key){
+								$temp_carts[$product['id']]['varians'][$varianp['id']] = $temp_cart;
+							}
+						}
+					}
+				}else{
+					$temp_carts[$product['id']]['varians'][$varianp['id']] = $temp_cart;
+				}
 			}
 			elseif(!$errors->count() && $validqty==0 && isset($temp_carts[$product['id']]) && isset($varianp))
 			{
 				unset($temp_carts[$product['id']]['varians'][$varianp['id']]);
 			}
 		}
-
 
 		// Check if temp carts is 0 to flash session carts
 		if (count($temp_carts)==0)
@@ -357,8 +384,8 @@ class CartController extends BaseController
 				$order['id']					= $order_in_cart['data']['id'];
 				$order['voucher_id']			= $order_in_cart['data']['voucher_id'];
 				$order['transactiondetails']	= $order_in_cart['data']['transactiondetails'];
-			}
 			$order_detail 						= [];
+			}
 
 			//3b. Check transactiondetail
 			foreach ($temp_carts as $key => $value) 
@@ -417,7 +444,7 @@ class CartController extends BaseController
 		{
 			return ['status' => false, 'data' => $temp_carts, 'message' => $errors];
 		}
-
+		// dd($temp_carts);
 		return ['status' => true, 'data' => $temp_carts];
 	}
 }

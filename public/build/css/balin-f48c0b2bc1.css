@@ -5891,7 +5891,8 @@ p {
 
 .cart-content {
   height: 30vh;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 /* menu */
 ul.dropdown-user {

@@ -9,8 +9,10 @@
 			<a id="cart-mobile"  href="{{ route('balin.cart.index') }}" class=" border-0 ico_cart navbar-cart";
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
-				<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
-					{{ count(Session::get('carts')) }}
+				<span id="mobile-cart-count">
+					<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
+						{{ count(Session::get('carts')) }}
+					</span>
 				</span>
 			</a>
 			<a class="navbar-brand" href="{{ route('balin.home.index') }}">
@@ -25,7 +27,11 @@
 					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart">
 						Shopping Bag
 					</a>
-					<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}"><strong>{{ count(Session::get('carts')) }}</strong></span>
+					<span id="desktop-cart-count">
+						<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
+							<strong>{{ count(Session::get('carts')) }}</strong>
+						</span>
+					</span>
 					@include('web_v2.components.cart.cart_dropdown', ['carts' => Session::get('carts')]) 
 				</li>
 <!-- 				<li class="info-point pull-right mt-sm ml-md mr-md hidden-xs hidden-sm">
