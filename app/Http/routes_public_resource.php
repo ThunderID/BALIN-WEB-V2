@@ -19,4 +19,8 @@ Route::group([env('ROUTE_BALIN_ATTRIBUTE') => env('ROUTE_BALIN_VALUE')], functio
 	Route::any('cart/add/{slug}',										['uses' => 'CartController@store', 			'as' => 'balin.cart.store']);
 	Route::any('cart/update/{slug}/{varian_id}',						['uses' => 'CartController@update', 		'as' => 'balin.cart.update']);
 	Route::any('cart/change/list/dropdown',								['uses'	=> 'CartController@getListBasket', 	'as' => 'balin.cart.list']);
+
+	/* Product info */
+	Route::get('not/found',		 										['uses' => 'HomeController@notfound', 	'as' => 'balin.not.found']);
+
 });
