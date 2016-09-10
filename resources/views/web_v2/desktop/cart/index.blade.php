@@ -1,5 +1,9 @@
 @extends('web_v2.page_templates.layout')
 
+@section('shopping-bag-nav')
+	text-orange
+@stop
+
 @section('content')
 	<section class="container pt-xxl pb-lg">
 		<div class="row">

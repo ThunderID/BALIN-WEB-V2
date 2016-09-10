@@ -17,7 +17,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="hollow-label">Email</label>
-						{!! Form::email('email', $data['email'], ['class' => 'form-control hollow mod_email', 'tabindex' => '2', 'placeholder' => 'Masukkan email', 'disable']) !!}
+						{!! Form::email('email', $data['email'], ['class' => 'form-control hollow mod_email', 'tabindex' => '2', 'placeholder' => 'Masukkan email', 'disabled']) !!}
 					</div>
 				</div>
 			</div>

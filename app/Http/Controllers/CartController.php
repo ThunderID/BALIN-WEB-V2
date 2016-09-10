@@ -86,7 +86,8 @@ class CartController extends BaseController
 			}
 		}
 
-		if (!empty($carts)) {
+		if (!empty($carts) && is_array($carts)) 
+		{
 			foreach ($carts as $key => $value) 
 			{
 				if(isset($value['varians']))
