@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="container mt-xs mb-xs">
+	<section class="container mt-xs mb-xs content-data">
 		@if(count($data['offer']))
 			<div class="row">
 				<div class="col-md-12 text-center">
@@ -45,22 +45,25 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 content-data">
+				<div class="col-xs-12 col-sm-12">
 					<div class="row row-card pl-xs pr-xs">
 						@include('web_v2.components.card', [
 							'card' 	=> $data['product'],
 					  		'col'	=> 'col-xs-6 col-sm-6 '
 						])
 					</div>
-					<div class="row mt-sm mb-sm">
-						@include('web_v2.components.ajax_page')
-					</div>
 				</div>
 			</div>
-			<div class="row">
-				@include('web_v2.plugins.ajaxPaging')
-			</div>
 		@endif
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+				@include('web_v2.components.ajax_page')
+			</div>
+		</div>
+		<div class="row">
+			@include('web_v2.plugins.ajaxPaging')
+		</div>
 	</section>
 @stop
 
@@ -93,9 +96,6 @@
 			ajaxFilter(checkboxcolor);
 		});
 
-		$('.panel-action').on('click', function(e) {
-			e.stopPropagation();
-			$(this).remove();
-		});
+		stop_double_event();
 	});
 @stop

@@ -71,71 +71,79 @@
 		}
 	}
 
+
 	/**
-	 * [ajaxSorting description]
-	 * @param  {[type]} e     [description]
-	 * @param  {[type]} param [for mobile or desktop]
-	 * @return {[type]}       [description]
+	 * [ajaxCategory description]
+	 * @param  {[type]} e [description]
+	 * @return {[type]}   [description]
 	 */
-	function ajaxSorting(e, param) {
-		var type 	= $(e).attr("data-sort").toLowerCase();
-		var title 	= $(e).attr('data-title');
+	function ajaxCategory(e) {
+		type = $(e).attr('data-type').toLowerCase();
+		category = $(e).data('action').toLowerCase();
 
-		var url 	= window.location.href;
+		url = window.location.href;
 
-		if (url.indexOf("sort=" + type) == -1) {
-			ajaxAddSort(e, param, title);
+		if (url.indexOf(type +'=' + category) == -1) {
+			ajaxAddCategory(e)
 		} else {
-			ajaxRemoveSort(e, param, null);
+			ajaxRemoveCategory(e);
 		}
 	}
 
 	/**
-	 * [ajaxAddSort description]
-	 * @param  {[type]} e     [description]
-	 * @param  {[type]} param [for desktop or mobile]
-	 * @return {[type]}       [description]
+	 * [ajaxAddCategory description]
+	 * @param  {[type]} e [description]
+	 * @return {[type]}   [description]
 	 */
-	function ajaxAddSort(e, param, title) {
-		var type 	= $(e).attr("data-sort").toLowerCase();
-		var id 		= $('.sort-content');
-		var url     = window.location.href;
-		var toUrl	= url.replace(/(sort)[^\&]+/, '');
-		toUrl 		= toUrl.replace(/(page)[^\&]+/, '');
+	function ajaxAddCategory(e) {
+		type 	= $(e).attr("data-type").toLowerCase();
+		categories 	= $(e).attr("data-action").toLowerCase();
+		categories_first = $(e).attr('data-categories').toLowerCase();
+
+		url     = window.location.href;
+
+		toUrl	= url.replace(/(categories)[^\&]+/, '').replace(/(categories)[^\&]+/, '');
+		toUrl 	= toUrl.replace(/(page)[^\&]+/, '');
 
 		if (toUrl.indexOf("?") == -1) {
-			toUrl 	= toUrl + "?sort=" + type;
+			toUrl 	= toUrl + "?categories[]=" + categories_first + "&" + type + "=" + categories;
 		} else {
-			toUrl 	= toUrl + "&sort=" + type;
-		}	
+
+			toUrl 	= toUrl + "&categories[]=" + categories_first + "&" + type + "=" + categories;
+		}
+
+		// add to active category mobile to category info
+		text = categories.split('-');
+		$('span.category-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '"> ' + text[1] +
+										' <i class="fa fa-times-circle"></i></label></span> ');
+		stop_double_event();
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
 		toUrl		= toUrl.replace('&&', '&');
 
-		clearFlag(param, 'sort', title);
-		ajaxPage(toUrl, id);
+		ajaxPage(toUrl, null);
 		window.history.pushState("", "", toUrl);
 	}
 
 	/**
-	 * [ajaxRemoveSort description]
-	 * @param  {[type]} e     [description]
-	 * @param  {[type]} param [for desktop or mobile]
-	 * @return {[type]}       [description]
+	 * [ajaxRemoveCategory description]
+	 * @param  {[type]} e [description]
+	 * @return {[type]}   [description]
 	 */
-	function ajaxRemoveSort(e, param) {
-		var type 	= $(e).attr("data-sort").toLowerCase();
-		var id 		= $(e).parent().attr('id');
-
-		var url     = window.location.href;
-		var toUrl	= url.replace(/(sort)[^\&]+/, '');
+	function ajaxRemoveCategory(e) {
+		type 	= $(e).attr("data-action").toLowerCase();
+		url     = window.location.href;
+		toUrl	= url.replace(/(categories[1])[^\&]+/, '');
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('&&', '&');
 
-		ajaxPage(toUrl, id);
-		window.history.pushState("", "", toUrl);	
+		// remove category-info active
+		$('span.category-info label[data-action="' + type + '"]').remove();
+
+		ajaxPage(toUrl, null);
+		window.history.pushState("", "", toUrl);
 	}
 
 	/**
@@ -145,7 +153,7 @@
 	 */
 	function ajaxFilter(e) {
 		var type 	= $(e).attr("data-type").toLowerCase();
-		var filter 	= $(e).attr("data-filter").toLowerCase();	
+		var filter 	= $(e).attr("data-action").toLowerCase();	
 
 		var url     = window.location.href;
 
@@ -165,7 +173,7 @@
 	 */
 	function ajaxAddFilter(e){
 		var type 	= $(e).attr("data-type").toLowerCase();
-		var filter 	= $(e).attr("data-filter").toLowerCase();
+		var filter 	= $(e).attr("data-action").toLowerCase();
 		var id 		= $(e).parent().attr('id');
 		var url     = window.location.href;
 		var toUrl;
@@ -178,11 +186,15 @@
 			toUrl 	= url + "&" + type + "[]=" + filter;
 		}
 
+		// add label info filter active 
+		text = filter.replace('-', ' ');
+		$('span.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '"> ' + text +
+										' <i class="fa fa-times-circle"></i></label> ');
+		stop_double_event();
+
 		toUrl 		= toUrl.replace(/(sort)[^\&]+/, '');
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('&&', '&');
-
-		// clearSort();
 
 		ajaxPage(toUrl, id);
 
@@ -196,22 +208,112 @@
 	 */
 	function ajaxRemoveFilter(e) {
 		var type 	= $(e).attr("data-type").toLowerCase();
-		var filter 	= $(e).attr("data-filter").toLowerCase();
+		var filter 	= $(e).attr("data-action").toLowerCase();
 		filter 		= filter.replace(" ","%20"); 
 
 		var url     = window.location.href;
 		url 		= url.replace('%C2%BD', '½');
 
 		var toRemove= type + "[]=" + filter;
-		var toUrl	= url.replace(toRemove, '');	
+		var toUrl	= url.replace(toRemove, '');
 		var id 		= $(e).parent().attr('id');
 
-		toUrl 		= toUrl.replace(/(sort)[^\&]+/, '');
 		toUrl		= toUrl.replace(/(page)[^\&]+/, '');
 		toUrl		= toUrl.replace('?&', '?');
-		// clearSort();
+
+		// remove filter-info active
+		$('span.filter-info label[data-action="' + filter + '"]').remove();
 
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);
+	}
+
+	/**
+	 * [ajaxSorting description]
+	 * @param  {[type]} e     [description]
+	 * @param  {[type]} param [for mobile or desktop]
+	 * @return {[type]}       [description]
+	 */
+	function ajaxSorting(e, param) {
+		var type 	= $(e).attr("data-action").toLowerCase();
+		var title 	= $(e).attr('data-title');
+
+		var url 	= window.location.href;
+
+		if (url.indexOf("sort=" + type) == -1) {
+			ajaxAddSort(e, param, title);
+		} else {
+			ajaxRemoveSort(e, param, null);
+		}
+	}
+
+	/**
+	 * [ajaxAddSort description]
+	 * @param  {[type]} e     [description]
+	 * @param  {[type]} param [for desktop or mobile]
+	 * @return {[type]}       [description]
+	 */
+	function ajaxAddSort(e, param, title) {
+		var type 	= $(e).attr("data-action").toLowerCase();
+		var id 		= $('.sort-content');
+		var url     = window.location.href;
+		var toUrl	= url.replace(/(sort)[^\&]+/, '');
+		toUrl 		= toUrl.replace(/(page)[^\&]+/, '');
+
+		if (toUrl.indexOf("?") == -1) {
+			toUrl 	= toUrl + "?sort=" + type;
+		} else {
+			toUrl 	= toUrl + "&sort=" + type;
+		}	
+
+		// add label-info sort
+		$('span.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '"> ' + title +
+										' <i class="fa fa-times-circle"></i></label> ');
+		stop_double_event();
+
+		toUrl		= toUrl.replace('?&', '?');
+		toUrl		= toUrl.replace('??', '?');
+		toUrl		= toUrl.replace('&&', '&');
+
+		ajaxPage(toUrl, id);
+		window.history.pushState("", "", toUrl);
+	}
+
+	/**
+	 * [ajaxRemoveSort description]
+	 * @param  {[type]} e     [description]
+	 * @param  {[type]} param [for desktop or mobile]
+	 * @return {[type]}       [description]
+	 */
+	function ajaxRemoveSort(e, param) {
+		var type 	= $(e).attr("data-action").toLowerCase();
+		var id 		= $(e).parent().attr('id');
+
+		var url     = window.location.href;
+		var toUrl	= url.replace(/(sort)[^\&]+/, '');
+
+		toUrl		= toUrl.replace('?&', '?');
+		toUrl		= toUrl.replace('&&', '&');
+
+		// remove sort-info active
+		$('span.sort-info label[data-action="' + type + '"]').remove();
+
+		ajaxPage(toUrl, id);
+		window.history.pushState("", "", toUrl);	
+	}
+
+	/**
+	 * [stop_double_event disabled event click in label collapse]
+	 * @return {[type]} [description]
+	 */
+	function stop_double_event() {
+		$('.panel-action').on('click', function(e) {
+			e.stopPropagation();
+			action = $(this).data('action');
+			checkbox_set = $('input[type=checkbox][data-action=' + action + ']');
+
+			checkbox_set.click();
+			$(this).remove();
+		});
 	}
 </script>

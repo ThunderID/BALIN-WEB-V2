@@ -6,7 +6,7 @@
 				<span class="filter-info">
 					@if (Input::has('tags'))
 						@foreach (Input::get('tags') as $k => $v)
-							<label class="btn btn-transparent btn-xs panel-action mb-5"> {{ $v }} <i class="fa fa-times-circle"></i></label>
+							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}">{{ preg_replace('/ /', ': ', str_replace('-', ' ', $v), 1) }} <i class="fa fa-times-circle"></i></label>
 						@endforeach
 					@endif
 				</span>
@@ -39,15 +39,13 @@
 						@if($value['category_id']!=0)
 							@if(str_is('warna*', $value['slug']))
 								<li class="{{ (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? 'active' : '' }}">
-									{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-color', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
-									
-										<span class="color-item" style="background-color: {{$value['code']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									
+									{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-color hide', 'data-type' => 'tags', 'data-action' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
+									<span class="color-item" style="background-color: {{$value['code']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								</li>
 							@else
 								<li>
 									<div class="checkbox-custom">
-										{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-filter', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
+										{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-filter', 'data-type' => 'tags', 'data-action' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
 										<label for="{{$value['slug']}}">
 											{{$value['name']}} 
 										</label>
