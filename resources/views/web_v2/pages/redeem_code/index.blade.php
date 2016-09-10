@@ -1,7 +1,8 @@
-<?php
-// dd($data);
-?>
 @extends('web_v2.page_templates.layout')
+
+@section('balin-point-nav')
+	text-orange
+@stop
 
 @section('content')
 	<div class="clearfix">&nbsp;</div>
