@@ -1491,21 +1491,19 @@ EVENT & FUNCTION OTHER
 	function get_voucher (e) {
 		value = e.val();
 		action = e.attr('data-action');
-		gv = '';
-		$.ajax({
+		return $.ajax({
 			url: action,
 			type: 'get',
 			dataType: 'json', 
 			async: false,
 			data: {voucher: value},
 			success: function(data) {
-				gv = data;
+				return data;
 			},
-			error: function(){
-				gv = false;
+			fail: function(){
+				return false;
 			}
 		});
-		return gv;
 	}
 
 	/**
@@ -1515,8 +1513,16 @@ EVENT & FUNCTION OTHER
 	 * @param  p {elemet input dari kode voucher}
 	 */
 	function show_voucher (e, p) {
+		error = '';
 		if (e.type=='success')
 		{
+			//tricks
+			var trick = $('#trick-voucher').data('lock');
+			if(trick == 1){
+				error = true;
+				$('#trick-voucher').data('lock', 0);
+			}
+
 			panel_voucher = $('.panel_form_voucher');
 			modal_notif = $('.modal-notif');
 			modal_notif.find('.title').children().html('');
@@ -1713,9 +1719,22 @@ EVENT & FUNCTION OTHER
 					current = param;
 					get_check = check_ajax_choice(to_ajax, $(this));
 					if (get_check!=true) {
-						show_section(target, value);
-						window.history.pushState("", "", section);
-					}
+						if(target != '#sc3'){
+							show_section(target, value);
+							window.history.pushState("", "", section);
+						}else{
+							console.log(value);
+							if($('#trick-voucher').data('lock') == '1'){
+								if(value == '#sc2'){
+									show_section(target, value);
+									window.history.pushState("", "", section);
+								}
+							}else{
+								show_section(target, value);
+								window.history.pushState("", "", section);
+							}
+						}
+					}				
 				}
 			}
 			else {
@@ -1747,10 +1766,11 @@ EVENT & FUNCTION OTHER
 			input_voucher = $('#content_voucher').find('.voucher_desktop');
 			$('#voucher-error').hide();
 			if (typeof(input_voucher.val()) != "undefined" && input_voucher.val() != '') {
-				var result = get_voucher(input_voucher)
-				if(result != "undefined" && result != '' ){
-					param_check = show_voucher(result, input_voucher);
-				}
+				get_voucher(input_voucher).done(function(data){
+					if(data != "undefined" && data != '' ){
+						param_check = show_voucher(data, input_voucher);
+					}
+				});
 			}
 		}
 		else if (ajax=='gift') {
