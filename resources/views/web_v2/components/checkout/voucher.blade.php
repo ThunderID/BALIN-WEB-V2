@@ -49,13 +49,14 @@
 				Kembali</a>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-6 col-lg-6 text-right">
-				<a href="javascript:void(0);" class="btn btn-orange btn_step next_voucher" 
+				<a id="trick-voucher" href="javascript:void(0);" class="btn btn-orange btn_step next_voucher" 
 				data-action="{{ route('my.balin.checkout.voucher') }}" 
 				data-target="#sc3"  
 				data-value="#sc2"
 				data-param="2"
 				data-type="next"
 				data-event="voucher"
+				data-lock="1"
 				data-url="{{ route('my.balin.checkout.get', ['section' => 'sc3']) }}">Lanjutkan
 				&nbsp;
 				<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
