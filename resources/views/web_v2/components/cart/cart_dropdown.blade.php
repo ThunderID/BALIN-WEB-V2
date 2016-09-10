@@ -2,7 +2,7 @@
 	// dd($carts); 
 ?>
 <ul id="desktop-cart-content" class="dropdown-menu dropdown-menu-right text-regular cart_dropdown" aria-labelledby="dLabel">
-	@if (!empty($carts))
+	@if (!empty($carts) && is_array($carts))
 		<?php $total = 0; $i=0; ?>
 		<div class="cart-content">
 			<!-- SECTION CART DROPDOWN CONTENT -->
