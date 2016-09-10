@@ -88,7 +88,6 @@
 		$('.clearall-filter').click(function(){
 			$('.checkbox-filter').prop('checked', false);
 			$('.checkbox-color').prop('checked', false);
-			$('span.color-item').parent().removeClass('active');
 		});
 	});
 @stop

@@ -19,6 +19,11 @@
 	<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 		<div class="panel-body">
 			<div class="row">
+				<div class="col-xs-12 col-sm-12 text-right">
+				  	<a href="{{route('balin.product.index', Input::only('categories'))}}" class="hover-orange clearall-filter">clear all</a>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-xs-12 col-sm-12">
 					@foreach($data['tag'] as $key => $value)
 						@if($value['category_id']==0)
@@ -27,7 +32,7 @@
 								</div>
 							</div>
 							@endif
-							<div class="row mt-sm mb-sm">
+							<div class="row mt-5 mb-5">
 								<div class="col-md-12">
 									<h4 class="mb-5">{{$value['name']}}</h4>
 									@if(str_is('warna*', $value['slug']))

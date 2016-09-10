@@ -39,14 +39,14 @@
 				<a class="btn btn-orange" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Semua</a>
 			</div>
 		@else
-			<div class="row">
+			<div class="row pb-xs">
 				<div class="col-xs-12 col-sm-12 text-right">
-					<p class="">Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results</p>
+					<span class="pt-xs">Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12">
-					<div class="row row-card pl-xs pr-xs">
+					<div class="row">
 						@include('web_v2.components.card', [
 							'card' 	=> $data['product'],
 					  		'col'	=> 'col-xs-6 col-sm-6 '
@@ -95,7 +95,12 @@
 			}
 			ajaxFilter(checkboxcolor);
 		});
-
 		stop_double_event();
+
+		$('.clearall-filter').click(function(){
+			$('.checkbox-filter').prop('checked', false);
+			$('.checkbox-color').prop('checked', false);
+			$('span.color-item').parent().removeClass('active');
+		});
 	});
 @stop
