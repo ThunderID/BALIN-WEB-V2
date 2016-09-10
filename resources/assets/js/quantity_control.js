@@ -845,7 +845,7 @@ EVENT & FUNCTION OTHER
 	 * @return {[type]}          [description]
 	 */
 	function send_ajax_update(item_qty, action) {
-		$.ajax({
+		return $.ajax({
 			url: action,
 			type: 'POST',
 			dataType:"json",
@@ -864,9 +864,15 @@ EVENT & FUNCTION OTHER
 					},
 					success: function(msg) {
 						$('.cart_dropdown').html(msg);
-					}
+					},
+				   	fail: function(){
+				   		location.reload();
+				   	}					
 				});
-			}
+			},
+		   	fail: function(){
+		   		location.reload();
+		   	}
 		});
 	}
 
@@ -943,6 +949,8 @@ EVENT & FUNCTION OTHER
 	 * @return {[type]}   [description]
 	 */
 	$(document).on('click', '.qty-plus', function() {
+		$('.loading').removeClass('hidden');
+		
 		prev = parseInt($(this).parent().find('.qty').text());
 		stock = parseInt($(this).parent().find('.qty').data('stock'));
 		current = addStock(prev, stock);
@@ -964,6 +972,8 @@ EVENT & FUNCTION OTHER
 	 * @return {[type]}   [description]
 	 */
 	$(document).on('click', '.qty-minus', function() {
+		$('.loading').removeClass('hidden');
+
 		prev = parseInt($(this).parent().find('.qty').text());
 		stock = parseInt($(this).parent().find('.qty').data('stock'));
 		current = removeStock(prev);
@@ -1002,52 +1012,64 @@ EVENT & FUNCTION OTHER
 
 		if($(this).parent().parent().find('.total_per_pieces').length != 0){
 			// for desktop & tablet
-			$(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
-			$(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
-			$(this).parent().parent().find('.total_per_pieces').trigger('change');
+			// $(this).parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total));
+			// $(this).parent().parent().find('.total_per_pieces').data('total-piece', total);
+			// $(this).parent().parent().find('.total_per_pieces').trigger('change');
+			send_ajax_update(parseInt($(this).text()), action).done(function(data){
+				var url = window.location.href;
+				$.ajax({
+				   	url: url,
+				   	type:'GET',
+				   	success: function(data){
+				    	$('#table-cart').html($(data).find('#table-cart').html());
+				    	$('.loading').addClass('hidden');
+				   	},
+				   	fail: function(){
+				   		location.reload();
+				   	}
+				});	
+			});			
 		}else{
 			// for mobile
 			$(this).parent().parent().parent().find('.total_per_pieces').text('IDR ' + number_format(total_mobile));
 			$(this).parent().parent().parent().find('.total_per_pieces').data('total-piece', total_mobile);
 			$(this).parent().parent().parent().find('.total_per_pieces').trigger('change');
-		}
 
-		send_ajax_update(parseInt($(this).text()), action);
+			// qty 0
+			if (parseInt($(this).text()) == 0) {
+				// desktop & tablet check total list varian 
+				if (row_varian_desktop.parent().find('.list-varian').length == 1) {
+					// total item 1
+					if (row_varian_desktop.parent().parent().parent().find('.cart-item').length == 1) {
+						row_varian_desktop.parent().parent().parent().find('.cart-item').remove();
+						$('.cart-footer').remove();
 
-		// qty 0
-		if (parseInt($(this).text()) == 0) {
-			// desktop & tablet check total list varian 
-			if (row_varian_desktop.parent().find('.list-varian').length == 1) {
-				// total item 1
-				if (row_varian_desktop.parent().parent().parent().find('.cart-item').length == 1) {
-					row_varian_desktop.parent().parent().parent().find('.cart-item').remove();
-					$('.cart-footer').remove();
+						html = '<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm desktop-tablet"> \
+									<div class="col-md-12 col-sm-12 col-xs-12"> \
+										<h4 class="text-center text-md">Tidak ada item di cart</h4> \
+									</div> \
+								</div>';
 
-					html = '<div class="row mr-0 ml-0 border-bottom-1 border-left-1 border-right-1 border-grey-light p-sm desktop-tablet"> \
-								<div class="col-md-12 col-sm-12 col-xs-12"> \
-									<h4 class="text-center text-md">Tidak ada item di cart</h4> \
-								</div> \
-							</div>';
+						html_mobile = '<div class="row mr-0 ml-0 pt-lg pb-lg mt-lg mb-lg" style="margin-top:"> \
+											<div class="col-xs-12"> \
+												<h4 class="text-center text-md">Tidak ada item di cart</h4> \
+											</div> \
+										</div>';
 
-					html_mobile = '<div class="row mr-0 ml-0 pt-lg pb-lg mt-lg mb-lg" style="margin-top:"> \
-										<div class="col-xs-12"> \
-											<h4 class="text-center text-md">Tidak ada item di cart</h4> \
-										</div> \
-									</div>';
-
-					$('.cart-append').html(html);
-					$('.cart-append-mobile').html(html_mobile);
-					$('.cart-append-mobile').parent().parent().css({'margin-top': '35vh', 'transform': 'translateY(-50%)'});
-					$('html, body').animate({scrollTop: 0}, 600);
-					$('.btn-checkout').addClass('hide');
-				// total item > 1
+						$('.cart-append').html(html);
+						$('.cart-append-mobile').html(html_mobile);
+						$('.cart-append-mobile').parent().parent().css({'margin-top': '35vh', 'transform': 'translateY(-50%)'});
+						$('html, body').animate({scrollTop: 0}, 600);
+						$('.btn-checkout').addClass('hide');
+					// total item > 1
+					} else {
+						row_varian_desktop.parent().parent().remove();
+					}
+				// total list varian > 1
 				} else {
-					row_varian_desktop.parent().parent().remove();
+					row_varian_desktop.remove();
 				}
-			// total list varian > 1
-			} else {
-				row_varian_desktop.remove();
-			}
+			}			
 		}
 	});
 
