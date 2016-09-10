@@ -6572,13 +6572,20 @@ select {
 
 .loading {
   position: absolute;
-  z-index: 9999;
+  z-index: 1;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   line-height: 30px; }
   .loading img {
     width: 20px; }
+
+.big-loading img {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translateX(-50%);
+  width: 40px !important; }
 
 /**
  * EasyZoom core styles
