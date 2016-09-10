@@ -3,7 +3,7 @@
 		<span>Filter</span>
 	</div>
 	<div class="col-md-6 text-right">
-		<a href="{{route('balin.product.index', Input::only('categories'))}}" class="hover-orange clearall-filter">clear all</a>
+		<a href="javascript:void(0);" data-url="{{route('balin.product.index', Input::only('categories'))}}" class="hover-orange clearall-filter">clear all</a>
 	</div>
 </div>
 
@@ -26,7 +26,7 @@
 	@if($value['category_id']!=0)
 		@if(str_is('warna*', $value['slug'])) 
 			<li class="pl-0 pr-0 {{ (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? 'active' : '' }}">
-				{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-color hide', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
+				{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-color hide', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'data-action' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
 				<span class="color-item" style="background-color: {{$value['code']}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			</li>
 		@else

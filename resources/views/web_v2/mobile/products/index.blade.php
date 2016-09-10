@@ -97,7 +97,14 @@
 		});
 		stop_double_event();
 
-		$('.clearall-filter').click(function(){
+		{{-- filter clear all mobile --}}
+		$('.clearall-filter-mobile').click(function(){
+			// to ajax paging
+			ajaxPaging($(this));
+
+			// remove filter & sort active
+			$('.filter-info').html('');
+			$('.sort-info').html('');
 			$('.checkbox-filter').prop('checked', false);
 			$('.checkbox-color').prop('checked', false);
 			$('span.color-item').parent().removeClass('active');

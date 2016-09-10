@@ -20,7 +20,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 text-right">
-				  	<a href="{{route('balin.product.index', Input::only('categories'))}}" class="hover-orange clearall-filter">clear all</a>
+				  	<a href="javascript:void(0);" class="hover-orange clearall-filter-mobile" data-url="{{ route('balin.product.index', Input::only('categories')) }}">clear all</a>
 				</div>
 			</div>
 			<div class="row">
