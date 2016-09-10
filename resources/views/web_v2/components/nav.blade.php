@@ -24,7 +24,7 @@
 		<div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li id="cart-desktop" class="dropdown dropdown-cart  hidden-xs hidden-sm text-light">
-					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart">
+					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart @yield('shopping-bag-nav')">
 						Shopping Bag
 					</a>
 					<span id="desktop-cart-count">
@@ -44,16 +44,16 @@
 			<ul class="nav navbar-nav navbar-right" >
 				<li>
 					@if (Session::has('whoami'))
-					<a href="{{route('my.balin.redeem.index')}}" class="hover-orange">Balin Point</a>
+						<a href="{{route('my.balin.redeem.index')}}" class="hover-orange @yield('balin-point-nav')">Balin Point</a>
 					@else
-					<a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange">Balin Point</a>
+						<a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange @yield('balin-point-nav')">Balin Point</a>
 					@endif
 				</li>
 				<li>
 					@if (Session::has('whoami'))
-						<a href="{{route('my.balin.profile')}}" class="hover-orange">{{Session::get('whoami')['name']}}</a>
+						<a href="{{route('my.balin.profile')}}" class="hover-orange @yield('balin-login-nav')">{{Session::get('whoami')['name']}}</a>
 					@else
-						<a href="{{route('balin.get.login')}}" class="hover-orange">LOGIN</a>
+						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">LOGIN</a>
 					@endif
 				</li>				
 				<?php
@@ -121,18 +121,26 @@
 					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange @endif">
 						Wanita
 						<span>
-							{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
+							@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita')
+								{!! HTML::image('images/woman_orange.png', null, ['class' => 'img-responsive']) !!}
+							@else
+								{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
+							@endif
 						</span>
 					</a>
 				</li>
 				<li>
 					<div class="center">
 					</div>
-				</li>>
+				</li>
 				<li class="text-light left">
 					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange @endif">
 						<span>
-							{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
+							@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria')
+								{!! HTML::image('images/man_orange.png', null, ['class' => 'img-responsive']) !!}
+							@else
+								{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
+							@endif
 						</span>
 						Pria
 					</a>

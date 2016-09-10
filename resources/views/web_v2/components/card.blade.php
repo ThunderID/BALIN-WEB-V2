@@ -15,9 +15,17 @@
 				<h4 class="card-title mb-5 font">
 					<a href="{{ route('balin.product.show', ['slug' => $v['slug']]) }}" class="hover-orange">{{ $v['name'] }}</a>
 				</h4>
-				<p class="card-text mb-5 font">
+				<p class="card-text mb-5 font hidden-xs">
 					@if ($v['promo_price'] != 0)
 						<del>@money_indo($v['price'])</del>
+						<span class="text-orange">@money_indo($v['promo_price'])</span>
+					@else
+						<span>@money_indo($v['price'])</span>
+					@endif
+				</p>
+				<p class="card-text mb-5 font hidden-lg hidden-md hidden-sm">
+					@if ($v['promo_price'] != 0)
+						<del>@money_indo($v['price'])</del><br/>
 						<span class="text-orange">@money_indo($v['promo_price'])</span>
 					@else
 						<span>@money_indo($v['price'])</span>

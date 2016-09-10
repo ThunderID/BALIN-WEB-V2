@@ -9,7 +9,11 @@
 						<ul class="list-unstyled">
 							<li><a href="{{route('balin.info.index', ['type' => 'about-us'])}}" class="hover-orange">About Us</a></li>
 							<li><a href="{{route('balin.info.index', ['type' => 'terms-conditions'])}}" class="hover-orange">Terms &#38; Conditions</a></li>
-							<li><a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange">BALIN Point</a></li>
+							@if (Session::has('whoami'))
+								<li><a href="{{route('my.balin.redeem.index')}}" class="hover-orange">BALIN Point</a></li>
+							@else
+								<li><a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange">BALIN Point</a></li>
+							@endif
 						</ul>
 					</div>
 					<div class="col-md-3">

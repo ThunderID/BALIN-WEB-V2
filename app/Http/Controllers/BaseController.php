@@ -21,6 +21,8 @@ abstract class BaseController extends Controller
 
 	function __construct() 
 	{
+		set_time_limit(0);
+		
 		$this->errors 				= new MessageBag();
 		$this->page_attributes 		= new \Stdclass;
 

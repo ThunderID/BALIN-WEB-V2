@@ -1,5 +1,9 @@
 @extends('web_v2.page_templates.layout')
 
+@section('balin-login-nav')
+	text-orange
+@stop
+
 @section('content')
 <?php
 //get type

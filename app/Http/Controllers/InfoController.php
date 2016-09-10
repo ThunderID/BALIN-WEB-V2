@@ -72,7 +72,7 @@ class InfoController extends BaseController
 															'fb:app_id' 		=> Config::get('fb_app.id'),
 														];
 		
-		$this->page_attributes->data				= 	['content' => $content];
+		$this->page_attributes->data				= 	['content' => $content, 'type' => $type];
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
 		$this->base_path_view 						= 'web_v2.pages';
 

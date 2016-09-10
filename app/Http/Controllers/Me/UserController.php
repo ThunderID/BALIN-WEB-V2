@@ -130,7 +130,7 @@ class UserController extends BaseController
 		$data['user_id']					= Session::get('whoami')['id'];
 		$data['id']							= Session::get('whoami')['id'];
 		$data['name']						= Input::get('name');
-		$data['email']						= Input::get('email');
+		// $data['email']						= Input::get('email');
 		$data['gender']						= Input::get('gender');
 		
 		/* Get input date of birth */
