@@ -3,7 +3,7 @@
 -->
 <?php $carts = Session::get('carts'); ?>
 
-@if (!empty($carts))
+@if (!empty($carts) && is_array($carts))
 	<?php $total = 0; $i=0; ?>
 	<div class="cart-content">
 		<!-- SECTION CART DROPDOWN CONTENT -->

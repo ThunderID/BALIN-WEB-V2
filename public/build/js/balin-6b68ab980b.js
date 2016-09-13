@@ -1110,7 +1110,7 @@ EVENT & FUNCTION OTHER
 				count_cart 	= Object.keys(result.carts).length; 
 				$('.cart-count').find('strong').html(count_cart);
 				if (count_cart == 0){
-					$('.cart-count').removeClass('bg-orange');
+					$('.cart-count').removeClass('bg-orange text-white');
 				}
 				$.ajax({
 					url: data_action2,
