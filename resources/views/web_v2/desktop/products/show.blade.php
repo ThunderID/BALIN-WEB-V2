@@ -49,7 +49,7 @@
 									@else
 										<div class="item item-carousel">
 											<a href="{{ $data['product']['data']['data'][0]['thumbnail'] }}" data-standard="{{ $data['product']['data']['data'][0]['thumbnail'] }}">
-												<img class="img img-responsive canvasSource" src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : 'http://drive.thunder.id/file/public/4/1/2015/12/06/05/avani-short-front.jpg' }}" alt="" style="width:100%;">
+												<img class="img img-responsive canvasSource" src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : '' }}" alt="" style="width:100%;">
 											</a>
 										</div>									
 									@endif
