@@ -41,6 +41,6 @@
 		</div>
 	</div>
 	@if (($k-1) % 2 == 0)
-	  	<div class="clearfix visible-xs"></div>
+	  	<div class="clearfix visible-xs visible-sm"></div>
 	@endif
 @endforeach
