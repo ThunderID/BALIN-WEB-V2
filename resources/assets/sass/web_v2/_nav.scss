@@ -56,7 +56,6 @@
 		color: white;
 	}
 	.navbar-brand{
-	    padding-top: 1px;
 	    position: fixed;
 	    left: 50%;
 	    transform: translateX(-50%);
@@ -66,6 +65,12 @@
 	    margin-left: 20px;
 	}
 }
+@media screen and (max-width: 767px) {
+	.navbar-brand{
+	    padding-top: 7px;
+	}
+}
+
 .cart-content{
     height: 30vh;
     overflow-y: scroll;
@@ -108,7 +113,7 @@ ul.dropdown-user{
 }
 
 /* submenu */
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
 	.submenu{
 		margin-top:-10px;
 	} 

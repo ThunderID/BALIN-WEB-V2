@@ -16,7 +16,7 @@
 				</span>
 			</a>
 			<a class="navbar-brand" href="{{ route('balin.home.index') }}">
-				{!! HTML::image('images/logo-b.png', null, ['class' => 'img-responsive']) !!}
+				{!! HTML::image('images/white_logo_balin.png', null, ['class' => 'img-responsive']) !!}
 			</a>
 		</div>
 
@@ -42,6 +42,12 @@
 				</li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
+				<li class="hidden-md hidden-lg">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita']) ) }}" class="hover-orange">Koleksi Wanita</a>
+				</li>
+				<li class="hidden-md hidden-lg">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria']) ) }}" class="hover-orange">Koleksi Pria</a>
+				</li>
 				<li>
 					@if (Session::has('whoami'))
 						<a href="{{route('my.balin.redeem.index')}}" class="hover-orange @yield('balin-point-nav')">Balin Point</a>
@@ -118,7 +124,7 @@
 						<?php $extend_search = array_merge($extend_search, Input::only('sort'));?>
 					@endif
 
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange @endif">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange @endif hover-orange">
 						Wanita
 						<span>
 							@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita')
@@ -134,7 +140,7 @@
 					</div>
 				</li>
 				<li class="text-light left">
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange @endif">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange @endif hover-orange">
 						<span>
 							@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria')
 								{!! HTML::image('images/man_orange.png', null, ['class' => 'img-responsive']) !!}

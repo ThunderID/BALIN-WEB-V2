@@ -2963,7 +2963,7 @@ tbody.collapse.in {
 
 .navbar-brand {
   float: left;
-  padding: 6px 10px;
+  padding: 12px 10px;
   font-size: 18px;
   line-height: 20px;
   height: 50px; }
@@ -5099,6 +5099,9 @@ button.close {
 .text-grey-light {
   color: #e5e5e5 !important; }
 
+.text-grey-lightest {
+  color: #989898 !important; }
+
 .text-green {
   color: green !important; }
 
@@ -5881,13 +5884,16 @@ p {
   .navbar-cart, .navbar-cart:hover, .navbar-cart:active {
     color: white; }
   .navbar-brand {
-    padding-top: 1px;
     position: fixed;
     left: 50%;
     transform: translateX(-50%); }
   .cart-count {
     margin-top: -30px;
     margin-left: 20px; } }
+
+@media screen and (max-width: 767px) {
+  .navbar-brand {
+    padding-top: 7px; } }
 
 .cart-content {
   height: 30vh;
@@ -5924,7 +5930,7 @@ ul.dropdown-user {
   margin-top: 5px !important; }
 
 /* submenu */
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .submenu {
     margin-top: -10px; } }
 

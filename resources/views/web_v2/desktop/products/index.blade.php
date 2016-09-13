@@ -84,8 +84,13 @@
 			}
 			ajaxFilter(checkboxcolor);
 		});
+
 		{{-- FUNCTION CLEARALL FILTER DESKTOP --}}
 		$('.clearall-filter').click(function(){
+			// to ajax paging 
+			ajaxPaging($(this));
+
+			// remove filter active
 			$('.checkbox-filter').prop('checked', false);
 			$('.checkbox-color').prop('checked', false);
 			$('span.color-item').parent().removeClass('active');

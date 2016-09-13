@@ -33,7 +33,6 @@
 			},
 			error: function(){
 				var error = "</br></br><h2 class='text-center m-t-md'>Terjadi masalah penerimaan data, silahkan muat ulang halaman</h2>";
-
 				$('.content-data').html(error);
 				$('.content-data').fadeIn(400);
 			}
@@ -71,7 +70,6 @@
 		}
 	}
 
-
 	/**
 	 * [ajaxCategory description]
 	 * @param  {[type]} e [description]
@@ -108,7 +106,6 @@
 		if (toUrl.indexOf("?") == -1) {
 			toUrl 	= toUrl + "?categories[]=" + categories_first + "&" + type + "=" + categories;
 		} else {
-
 			toUrl 	= toUrl + "&categories[]=" + categories_first + "&" + type + "=" + categories;
 		}
 

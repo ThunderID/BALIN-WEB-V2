@@ -4,12 +4,14 @@
 			<h4 class="panel-title">
 				Category &nbsp;
 				<span class="category-info">
+				@if (!empty(Input::get('categories')))
 					@forelse (Input::get('categories') as $k => $v)
 						@if (($v != 'pria') && ($v != 'wanita'))
 							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}"> {{ last(explode('-', $v)) }} <i class="fa fa-times-circle"></i></label>
 						@endif
 					@empty
 					@endforelse
+				@endif
 				</span>
 				<span class="pull-right">
 					<i class="fa fa-angle-right " aria-hidden="true"></i>

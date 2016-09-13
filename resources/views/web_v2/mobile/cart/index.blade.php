@@ -15,7 +15,7 @@
 					$temp_product = 0;
 				?>
 
-				@if (!empty($data['carts']))
+				@if (!empty($data['carts']) && is_array($data['carts']))
 					@foreach ($data['carts'] as $k => $item)
 						<?php
 							$qty 			= 0;
