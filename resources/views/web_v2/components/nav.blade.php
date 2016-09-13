@@ -16,7 +16,7 @@
 				</span>
 			</a>
 			<a class="navbar-brand" href="{{ route('balin.home.index') }}">
-				{!! HTML::image('images/logo-b.png', null, ['class' => 'img-responsive']) !!}
+				{!! HTML::image('images/white_logo_balin.png', null, ['class' => 'img-responsive']) !!}
 			</a>
 		</div>
 
