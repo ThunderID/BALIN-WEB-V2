@@ -26,7 +26,7 @@
 					</div>
 					<div class="col-md-3">
 						<h4>Cara Pembayaran</h4>
-						<ul class="list-unstyled">
+						<ul class="list-unstyled text-grey-lightest">
 							<li>Credit Card</li>
 							<li>ATM Transfer</li>
 							<li>CIMB Clicks</li>
@@ -43,7 +43,7 @@
 					</div>
 					<div class="col-md-3">
 						<h4>Jasa Pengiriman</h4>
-						<ul class="list-unstyled">
+						<ul class="list-unstyled text-grey-lightest">
 							<li>JNE</li>
 						</ul>
 					</div>
