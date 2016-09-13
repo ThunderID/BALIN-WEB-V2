@@ -43,10 +43,10 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li class="hidden-md hidden-lg">
-					<a href="" class="hover-orange">Koleksi Wanita</a>
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita']) ) }}" class="hover-orange">Koleksi Wanita</a>
 				</li>
 				<li class="hidden-md hidden-lg">
-					<a href="" class="hover-orange">Koleksi Pria</a>
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria']) ) }}" class="hover-orange">Koleksi Pria</a>
 				</li>
 				<li>
 					@if (Session::has('whoami'))
