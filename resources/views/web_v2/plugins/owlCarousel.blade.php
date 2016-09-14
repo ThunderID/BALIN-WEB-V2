@@ -150,7 +150,7 @@
 
     $(".carousel-stacked").owlCarousel({
       autoPlay : 5000,    
-      items : 1,
+      items : 5,
       singleItem: false,
       navigation : false,
       pagination : false,
