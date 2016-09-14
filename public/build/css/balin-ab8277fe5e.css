@@ -5888,8 +5888,8 @@ p {
     left: 50%;
     transform: translateX(-50%); }
   .cart-count {
-    top: -55%;
-    left: 75%; } }
+    top: -50%;
+    left: 70%; } }
 
 @media screen and (max-width: 767px) {
   .navbar-brand {
