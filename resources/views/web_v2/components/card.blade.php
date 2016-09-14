@@ -41,8 +41,10 @@
 		</div>
 	</div>
 	@if (($k-1) % 2 == 0)
-		@if(strpos($col, 'col-sm-3') == false))
+		@if(strpos($col, 'col-sm-3') == false)
 		  	<div class="clearfix visible-xs visible-sm"></div>
+		@else
+		  	<div class="clearfix visible-xs"></div>
 		@endif
 	@endif
 @endforeach
