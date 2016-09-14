@@ -48,7 +48,7 @@
 	}
 	.cart-count{
 	    margin-top: -42px;
-	    margin-left: 57px
+	    margin-left: 57px;
 	}
 }
 @media screen and (max-width: 991px) {
@@ -61,8 +61,8 @@
 	    transform: translateX(-50%);
 	}
 	.cart-count{
-		margin-top : -10px;
-		margin-left: 5px;
+		top: -55%;
+	    left: 75%;	
 	}
 }
 @media screen and (max-width: 767px) {
