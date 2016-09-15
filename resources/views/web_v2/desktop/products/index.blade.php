@@ -6,11 +6,11 @@
 
 	<section class="container mt-sm mb-sm">
 		<div class="row form mr-0 ml-0">
-			<div class="col-md-3 bg-grey">
+			<div class="col-md-3 col-sm-3 bg-grey">
 				{{-- FILTER-DESKTOP --}}
 				@include('web_v2.components.filter-desktop')
 			</div>
-			<div class="col-md-9 content-data">
+			<div class="col-md-9 col-sm-9 content-data">
 				@if(count($data['offer']))
 					<div class="clearfix">&nbsp;</div>
 					<div class="row mt-xs mb-xs pl-sm pr-sm" id="coming-soon">
@@ -30,7 +30,7 @@
 						{{-- DATA GRID CARD PRODUCT --}}
 						@include('web_v2.components.card', [
 							'card' 	=> $data['offer'],
-					  		'col'	=> 'col-lg-4 col-md-4 col-sm-4 col-xs-6'
+					  		'col'	=> 'col-lg-4 col-md-4 col-sm-6 col-xs-6'
 						])
 					</div>
 				@else
@@ -47,7 +47,7 @@
 						{{-- DATA GRID CARD PRODUCT --}}
 						@include('web_v2.components.card', [
 							'card' 	=> $data['product'],
-					  		'col'	=> 'col-lg-4 col-md-4 col-sm-4 col-xs-6'
+					  		'col'	=> 'col-lg-4 col-md-4 col-sm-6 col-xs-6'
 						])
 					</div>
 				@endif

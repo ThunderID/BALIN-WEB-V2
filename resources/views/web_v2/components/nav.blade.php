@@ -61,7 +61,12 @@
 					@else
 						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">LOGIN</a>
 					@endif
-				</li>				
+				</li>	
+				<li class="hidden-md hidden-lg">
+					@if (Session::has('whoami'))
+						<a href="{{route('balin.get.logout')}}" class="hover-orange">LOGOUT</a>
+					@endif
+				</li>							
 				<?php
 				// <li>
 				// 	<a href="{{ route('balin.product.index') }}" class="{{$controller_name == 'product'? 'active':''}}">Produk</a>

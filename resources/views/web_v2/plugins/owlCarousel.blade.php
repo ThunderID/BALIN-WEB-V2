@@ -122,7 +122,6 @@
     margin-left:2px;
     margin-right:2px;
 }
-
 </style>
 
 <script type="text/javascript">
@@ -150,10 +149,15 @@
 		});
 
     $(".carousel-stacked").owlCarousel({
+      autoPlay : 5000,    
+      items : 5,
       singleItem: false,
-      navigation : true,
+      navigation : false,
       pagination : false,
-      navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]      
+      itemsDesktop : [1000,3],
+      itemsDesktopSmall : [900,3],
+      itemsTablet: [600,3],
+      itemsMobile : false           
     });
 
     $(".carousel-single").owlCarousel({
