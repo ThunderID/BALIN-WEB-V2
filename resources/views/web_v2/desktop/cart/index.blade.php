@@ -14,14 +14,14 @@
 					</div>
 					<!-- SECTION HEADER TABLE CART -->
 					<div class="row border-1 border-solid border-grey-light p-sm ml-0 mr-0">
-						<div class="col-sm-1 col-md-1 col-lg-1">
+						<div class="col-sm-2 col-md-1 col-lg-1">
 							<span class="text-uppercase">Produk</span>
 						</div>
-						<div class="col-sm-11 col-md-11 col-lg-11">
+						<div class="col-sm-10 col-md-11 col-lg-11">
 							<div class="row">
-								<div class="col-sm-2 col-md-3 col-lg-3 text-uppercase">
+								<div class="col-sm-1 col-md-3 col-lg-3 text-uppercase">
 								</div>
-								<div class="col-sm-4 col-md-3 col-lg-3 text-uppercase text-center">
+								<div class="col-sm-5 col-md-3 col-lg-3 text-uppercase text-center">
 									<span>Harga</span>
 								</div>
 								<div class="hidden-sm col-md-1 col-lg-1"></div>
