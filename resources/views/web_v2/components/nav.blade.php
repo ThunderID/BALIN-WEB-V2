@@ -11,7 +11,9 @@
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span id="mobile-cart-count">
 					<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
-						{{ count(Session::get('carts')) }}
+						<strong>
+							{{ count(Session::get('carts')) }}
+						</strong>
 					</span>
 				</span>
 			</a>
