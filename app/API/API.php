@@ -33,7 +33,7 @@ class API
 
 	public function get($url)
 	{
-		try{
+		// try{
 			$client 				= new Client([
 											'base_uri' => $this->basic_url,
 										    'timeout'  => $this->timeout
@@ -45,19 +45,19 @@ class API
 			$body 					= $response->getBody();
 
 			return (string) $body;
-		} catch (Exception $e) {
-			if($this->lives > 0){
-				$this->lives = $this->lives - 1;
-				$this->post($url);
-			}else{
-				return view('errors.503');
-			}
-		}		
+		// } catch (Exception $e) {
+		// 	if($this->lives > 0){
+		// 		$this->lives = $this->lives - 1;
+		// 		$this->post($url);
+		// 	}else{
+		// 		return view('errors.503');
+		// 	}
+		// }		
 	}
 
 	public function post($url, $data = [])
 	{
-		try{
+		// try{
 			$client 				= new Client([
 											'base_uri' => $this->basic_url,
 										    'timeout'  => $this->timeout,
@@ -68,19 +68,19 @@ class API
 			$body 					= $response->getBody();
 
 			return (string) $body;
-		} catch (Exception $e) {
-			if($this->lives > 0){
-				$this->lives = $this->lives - 1;
-				$this->post($url, $data);
-			}else{
-				return view('errors.503');
-			}
-		}
+		// } catch (Exception $e) {
+		// 	if($this->lives > 0){
+		// 		$this->lives = $this->lives - 1;
+		// 		$this->post($url, $data);
+		// 	}else{
+		// 		return view('errors.503');
+		// 	}
+		// }
 	}
 
 	public function delete($url, $data = [])
 	{
-		try{
+		// try{
 			$client 				= new Client([
 											'base_uri' => $this->basic_url,
 										    'timeout'  => $this->timeout,
@@ -93,13 +93,13 @@ class API
 			$body 					= $response->getBody();
 
 			return (string) $body;
-		} catch (Exception $e) {
-			if($this->lives > 0){
-				$this->lives = $this->lives - 1;
-				$this->post($url, $data);
-			}else{
-				return view('errors.503');
-			}
-		}
+		// } catch (Exception $e) {
+		// 	if($this->lives > 0){
+		// 		$this->lives = $this->lives - 1;
+		// 		$this->post($url, $data);
+		// 	}else{
+		// 		return view('errors.503');
+		// 	}
+		// }
 	}	
 }
