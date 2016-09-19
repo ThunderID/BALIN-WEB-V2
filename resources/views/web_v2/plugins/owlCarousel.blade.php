@@ -33,9 +33,13 @@
     float: right;
 }
 #slider .owl-controls{
-  margin-top: -20px;
+  margin-top: -27px;
 }
-
+@media screen and (min-width: 768px) {
+  #slider .owl-controls{
+    margin-top: -30px;
+  }
+}
 
 
 /*carousel*/

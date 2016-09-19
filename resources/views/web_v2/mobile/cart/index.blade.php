@@ -2,10 +2,17 @@
 
 @section('content')
 	<section class="container mtm-xs">
-		<div class="row">
+		<div id="table-cart" class="row">
+			<div class="col-xs-12 loading hidden">
+					{!! HTML::image('images/loading.gif', null, [
+						'class' => 'img-responsive', 
+						'style' => 'width: 15%;top: 35vh;left: 50vw;transform: translateX(-50%);position: absolute;'
+					]) !!}
+			</div>
 			<div class="col-xs-12">
 				<!-- SECTION HEADER TABLE CART -->
-				<div class="cart-append-mobile"></div>
+				<div class="cart-append-mobile">
+				</div>
 				<!-- END SECTION HEADER TABLE CART -->
 			
 				<!-- SECTION CONTENT TABLE CART -->
@@ -67,7 +74,7 @@
 							</div>
 						@endif
 						<div class="clearfix">&nbsp;</div>
-						@if (!empty($data['carts']))
+						@if (!empty($data['carts']) && is_array($data['carts']) )
 							<div class="row mt-sm mb-sm empty-cart-mobile">
 								<div class="col-xs-12">
 									<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full btn-block btn-lg text-uppercase btn-checkout">

@@ -63,9 +63,11 @@
 		<!-- END SECTION BOTTOM BAR FOR MOBILE HOME, PRODUCT & PROFILE -->
 		<div class="divider_footer"></div>
 		<!-- SECTION FOOTER  -->
-		@if(strtolower($controller_name) == 'login' || strtolower($controller_name) == 'checkout' || strtolower($controller_name) == 'signup' || strtolower($controller_name) == 'reset')
-		@else
-  			@include('web_v2.components.footer')
+		@if(isset($controller_name))
+			@if(strtolower($controller_name) == 'login' || strtolower($controller_name) == 'checkout' || strtolower($controller_name) == 'signup' || strtolower($controller_name) == 'reset')
+			@else
+	  			@include('web_v2.components.footer')
+	 		@endif
  		@endif
 		<!-- END SECTION FOOTER -->
 			

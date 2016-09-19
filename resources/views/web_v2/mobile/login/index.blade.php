@@ -31,7 +31,7 @@ if(Session::has('type')){
 								@include('web_v2.components.alert-box')
 								@include('web_v2.components.signup.form')
 							</div>
-							<div class="signup" style="{{ $type == 'forgot' ? 'display:block;' : 'display:none;' }}">
+							<div class="forgot" style="{{ $type == 'forgot' ? 'display:block;' : 'display:none;' }}">
 								<h2 class="text-superlight mb-xl">Reset Password</h2>
 								@include('web_v2.components.alert-box')
 								@include('web_v2.components.forgot.form')

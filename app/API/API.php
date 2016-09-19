@@ -4,10 +4,13 @@ use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 
+use Response;
+
 class API
 {
 	protected $domain;
 	protected $port;
+	protected $lives 			= 10;
 
 	public $timeout				= 2;
 	public $basic_url;
@@ -30,46 +33,73 @@ class API
 
 	public function get($url)
 	{
-		$client 				= new Client([
-										'base_uri' => $this->basic_url,
-									    'timeout'  => $this->timeout
-									]);
+		try{
+			$client 				= new Client([
+											'base_uri' => $this->basic_url,
+										    'timeout'  => $this->timeout
+										]);
 
-		$request 				= new Request('GET',  $this->basic_url . $url);
-		$response 				= $client->send($request, ['timeout' => $this->timeout]);
-		
-		$body 					= $response->getBody();
+			$request 				= new Request('GET',  $this->basic_url . $url);
+			$response 				= $client->send($request, ['timeout' => $this->timeout]);
+			
+			$body 					= $response->getBody();
 
-		return (string) $body;
+			return (string) $body;
+		} catch (Exception $e) {
+			if($this->lives > 0){
+				$this->lives = $this->lives - 1;
+				$this->post($url);
+			}else{
+				return view('errors.503');
+			}
+		}		
 	}
 
 	public function post($url, $data = [])
 	{
-		$client 				= new Client([
-										'base_uri' => $this->basic_url,
-									    'timeout'  => $this->timeout,
-									]);
+		try{
+			$client 				= new Client([
+											'base_uri' => $this->basic_url,
+										    'timeout'  => $this->timeout,
+										]);
 
-		$response 				= $client->request('POST',  $this->basic_url . $url, ['form_params' => $data] );
+			$response 				= $client->request('POST',  $this->basic_url . $url, ['form_params' => $data] );
 
-		$body 					= $response->getBody();
+			$body 					= $response->getBody();
 
-		return (string) $body;
+			return (string) $body;
+		} catch (Exception $e) {
+			if($this->lives > 0){
+				$this->lives = $this->lives - 1;
+				$this->post($url, $data);
+			}else{
+				return view('errors.503');
+			}
+		}
 	}
 
 	public function delete($url, $data = [])
 	{
-		$client 				= new Client([
-										'base_uri' => $this->basic_url,
-									    'timeout'  => $this->timeout,
-									]);
+		try{
+			$client 				= new Client([
+											'base_uri' => $this->basic_url,
+										    'timeout'  => $this->timeout,
+										]);
 
 
-		$request 				= new Request('DELETE',  $this->basic_url . $url);
-		$response 				= $client->send($request, ['timeout' => $this->timeout]);
+			$request 				= new Request('DELETE',  $this->basic_url . $url);
+			$response 				= $client->send($request, ['timeout' => $this->timeout]);
 
-		$body 					= $response->getBody();
+			$body 					= $response->getBody();
 
-		return (string) $body;
+			return (string) $body;
+		} catch (Exception $e) {
+			if($this->lives > 0){
+				$this->lives = $this->lives - 1;
+				$this->post($url, $data);
+			}else{
+				return view('errors.503');
+			}
+		}
 	}	
 }

@@ -1,47 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('web_v2.page_templates.layout')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
+@section('content') 
+    <div class="container-fluid background">
+        <div class="row" style="height:100vh;">
+            {{-- signup preface --}}
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="top: 50vh;position: absolute;transform: translateY(-50%);">
+                <div class="row">
+                    {!! Html::image('images/white_logo_balin.png', null, ['class' => 'logo', 'style' => 'width:250px;']) !!}
+                    <h4 class="text-white" style="font-weight:100;">Maaf saat ini kami tidak dapat memproses permintaan Anda.<br/> Silahkan coba lagi beberapa saat.</h4>
+                </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@stop

@@ -11,7 +11,9 @@
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span id="mobile-cart-count">
 					<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
-						{{ count(Session::get('carts')) }}
+						<strong>
+							{{ count(Session::get('carts')) }}
+						</strong>
 					</span>
 				</span>
 			</a>
@@ -129,15 +131,8 @@
 						<?php $extend_search = array_merge($extend_search, Input::only('sort'));?>
 					@endif
 
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange @endif hover-orange">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange active @endif hover-orange woman-menu">
 						Wanita
-						<span>
-							@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita')
-								{!! HTML::image('images/woman_orange.png', null, ['class' => 'img-responsive']) !!}
-							@else
-								{!! HTML::image('images/woman_white.png', null, ['class' => 'img-responsive']) !!}
-							@endif
-						</span>
 					</a>
 				</li>
 				<li>
@@ -145,14 +140,7 @@
 					</div>
 				</li>
 				<li class="text-light left">
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange @endif hover-orange">
-						<span>
-							@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria')
-								{!! HTML::image('images/man_orange.png', null, ['class' => 'img-responsive']) !!}
-							@else
-								{!! HTML::image('images/man_white.png', null, ['class' => 'img-responsive']) !!}
-							@endif
-						</span>
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange active @endif hover-orange man-menu">
 						Pria
 					</a>
 				</li>					

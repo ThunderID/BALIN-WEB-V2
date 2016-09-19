@@ -1,11 +1,11 @@
 <!-- SECTION CART LIST ITEM DESKTOP -->
 <div class="row cart-item border-right-1 border-left-1 border-bottom-1 border-grey-light pb-xs ml-0 mr-0">
-	<div class="col-sm-1 col-md-1 col-lg-1">
+	<div class="col-sm-2 col-md-1 col-lg-1">
 		<a href="#">
 			<img class="img-responsive mt-sm"  src="{{ $item_thumbnail }}" >
 		</a>
 	</div>
-	<div class="col-sm-11 col-md-11 col-lg-11 p-b-sm">
+	<div class="col-sm-10 col-md-11 col-lg-11 p-b-sm">
 		<div class="row">
 			<div class="col-sm-12 col-md-12 col-lg-12">
 				<h4 class="text-md mt-sm">
@@ -18,10 +18,10 @@
 			<div class="row p-xs list-varian" 
 				data-vid="{{ $value['varian_id'] }}" 
 				data-cid="{{ $item_id }}">
-				<div class="col-sm-2 col-md-3 col-lg-3">
+				<div class="col-sm-1 col-md-3 col-lg-3">
 					<p class="m-b-none" style="line-height:20px">{{ $value['size'] }}</p>
 				</div>
-				<div class="col-sm-4 col-md-3 col-lg-3 text-center label_price">
+				<div class="col-sm-5 col-md-3 col-lg-3 text-center label_price">
 					@if ($item_discount != 0)
 						<del>@money_indo($item_price)</del>
 						<span class="col-sm-12 hidden-md hidden-lg"><br/></span>
