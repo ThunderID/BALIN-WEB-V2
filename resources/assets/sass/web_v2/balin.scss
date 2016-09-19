@@ -276,3 +276,12 @@ body {
 	.panel-akun .form-control{
 		border:none;
 	} 
+
+.redeem-content {
+	top: 15vh; 
+	position: absolute; 
+	width: 100%;
+	@media screen and (max-width: 767px) {
+		top: inherit;
+	}
+}
