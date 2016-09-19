@@ -26,24 +26,27 @@ abstract class BaseController extends Controller
 		$this->errors 				= new MessageBag();
 		$this->page_attributes 		= new \Stdclass;
 
-		$api_url 					= '/oauth/client/access_token';
-		$api_data 					= 	[
-											'grant_type'	=> 'client_credentials',
-											'client_id'		=> env('CLIENT_ID'),
-											'client_secret'	=> env('CLIENT_SECRET'),
-										];
-		$api 						= new API;
-		$result 					= json_decode($api->post($api_url, $api_data),true);
+		if(!Session::has('API_token'))
+		{
+			$api_url 					= '/oauth/client/access_token';
+			$api_data 					= 	[
+												'grant_type'	=> 'client_credentials',
+												'client_id'		=> env('CLIENT_ID'),
+												'client_secret'	=> env('CLIENT_SECRET'),
+											];
+			$api 						= new API;
+			$result 					= json_decode($api->post($api_url, $api_data),true);
 
-		// Get success API token
-		if ($result['status'] == "success")
-		{
-			Session::set('API_token_public', $result['data']['token']['token']);
-			Session::set('API_token', $result['data']['token']['token']);
-		}
-		else
-		{
-			\App::abort(503);
+			// Get success API token
+			if ($result['status'] == "success")
+			{
+				Session::set('API_token_public', $result['data']['token']['token']);
+				Session::set('API_token', $result['data']['token']['token']);
+			}
+			else
+			{
+				\App::abort(503);
+			}
 		}
 
   		//generate balin information
