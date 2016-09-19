@@ -130,6 +130,9 @@ class UserController extends BaseController
 		$data['user_id']					= Session::get('whoami')['id'];
 		$data['id']							= Session::get('whoami')['id'];
 		$data['name']						= Input::get('name');
+		$data['name']						= Input::get('name');
+		$data['email']						= Session::get('whoami')['email'];
+
 		// $data['email']						= Input::get('email');
 		$data['gender']						= Input::get('gender');
 		
@@ -160,7 +163,7 @@ class UserController extends BaseController
 
 		//2. Get My detail information
 		$APIUser 							= new APIUser;
-		$result								= $APIUser->postDataUpdate($data);	
+		$result								= $APIUser->postDataUpdate($data);
 
 		//3. Check result
 		if (isset($result['message']))

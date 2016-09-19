@@ -8,6 +8,7 @@
 	<div class="clearfix hidden-xs hidden-sm">&nbsp;</div>
 
 	<section class="container">
+		@include('web_v2.components.alert-box')
 		<!-- SECTION INFO NO ACTIVE -->
 			@if ($data['me']['data']['is_active']==0)
 				<div class="row">
