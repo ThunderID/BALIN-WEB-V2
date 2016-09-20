@@ -99,6 +99,7 @@ class InvitationController extends BaseController
 			if(!$validator->passes())
 			{
 				$this->errors						= ['Email "'.$invitation['email'].'" tidak sah'];
+				Session::put('error_invite', '1');
 
 				return $this->generateRedirectRoute('my.balin.redeem.index');	
 			}
@@ -118,6 +119,7 @@ class InvitationController extends BaseController
 		if (isset($result['message']))
 		{
 			$this->errors							= $result['message'];
+			Session::put('error_invite', '1');
 		}
 		else
 		{
@@ -138,6 +140,7 @@ class InvitationController extends BaseController
 			// }
 
 			$this->page_attributes->success 	= 'Anda telah mengirimkan  '.count($emails).' undangan kepada teman Anda';
+			Session::forget('error_invite');
 		}
 
 		return $this->generateRedirectRoute('my.balin.redeem.index');	

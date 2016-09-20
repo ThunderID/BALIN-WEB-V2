@@ -1,6 +1,3 @@
-<?php 
-	// dd($data['point']); 
-?>
 <!-- SECTION POINT DESKTOP -->
 <div class="hidden-xs hidden-sm">
 	<div class="row m-sm">
