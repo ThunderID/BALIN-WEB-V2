@@ -1493,7 +1493,7 @@ output {
   border: 1px solid #ccc;
   border-radius: 0px; }
   .form-control:focus {
-    border-color: #000;
+    border-color: #999;
     outline: 0;
     background-color: rgba(255, 255, 255, 0.8); }
   .form-control::-moz-placeholder {
@@ -5632,6 +5632,11 @@ p {
 .pr-xxxl {
   padding-right: 40px !important; }
 
+.fit-content {
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important; }
+
 .btn-black-hover-white-border-black {
   background-color: #000;
   color: #fff; }
@@ -5806,6 +5811,9 @@ p {
 
 .bg-transparent-8 {
   background-color: rgba(0, 0, 0, 0.8) !important; }
+
+.display-inline {
+  display: inline-block !important; }
 
 .absolute {
   position: absolute !important; }
@@ -7041,3 +7049,11 @@ body {
 
 .panel-akun .form-control {
   border: none; }
+
+.redeem-content {
+  top: 15vh;
+  position: absolute;
+  width: 100%; }
+  @media screen and (max-width: 767px) {
+    .redeem-content {
+      top: inherit; } }

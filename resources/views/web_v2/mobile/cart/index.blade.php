@@ -2,8 +2,8 @@
 
 @section('content')
 	<section class="container mtm-xs mb-xxl">
-		<div id="table-cart" class="row">
-			<div class="col-xs-12 loading hidden">
+		<div id="table-cart" class="row" style="position:relative;">
+			<div class="col-xs-12 loading hidden" style="position:fixed !important;">
 					{!! HTML::image('images/loading.gif', null, [
 						'class' => 'img-responsive', 
 						'style' => 'width: 15%;top: 35vh;left: 50vw;transform: translateX(-50%);position: absolute;'
