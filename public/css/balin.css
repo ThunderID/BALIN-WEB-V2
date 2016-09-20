@@ -6356,6 +6356,10 @@ select {
         line-height: normal;
         vertical-align: middle; } }
 
+.warning {
+  font-size: 11px;
+  color: red; }
+
 /* 
  *  Owl Carousel - Animate Plugin
  */

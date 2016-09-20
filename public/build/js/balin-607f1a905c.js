@@ -1497,7 +1497,7 @@ EVENT & FUNCTION OTHER
 
 			$('#notif_window').modal('show');
 		}
-		else if (e.type=='error')
+		else
 		{
 			error = true;
 			setTimeout( function() {
