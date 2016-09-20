@@ -1,7 +1,7 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<section class="container mtm-xs">
+	<section class="container mtm-xs mb-xxl">
 		<div id="table-cart" class="row">
 			<div class="col-xs-12 loading hidden">
 					{!! HTML::image('images/loading.gif', null, [
@@ -96,6 +96,8 @@
 				<!-- END SECTION TABLE FOOTER CART -->
 			</div>
 		</div>
+	</section>
+	<section class="container mt-lg mb-lg">
 	</section>
 @stop
 
