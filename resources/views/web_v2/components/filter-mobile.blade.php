@@ -6,7 +6,7 @@
 				<span class="filter-info">
 					@if (Input::has('tags'))
 						@foreach (Input::get('tags') as $k => $v)
-							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}">{{ preg_replace('/ /', ': ', str_replace('-', ' ', $v), 1) }} <i class="fa fa-times-circle"></i></label>
+							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="checkbox">{{ preg_replace('/ /', ': ', str_replace('-', ' ', $v), 1) }} <i class="fa fa-times-circle"></i></label>
 						@endforeach
 					@endif
 				</span>

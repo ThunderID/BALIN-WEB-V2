@@ -111,7 +111,7 @@
 
 		// add to active category mobile to category info
 		text = categories.split('-');
-		$('span.category-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '"> ' + text[1] +
+		$('span.category-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '" data-input="link"> ' + text[1] +
 										' <i class="fa fa-times-circle"></i></label></span> ');
 		stop_double_event();
 
@@ -130,11 +130,18 @@
 	 */
 	function ajaxRemoveCategory(e) {
 		type 	= $(e).attr("data-action").toLowerCase();
-		url     = window.location.href;
-		toUrl	= url.replace(/(categories[1])[^\&]+/, '');
+		categories_first = $(e).attr('data-categories').toLowerCase();
 
-		toUrl		= toUrl.replace('?&', '?');
-		toUrl		= toUrl.replace('&&', '&');
+		url     = window.location.href;
+
+		toUrl	= url.replace(/(categories)[^\&]+/, '').replace(/(categories)[^\&]+/, '');
+		toUrl 	= toUrl.replace(/(page)[^\&]+/, '');
+
+		if (toUrl.indexOf("?") == -1) {
+			toUrl 	= toUrl + "?categories[]=" + categories_first;
+		} else {
+			toUrl 	= toUrl + "&categories[]=" + categories_first;
+		}
 
 		// remove category-info active
 		$('span.category-info label[data-action="' + type + '"]').remove();
@@ -185,15 +192,15 @@
 
 		// add label info filter active 
 		text = filter.replace('-', ' ');
-		$('span.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '"> ' + text +
+		$('span.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '" data-input="checkbox"> ' + text +
 										' <i class="fa fa-times-circle"></i></label> ');
-		stop_double_event();
 
 		toUrl 		= toUrl.replace(/(sort)[^\&]+/, '');
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('&&', '&');
 
 		ajaxPage(toUrl, id);
+		stop_double_event();
 
 		window.history.pushState("", "", toUrl);
 	}
@@ -264,7 +271,7 @@
 		}	
 
 		// add label-info sort
-		$('span.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '"> ' + title +
+		$('span.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '" data-input="link"> ' + title +
 										' <i class="fa fa-times-circle"></i></label> ');
 		stop_double_event();
 
@@ -307,9 +314,16 @@
 		$('.panel-action').on('click', function(e) {
 			e.stopPropagation();
 			action = $(this).data('action');
-			checkbox_set = $('input[type=checkbox][data-action=' + action + ']');
+			input = $(this).data('input');
 
-			checkbox_set.click();
+			if (input === 'checkbox') {
+				checkbox_set = $('input[type=checkbox][data-action=' + action + ']');
+				checkbox_set.click();
+			} else {
+				link_set = $('a[data-action=' + action + ']');
+				link_set.click();
+			}
+
 			$(this).remove();
 		});
 	}

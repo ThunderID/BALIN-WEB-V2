@@ -5,17 +5,17 @@
 				Sort By &nbsp; 
 				<span class="sort-info">
 					@if (Input::get('sort') == 'date-asc')
-						<label class="btn btn-transparent btn-xs panel-action" data-action="date-asc"> Terbaru <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" data-action="date-asc" data-input="link"> Terbaru <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'date-desc')
-						<label class="btn btn-transparent btn-xs panel-action" data-action="date-desc"> Terlama <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" data-action="date-desc" data-input="link"> Terlama <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'name-asc')
-						<label class="btn btn-transparent btn-xs panel-action" data-action="name-asc"> Nama A-Z <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" data-action="name-asc" data-input="link"> Nama A-Z <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'name-desc')
-						<label class="btn btn-transparent btn-xs panel-action" data-action="name-desc"> Nama Z-A <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" data-action="name-desc" data-input="link"> Nama Z-A <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'price-asc')
-						<label class="btn btn-transparent btn-xs panel-action" data-action="price-asc"> Harga Termurah <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" data-action="price-asc" data-input="link"> Harga Termurah <i class="fa fa-times-circle"></i></label>
 					@elseif (Input::get('sort') == 'price-desc')
-						<label class="btn btn-transparent btn-xs panel-action" data-action="price-desc"> Harga Termahal <i class="fa fa-times-circle"></i></label>
+						<label class="btn btn-transparent btn-xs panel-action" data-action="price-desc" data-input="link"> Harga Termahal <i class="fa fa-times-circle"></i></label>
 					@endif
 				</span>
 				<span class="pull-right">
