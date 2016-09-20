@@ -13,7 +13,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-md">
-					<button type="submit" class="btn btn-black-hover-white-border-black" data-action=""><i class="fa fa-envelope-o"></i> Kirim</button>
+					<button type="submit" class="btn btn-orange" data-action=""><i class="fa fa-envelope-o"></i> Kirim</button>
 				</div>
 			</div>
 		{!! Form::close() !!}
@@ -21,12 +21,12 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<p>
 					Lihat daftar yang telah dibagikan 
-					<a class="hover-orange text-grey-dark hover-black text-underline" href="#" 
+					<a class="hover-orange text-grey-dark hover-black text-underline" href="javascript:void(0);" 
 						data-toggle="modal" 
 						data-target=".modal-sub-user-information" 
 						data-action="{{ route('my.balin.invitation.index') }}" 
 						data-modal-title="Daftar Undangan" 
-						data-view="modal-lg">[ Klik ]</a>
+						data-view="modal-lg">Klik</a>
 				</p>
 			</div>
 		</div>
