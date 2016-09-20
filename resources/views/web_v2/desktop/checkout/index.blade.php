@@ -190,13 +190,13 @@
 		if (sub_check==1) {
 			$(sub).addClass('hide');
 			$(this).attr('data-check', 0);
-			$(this).text('Pilih').addClass('btn-black-hover-white-border-black').removeClass('btn-white-border-black-hover-black');
+			$(this).text('');
 			flag.val('0');
 		}
 		else {
 			$(sub).removeClass('hide');
 			$(this).attr('data-check', 1);
-			$(this).text('Batal').addClass('btn-white-border-black-hover-black').removeClass('btn-black-hover-white-border-black');
+			$(this).html('<i class="fa fa-check fa-lg"></i>');
 			flag.val('1');
 		}
 	});
@@ -222,5 +222,4 @@
 
 @section('js_plugin')
 	@include('web_v2.plugins.notif')
-
 @stop

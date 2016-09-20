@@ -5998,6 +5998,14 @@ ul.dropdown-user {
   .btn-facebook span, .btn-facebook:focus span {
     border-right: 1px solid #1e2e4f; }
 
+.btn-check, .btn-check:hover, .btn-check:active {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+  width: 37px;
+  height: 37px;
+  padding: 8px; }
+
 @media screen and (max-width: 767px) {
   .no-border-xs {
     border-style: none !important; } }
@@ -6347,6 +6355,10 @@ select {
         display: inline-block;
         line-height: normal;
         vertical-align: middle; } }
+
+.warning {
+  font-size: 11px;
+  color: red; }
 
 /* 
  *  Owl Carousel - Animate Plugin
