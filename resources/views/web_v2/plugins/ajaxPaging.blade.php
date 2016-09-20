@@ -111,7 +111,7 @@
 
 		// add to active category mobile to category info
 		text = categories.split('-');
-		$('span.category-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '" data-input="link"> ' + text[1] +
+		$('div.category-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '" data-input="link"> ' + text[1] +
 										' <i class="fa fa-times-circle"></i></label></span> ');
 		stop_double_event();
 
@@ -144,7 +144,7 @@
 		}
 
 		// remove category-info active
-		$('span.category-info label[data-action="' + type + '"]').remove();
+		$('div.category-info label[data-action="' + type + '"]').remove();
 
 		ajaxPage(toUrl, null);
 		window.history.pushState("", "", toUrl);
@@ -192,7 +192,7 @@
 
 		// add label info filter active 
 		text = filter.replace('-', ' ');
-		$('span.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '" data-input="checkbox"> ' + text +
+		$('div.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '" data-input="checkbox"> ' + text +
 										' <i class="fa fa-times-circle"></i></label> ');
 
 		toUrl 		= toUrl.replace(/(sort)[^\&]+/, '');
@@ -226,7 +226,7 @@
 		toUrl		= toUrl.replace('?&', '?');
 
 		// remove filter-info active
-		$('span.filter-info label[data-action="' + filter + '"]').remove();
+		$('div.filter-info label[data-action="' + filter + '"]').remove();
 
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);
@@ -271,7 +271,7 @@
 		}	
 
 		// add label-info sort
-		$('span.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '" data-input="link"> ' + title +
+		$('div.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '" data-input="link"> ' + title +
 										' <i class="fa fa-times-circle"></i></label> ');
 		stop_double_event();
 
@@ -300,7 +300,7 @@
 		toUrl		= toUrl.replace('&&', '&');
 
 		// remove sort-info active
-		$('span.sort-info label[data-action="' + type + '"]').remove();
+		$('div.sort-info label[data-action="' + type + '"]').remove();
 
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);	
