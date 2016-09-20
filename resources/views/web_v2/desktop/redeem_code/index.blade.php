@@ -16,7 +16,7 @@
 									data-action="" 
 									data-modal-title="Bagikan via Email" 
 									data-from="{{ Route::currentRouteName() }}"
-									data-view="modal-lg">Bagikan referral code via email</a>
+									data-view="modal-lg">[ Bagikan via Email ]</a>
 							</h1>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 			</div>
 			<div class="col-md-6 pl-lg">
 				<p class="mt-5 mb-0 relative">
-					Balin point anda saat ini
+					Balin Point anda saat ini
 					<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
 						data-toggle="modal" 
 						data-target=".modal-balin-point">
@@ -75,7 +75,7 @@
 					data-target=".modal-user-information" 
 					data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 
 					data-modal-title="History Point Anda" 
-					data-view="modal-lg">Riwayat balin point</a>
+					data-view="modal-lg">[ Riwayat Balin Point ]</a>
 			</div>
 		</div>
 	</section>
@@ -184,6 +184,10 @@
 		</div>
 	</div>
 	<!-- END SECTION MODAL REFERRAL CODE -->
+@stop
+
+@section('balin-point-nav')
+	text-orange
 @stop
 
 @section('js')
