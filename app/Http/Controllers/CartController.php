@@ -248,7 +248,41 @@ class CartController extends BaseController
 	 */
 	public function getListBasket() 
 	{
-		return View('web_v2.components.cart.list_ajax_cart_dropdown');
+		if (!Session::has('whoami'))
+		{
+			$APIProduct 					= new APIProduct;
+			$recommend 						= $APIProduct->getIndex([
+													'search' 	=> 	[
+																		'name' 	=> Input::get('q'),
+																		'recommended' => 0,
+																	],
+													'sort' 		=> 	[
+																		'name'	=> 'asc',
+																	],
+													'take'		=> 2,
+													'skip'		=> '',
+												]);
+		}
+		else
+		{
+			Session::set('API_token', Session::get('API_token_private'));
+
+			$APIProduct 					= new APIProduct;
+			$recommend 						= $APIProduct->getIndex([
+													'search' 	=> 	[
+																		'name' 	=> Input::get('q'),
+																		'recommended' => Session::get('whoami')['id'],
+																	],
+													'sort' 		=> 	[
+																		'name'	=> 'asc',
+																	],
+													'take'		=> 2,
+													'skip'		=> '',
+												]);
+			}
+  		
+
+		return View('web_v2.components.cart.list_ajax_cart_dropdown', compact('recommend'));
 	}
 
 	/**
@@ -423,7 +457,7 @@ class CartController extends BaseController
 
 			if(empty($temp_carts))
 			{
-				$order_detail 					= [];
+				$order_detail 					= null;
 			}
 
 			$order['transactiondetails'] 		= $order_detail;
