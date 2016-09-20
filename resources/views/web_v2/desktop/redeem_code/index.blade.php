@@ -34,7 +34,7 @@
 					<div class="form-group">
 						<h4 class="pr-sm relative">
 							Punya Referal Code ?
-							<a href="javascript:void(0);" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
+							<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
 								data-toggle="modal" 
 								data-target=".modal-referral-code"
 								style="top:0">
@@ -63,14 +63,14 @@
 			<div class="col-md-6 pl-lg">
 				<p class="mt-5 mb-0 relative">
 					Balin point anda saat ini
-					<a href="javascript:void(0);" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
+					<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
 						data-toggle="modal" 
 						data-target=".modal-balin-point">
 						<i class="fa fa-question-circle"></i>
 					</a>
 				</p>
 				<h1 class="mt-5 text-orange">@money_indo($data['me']['data']['total_point'])</h1>
-				<a class="text-grey-dark hover-orange text-sm" href="javascript:void(0);" 
+				<a class="text-grey-dark hover-orange text-sm" href="#" 
 					data-toggle="modal" 
 					data-target=".modal-user-information" 
 					data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 

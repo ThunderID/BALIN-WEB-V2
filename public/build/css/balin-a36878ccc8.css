@@ -4374,7 +4374,7 @@ button.close {
   border-radius: 0px !important; }
 
 .modal-fullscreen {
-  background-color: rgba(255, 255, 255, 0.95); }
+  background-color: #fff; }
 
 .modal-fullscreen .modal-content {
   background: transparent;
@@ -4407,8 +4407,8 @@ button.close {
   background: #ffffff; }
 
 .modal-backdrop.modal-backdrop-fullscreen.in {
-  opacity: .97;
-  filter: alpha(opacity=97); }
+  opacity: 1;
+  filter: alpha(opacity=1); }
 
 .modal-fullscreen .modal-dialog {
   margin: 0; }

@@ -61,8 +61,8 @@
 
 <!-- SECTION POINT MOBILE, TABLET -->
 <div class="hidden-md hidden-lg">
-	<div class="row m-md border-bottom-1 border-grey-light">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mb-sm">
+	<div class="row border-bottom-1 border-grey-light">
+		<div class="col-xs-12 col-sm-12 text-center mb-sm">
 			<h4 class="text-light mb-0">Kuota Undang Teman</h4>
 			<h4 class="text-bold">{{ $data['me']['data']['quota_referral'] }}</h4>
 		</div>

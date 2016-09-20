@@ -7,7 +7,7 @@
 				<h1 class="mt-sm mb-md">
 					<span class="text-uppercase">{{ isset($data['me']['data']['code_referral']) ? $data['me']['data']['code_referral'] : '' }}</span>
 				</h1>
-				<a class="text-grey-dark hover-orange text-sm pull-right pr-xs referal_code" href="javascript:void(0);" 
+				<a class="text-grey-dark hover-orange text-sm pull-right pr-xs referal_code" href="#" 
 					data-toggle="modal" 
 					data-target=".modal-invitation" 
 					data-modal-title="Bagikan via Email" 
@@ -24,7 +24,7 @@
 			<div class="col-xs-12 mt-md mb-xl">
 				<p class="mt-5 mb-0 relative">
 					Balin point anda saat ini
-					<a href="javascript:void(0);" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
+					<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
 						data-toggle="modal" 
 						data-target=".modal-balin-point">
 						<i class="fa fa-question-circle"></i>
@@ -43,7 +43,7 @@
 					<div class="form-group">
 						<h4 class="relative">
 							Punya Referal Code ?
-							<a href="javascript:void(0);" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
+							<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
 								data-toggle="modal" 
 								data-target=".modal-referral-code"
 								style="top:0">
@@ -115,14 +115,14 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header bg-black text-white">
-					<div class="row ml-xl mr-xl">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pr-md pl-md">
+					<div class="row ml-xs mr-xs">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">&times;</button>
 							<h5 class="modal-title" id="exampleModalLabel">History Balance</h5>
 						</div>
 					</div>
 				</div>
-				<div class="modal-body m-md pt-5 mt-sm">
+				<div class="modal-body pt-5 mt-sm">
 				</div>
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 						</div>
 				   </div>
 				</div>
-				<div class="modal-body mt-75 mobile-m-t-10 ml-xl mr-xl" style="text-align:left">
+				<div class="modal-body mt-75 mobile-m-t-10 ml-md mr-md" style="text-align:left">
 					<p>Balin Point ini adalah voucher discount yang dapat anda gunakan untuk pembelian produk di Balin</p>
 					<p>Untuk menambah jumlah Balin Point ini, ajak teman dan kerabat anda untuk melakukan registrasi di situs Balin.id dan berikan kode referal anda kepada mereka. Dengan menggunakan kode referal anda, teman anda akan mendapatkan Balin Point sebesar Rp. 50.000 dan anda akan mendapatkan Balin Point sebesar Rp. 10.000.</p>
 					<p>Kode referal anda, pada mulanya hanya dapat anda berikan kepada 10 orang teman anda. Apabila teman yang menggunakan kode referal anda melakukan pembelian, anda akan mendapatkan tambahan kuota tersebut menjadi 11 dan anda akan mendapatkan Balin Point sebesar Rp. 10.000, dan demikian seterusnya tanpa ada batasnya.</p>
@@ -165,7 +165,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal-body mt-75 mobile-m-t-10 ml-xl mr-xl" style="text-align:left">
+				<div class="modal-body mt-75 mobile-m-t-10 ml-md mr-md" style="text-align:left">
 					<p>Kode referal adalah kode akun anda di Balin.id. Anda dapat mengajak teman atau kerabat anda untuk mendaftar ke situs Balin.id dan berikan kode referal anda. Dengan menggunakan kode referal anda, teman anda akan mendapatkan Balin Point sebesar Rp. 50.000 dan anda akan mendapatkan Balin Point sebesar Rp. 10.000</p>
 					<p>Kode referal anda, pada mulanya hanya dapat anda berikan kepada 10 orang teman anda. Apabila teman yang menggunakan kode referal anda melakukan pembelian, anda akan mendapatkan tambahan kuota tersebut menjadi 11 dan anda akan mendapatkan Balin Point sebesar Rp. 10.000, dan demikian seterusnya tanpa ada batasnya.</p>
 					<p>Semakin banyak teman yang menggunakan referal anda dan semakin sering teman yang anda referensikan melakukan pembelian, semakin besar voucher yang anda dapatkan.</p>
