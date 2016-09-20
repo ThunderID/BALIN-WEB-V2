@@ -226,6 +226,7 @@
 
 				<div class="row">
 					<div class="col-md-12 text-right">
+						<p id="warning" class="pull-left warning hidden">* Silahkan Pilih Ukuran Terlebih Dahulu</p>
 						<a href="javascript:void(0);" class="btn btn-orange buy pl-sm pr-sm">
 							<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 							&nbsp;Buy Now
@@ -305,6 +306,7 @@
 		<!-- save cart -->
 		if(var_ids != '')
 		{
+			$('#warning').addClass('hidden');
 			<!-- ui -->
 			$('.cart-add').addClass('not-active');
 			$('.cart-remove').addClass('not-active');
@@ -368,6 +370,8 @@
 				   	}
 				});
 			}
+		}else{
+			$('#warning').removeClass('hidden');
 		}
 	})		
 	$(document).on('click', '.cart-add', function(){
