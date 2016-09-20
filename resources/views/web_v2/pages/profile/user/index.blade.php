@@ -356,7 +356,7 @@
 						<div class="hidden-xs hidden-sm col-md-6 col-lg-6">
 							@if($v['status'] == 'wait' || $v['status'] == 'veritrans_processing_payment')
 								<ul class="list-inline mb-0 text-right">
-								@if ($v['status'] == 'wait')
+								@if ($v['status'] == 'wait' && $veritrans_option)
 									<li>
 										<a href="{{ route('my.balin.payment.processing', $v['id']) }}" class="hover-orange text-black text-regular">[ Bayar Via Veritrans ]</a>
 									</li>

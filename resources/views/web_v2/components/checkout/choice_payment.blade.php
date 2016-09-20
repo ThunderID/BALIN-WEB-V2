@@ -9,6 +9,7 @@
 					<h3 class="mt-0 text-normal">Pilih Pembayaran</h3>
 				</div>
 			</div>
+			@if($veritrans_option)
 			<div class="row">
 				<div class="col-md-6 mt-xs">
 					<label class="control control--radio line-height-30">
@@ -21,6 +22,7 @@
 					{!!Html::image('http://drive.thunder.id/file/public/4/10/2016/08/12/16/payment_veritrans.png', 'veritrans', ['style' => 'max-width:80px;'])!!}
 				</div>
 			</div>
+			@endif
 			<div class="row">
 				<div class="col-md-6 mt-xs">
 					<label class="control control--radio line-height-30"> 
