@@ -8,7 +8,7 @@
 	@include btn-custom(transparent, $orange, $orange);
 }
 .btn-orange:hover, .btn-orange:active{
-	@include btn-custom($orange, $white, inherit);
+	@include btn-custom($orange, $white, $orange);
 }
 .btn-orange-full, .btn-orange-full:focus{
 	@include btn-custom($orange, $white, $orange);
