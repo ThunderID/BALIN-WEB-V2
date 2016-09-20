@@ -1,9 +1,9 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<section class="container mtm-xs">
-		<div id="table-cart" class="row">
-			<div class="col-xs-12 loading hidden">
+	<section class="container mtm-xs mb-xxl">
+		<div id="table-cart" class="row" style="position:relative;">
+			<div class="col-xs-12 loading hidden" style="position:fixed !important;">
 					{!! HTML::image('images/loading.gif', null, [
 						'class' => 'img-responsive', 
 						'style' => 'width: 15%;top: 35vh;left: 50vw;transform: translateX(-50%);position: absolute;'
@@ -96,6 +96,8 @@
 				<!-- END SECTION TABLE FOOTER CART -->
 			</div>
 		</div>
+	</section>
+	<section class="container mt-lg mb-lg">
 	</section>
 @stop
 

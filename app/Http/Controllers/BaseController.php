@@ -160,6 +160,7 @@ abstract class BaseController extends Controller
 									->with('metas', $this->page_attributes->metas)
 									->with('controller_name', $this->page_attributes->controller_name)
 									->with('type', $this->page_attributes->type_form)
+									->with('veritrans_option', env('VERITRANS_OPTION', true))
 									;
 
   		//optional data

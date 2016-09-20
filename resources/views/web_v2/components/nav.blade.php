@@ -61,7 +61,7 @@
 					@if (Session::has('whoami'))
 						<a href="{{route('my.balin.profile')}}" class="hover-orange @yield('balin-login-nav')">{{Session::get('whoami')['name']}}</a>
 					@else
-						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">LOGIN</a>
+						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">SIGN IN</a>
 					@endif
 				</li>	
 				<li class="hidden-md hidden-lg">

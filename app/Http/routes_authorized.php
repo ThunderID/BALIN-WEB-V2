@@ -14,8 +14,8 @@ Route::group([env('ROUTE_BALIN_ATTRIBUTE') => env('ROUTE_BALIN_VALUE')], functio
 	Route::get('sso/success',											['uses' => 'AuthController@redirectSso', 	'as' => 'balin.redirect.sso']);
 
 	/* Login using email */
-	Route::get('login', 												['uses' => 'AuthController@getlogin', 		'as' => 'balin.get.login']);
-	Route::post('login',												['uses' => 'AuthController@postlogin', 		'as' => 'balin.post.login']);
+	Route::get('sign-in', 												['uses' => 'AuthController@getlogin', 		'as' => 'balin.get.login']);
+	Route::post('sign-in',												['uses' => 'AuthController@postlogin', 		'as' => 'balin.post.login']);
 
 	/* Logout */
 	Route::get('logout',												['uses' => 'AuthController@getlogout', 		'as' => 'balin.get.logout']);

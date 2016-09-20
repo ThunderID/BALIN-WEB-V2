@@ -12,7 +12,7 @@ class API
 	protected $port;
 	protected $lives 			= 10;
 
-	public $timeout				= 2;
+	public $timeout				= 100;
 	public $basic_url;
 
 	public function __construct()
