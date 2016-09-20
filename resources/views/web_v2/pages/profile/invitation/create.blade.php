@@ -27,7 +27,7 @@
 						data-target=".modal-sub-user-information" 
 						data-action="{{ route('my.balin.invitation.index') }}" 
 						data-modal-title="Daftar Undangan" 
-						data-view="modal-lg">Klik</a>
+						data-view="modal-lg">[ Klik ]</a>
 				</p>
 			</div>
 		</div>
