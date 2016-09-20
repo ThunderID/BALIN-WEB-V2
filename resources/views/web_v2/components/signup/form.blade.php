@@ -37,5 +37,5 @@
 		<span class="fa fa-facebook"></span>
 		Gunakan Facebook
 	</a>
-	<p class="text-light mt-lg hidden-md hidden-lg btn-signin">Sudah terdaftar ? <a href="javascript:void(0)" class="text-orange">Login</a></p>
+	<p class="text-light mt-lg hidden-md hidden-lg btn-signin">Sudah terdaftar ? <a href="javascript:void(0)" class="text-orange">Sign In</a></p>
 {!! Form::close() !!}
