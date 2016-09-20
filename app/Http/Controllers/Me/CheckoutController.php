@@ -154,7 +154,7 @@ class CheckoutController extends BaseController
 		}
 
 		//5. Redirect url
-		$this->page_attributes->success 			= "Pesanan Anda sudah tersimpan.";
+		$this->page_attributes->success 			= "Terima Kasih, pesanan Anda sudah kami terima. Segera validasi pembayaran Anda.";
 
 		if(Session::has('veritrans_payment'))
 		{
