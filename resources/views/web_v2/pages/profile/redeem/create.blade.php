@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group text-right">
-						<button type="submit" class="btn btn-black-hover-white-border-black" tabindex="2">Gunakan</button>
+						<button type="submit" class="btn btn-orange" tabindex="2">Gunakan</button>
 					</div>
 				</div>
 			</div>

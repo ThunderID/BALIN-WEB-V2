@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-default navbar-fixed-bottom navbar_shortcut hidden-lg hidden-md hidden-sm col-xs-12 border-top-1 border-grey" role="navigation">
+<div id="navbar-shortcut" class="navbar navbar-default navbar-fixed-bottom navbar_shortcut hidden-lg hidden-md hidden-sm col-xs-12 border-top-1 border-grey" role="navigation" data-portrait-height=0 data-landscape-height=0 data-anchor=0>
 	<div class="nav navbar-nav text-center mt-0 mb-0">
 		<div onclick="location.href='{{ URL::route('balin.home.index') }}';" class="{{ (Session::has('whoami')) ? "hidden-xs" : "col-xs-3" }} text-center border-right-1 border-grey pt-xs pb-xs cursor-pointer">
 			{!! HTML::image('images/home.png', 'image' ,['class' => 'pt-5 pb-5 navbar-bottom']) !!}

@@ -1497,7 +1497,7 @@ EVENT & FUNCTION OTHER
 
 			$('#notif_window').modal('show');
 		}
-		else if (e.type=='error')
+		else
 		{
 			error = true;
 			setTimeout( function() {
@@ -1830,19 +1830,38 @@ EVENT & FUNCTION OTHER
 	});
 /* END SECTION INPUT MASK */
 
-/* CHECK OFFSET FOR DIVIDER FOOTER & NAVBAR SHORTCUT */
-	function checkOffset() {
-		var wh=$(document).scrollTop()+window.innerHeight;
-		var dh=$('.divider_footer').offset().top;
-		if (wh<dh) {
-			$('.navbar_shortcut').fadeIn();
-		} else {
-			// $('.navbar_shortcut').fadeOut();
+/* PREVENT NAVBAR SHORTCUT SHOWS ON SOFT KEYBOARD SHOW */
+	function hideNavShortcut(){
+		function isRotate() {
+			if($('#navbar-shortcut').data('anchor') != window.innerWidth){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function hideOnKeyboardShow(now, curr){
+			if(now < curr){
+			    $('#navbar-shortcut').hide();
+			}else{
+			    $('#navbar-shortcut').show();
+			}
+		}
+
+		if(isRotate() == true){
+			hideOnKeyboardShow(window.innerHeight, $('#navbar-shortcut').data('landscape-height') - 100);
+		}else{
+			hideOnKeyboardShow(window.innerHeight, $('#navbar-shortcut').data('portrait-height'));
 		}
 	}
-	// $(document).ready(checkOffset);
-	// $(document).scroll(checkOffset);
-/* END CHECK OFFSET FOR DIVIDER FOOTER & NAVBAR SHORTCUT */
+
+	$(document).ready(function(){
+	    $('#navbar-shortcut').attr('data-landscape-height', window.innerWidth);
+	    $('#navbar-shortcut').attr('data-portrait-height', window.innerHeight);
+	    $('#navbar-shortcut').attr('data-anchor', window.innerWidth);
+	});
+	$( window ).resize(hideNavShortcut);
+/* END PREVENT NAVBAR SHORTCUT SHOWS ON SOFT KEYBOARD SHOW  */
 
 /* SECTION EASYZOOM SLIDER PRODUCT */
 // Instantiate EasyZoom instances
