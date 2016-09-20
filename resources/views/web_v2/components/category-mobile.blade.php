@@ -7,7 +7,7 @@
 				@if (!empty(Input::get('categories')))
 					@forelse (Input::get('categories') as $k => $v)
 						@if (($v != 'pria') && ($v != 'wanita'))
-							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}"> {{ last(explode('-', $v)) }} <i class="fa fa-times-circle"></i></label>
+							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="link"> {{ last(explode('-', $v)) }} <i class="fa fa-times-circle"></i></label>
 						@endif
 					@empty
 					@endforelse
