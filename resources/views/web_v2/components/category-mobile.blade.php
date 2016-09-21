@@ -3,7 +3,7 @@
 		<a role="button" data-target="#collapseOne" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0);" aria-expanded="true" aria-controls="collapseOne">
 			<h4 class="panel-title">
 				Category &nbsp;
-				<div class="display-inline category-info">
+				<div class="inline category-info">
 					@if (!empty(Input::get('categories')))
 						@forelse (Input::get('categories') as $k => $v)
 							@if (($v != 'pria') && ($v != 'wanita'))
