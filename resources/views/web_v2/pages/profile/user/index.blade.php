@@ -8,6 +8,7 @@
 	<div class="clearfix hidden-xs hidden-sm">&nbsp;</div>
 
 	<section class="container">
+		@include('web_v2.components.alert-box')
 		<!-- SECTION INFO NO ACTIVE -->
 			@if ($data['me']['data']['is_active']==0)
 				<div class="row">
@@ -32,7 +33,7 @@
 			<div class="hidden-xs hidden-sm col-md-4 col-lg-4 text-right">
 				<p class="hidden-xs hidden-sm user-hello mtm-xs">
 					<span class="">
-						<a href="{{route('balin.get.logout')}}" class="hidden-xs hidden-sm link-black hover-orange unstyle">
+						<a href="{{route('balin.get.logout')}}" class="hidden-xs hidden-sm text-grey-dark hover-orange unstyle">
 							<strong><i class="fa fa-sign-out"></i> Logout</strong>
 						</a>
 					</span>
@@ -55,12 +56,11 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 border-top-1 border-white">
 				<div class="row ">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-md pb-xs">
-						<h4 class="mb-xs">Referal Code 
-							<small>
-								<a href="#" class="hover-orange text-black" data-toggle="modal" data-target=".referral-user-information">
-									<i class="fa fa-question-circle"></i>
-								</a>
-							</small>
+						<h4 class="relative mb-xs">Referal Code 
+							<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
+								data-toggle="modal" data-target=".referral-user-information" style="top:0">
+								<i class="fa fa-question-circle"></i>
+							</a>
 						</h4>   
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -69,7 +69,7 @@
 							{{ $data['me']['data']['code_referral'] }}
 						</p>
 						<p class="mtm-xs mb-lg text-right hidden-xs hidden-sm">
-							<a class="hover-orange text-sm text-right" href="#" 
+							<a class="text-grey-dark hover-orange text-sm text-right" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.invitation.create') }}" 
@@ -84,7 +84,7 @@
 							{{ $data['me']['data']['code_referral'] }}
 						</p>
 						<p class="ml-5 mtm-xs mb-md hidden-md hidden-lg">
-							<a class="hover-orange text-sm" href="#" 
+							<a class="text-grey-dark hover-orange text-sm" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.invitation.create') }}" 
@@ -102,12 +102,11 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 border-top-1 border-white">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-md pb-xs">
-						<h4 class="">Point Anda 
-							<small>
-								<a href="#" class="hover-orange text-black" data-toggle="modal" data-target=".point-user-information">
-									<i class="fa fa-question-circle fa-1x"></i>
-								</a>
-							</small>
+						<h4 class="relative">Balin Point
+							<a href="#" class="hover-orange text-grey-dark text-regular help absolute pl-5" 
+								data-toggle="modal" data-target=".point-user-information" style="top:0">
+								<i class="fa fa-question-circle"></i>
+							</a>
 						</h4>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -116,12 +115,12 @@
 							<strong>@money_indo($data['me']['data']['total_point'])</strong>
 						</p>
 						<p class="mtm-xs mb-md text-right hidden-xs hidden-sm">
-							<a class="hover-orange text-sm text-right" href="#" 
+							<a class="text-grey-dark hover-orange text-sm text-right" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 
 								data-modal-title="History Balin Point Anda" 
-								data-view="modal-lg">[ History ]</a>
+								data-view="modal-lg">[ Riwayat Balin Point ]</a>
 						</p>
 						<!-- END SECTION POINT DESKTOP -->
 
@@ -130,12 +129,12 @@
 							<strong>@money_indo($data['me']['data']['total_point'])</strong>
 						</p>
 						<p class="ml-5 mtm-xs mb-md hidden-md hidden-lg">
-							<a class="hover-orange text-sm" href="#" 
+							<a class="text-grey-dark hover-orange text-sm" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.profile.point', $data['me']['data']['id']) }}" 
 								data-modal-title="History Balin Point Anda" 
-								data-view="modal-lg">[ History ]</a>
+								data-view="modal-lg">[ Riwayat Balin Point ]</a>
 						</p>
 						<!-- END SECTION POINT MOBILE, TABLET -->
 					</div>
@@ -157,7 +156,7 @@
 				<h5 class="text-uppercase mt-sm mb-md text-bold">
 					Profil Saya
 					<small>
-						<a class="hover-orange text-black pull-right mt-5" href="#"
+						<a class="hover-orange text-grey-dark pull-right mt-5" href="#"
 							data-action="{{ route('my.balin.profile.edit', $data['me']['data']['id']) }}"
 							data-toggle="modal" 
 							data-target=".modal-user-information"
@@ -257,7 +256,7 @@
 						<p class="mb-0">Pemberi Referal Anda
 							@if (isset($data['me']['data']['reference_name']) && $data['me']['data']['reference_name'] == 'EMPTY')
 								<small>
-									<a class="hover-orange text-regular" href="#" 
+									<a class="text-grey-dark hover-orange text-sm" href="#" 
 										data-toggle="modal" 
 										data-target=".modal-user-information" 
 										data-action="{{ route('my.balin.redeem.create') }}" 
@@ -293,7 +292,7 @@
 						<p class="mb-0">
 							Referal Anda 
 							<small>
-								<a class="hover-orange unstyle" href="#" 
+								<a class="text-grey-dark hover-orange text-sm unstyle" href="#" 
 									data-toggle="modal" 
 									data-target=".modal-user-information" 
 									data-action="{{ route('my.balin.profile.referral', $data['me']['data']['id']) }}" 
@@ -355,30 +354,41 @@
 						<div class="hidden-xs hidden-sm col-md-6 col-lg-6">
 							@if($v['status'] == 'wait' || $v['status'] == 'veritrans_processing_payment')
 								<ul class="list-inline mb-0 text-right">
-								@if ($v['status'] == 'wait')
+								@if ($v['status'] == 'wait' && $veritrans_option)
 									<li>
-										<a href="{{ route('my.balin.payment.processing', $v['id']) }}" class="hover-orange text-black text-regular">[ Bayar Via Veritrans ]</a>
+										<a href="{{ route('my.balin.payment.processing', $v['id']) }}" class="hover-orange text-grey-dark text-sm">[ Bayar Via Veritrans ]</a>
 									</li>
 								@endif
 									<li>
-										<a href="{{ route('my.balin.order.resend.invoice', $v['id']) }}" class="hover-orange text-black text-regular">[ Resend Invoice ]</a>
+										<a href="{{ route('my.balin.order.resend.invoice', $v['id']) }}" class="hover-orange text-grey-dark text-sm">[ Resend Invoice ]</a>
 									</li>
 									<li>
-										<a class="text-regular text-right hover-orange text-black" href="{{route('my.balin.order.destroy', $v['id'])}}" >[ Batalkan ]</a>
+										<a class="text-sm text-right hover-orange text-grey-dark" href="{{route('my.balin.order.destroy', $v['id'])}}" >[ Batalkan ]</a>
 									</li>
 								</ul>
 							@else
 								<p class="mb-0">&nbsp;</p>
 							@endif
 						</div>
+						<div class="hidden-sm hidden-md hidden-lg">
+							@if($v['status'] == 'wait' || $v['status'] == 'veritrans_processing_payment')
+								<div class="col-xs-12 mt-sm mb-xs">
+									@if ($v['status'] == 'wait')
+										<a href="{{ route('my.balin.payment.processing', $v['id']) }}" class="text-grey-dark hover-orange text-sm mt-sm mr-5">[ Bayar Via Veritrans ]</a>
+									@endif
+									<a href="{{ route('my.balin.order.resend.invoice', $v['id']) }}" class="text-grey-dark hover-orange text-sm mt-sm mr-5">[ Resend Invoice ]</a>
+									<a class="text-grey-dark hover-orange text-sm mt-sm mr-5" href="{{route('my.balin.order.destroy', $v['id'])}}" >[ Batalkan ]</a>
+								</div>
+							@endif
+						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 {{ ($v['status'] != 'canceled') ? '' : '' }}">
-							<p class="mt-xs mb-0 text-regular">
+							<p class="mt-5 mb-0 text-regular">
 								Tanggal order : @datetime_indo_with_name_month($v['transact_at'])
 							</p>	
 							<p class="mt-0 mb-xxs">
 								<strong>{{ $v['ref_number'] }}</strong>
 							</p>
-							<a class="hover-orange text-regular mt-sm hidden-xs" href="#" 
+							<a class="text-grey-dark hover-orange text-sm mt-sm hidden-xs" href="#" 
 								data-toggle="modal" 
 								data-target=".modal-user-information" 
 								data-action="{{ route('my.balin.order.show', $v['id']) }}" 
@@ -415,18 +425,18 @@
 								<!-- @if($v['status'] == 'wait' || $v['status'] == 'veritrans_processing_payment')
 									@if ($v['status'] == 'wait')
 										<div class="col-xs-12 mt-5 mr-sm">
-											<a href="{{ route('my.balin.payment.processing', $v['id']) }}" class="hover-orange text-regular mt-sm mr-sm">[ Bayar Via Veritrans ]</a>
+											<a href="{{ route('my.balin.payment.processing', $v['id']) }}" class="text-grey-dark hover-orange text-sm mt-sm mr-sm">[ Bayar Via Veritrans ]</a>
 										</div>
 									@endif
 									<div class="col-xs-12 mt-5 mr-sm">
-										<a href="{{ route('my.balin.order.resend.invoice', $v['id']) }}" class="hover-orange text-regular mt-sm mr-sm">[ Resend Invoice ]</a>
+										<a href="{{ route('my.balin.order.resend.invoice', $v['id']) }}" class="text-grey-dark hover-orange text-sm mt-sm mr-sm">[ Resend Invoice ]</a>
 									</div>
 									<div class="col-xs-12 mt-5 mr-sm">
-										<a class="hover-orange text-regular mt-sm mr-sm" href="{{route('my.balin.order.destroy', $v['id'])}}" >[ Batalkan ]</a>
+										<a class="text-grey-dark hover-orange text-sm mt-sm mr-sm" href="{{route('my.balin.order.destroy', $v['id'])}}" >[ Batalkan ]</a>
 									</div>
 								@endif -->
 								<div class="col-xs-12 mt-5">
-									<a class="hover-orange text-regular mt-sm mr-sm" href="#" 
+									<a class="text-grey-dark hover-orange text-sm mt-sm mr-sm" href="#" 
 										data-toggle="modal" 
 										data-target=".modal-user-information" 
 										data-action="{{ route('my.balin.order.show', $v['id']) }}" 
@@ -443,9 +453,7 @@
 			</div>
 		</div>
 		<!-- END SECTION INFORMATION TRACKING ORDER -->
-
-		<div class="clearfix">&nbsp;</div>
-		<div class="clearfix">&nbsp;</div>
+		<section class="container mt-lg mb-lg"></section>
 
 		<!-- SECTION MODAL USER INFORMATION -->
 		<div class="modal modal-user-information modal-fullscreen fade" tabindex="0" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop="static" data-keyboard="false">
@@ -558,6 +566,10 @@
 		</div>
 		<!-- END SECTION MODAL INFORMATION & FUNCTION REFERAAL CODE -->
 	</section>
+@stop
+
+@section('balin-login-nav')
+	text-orange
 @stop
 
 @section('js')

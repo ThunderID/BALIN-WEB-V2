@@ -1,6 +1,7 @@
 <!-- SECTION INVITE -->
 <div class="row ml-0 mr-0">
 	<div class="col-sm-12 pl-md pr-md">
+		@include('web_v2.components.alert-box')
 		<h4>Dapatkan poin, saat anda membagikan referal code anda.</h4>
 		<h6 class="text-red">Gunakan comma untuk mengirim ke banyak email</h6>
 
@@ -8,12 +9,12 @@
 			{!! Form::hidden('to', Route::currentRouteName(), ['class' => 'from_route']) !!}
 			<div class="row mb-sm">
 				<div class="col-md-12 mb-md">
-					{!!Form::textarea('emails', '', ['placeholder' => 'Ketik email disini (gunakan comma untuk mengirim ke banyak email)', 'style' => 'width:100%', 'rows' => 3])!!}
+					{!! Form::textarea('emails', '', ['class' => 'form-control form_email', 'placeholder' => 'Ketik email disini (gunakan comma untuk mengirim ke banyak email)', 'style' => 'width:100%;resize:none', 'rows' => 3]) !!}
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-md">
-					<button type="submit" class="btn btn-black-hover-white-border-black" data-action=""><i class="fa fa-envelope-o"></i> Kirim</button>
+					<button type="submit" class="btn btn-orange" data-action=""><i class="fa fa-envelope-o"></i> Kirim</button>
 				</div>
 			</div>
 		{!! Form::close() !!}
@@ -33,5 +34,3 @@
 	</div>
 </div>
 <!-- END SECTION INVITE -->
-
-@include('web_v2.plugins.select2')

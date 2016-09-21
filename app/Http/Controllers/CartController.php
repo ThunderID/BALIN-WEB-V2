@@ -81,7 +81,7 @@ class CartController extends BaseController
 																'current_stock'		=> $v['varian']['current_stock'],
 																'message'			=> null,
 															];
-					$temp_carts['varians']				= $varian_temp;
+					$carts[$v['varian']['product_id']]['varians'][$v['varian']['id']]	= $varian_temp[$v['varian']['id']];
 				}
 			}
 		}
@@ -248,7 +248,41 @@ class CartController extends BaseController
 	 */
 	public function getListBasket() 
 	{
-		return View('web_v2.components.cart.list_ajax_cart_dropdown');
+		if (!Session::has('whoami'))
+		{
+			$APIProduct 					= new APIProduct;
+			$recommend 						= $APIProduct->getIndex([
+													'search' 	=> 	[
+																		'name' 	=> Input::get('q'),
+																		'recommended' => 0,
+																	],
+													'sort' 		=> 	[
+																		'name'	=> 'asc',
+																	],
+													'take'		=> 2,
+													'skip'		=> '',
+												]);
+		}
+		else
+		{
+			Session::set('API_token', Session::get('API_token_private'));
+
+			$APIProduct 					= new APIProduct;
+			$recommend 						= $APIProduct->getIndex([
+													'search' 	=> 	[
+																		'name' 	=> Input::get('q'),
+																		'recommended' => Session::get('whoami')['id'],
+																	],
+													'sort' 		=> 	[
+																		'name'	=> 'asc',
+																	],
+													'take'		=> 2,
+													'skip'		=> '',
+												]);
+			}
+  		
+
+		return View('web_v2.components.cart.list_ajax_cart_dropdown', compact('recommend'));
 	}
 
 	/**
@@ -385,7 +419,7 @@ class CartController extends BaseController
 				$order['id']					= $order_in_cart['data']['id'];
 				$order['voucher_id']			= $order_in_cart['data']['voucher_id'];
 				$order['transactiondetails']	= $order_in_cart['data']['transactiondetails'];
-			$order_detail 						= [];
+				$order_detail 					= [];
 			}
 
 			//3b. Check transactiondetail
@@ -414,18 +448,18 @@ class CartController extends BaseController
 														'discount' 			=> $value['discount'],
 
 													];
-					$order_detail[]				= $varian;
+					if($value2['quantity'] > 0)
+					{
+						$order_detail[]			= $varian;
+					}
 				}
 			}
 
 			if(empty($temp_carts))
 			{
-				foreach ($order['transactiondetails'] as $keyx => $valuex) 
-				{
-					$valuex['quantity']			= 	0;
-					$order_detail[]				= $valuex;
-				}
+				$order_detail 					= null;
 			}
+
 			$order['transactiondetails'] 		= $order_detail;
 			$order['status'] 					= 'cart';
 			$order['user_id'] 					= Session::get('whoami')['id'];

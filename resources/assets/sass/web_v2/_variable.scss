@@ -277,6 +277,12 @@ p{								line-height: 2em;}
 .pl-xxxl{									padding-left: $space-xxxl !important;}
 .pr-xxxl{									padding-right: $space-xxxl !important;}
 
+.fit-content {								
+	width: -webkit-fit-content !important;
+	width: -moz-fit-content !important;
+	width: fit-content !important;
+}
+
 // -----------------
 // 4. INPUT
 // -----------------
@@ -488,6 +494,7 @@ p{								line-height: 2em;}
 // -----------------
 // 6. POSITION
 // -----------------
+.inline{				display: inline !important;}
 .absolute{				position: absolute !important;}
 .relative{				position: relative !important;}
 .top{					top: $space-0 !important;}

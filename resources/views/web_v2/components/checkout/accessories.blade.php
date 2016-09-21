@@ -25,7 +25,7 @@
 						@money_indo( $v['price'] )
 					</div>
 					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-						<a href="javascript:void(0);" class="btn btn-black-hover-white-border-black btn-sm text-regular btn_accessories" data-check="0" data-sub="gift-value">Pilih</a>
+						<a href="javascript:void(0);" class="btn btn-check btn-sm text-regular btn_accessories" data-check="0" data-sub="gift-value"></a>
 					</div>
 					@if ($v['is_customize'])
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-md gift-value gift_value hide">

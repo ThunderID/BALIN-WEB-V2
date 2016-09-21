@@ -45,10 +45,10 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li class="hidden-md hidden-lg">
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita']) ) }}" class="hover-orange">Koleksi Wanita</a>
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita']) ) }}" class="hover-orange @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange @endif">Koleksi Wanita</a>
 				</li>
 				<li class="hidden-md hidden-lg">
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria']) ) }}" class="hover-orange">Koleksi Pria</a>
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria']) ) }}" class="hover-orange @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange active @endif">Koleksi Pria</a>
 				</li>
 				<li>
 					@if (Session::has('whoami'))
@@ -61,7 +61,7 @@
 					@if (Session::has('whoami'))
 						<a href="{{route('my.balin.profile')}}" class="hover-orange @yield('balin-login-nav')">{{Session::get('whoami')['name']}}</a>
 					@else
-						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">LOGIN</a>
+						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">SIGN IN</a>
 					@endif
 				</li>	
 				<li class="hidden-md hidden-lg">
@@ -131,7 +131,7 @@
 						<?php $extend_search = array_merge($extend_search, Input::only('sort'));?>
 					@endif
 
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange active @endif hover-orange woman-menu">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class="@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange active @endif hover-orange woman-menu">
 						Wanita
 					</a>
 				</li>
@@ -140,7 +140,7 @@
 					</div>
 				</li>
 				<li class="text-light left">
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class=" @if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange active @endif hover-orange man-menu">
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class="@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange active @endif hover-orange man-menu">
 						Pria
 					</a>
 				</li>					

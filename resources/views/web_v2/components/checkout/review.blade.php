@@ -1,4 +1,4 @@
-<div class="row ml-0 mr-0 panel_form_voucher">
+<div class="row ml-0 mr-0">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div class="content_checkout">
 			<div class="row ml-0 mr-0 pt-xs mt-md hidden-xs">
