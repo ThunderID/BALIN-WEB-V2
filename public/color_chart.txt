@@ -1,15 +1,17 @@
 biru,#3399cc
-merah,#9C2A00
-coklat,#A46B36
+merah,#A30000
+coklat,#3a2512
 krem,#FFF1D0
 peach,#FF7660
 pink,#ffc0d0
 kuning,#FFFF32
 shade blue,#9FEFE7
-hijau,#BFDFBF
+hijau,#89E589
 beige,#F5F5DC
 putih,#FFFFFF
 plum,#DDA0DD
-magenta,#FFF4FF
-ungu,#800080
+magenta,#ff32ff
+ungu,#bba3d0
 oranye,#FFA500
+hitam,#000000
+maroon,#800000
