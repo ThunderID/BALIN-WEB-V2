@@ -10,6 +10,7 @@
 					<div class="col-md-12">
 						<h3>Contact Us</h3>
 						<div class="clearfix">&nbsp;</div>
+						@include('web_v2.components.alert-box')
 
 						{!! Form::open(['url' => route('balin.email.us')]) !!}
 						    <div class="form-group">
