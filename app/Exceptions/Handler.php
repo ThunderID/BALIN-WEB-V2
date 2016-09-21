@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
 				{
 				// not found
 				case 404:
-				return redirect(route('balin.not.found'));
+					return redirect(route('balin.not.found'));
 				break;
 
 				default:
