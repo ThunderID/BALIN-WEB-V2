@@ -18,7 +18,7 @@
 	 * @param  {[type]} e     [description]
 	 * @return {[type]}       [description]
 	 */
-	function ajaxPage(toUrl,e) {
+	function ajaxPage(toUrl) {
 		$.ajax({
 			url: 	toUrl,
 			type: 	'GET',
@@ -32,7 +32,7 @@
 				tmpData = data;
 			},
 			error: function(){
-				var error = "</br></br><h2 class='text-center m-t-md'>Terjadi masalah penerimaan data, silahkan muat ulang halaman</h2>";
+				var error = "</br></br><h4 class='text-center m-t-md'>Terjadi masalah penerimaan data, silahkan muat ulang halaman</h4>";
 				$('.content-data').html(error);
 				$('.content-data').fadeIn(400);
 			}
@@ -51,18 +51,6 @@
 		else if ((param == 'mobile') && (content == 'sort')) {
 			$('.sort-info').fadeOut(400);
 			$('.sort-info').html('');
-
-			// if (title !== null) {
-			// 	display = '<label class="btn btn-transparent btn-xs sort-info-action"> ' + title + ' <i class="fa fa-times-circle"></i></label>';
-			// 	$('.sort-info').fadeIn(400);
-			// 	setTimeout(function(){
-			// 		$('.sort-info').html(display);
-			// 	}, 400);
-			// 	$('.sort-info-action').on('click', function(e) {
-			// 		e.stopPropagation();
-			// 		alert('halo');
-			// 	});
-			// }
 		}
 		else if ((param == 'mobile') && (content == 'filter')) {
 			$('.filter-info').fadeOut(400);
@@ -113,11 +101,13 @@
 		text = categories.split('-');
 		$('div.category-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '" data-input="link"> ' + text[1] +
 										' <i class="fa fa-times-circle"></i></label></span> ');
-		stop_double_event();
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
 		toUrl		= toUrl.replace('&&', '&');
+
+		toUrl		= toUrl.replace('?&&', '?&');
+		toUrl		= toUrl.replace('&&&', '&');
 
 		ajaxPage(toUrl, null);
 		window.history.pushState("", "", toUrl);
@@ -146,6 +136,13 @@
 		// remove category-info active
 		$('div.category-info label[data-action="' + type + '"]').remove();
 
+		toUrl		= toUrl.replace('?&', '?');
+		toUrl		= toUrl.replace('??', '?');
+		toUrl		= toUrl.replace('&&', '&');
+
+		toUrl		= toUrl.replace('?&&', '?&');
+		toUrl		= toUrl.replace('&&&', '&');
+
 		ajaxPage(toUrl, null);
 		window.history.pushState("", "", toUrl);
 	}
@@ -160,8 +157,6 @@
 		var filter 	= $(e).attr("data-action").toLowerCase();	
 
 		var url     = window.location.href;
-
-		url 		= url.replace('%C2%BD', '½');
 
 		if (url.indexOf(type + "[]=" + filter) == -1) {
 			ajaxAddFilter(e);
@@ -178,7 +173,6 @@
 	function ajaxAddFilter(e){
 		var type 	= $(e).attr("data-type").toLowerCase();
 		var filter 	= $(e).attr("data-action").toLowerCase();
-		var id 		= $(e).parent().attr('id');
 		var url     = window.location.href;
 		var toUrl;
 
@@ -195,12 +189,13 @@
 		$('div.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '" data-input="checkbox"> ' + text +
 										' <i class="fa fa-times-circle"></i></label> ');
 
-		toUrl 		= toUrl.replace(/(sort)[^\&]+/, '');
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('&&', '&');
 
-		ajaxPage(toUrl, id);
-		stop_double_event();
+		toUrl		= toUrl.replace('?&&', '?&');
+		toUrl		= toUrl.replace('&&&', '&');
+
+		ajaxPage(toUrl);
 
 		window.history.pushState("", "", toUrl);
 	}
@@ -216,19 +211,19 @@
 		filter 		= filter.replace(" ","%20"); 
 
 		var url     = window.location.href;
-		url 		= url.replace('%C2%BD', '½');
-
 		var toRemove= type + "[]=" + filter;
 		var toUrl	= url.replace(toRemove, '');
-		var id 		= $(e).parent().attr('id');
 
 		toUrl		= toUrl.replace(/(page)[^\&]+/, '');
 		toUrl		= toUrl.replace('?&', '?');
 
+		toUrl		= toUrl.replace('?&&', '?&');
+		toUrl		= toUrl.replace('&&&', '&');	
+
 		// remove filter-info active
 		$('div.filter-info label[data-action="' + filter + '"]').remove();
 
-		ajaxPage(toUrl, id);
+		ajaxPage(toUrl);
 		window.history.pushState("", "", toUrl);
 	}
 
@@ -273,11 +268,13 @@
 		// add label-info sort
 		$('div.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '" data-input="link"> ' + title +
 										' <i class="fa fa-times-circle"></i></label> ');
-		stop_double_event();
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
 		toUrl		= toUrl.replace('&&', '&');
+
+		toUrl		= toUrl.replace('?&&', '?&');
+		toUrl		= toUrl.replace('&&&', '&');
 
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);
@@ -297,7 +294,10 @@
 		var toUrl	= url.replace(/(sort)[^\&]+/, '');
 
 		toUrl		= toUrl.replace('?&', '?');
+		toUrl		= toUrl.replace('?&&', '?&');
+
 		toUrl		= toUrl.replace('&&', '&');
+		toUrl		= toUrl.replace('&&&', '&');
 
 		// remove sort-info active
 		$('div.sort-info label[data-action="' + type + '"]').remove();
@@ -310,21 +310,18 @@
 	 * [stop_double_event disabled event click in label collapse]
 	 * @return {[type]} [description]
 	 */
-	function stop_double_event() {
-		$('.panel-action').on('click', function(e) {
-			e.stopPropagation();
-			action = $(this).data('action');
-			input = $(this).data('input');
+	function stop_double_event(e, item) {
+		e.stopPropagation();
+		action = item.data('action');
+		input = item.data('input');
 
-			if (input === 'checkbox') {
-				checkbox_set = $('input[type=checkbox][data-action=' + action + ']');
-				checkbox_set.click();
-			} else {
-				link_set = $('a[data-action=' + action + ']');
-				link_set.click();
-			}
-
-			$(this).remove();
-		});
+		if (input == 'link') {
+			link_set = $('a[data-action=' + action + ']');
+			link_set.trigger('click');
+		} else {
+			checkbox_set = $('input[type=checkbox][data-action=' + action + ']');
+			checkbox_set.trigger('click');
+		}
+		item.remove();
 	}
 </script>

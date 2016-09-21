@@ -5812,8 +5812,8 @@ p {
 .bg-transparent-8 {
   background-color: rgba(0, 0, 0, 0.8) !important; }
 
-.display-inline {
-  display: inline-block !important; }
+.inline {
+  display: inline !important; }
 
 .absolute {
   position: absolute !important; }

@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="container mt-xs mb-xs content-data">
+	<section class="container mt-xs mb-xs content-data relative">
 		@if(count($data['offer']))
 			<div class="row">
 				<div class="col-md-12 text-center">
@@ -95,7 +95,6 @@
 			}
 			ajaxFilter(checkboxcolor);
 		});
-		stop_double_event();
 
 		{{-- filter clear all mobile --}}
 		$('.clearall-filter-mobile').click(function(){
@@ -109,5 +108,9 @@
 			$('.checkbox-color').prop('checked', false);
 			$('span.color-item').parent().removeClass('active');
 		});
+	});
+
+	$('h4.panel-title').on('click', 'label.panel-action', function(e) {
+		stop_double_event(e, $(this));
 	});
 @stop

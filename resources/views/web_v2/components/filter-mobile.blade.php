@@ -3,10 +3,10 @@
 		<a role="button" data-target="#collapseTwo" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0);" aria-expanded="false" aria-controls="collapseTwo">
 			<h4 class="panel-title">
 				Filter &nbsp;
-				<div class="display-inline filter-info">
+				<div class="inline filter-info">
 					@if (Input::has('tags'))
 						@foreach (Input::get('tags') as $k => $v)
-							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="checkbox">{{ preg_replace('/ /', ': ', str_replace('-', ' ', $v), 1) }} <i class="fa fa-times-circle"></i></label>
+							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="checkbox">{{ preg_replace('/-/', ' ', str_replace('-', '-', $v), 1) }} <i class="fa fa-times-circle"></i></label>
 						@endforeach
 					@endif
 				</div>
