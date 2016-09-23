@@ -17,6 +17,7 @@ class HomeController extends BaseController
 		$this->page_attributes->source 				= 'home.';
 		$this->page_attributes->breadcrumb			= [];
 		$this->take 								= 20;
+		$this->premium 								= env('BALIN_RELEASE_PREMIUM', true);
 	}
 
 	/**
@@ -42,10 +43,17 @@ class HomeController extends BaseController
 				$categories[] 						= 'wanita';
 			}
 
-			$linked_search 							= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+			if($this->premium)
+			{
+				$linked_search 						= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+			}
+			else
+			{
+				$linked_search 						= ['categories' => $categories];
+			}
 
 			$product 								= $APIProduct->getIndex([
-															'search' 	=> ['tags' => ['fabric-premium-cotton'], 'categories' => $categories],
+															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
@@ -53,10 +61,17 @@ class HomeController extends BaseController
 		}
 		else
 		{
-			$linked_search 							= ['tags' => ['fabric-premium-cotton']];
+			if($this->premium)
+			{
+				$linked_search 						= ['tags' => ['fabric-premium-cotton']];
+			}
+			else
+			{
+				$linked_search 						= [];
+			}
 
 			$product 								= $APIProduct->getIndex([
-															'search' 	=> ['tags' => ['fabric-premium-cotton']],
+															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
@@ -146,10 +161,17 @@ class HomeController extends BaseController
 				$type 								= 'wanita';
 			}
 
-			$linked_search 							= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+			if($this->premium)
+			{
+				$linked_search 						= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+			}
+			else
+			{
+				$linked_search 						= ['categories' => $categories];
+			}
 
 			$product 								= $APIProduct->getIndex([
-															'search' 	=> ['tags' => ['fabric-premium-cotton'], 'categories' => $categories],
+															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
@@ -157,10 +179,17 @@ class HomeController extends BaseController
 		}
 		else
 		{
-			$linked_search 							= ['tags' => ['fabric-premium-cotton']];
+			if($this->premium)
+			{
+				$linked_search 						= ['tags' => ['fabric-premium-cotton']];
+			}
+			else
+			{
+				$linked_search 						= [];
+			}
 
 			$product 								= $APIProduct->getIndex([
-															'search' 	=> ['tags' => ['fabric-premium-cotton']],
+															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
