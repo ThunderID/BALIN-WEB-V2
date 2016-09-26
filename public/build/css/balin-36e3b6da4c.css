@@ -5816,7 +5816,7 @@ p {
   display: inline !important; }
 
 .inline-block {
-  dispaly: inline-block !important; }
+  display: inline-block !important; }
 
 .absolute {
   position: absolute !important; }
