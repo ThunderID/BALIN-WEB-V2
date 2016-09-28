@@ -10,7 +10,7 @@
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span id="mobile-cart-count">
-					<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
+					<span class="cart-count {{ (Session::has('carts') && count(Session::get('carts'))>0) ? 'bg-orange text-white' : '' }}">
 						<strong>
 							{{ count(Session::get('carts')) }}
 						</strong>
@@ -30,7 +30,7 @@
 						Shopping Bag
 					</a>
 					<span id="desktop-cart-count">
-						<span class="cart-count {{ (Session::has('carts')) ? 'bg-orange text-white' : '' }}">
+						<span class="cart-count {{ (Session::has('carts')&& count(Session::get('carts'))>0) ? 'bg-orange text-white' : '' }}">
 							<strong>{{ count(Session::get('carts')) }}</strong>
 						</span>
 					</span>

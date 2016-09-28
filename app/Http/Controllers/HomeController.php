@@ -124,6 +124,7 @@ class HomeController extends BaseController
 		$this->page_attributes->subtitle 			= 'Fashionable and Modern Batik';
 		
 		$this->page_attributes->data				= $datas;
+		$this->page_attributes->data['premium']		= $this->premium;
 
 		$this->page_attributes->source 				= $this->page_attributes->source . 'index';
 

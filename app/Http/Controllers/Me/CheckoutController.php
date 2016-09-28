@@ -131,6 +131,10 @@ class CheckoutController extends BaseController
 
 		$me_order_in_cart 						= $APIUser->getMeOrderInCart(['user_id' 	=> Session::get('whoami')['id']]);
 
+		if(count($me_order_in_cart['data']['transactiondetails']) == 0 ){
+			\App::abort(404);
+		}
+
 		//2. Parsing variable
 		if($me_order_in_cart['status']!='success')
 		{
