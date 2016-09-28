@@ -58,7 +58,7 @@
 						</div>
 						{!! Form::hidden('from', 'my.balin.redeem.index') !!}
 						{!! Form::input('text', 'referral_code', null, [
-								'class' => 'form-control display-inline transaction-input-voucher-code check-voc-ref',
+								'class' => 'form-control inline-block transaction-input-voucher-code check-voc-ref',
 								'placeholder' => 'Referal code referensi',
 								'style' => 'width:80%',
 								'tabindex' => '1'

@@ -6,6 +6,7 @@
 
 
 @section('content')
+@if(isset($data['shop_by_style']))
 <section class="container home">
 	<div class="row">
 		@include('web_v2/components/slider', ['sliders' => $data['sliders']])
@@ -20,7 +21,9 @@
 		</div>
 	</div>
 </section>
+@endif
 
+@if(count($data['new_release']))
 <section class="container-fluid bg-grey mt-xl pt-sm">
 	<div class="row mt-sm mb-sm">
 		<div class="container text-center">
@@ -50,7 +53,9 @@
 	<div class="clearfix">&nbsp;</div>
 	<div class="clearfix">&nbsp;</div>
 </section>
+@endif
 
+@if(isset($data['instagram']))
 <section class="container mt-xl">
 	<div class="container">
 		<div class="row pb-xs">
@@ -85,6 +90,7 @@
 		</div>
 	</div>
 </section>
+@endif
 @stop
 
 @section('js_plugin')
