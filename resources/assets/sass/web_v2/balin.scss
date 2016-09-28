@@ -276,3 +276,18 @@ body {
 	.panel-akun .form-control{
 		border:none;
 	} 
+
+.redeem-content {
+	top: 15vh; 
+	position: absolute; 
+	width: 100%;
+	@media screen and (max-width: 767px) {
+		top: inherit;
+	}
+}
+.drop-down {
+	background-image: url(http://drive.thunder.id/file/public/4/10/2016/09/21/10/Sort%20Down-48.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 30px 40px;
+}

@@ -3,16 +3,16 @@
 		<a role="button" data-target="#collapseOne" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0);" aria-expanded="true" aria-controls="collapseOne">
 			<h4 class="panel-title">
 				Category &nbsp;
-				<span class="category-info">
-				@if (!empty(Input::get('categories')))
-					@forelse (Input::get('categories') as $k => $v)
-						@if (($v != 'pria') && ($v != 'wanita'))
-							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}"> {{ last(explode('-', $v)) }} <i class="fa fa-times-circle"></i></label>
-						@endif
-					@empty
-					@endforelse
-				@endif
-				</span>
+				<div class="inline category-info">
+					@if (!empty(Input::get('categories')))
+						@forelse (Input::get('categories') as $k => $v)
+							@if (($v != 'pria') && ($v != 'wanita'))
+								<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="link"> {{ last(explode('-', $v)) }} <i class="fa fa-times-circle"></i></label>
+							@endif
+						@empty
+						@endforelse
+					@endif
+				</div>
 				<span class="pull-right">
 					<i class="fa fa-angle-right " aria-hidden="true"></i>
 				</span>
