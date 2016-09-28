@@ -22,8 +22,10 @@
 	<section class="container-fluid bg-grey mt-xl pt-sm">
 		<div class="row mt-sm mb-sm">
 			<div class="container text-center">
-				<h5 class="text-uppercase m-0 text-orange">NEW RELEASE</h5>
 				@if($data['premium'] != null)
+					<h3 class="text-uppercase m-0">NEW RELEASE</h3>
+				@else
+					<h5 class="text-uppercase m-0 text-orange">NEW RELEASE</h5>
 					<h3 class="text-uppercase m-0">PREMIUM COTTON</h3>
 				@endif
 				<a class="home-product-more" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
