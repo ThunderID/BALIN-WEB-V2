@@ -194,21 +194,25 @@ class CheckoutController extends BaseController
 		    $item_details[$i]['id']					= $i;
 		    $item_details[$i]['name']				= 'Ongkos Kirim';
 		    $item_details[$i]['price']				= $order['data']['shipping_cost'];
+	    	$item_details[$i]['quantity']			= 1;
 	    	$i 										= $i + 1;
 
 		    $item_details[$i]['id']					= $i;
 		    $item_details[$i]['name']				= 'Potongan Voucher';
 		    $item_details[$i]['price']				= $order['data']['voucher_discount'];
+	    	$item_details[$i]['quantity']			= 1;
 	    	$i 										= $i + 1;
 
 		    $item_details[$i]['id']					= $i;
 		    $item_details[$i]['name']				= 'Potongan Point';
 		    $item_details[$i]['price']				= $order['data']['point_discount'];
+	    	$item_details[$i]['quantity']			= 1;
 	    	$i 										= $i + 1;
 
 		    $item_details[$i]['id']					= $i;
 		    $item_details[$i]['name']				= 'Biaya Tambahan';
 		    $item_details[$i]['price']				= $order['data']['extend_cost'];
+	    	$item_details[$i]['quantity']			= 1;
 	    	$i 										= $i + 1;
 
 			// Optional
@@ -547,21 +551,25 @@ class CheckoutController extends BaseController
 	    $item_details[$i]['id']					= $i;
 	    $item_details[$i]['name']				= 'Ongkos Kirim';
 	    $item_details[$i]['price']				= $me_order_detail['data']['shipping_cost'];
+    	$item_details[$i]['quantity']			= 1;
     	$i 										= $i + 1;
 
 	    $item_details[$i]['id']					= $i;
 	    $item_details[$i]['name']				= 'Potongan Voucher';
 	    $item_details[$i]['price']				= $me_order_detail['data']['voucher_discount'];
+    	$item_details[$i]['quantity']			= 1;
     	$i 										= $i + 1;
 
 	    $item_details[$i]['id']					= $i;
 	    $item_details[$i]['name']				= 'Potongan Point';
 	    $item_details[$i]['price']				= $me_order_detail['data']['point_discount'];
+    	$item_details[$i]['quantity']			= 1;
     	$i 										= $i + 1;
 
 	    $item_details[$i]['id']					= $i;
 	    $item_details[$i]['name']				= 'Biaya Tambahan';
 	    $item_details[$i]['price']				= $me_order_detail['data']['extend_cost'];
+    	$item_details[$i]['quantity']			= 1;
     	$i 										= $i + 1;
 
 		// Optional
@@ -591,7 +599,7 @@ class CheckoutController extends BaseController
 														'customer_details'		=> $customer_details,
 														'item_details'			=> $item_details,
 													];
-														
+
 		$vtweb_url 								= Veritrans_Vtweb::getRedirectionUrl($transaction);
 		
 		Session::forget('veritrans_payment');
