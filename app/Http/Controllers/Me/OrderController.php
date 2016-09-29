@@ -5,6 +5,7 @@ use App\API\Connectors\APISendMail;
 
 use App\Http\Controllers\BaseController;
 
+use App\Http\Controllers\Me\Veritrans\Veritrans_Config;
 use App\Http\Controllers\Me\Veritrans\Veritrans_Transaction;
 
 use Session;
@@ -109,7 +110,19 @@ class OrderController extends BaseController
 			}
 			elseif($is_veritrans)
 			{
-				$veritrans 						= Veritrans_Transaction::cancel($me_order_detail['data']['id']);
+				// Set our server key
+				Veritrans_Config::$serverKey 			= env('VERITRANS_KEY', 'VT_KEY');
+
+				// Uncomment for production environment
+				Veritrans_Config::$isProduction 		= env('VERITRANS_PRODUCTION', false);
+
+				// Comment to disable sanitization
+				Veritrans_Config::$isSanitized 			= true;
+
+				// Comment to disable 3D-Secure
+				Veritrans_Config::$is3ds 				= true;
+
+				$veritrans 								= Veritrans_Transaction::cancel($me_order_detail['data']['ref_number']);
 			}
 		}
 
