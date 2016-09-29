@@ -175,12 +175,47 @@ class CheckoutController extends BaseController
 			Veritrans_Config::$is3ds 				= true;
 
 			// Fill transaction data
-			$transaction 							= 	[
-			    											'transaction_details' 	=> [
-													        	'order_id' 			=> $order['data']['ref_number'],
-													        	'gross_amount' 		=> $order['data']['bills'], // no decimal allowed for creditcard
-			    											]
+			$transaction_details 					= 	[
+													        'order_id' 			=> $order['data']['ref_number'],
+													        'gross_amount' 		=> $order['data']['bills'], // no decimal allowed for creditcard
 		    											];
+		    $item_details 							= 	[];
+
+		    foreach ($order['data']['transactiondetails'] as $key => $value) 
+		    {
+		    	$item_details[$key]['id']			= $value['varian']['sku'];
+		    	$item_details[$key]['name']			= $value['varian']['product']['name'].' Ukuran '.$value['varian']['size'];
+		    	$item_details[$key]['price']		= $value['price'] - $value['discount'];
+		    	$item_details[$key]['quantity']		= $value['quantity'];
+		    }
+
+			// Optional
+			$billing_address 						= 	[
+															'first_name'		=> $order['data']['customer']['name']
+														];
+
+			// Optional
+			$shipping_address 						= 	[
+															'first_name'		=> $order['data']['shipment']['receiver_name'],
+															'address'			=> $order['data']['shipment']['address']['address'],
+															'postal_code'		=> $order['data']['shipment']['address']['zipcode'],
+															'phone'				=> $order['data']['shipment']['address']['phone'],
+														];
+
+			// Optional
+			$customer_details 						= 	[
+															'first_name'		=> $order['data']['customer']['name'],
+															'email'				=> $order['data']['customer']['email'],
+															'billing_address'	=> $billing_address,
+															'shipping_address'	=> $shipping_address,
+														];
+
+			// Fill transaction details
+			$transaction 							=	[
+															'transaction_details'	=> $transaction_details,
+															'customer_details'		=> $customer_details,
+															'item_details'			=> $item_details,
+														];
 
 			$vtweb_url 								= Veritrans_Vtweb::getRedirectionUrl($transaction);
 			
@@ -471,12 +506,47 @@ class CheckoutController extends BaseController
 		Veritrans_Config::$is3ds 				= true;
 
 		// Fill transaction data
-		$transaction 							= 	[
-		    											'transaction_details' 	=> [
-												        	'order_id' 			=> $me_order_detail['data']['ref_number'],
-												        	'gross_amount' 		=> $me_order_detail['data']['bills'], // no decimal allowed for creditcard
-		    											]
+		$transaction_details 					= 	[
+												        'order_id' 			=> $me_order_detail['data']['ref_number'],
+												        'gross_amount' 		=> $me_order_detail['data']['bills'], // no decimal allowed for creditcard
 	    											];
+	    $item_details 							= 	[];
+
+	    foreach ($me_order_detail['data']['transactiondetails'] as $key => $value) 
+	    {
+	    	$item_details[$key]['id']			= $value['varian']['sku'];
+	    	$item_details[$key]['name']			= $value['varian']['product']['name'].' Ukuran '.$value['varian']['size'];
+	    	$item_details[$key]['price']		= $value['price'] - $value['discount'];
+	    	$item_details[$key]['quantity']		= $value['quantity'];
+	    }
+
+		// Optional
+		$billing_address 						= 	[
+														'first_name'		=> $me_order_detail['data']['customer']['name']
+													];
+
+		// Optional
+		$shipping_address 						= 	[
+														'first_name'		=> $me_order_detail['data']['shipment']['receiver_name'],
+														'address'			=> $me_order_detail['data']['shipment']['address']['address'],
+														'postal_code'		=> $me_order_detail['data']['shipment']['address']['zipcode'],
+														'phone'				=> $me_order_detail['data']['shipment']['address']['phone'],
+													];
+
+		// Optional
+		$customer_details 						= 	[
+														'first_name'		=> $me_order_detail['data']['customer']['name'],
+														'email'				=> $me_order_detail['data']['customer']['email'],
+														'billing_address'	=> $billing_address,
+														'shipping_address'	=> $shipping_address,
+													];
+
+		// Fill transaction details
+		$transaction 							=	[
+														'transaction_details'	=> $transaction_details,
+														'customer_details'		=> $customer_details,
+														'item_details'			=> $item_details,
+													];
 
 		$vtweb_url 								= Veritrans_Vtweb::getRedirectionUrl($transaction);
 		

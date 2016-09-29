@@ -2754,8 +2754,7 @@ tbody.collapse.in {
         text-decoration: none;
         background-color: #eeeeee; }
       .nav > li > a.active {
-        color: #FFF;
-        font-weight: 600 !important; }
+        color: #FFF; }
     .nav > li.disabled > a {
       color: #777777; }
       .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {

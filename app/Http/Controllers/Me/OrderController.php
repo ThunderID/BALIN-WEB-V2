@@ -5,6 +5,8 @@ use App\API\Connectors\APISendMail;
 
 use App\Http\Controllers\BaseController;
 
+use App\Http\Controllers\Me\Veritrans\Veritrans_Transaction;
+
 use Session;
 
 class OrderController extends BaseController 
@@ -60,9 +62,9 @@ class OrderController extends BaseController
 	public function destroy($id = null)
 	{		
 		//1.  ambil data order detail dari API
-		$APIUser 							= new APIUser;
+		$APIUser 								= new APIUser;
 
-		$me_order_detail					= $APIUser->getMeOrderDetail([
+		$me_order_detail						= $APIUser->getMeOrderDetail([
 													'user_id' 	=> Session::get('whoami')['id'],
 													'order_id'	=> $id
 												]);
@@ -72,8 +74,15 @@ class OrderController extends BaseController
 			\App::abort(404);
 		}
 
+		$is_veritrans 							= false;
+
+		if(strtolower($me_order_detail['data']['status'])=='veritrans_processing_payment')
+		{
+			$is_veritrans 						= true;
+		}
+
 		//2.  Set status cancel
-		$me_order_detail['data']['status']	= 'canceled';
+		$me_order_detail['data']['status']		= 'canceled';
 
 		//3.  Store order
 		$order									= $APIUser->postMeOrder($me_order_detail['data']);
@@ -98,10 +107,14 @@ class OrderController extends BaseController
 			{
 				$this->errors					= $result['message'];
 			}
+			elseif($is_veritrans)
+			{
+				$veritrans 						= Veritrans_Transaction::cancel($me_order_detail['data']['id']);
+			}
 		}
 
 		//5. Generate view
-		$this->page_attributes->success 			= "Pesanan Anda sudah dibatalkan.";
+		$this->page_attributes->success 		= "Pesanan Anda sudah dibatalkan.";
 
 		return $this->generateRedirectRoute('my.balin.profile');
 	}
