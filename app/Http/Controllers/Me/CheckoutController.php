@@ -612,7 +612,6 @@ class CheckoutController extends BaseController
 														'customer_details'		=> $customer_details,
 														'item_details'			=> $item_details,
 													];
-dd($transaction);
 		$vtweb_url 								= Veritrans_Vtweb::getRedirectionUrl($transaction);
 		
 		Session::forget('veritrans_payment');
