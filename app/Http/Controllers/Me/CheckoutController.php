@@ -131,7 +131,8 @@ class CheckoutController extends BaseController
 
 		$me_order_in_cart 						= $APIUser->getMeOrderInCart(['user_id' 	=> Session::get('whoami')['id']]);
 
-		if(count($me_order_in_cart['data']['transactiondetails']) == 0 ){
+		if(count($me_order_in_cart['data']['transactiondetails']) == 0 )
+		{
 			\App::abort(404);
 		}
 
@@ -199,13 +200,19 @@ class CheckoutController extends BaseController
 
 		    $item_details[$i]['id']					= $i;
 		    $item_details[$i]['name']				= 'Potongan Voucher';
-		    $item_details[$i]['price']				= $order['data']['voucher_discount'];
+		    $item_details[$i]['price']				= 0 - abs($order['data']['voucher_discount']);
 	    	$item_details[$i]['quantity']			= 1;
 	    	$i 										= $i + 1;
 
 		    $item_details[$i]['id']					= $i;
 		    $item_details[$i]['name']				= 'Potongan Point';
-		    $item_details[$i]['price']				= $order['data']['point_discount'];
+		    $item_details[$i]['price']				= 0 - abs($order['data']['point_discount']);
+	    	$item_details[$i]['quantity']			= 1;
+	    	$i 										= $i + 1;
+
+		    $item_details[$i]['id']					= $i;
+		    $item_details[$i]['name']				= 'Potongan Transfer';
+		    $item_details[$i]['price']				= 0 - abs($order['data']['unique_number']);
 	    	$item_details[$i]['quantity']			= 1;
 	    	$i 										= $i + 1;
 
@@ -556,13 +563,19 @@ class CheckoutController extends BaseController
 
 	    $item_details[$i]['id']					= $i;
 	    $item_details[$i]['name']				= 'Potongan Voucher';
-	    $item_details[$i]['price']				= $me_order_detail['data']['voucher_discount'];
+	    $item_details[$i]['price']				= 0 - abs($me_order_detail['data']['voucher_discount']);
     	$item_details[$i]['quantity']			= 1;
     	$i 										= $i + 1;
 
 	    $item_details[$i]['id']					= $i;
 	    $item_details[$i]['name']				= 'Potongan Point';
-	    $item_details[$i]['price']				= $me_order_detail['data']['point_discount'];
+	    $item_details[$i]['price']				= 0 - abs($me_order_detail['data']['point_discount']);
+    	$item_details[$i]['quantity']			= 1;
+    	$i 										= $i + 1;
+
+	    $item_details[$i]['id']					= $i;
+	    $item_details[$i]['name']				= 'Potongan Transfer';
+	    $item_details[$i]['price']				= 0 - abs($me_order_detail['data']['unique_number']);
     	$item_details[$i]['quantity']			= 1;
     	$i 										= $i + 1;
 
@@ -599,7 +612,6 @@ class CheckoutController extends BaseController
 														'customer_details'		=> $customer_details,
 														'item_details'			=> $item_details,
 													];
-
 		$vtweb_url 								= Veritrans_Vtweb::getRedirectionUrl($transaction);
 		
 		Session::forget('veritrans_payment');
