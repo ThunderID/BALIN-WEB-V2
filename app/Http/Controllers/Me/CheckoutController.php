@@ -180,14 +180,36 @@ class CheckoutController extends BaseController
 													        'gross_amount' 		=> $order['data']['bills'], // no decimal allowed for creditcard
 		    											];
 		    $item_details 							= 	[];
+		    $i 										= 	0;
 
 		    foreach ($order['data']['transactiondetails'] as $key => $value) 
 		    {
-		    	$item_details[$key]['id']			= $value['varian']['sku'];
-		    	$item_details[$key]['name']			= $value['varian']['product']['name'].' Ukuran '.$value['varian']['size'];
-		    	$item_details[$key]['price']		= $value['price'] - $value['discount'];
-		    	$item_details[$key]['quantity']		= $value['quantity'];
+		    	$item_details[$i]['id']				= $value['varian']['sku'];
+		    	$item_details[$i]['name']			= $value['varian']['product']['name'].' Ukuran '.$value['varian']['size'];
+		    	$item_details[$i]['price']			= $value['price'] - $value['discount'];
+		    	$item_details[$i]['quantity']		= $value['quantity'];
+		    	$i 									= $i + 1;
 		    }
+
+		    $item_details[$i]['id']					= $i;
+		    $item_details[$i]['name']				= 'Ongkos Kirim';
+		    $item_details[$i]['price']				= $order['data']['shipping_cost'];
+	    	$i 										= $i + 1;
+
+		    $item_details[$i]['id']					= $i;
+		    $item_details[$i]['name']				= 'Potongan Voucher';
+		    $item_details[$i]['price']				= $order['data']['voucher_discount'];
+	    	$i 										= $i + 1;
+
+		    $item_details[$i]['id']					= $i;
+		    $item_details[$i]['name']				= 'Potongan Point';
+		    $item_details[$i]['price']				= $order['data']['point_discount'];
+	    	$i 										= $i + 1;
+
+		    $item_details[$i]['id']					= $i;
+		    $item_details[$i]['name']				= 'Biaya Tambahan';
+		    $item_details[$i]['price']				= $order['data']['extend_cost'];
+	    	$i 										= $i + 1;
 
 			// Optional
 			$billing_address 						= 	[
@@ -511,14 +533,36 @@ class CheckoutController extends BaseController
 												        'gross_amount' 		=> $me_order_detail['data']['bills'], // no decimal allowed for creditcard
 	    											];
 	    $item_details 							= 	[];
+	    $i 										= 	0;
 
 	    foreach ($me_order_detail['data']['transactiondetails'] as $key => $value) 
 	    {
-	    	$item_details[$key]['id']			= $value['varian']['sku'];
-	    	$item_details[$key]['name']			= $value['varian']['product']['name'].' Ukuran '.$value['varian']['size'];
-	    	$item_details[$key]['price']		= $value['price'] - $value['discount'];
-	    	$item_details[$key]['quantity']		= $value['quantity'];
+	    	$item_details[$i]['id']				= $value['varian']['sku'];
+	    	$item_details[$i]['name']			= $value['varian']['product']['name'].' Ukuran '.$value['varian']['size'];
+	    	$item_details[$i]['price']			= $value['price'] - $value['discount'];
+	    	$item_details[$i]['quantity']		= $value['quantity'];
+	    	$i 									= $i + 1;
 	    }
+
+	    $item_details[$i]['id']					= $i;
+	    $item_details[$i]['name']				= 'Ongkos Kirim';
+	    $item_details[$i]['price']				= $me_order_detail['data']['shipping_cost'];
+    	$i 										= $i + 1;
+
+	    $item_details[$i]['id']					= $i;
+	    $item_details[$i]['name']				= 'Potongan Voucher';
+	    $item_details[$i]['price']				= $me_order_detail['data']['voucher_discount'];
+    	$i 										= $i + 1;
+
+	    $item_details[$i]['id']					= $i;
+	    $item_details[$i]['name']				= 'Potongan Point';
+	    $item_details[$i]['price']				= $me_order_detail['data']['point_discount'];
+    	$i 										= $i + 1;
+
+	    $item_details[$i]['id']					= $i;
+	    $item_details[$i]['name']				= 'Biaya Tambahan';
+	    $item_details[$i]['price']				= $me_order_detail['data']['extend_cost'];
+    	$i 										= $i + 1;
 
 		// Optional
 		$billing_address 						= 	[
@@ -547,7 +591,7 @@ class CheckoutController extends BaseController
 														'customer_details'		=> $customer_details,
 														'item_details'			=> $item_details,
 													];
-
+														
 		$vtweb_url 								= Veritrans_Vtweb::getRedirectionUrl($transaction);
 		
 		Session::forget('veritrans_payment');
