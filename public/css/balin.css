@@ -7006,8 +7006,8 @@ body {
 .shop-by-style-desktop .title {
   font-family: 'Sacramento', cursive;
   font-size: 6.2rem;
-  padding-top: 0.3rem;
-  padding-bottom: 1.2rem; }
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
 
 /** Product Show **/
 .cart-remove.not-active, .cart-add.not-active {
