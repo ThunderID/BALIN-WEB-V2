@@ -6700,7 +6700,8 @@ select {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: background-color 600ms;
     color: #fff; }
     .tile div.jumbotron h2, .tile div.jumbotron h4 {
       position: absolute;
@@ -6708,6 +6709,8 @@ select {
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
       font-weight: 300; }
+  .tile div.jumbotron:hover {
+    background-color: rgba(0, 0, 0, 0.5); }
 
 .row-card {
   display: -ms-flexbox;
