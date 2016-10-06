@@ -55,7 +55,6 @@
 		</div>
 	</div>
 	<div class="clearfix">&nbsp;</div>
-	<div class="clearfix">&nbsp;</div>
 </section>
 @endif
 

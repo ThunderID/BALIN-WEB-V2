@@ -31,11 +31,11 @@
 				<a class="home-product-more" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 			</div>
 		</div>
-		<div class="container pt-md pb-md mb-sm">
+		<div class="container pt-md mb-xs">
 			<div class="row">
 			  	@include('web_v2.components.card', [
 			  		'card' 	=> $data['new_release'],
-			  		'col'	=> 'col-md-3 col-sm-3 col-xs-6',
+			  		'col'	=> 'col-md-3 col-sm-3 col-xs-6 mb-md',
 			  		'data'	=> ['type' => 'women']
 			  	])
 			</div>
