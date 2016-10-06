@@ -86,7 +86,7 @@
 						<div class="row mt-sm mb-sm">
 							<div class="col-xs-12">
 								<a href="{{ route('balin.product.index') }}" class="btn btn-orange white btn-block btn-lg text-uppercase">
-									Pilih Produk Lain
+									Lanjut Belanja
 								</a>
 							</div>
 						</div>
