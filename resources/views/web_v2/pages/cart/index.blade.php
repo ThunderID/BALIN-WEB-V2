@@ -103,7 +103,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
 						<div class="row">
 							<a href="{{ route('balin.product.index') }}" class="btn btn-transaparent-border-black-hover-black pull-left text-uppercase">
-								Pilih Produk Lain
+								Lanjut Belanja
 							</a>
 							@if (!empty($data['carts']))
 								<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange pull-right text-uppercase">
@@ -149,7 +149,7 @@
 						<div class="row mt-sm mb-sm">
 							<div class="col-xs-12">
 								<a href="{{ route('balin.product.index') }}" class="btn btn-black-border-white-hover-white btn-block btn-lg text-uppercase">
-									Pilih Produk Lain
+									Lanjut Belanja
 								</a>
 							</div>
 						</div>

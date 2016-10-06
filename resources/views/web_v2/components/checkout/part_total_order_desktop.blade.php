@@ -25,7 +25,7 @@
 				<span class="text-regular">Point Anda</span>
 			</div>
 			<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
-				<span class="text-regular text-right" id="point">@money_indo($data['order']['customer']['total_point'])</span>
+				<span class="text-regular text-right" id="point">@money_indo($data['order']['user']['total_point'])</span>
 			</div>	
 		</div>
 		<div class="row">
@@ -70,7 +70,7 @@
 			<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
 				<h4 class="text-md text-right text-bold mb-sm sub_total">
 					<?php 
-						$total_pembayaran = $total - $data['order']['customer']['total_point'] - $data['order']['unique_number'] + $data['order']['shipping_cost'] + (isset($data['order']['extend_cost']) ? $data['order']['extend_cost'] : 0);
+						$total_pembayaran = $total - $data['order']['user']['total_point'] - $data['order']['unique_number'] + $data['order']['shipping_cost'] + (isset($data['order']['extend_cost']) ? $data['order']['extend_cost'] : 0);
 					?>
 					@if ($total_pembayaran && $total_pembayaran < 0)
 						@money_indo(0)
