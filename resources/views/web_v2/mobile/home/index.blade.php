@@ -65,8 +65,12 @@
 		<div class="row pb-xs">
 			<div class="col-md-12 text-center">
 				<p class="m-0">Make sure you follow us on</p>
-				<h3 class="text-uppercase mtm-5 mbm-5">INSTAGRAM</h3>
-				<p class="m-0"><em><a href="{{$balin['info']['instagram_url']['value']}}" class="hover-orange">@balin.id</a></em></p>
+				<h3 class="text-uppercase mtm-5 mbm-5">
+					<a href="{{$balin['info']['instagram_url']['value']}}" class="hover-orange" target="_blank">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+						balin.id
+					</a>
+				</h3>
 			</div>
 		</div>
 
@@ -76,7 +80,7 @@
 
 				@foreach($data['instagram'] as $key => $data)
 					<?php $link = json_decode($data['value'], true); ?>
-					<a class="link" href="{{$link['action']}}">
+					<a class="link" href="{{$link['action']}}" target="_blank">
 						<div class="item">
 							<div class="col-xs-12 pl-0 pr-0">
 								<div class="tile text-center">
