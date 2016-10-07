@@ -6060,6 +6060,17 @@ ul.dropdown-user {
 .product-detail .panel {
   border: none; }
 
+.share {
+  transition: background-color 300ms;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px; }
+
+.share:hover {
+  color: #0097D3;
+  background-color: #f5f5f5; }
+
 .countdown div {
   float: left;
   margin-right: 4px;

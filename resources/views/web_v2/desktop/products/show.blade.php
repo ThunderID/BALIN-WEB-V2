@@ -94,7 +94,7 @@
 				</div>
 
 
-				<!-- START SECTION TRANSACTION MENU -->
+				<!-- START SECTION TRANSACTION MENU -->				
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel-group product-detail" id="accordion" role="tablist" aria-multiselectable="true">
@@ -223,6 +223,20 @@
 							</div>
 					<!-- START SECTION TOTAL -->
 
+					<!-- START SHARE-->
+							<div class="panel panel-default mt-0">
+								<div class="panel-heading" role="tab" id="headingOne" style="background-color: white;padding-bottom:15px;">
+									<h4 class="panel-title">
+										Share
+										<span class="pull-right" style="margin-bottom: 10px;">
+											<a class="share" href="#">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+											</a>
+										</span>
+									</h4>
+								</div>
+							</div>
+					<!-- END SHARE -->					
 
 						</div>
 					</div>
@@ -231,7 +245,7 @@
 
 				<div class="row">
 					<div class="col-md-12 text-right">
-						<p id="warning" class="pull-left warning hidden">* Silahkan Pilih Ukuran Terlebih Dahulu</p>
+						<p id="warning" class="pull-left warning hidden" style="font-size: 12px !important;">* Please select size!</p>
 						<a href="javascript:void(0);" class="btn btn-orange buy pl-sm pr-sm">
 							<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 							&nbsp;Buy Now
@@ -250,9 +264,6 @@
 					<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
 					<a class="home-product-more" href="{{route('balin.product.index', ['categories' => [$data['type']]])}}">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 				</div>			
-				<?php
-					// dd($data['related']);
-				?>
 					@include('web_v2.components.card', [
 						'card' 	=> $data['related'],
 						'col'	=> 'col-md-3 col-sm-3 col-xs-6',
