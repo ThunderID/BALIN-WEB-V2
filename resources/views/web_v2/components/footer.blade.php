@@ -42,10 +42,27 @@
 						</ul>
 					</div>
 					<div class="col-md-3 col-sm-3">
-						<h4>Jasa Pengiriman</h4>
+						<h4>Fast Payment</h4>
 						<ul class="list-unstyled text-grey-lightest">
-							<li>JNE</li>
+							<li>
+							BCA </br>
+							a/n Balin Indonesia CV </br>
+							No. Rek. 011-325-5151
+							</li>
+							<li>&nbsp</li>
+							<li>
+							Bank Mandiri </br>
+							a/n CV BALIN INDONESIA </br>
+							No. Rek. 144-00-7000-7577
+							</li>
+							<li>&nbsp</li>
 						</ul>
+						<h4>Layanan Pelanggan</h4>
+						<ul class="list-unstyled text-grey-lightest">
+							<li>Jl. M.T. Haryono 116 Kav 2 Malang</li>
+							<li>+628 223 225 0755</li>
+							<li>help@balin.id</li>
+						</ul>											
 					</div>
 				</div>
 				<hr class="border-grey-dark">
