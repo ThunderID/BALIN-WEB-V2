@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 				<p class="m-t-md user-hello">
-					<strong>Halo, {{ ($data['me']['data']['gender'] == 'male') ? 'Mr. ' : 'Mrs. ' }} {{ $data['me']['data']['name'] }}</strong>
+					<strong>HALO, {{ ($data['me']['data']['gender'] == 'male') ? 'MR. ' : 'MRS. ' }} {{ strtoupper($data['me']['data']['name']) }}</strong>
 				</p>
 			</div>
 			<div class="hidden-xs hidden-sm col-md-4 col-lg-4 text-right">
