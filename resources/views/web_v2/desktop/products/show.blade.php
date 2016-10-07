@@ -167,7 +167,7 @@
 								<div class="panel-heading" role="tab" id="headingFour">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 										<h4 class="panel-title">
-											Pilih Ukuran
+											Size
 											<span class="pull-right active">
 												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
@@ -200,6 +200,11 @@
 												</div>
 											</div>
 										@endforeach
+										<div class="col-md-12 pt-sm text-right">
+											<small>
+												Not Sure? <a class="hover-orange" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Check Fit & Measurement</a>
+											</small>
+										</div>										
 									</div>
 								</div>
 							</div>
