@@ -166,7 +166,7 @@
 								<div class="panel-heading" role="tab" id="headingFour">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 										<h4 class="panel-title">
-											Pilih Ukuran
+											Size
 											<span class="pull-right active">
 												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
@@ -199,6 +199,11 @@
 												</div>
 											</div>
 										@endforeach
+										<div class="col-md-12 pt-sm text-right">
+											<small>
+												Not Sure? <a class="hover-orange" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Check Fit & Measurement</a>
+											</small>
+										</div>											
 									</div>
 								</div>
 							</div>
@@ -208,7 +213,7 @@
 							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<h4 class="panel-title">
-										Total
+										Total (<span id="items">0</span>)
 										<span class="pull-right">
 											IDR <span class="total">0</span>
 										</span>
@@ -394,13 +399,16 @@
 	});
 	$(document).on('change', '.cart', function(){
 		var total = 0;
+		var items = 0;
 		var price = {{ $data['product']['data']['data'][0]['promo_price'] == 0 ? $data['product']['data']['data'][0]['price'] : $data['product']['data']['data'][0]['promo_price']}}
 		$('.cart').each(function() {
 			if($(this).text() > 0){
 				total = total + (parseInt($(this).text()) * price);
+				items = items + parseInt($(this).text());
 			}
 		});
 		<!-- total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") -->
 		$('.total').text(number_format(total));
+		$('#items').text(items);
 	});
 @stop

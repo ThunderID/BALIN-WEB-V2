@@ -214,7 +214,7 @@
 							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<h4 class="panel-title">
-										Total
+										Total (<span id="items">0</span>)
 										<span class="pull-right">
 											IDR <span class="total">0</span>
 										</span>
@@ -411,13 +411,16 @@
 	});
 	$(document).on('change', '.cart', function(){
 		var total = 0;
+		var items = 0;
 		var price = {{ $data['product']['data']['data'][0]['promo_price'] == 0 ? $data['product']['data']['data'][0]['price'] : $data['product']['data']['data'][0]['promo_price']}}
 		$('.cart').each(function() {
 			if($(this).text() > 0){
 				total = total + (parseInt($(this).text()) * price);
+				items = items + parseInt($(this).text());
 			}
 		});
 		<!-- total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") -->
 		$('.total').text(number_format(total));
+		$('#items').text(items);
 	});
 @stop
