@@ -259,7 +259,7 @@ class ProductController extends BaseController
 														'sort' 		=> 	[
 																			'name'	=> 'asc',
 																		],																		
-														'take'		=> 4,
+														'take'		=> 8,
 													]);	
 	
 			if(!count($related['data']['data']))
@@ -272,7 +272,7 @@ class ProductController extends BaseController
 														'sort' 		=> 	[
 																			'name'	=> 'asc',
 																		],																		
-														'take'		=> 4,
+														'take'		=> 8,
 													]);	
 			}
 
