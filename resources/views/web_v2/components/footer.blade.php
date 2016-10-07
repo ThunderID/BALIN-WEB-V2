@@ -20,8 +20,8 @@
 						<h4>Keep in touch</h4>
 						<ul class="list-unstyled fa-ul ml-0">
 							<li><a href="{{route('balin.contact.us')}}" class="hover-orange">Kontak BALIN</a></li>
-							<li><a href="{{$balin['info']['facebook_url']['value']}}" class="social-url-footer">Facebook</a></li>
-							<li><a href="{{$balin['info']['instagram_url']['value']}}" class="social-url-footer">Instagram</a></li>
+							<li><a href="{{$balin['info']['facebook_url']['value']}}" target="_blank" class="social-url-footer">Facebook</a></li>
+							<li><a href="{{$balin['info']['instagram_url']['value']}}" target="_blank" class="social-url-footer">Instagram</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 col-sm-3">
