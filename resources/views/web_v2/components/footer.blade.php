@@ -77,7 +77,20 @@
 	{{-- -------------------------------- MOBILE -------------------------------- --}}
 	<div class="row hidden-md hidden-lg hidden-sm footer-mobile">
 		<div class="col-xs-12 text-center">
-		  	<span class="pt-sm pb-sm">&copy; 2015-2016 CV. Balin Indonesia</span>
+		  	<p>&copy; 2015-2016 CV. Balin Indonesia</p>
+		  	<p class="info">
+		  		Jl. M.T. Haryono 116 Kav 2 Malang</br>
+				+628 223 225 0755</br>
+				help@balin.id
+		  	</p>
+		</div>
+		<div class="col-xs-12 text-center">
+			<a href="#" class="btn btn-sm btn-transaparent-border-black-hover-black">
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+			</a>
+			<a href="#" class="btn btn-sm btn-transaparent-border-black-hover-black">
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+			</a>
 		</div>
 	</div>
 </footer>
