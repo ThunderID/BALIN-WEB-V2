@@ -150,7 +150,7 @@ class ProductController extends BaseController
 		//3c. API Tag
 		$API_tag 									= new APITag;
 		$get_api_tag								= $API_tag->getIndex([
-															'search' 	=> 	[$linked_search],
+															'search' 	=> 	$linked_search,
 															'sort' 		=> 	[
 																				'path'	=> 'asc',
 																			],
