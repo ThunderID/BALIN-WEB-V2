@@ -8,7 +8,7 @@ use App\API\Connectors\APIProduct;
 use App\API\Connectors\APIUser;
 use App\API\Connectors\APIConfig;
 use App\API\Connectors\APICategory;
-use Route, Session, Cache, Input, Redirect;
+use Route, Session, Cache, Input, Redirect, Carbon;
 
 abstract class BaseController extends Controller
 {
@@ -26,7 +26,7 @@ abstract class BaseController extends Controller
 		$this->errors 				= new MessageBag();
 		$this->page_attributes 		= new \Stdclass;
 
-		if(!Session::has('API_token'))
+		if(!Session::has('API_token') || Session::get('API_expired_token') < Carbon::now()->format('Y-m-d H:i:s'))
 		{
 			$api_url 					= '/oauth/client/access_token';
 			$api_data 					= 	[
@@ -42,10 +42,16 @@ abstract class BaseController extends Controller
 			{
 				Session::set('API_token_public', $result['data']['token']['token']);
 				Session::set('API_token', $result['data']['token']['token']);
+				Session::set('API_expired_token', Carbon::parse('+ 2 hours')->format('Y-m-d H:i:s'));
 			}
 			else
 			{
 				\App::abort(503);
+			}
+
+			if(Session::has('API_token_private'))
+			{
+				return Redirect::route('balin.get.login')->withErrors(['Waktu login Anda sudah expire, silahkan login lagi.']);
 			}
 		}
 
