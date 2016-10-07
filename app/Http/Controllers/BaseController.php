@@ -42,7 +42,7 @@ abstract class BaseController extends Controller
 			{
 				Session::set('API_token_public', $result['data']['token']['token']);
 				Session::set('API_token', $result['data']['token']['token']);
-				Session::set('API_expired_token', Carbon::parse('+ 2 hours')->format('Y-m-d H:i:s'));
+				Session::set('API_expired_token', Carbon::parse('+ 115 minutes')->format('Y-m-d H:i:s'));
 			}
 			else
 			{
