@@ -130,6 +130,7 @@ class AuthController extends BaseController
 			Session::put('API_token_private', $result['data']['token']['token']);
 			Session::put('whoami', $result['data']['me']);
 			Session::set('API_token', Session::get('API_token_private'));	
+			Session::set('API_expired_token', Carbon::parse('+ 115 minutes')->format('Y-m-d H:i:s'));
 
 			if (!Session::has('carts'))
 			{
@@ -300,6 +301,7 @@ class AuthController extends BaseController
 			{
 				$API_me 						= new APIUser;
 				Session::put('API_token_private', $result['data']['token']['token']);
+				Session::set('API_expired_token', Carbon::parse('+ 115 minutes')->format('Y-m-d H:i:s'));
 
 				$whoami 						= $API_me->getMeDetail([
 																	'user_id' 	=> $result['data']['me']['id'],

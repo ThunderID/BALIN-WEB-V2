@@ -75,35 +75,11 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
-								<span class="text-regular">Point Anda</span>
-							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
-								<span class="text-regular text-right" id="point">@money_indo($data['my_point'])</span>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<span class="text-regular">Biaya Pengiriman</span>
 							</div>
 							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
 								<span class="text-regular text-right shipping_cost" data-s="0" data-v="0">@money_indo($data['order']['data']['shipping_cost'])</span>
 							</div>	
-						</div>
-						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
-								<span class="text-regular">
-									Potongan Voucher
-								</span>
-							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
-								<span class="text-regular text-right {{ ($data['order']['data']['voucher_discount']==0) ? 'text-black' : 'text-red' }} voucher_discount" data-unique="{{ $data['order']['data']['voucher_discount'] }}">
-									@if ($data['order']['data']['voucher_discount']==0)
-										@money_indo($data['order']['data']['voucher_discount'])
-									@else
-										@money_indo_negative($data['order']['data']['voucher_discount'])
-									@endif
-								</span>
-							</div>
 						</div>
 						@if (isset($data['order']['data']['extend_cost']))
 							<div class="row">
@@ -124,6 +100,46 @@
 								@endforeach
 							@endif
 						@endif
+						<div class="row">
+							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+								<span class="text-regular">Potongan Point</span>
+							</div>
+							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
+								<span class="text-regular text-right" id="point">@money_indo($data['my_point'])</span>
+							</div>	
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+								<span class="text-regular">
+									Potongan Voucher
+								</span>
+							</div>
+							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
+								<span class="text-regular text-right {{ ($data['order']['data']['voucher_discount']==0) ? 'text-black' : 'text-red' }} voucher_discount" data-unique="{{ $data['order']['data']['voucher_discount'] }}">
+									@if ($data['order']['data']['voucher_discount']==0)
+										@money_indo($data['order']['data']['voucher_discount'])
+									@else
+										@money_indo_negative($data['order']['data']['voucher_discount'])
+									@endif
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+								<span class="text-regular">
+									Potongan Transfer
+								</span>
+							</div>
+							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
+								<span class="text-regular text-right { ($data['order']['data']['unique_number']==0) ? 'text-black' : 'text-red' }}">
+									@if ($data['order']['data']['unique_number']==0)
+										@money_indo($data['order']['data']['unique_number'])
+									@else
+										@money_indo_negative($data['order']['data']['unique_number'])
+									@endif
+								</span>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<h4 class="text-md">Total Pembayaran</h4>
