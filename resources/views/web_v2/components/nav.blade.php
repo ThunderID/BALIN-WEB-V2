@@ -26,7 +26,7 @@
 		<div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li id="cart-desktop" class="dropdown dropdown-cart  hidden-xs hidden-sm text-light">
-					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart @yield('shopping-bag-nav') hover-orange">
+					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart hover-orange">
 						Shopping Bag
 					</a>
 					<span id="desktop-cart-count">
