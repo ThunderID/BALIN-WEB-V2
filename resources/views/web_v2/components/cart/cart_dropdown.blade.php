@@ -2,6 +2,12 @@
 	// dd($carts); 
 ?>
 <ul id="desktop-cart-content" class="dropdown-menu dropdown-menu-right text-regular cart_dropdown" aria-labelledby="dLabel">
+	<div class="cart-title text-right pt-xs pr-xs">
+		<a href="javascript:void(0);" onclick="closeNav();"  class="hover-orange">
+			Hide 
+			<i class="fa fa-times-circle" aria-hidden="true"></i>
+		</a>
+	</div>
 	@if (!empty($carts) && is_array($carts))
 		<?php $total = 0; $i=0; ?>
 		<div class="cart-content">
@@ -34,18 +40,18 @@
 			@endforeach
 		</div>
 		<div class="cart-bottom">
-			<li class="cart-dropdown-subtotal border-top-1 border-grey-light border-bottom-1 pt-xs">
+			<li class="cart-dropdown-subtotal border-top-1 border-grey-light  pt-xs">
 				<div class="row">
 					<div class="col-sm-12">
 						<p class="text-center"><strong>SUBTOTAL <span class="ml-md">@money_indo($total)</span></strong></p>
 					</div>
 				</div>
 			</li>  
-			<li class="p-xs">
+			<li class="pb-sm pl-xs pr-xs">
 				<div class="row">
 					<div class="col-xs-12 text-center" style=" ">
-						<a href="{{ route('balin.cart.index') }}" class="btn btn-orange mr-sm">Lihat Shopping Bag</a>
-						<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full ml-sm">Checkout</a>
+						<a href="{{ route('balin.cart.index') }}" class="btn btn-orange btn-block">Checkout</a>
+						<!-- <a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full ml-sm">Checkout</a> -->
 					</div>
 				</div>
 			</li> 
@@ -81,3 +87,4 @@
 		@endif
 	@endif
 </ul>
+

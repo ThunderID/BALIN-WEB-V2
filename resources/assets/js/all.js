@@ -4,7 +4,10 @@
 	// 	$(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(300);
 	// });
 
-
+// nav
+	function closeNav(){
+		$('.dropdown-menu').toggle({'display': 'none'});
+	}
 
 /* SECTION PLUGIN I-CHECK */
 	$('.i-checks').iCheck({
