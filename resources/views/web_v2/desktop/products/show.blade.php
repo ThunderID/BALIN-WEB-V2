@@ -229,7 +229,7 @@
 									<h4 class="panel-title">
 										Share
 										<span class="pull-right" style="margin-bottom: 10px;">
-											<a class="share" href="#">
+											<a class="share" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'),'href' => route('balin.product.show', $data['product']['data']['data'][0]['slug']), 'display' => 'popup']) }}">
 												<i class="fa fa-facebook" aria-hidden="true"></i>
 											</a>
 										</span>
