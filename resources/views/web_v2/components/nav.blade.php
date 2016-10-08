@@ -6,7 +6,7 @@
 					data-toggle="collapse" aria-controls="#bs-example-navbar-collapse-1" data-target="#bs-example-navbar-collapse-1">
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
-			<a id="cart-mobile"  href="{{ route('balin.cart.index') }}" class=" border-0 ico_cart navbar-cart";
+			<btn id="cart-mobile" data-toggle="modal" data-target="#modal-cart" class=" border-0 ico_cart navbar-cart";
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span id="mobile-cart-count">
@@ -16,7 +16,7 @@
 						</strong>
 					</span>
 				</span>
-			</a>
+			</btn>
 			<a class="navbar-brand" href="{{ route('balin.home.index') }}">
 				{!! HTML::image('images/white_logo_balin.png', null, ['class' => 'img-responsive']) !!}
 			</a>
@@ -148,3 +148,5 @@
 		</div>		
 	</div>
 </nav>
+
+@include('web_v2.components.modal-cart') 

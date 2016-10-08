@@ -199,7 +199,7 @@
 												</div>
 											</div>
 										@endforeach
-										<div class="col-md-12 pt-sm text-right">
+										<div class="col-md-12 pt-xs text-right">
 											<small>
 												Not Sure? <a class="hover-orange" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Check Fit & Measurement</a>
 											</small>
@@ -277,7 +277,6 @@
 				</a>
 			</div>
 		</div>
-
 	</section>
 @stop
 

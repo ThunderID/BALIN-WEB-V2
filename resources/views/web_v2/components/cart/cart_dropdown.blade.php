@@ -8,6 +8,7 @@
 			<i class="fa fa-times-circle" aria-hidden="true"></i>
 		</a>
 	</div>
+	<div id="cart-content">
 	@if (!empty($carts) && is_array($carts))
 		<?php $total = 0; $i=0; ?>
 		<div class="cart-content">
@@ -86,5 +87,6 @@
 			<!-- END SECTION RECOMMENDATION PRODUCT -->
 		@endif
 	@endif
+	</div>
 </ul>
 

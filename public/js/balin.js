@@ -11,6 +11,7 @@ if(k&&j[k]&&(e||j[k].data)||void 0!==d||"string"!=typeof b)return k||(k=i?a[h]=c
 *   $('.timer').startTimer();
 *
 */
+
 (function($){
 
   var timer;
