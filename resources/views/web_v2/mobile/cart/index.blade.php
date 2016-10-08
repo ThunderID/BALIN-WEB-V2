@@ -57,7 +57,7 @@
 				<!-- SECTION FOOTER CART MOBILE -->
 				<div class="row border-bottom-1 solid border-white pb-lg">
 					<div class="col-xs-12" >
-						@if (!empty($data['carts']))
+						@if (!empty($data['carts']) && $data['carts'] != 'remove carts')
 							<div class="row cart-footer">
 								<div class="col-xs-12">
 									<h3 class="text-center">SubTotal</h3>
