@@ -47,7 +47,7 @@
 					@endforeach
 				@else
 					<div class="row mr-0 ml-0 p-sm">
-						<div class="col-xs-12">
+						<div class="col-xs-12" style="padding-top: 25vh;">
 							<h4 class="text-center text-md">Tidak ada item di cart</h4>
 						</div>
 					</div>
