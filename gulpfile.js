@@ -23,6 +23,7 @@ elixir(function(mix) {
 				'quantity_control.js',
 				'checkout_plugin.js',
 				'easyzoom.js',
+				'clipboard.min.js',
 				'all.js',
 				], 'public/js/balin.js')
 		.version(['public/css/balin.css',

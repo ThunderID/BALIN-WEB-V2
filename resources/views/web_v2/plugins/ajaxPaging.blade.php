@@ -10,6 +10,7 @@
 		var toUrl = $(e).attr("data-url");
 		ajaxPage(toUrl);
 		window.history.pushState("", "", toUrl);
+		get_url_send_to_btn_share();
 	};
 
 	/**
@@ -74,6 +75,7 @@
 		} else {
 			ajaxRemoveCategory(e);
 		}
+		get_url_send_to_btn_share();
 	}
 
 	/**
@@ -163,6 +165,7 @@
 		} else {
 			ajaxRemoveFilter(e);
 		}
+		get_url_send_to_btn_share();
 	}
 
 	/**
@@ -244,6 +247,7 @@
 		} else {
 			ajaxRemoveSort(e, param, null);
 		}
+		get_url_send_to_btn_share();
 	}
 
 	/**
@@ -303,7 +307,7 @@
 		$('div.sort-info label[data-action="' + type + '"]').remove();
 
 		ajaxPage(toUrl, id);
-		window.history.pushState("", "", toUrl);	
+		window.history.pushState("", "", toUrl);
 	}
 
 	/**
@@ -323,5 +327,24 @@
 			checkbox_set.trigger('click');
 		}
 		item.remove();
+		get_url_send_to_btn_share();
+	}
+
+	/**
+	 * [get_url_send_to_btn_share change value btn share product index]
+	 * @return {[type]} [description]
+	 */
+	function get_url_send_to_btn_share() {
+		$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
+		fb_link = $('.btn-facebook-share').attr('href');
+		$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
+	}
+
+	function change_title_page(param, value) {
+		title = document.title.split('-');
+		base = title[1];
+		title = title[0];
+		
+		// document.title = title + ' ' + param + ': ' + value + ' - ' + base;
 	}
 </script>

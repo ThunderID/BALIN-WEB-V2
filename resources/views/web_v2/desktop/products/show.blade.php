@@ -225,11 +225,11 @@
 
 					<!-- START SHARE-->
 							<div class="panel panel-default mt-0">
-								<div class="panel-heading" role="tab" id="headingOne" style="background-color: white;padding-bottom:15px;">
+								<div class="panel-heading bg-white pb-sm" role="tab" id="headingOne">
 									<h4 class="panel-title">
 										Share
-										<span class="pull-right" style="margin-bottom: 10px;">
-											<a class="share" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'),'href' => route('balin.product.show', $data['product']['data']['data'][0]['slug']), 'display' => 'popup']) }}">
+										<span class="pull-right mtm-5">
+											<a class="share btn p-0" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'),'href' => route('balin.product.show', $data['product']['data']['data'][0]['slug']), 'display' => 'popup']) }}">
 												<i class="fa fa-facebook" aria-hidden="true"></i>
 											</a>
 										</span>

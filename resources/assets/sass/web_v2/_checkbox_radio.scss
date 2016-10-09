@@ -8,7 +8,7 @@
 		font-size: $text_regular;
 		&:before {
 			content: "";
-			border: 1px solid $black;
+			border: 1px solid #d5d5d5;
 			display: inline-block;
 			width: 16px;
 			height: 16px;
@@ -50,23 +50,34 @@
 .checkbox-color {
 	li {
 		vertical-align: top;
-		margin-left: 5px;
-		margin-right: 5px;
 		padding-left: 0px;
 		padding-right: 0px;
+		border: 1px solid $grey;
 		&.active {
-			border: 1px solid $black;
+			border: 2px solid $black;
 			.color-item {
-				border: 1px solid $white;
-				width: 14px;
-				height: 14px;
+				border: 2px solid $white;
+				width: 20px;
+				height: 20px;
 			}
 		}
 	}
 	.color-item {
-		width: 16px;;
-		height: 16px;
+		width: 24px;;
+		height: 24px;
 		display: block;
 		cursor: pointer;
+	}
+	@media screen and (max-width: 767px) {
+		li.active {
+			.color-item {
+				width: 26px;
+				height: 26px;
+			}
+		}
+		.color-item {
+			width: 30px;
+			height: 30px;
+		}
 	}
 }

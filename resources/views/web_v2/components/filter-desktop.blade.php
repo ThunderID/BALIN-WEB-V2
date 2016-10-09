@@ -1,9 +1,10 @@
-<div class="row mt-xs mb-xs">
-	<div class="col-md-6 text-left">
-		<span>Filter</span>
-	</div>
-	<div class="col-md-6 text-right">
-		<a href="javascript:void(0);" data-url="{{route('balin.product.index', Input::only('categories'))}}" class="hover-orange clearall-filter">clear all</a>
+<div class="panel panel-default mt-0">
+	<div class="panel-heading bg-white pb-sm pl-5 pr-5" role="tab" id="headingOne">
+		<h4 class="panel-title">Filter
+			<span class="pull-right">
+				<a href="javascript:void(0);" data-url="{{route('balin.product.index', Input::only('categories'))}}" class="hover-orange clearall-filter">Clear all</a>
+			</span>
+		</h4>
 	</div>
 </div>
 
@@ -14,14 +15,21 @@
 			</div>
 		</div>
 		@endif
-		<div class="row mt-sm mb-sm">
-			<div class="col-md-12">
-				<h4 class="mb-5">{{$value['name']}}</h4>
-				@if(str_is('warna*', $value['slug'])) 
-					<ul class="list-inline checkbox-color">
-				@else
-					<ul class="list-unstyled">
-				@endif
+
+		<div class="panel panel-default mt-0">
+			<div class="panel-heading" role="tab" id="headingOne">
+				<h4 class="panel-title mb-0">{{$value['name']}}</h4>
+			</div>
+		</div>
+		@if(str_is('warna*', $value['slug'])) 
+			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				<div class="panel-body p-0 mt-xs mb-sm">
+					<ul class="list-inline checkbox-color ml-xs mb-xs">
+		@else
+			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				<div class="panel-body p-0 mt-xs mb-sm">
+					<ul class="list-unstyled ml-sm mb-0">
+		@endif
 	@endif
 	@if($value['category_id']!=0)
 		@if(str_is('warna*', $value['slug'])) 

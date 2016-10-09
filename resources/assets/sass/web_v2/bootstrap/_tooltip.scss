@@ -99,3 +99,6 @@
     border-bottom-color: $tooltip-arrow-color;
   }
 }
+.grey-tooltip + .tooltip > .tooltip-inner {background-color: $grey; color: $black}
+.grey-tooltip + .tooltip.bottom > .tooltip-arrow{border-bottom-color: $grey}
+
