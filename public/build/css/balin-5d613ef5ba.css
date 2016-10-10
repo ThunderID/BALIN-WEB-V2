@@ -7002,6 +7002,9 @@ body {
   color: #ffa500; }
 
 /** mobile **/
+.shop-by-style-mobile {
+  margin-top: 10px; }
+
 .shop-by-style-mobile .title {
   font-family: 'Sacramento', cursive;
   padding-botom: 0.2rem; }

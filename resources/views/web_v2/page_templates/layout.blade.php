@@ -78,7 +78,7 @@
 
 		@yield('js_plugin')
 		
-		<script type="text/javascript">
+		<script type="text/javascript">			
 			@yield('js')
 			@if (Session::has('msg') || $errors->any())
 				$('#alert_window').modal('show');
