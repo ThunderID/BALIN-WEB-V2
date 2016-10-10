@@ -1,16 +1,26 @@
 <div class="panel panel-default mt-0 border-grey">
-	<div class="panel-heading" role="tab" id="headingTwo">
+	<div class="panel-heading relative" role="tab" id="headingTwo">
 		<a role="button" data-target="#collapseTwo" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0);" aria-expanded="false" aria-controls="collapseTwo">
 			<h4 class="panel-title">
 				Filter &nbsp;
 				<div class="inline filter-info">
 					@if (Input::has('tags'))
+						<?php $x= 0; $f=0;?>
 						@foreach (Input::get('tags') as $k => $v)
-							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="checkbox">{{ preg_replace('/-/', ' ', str_replace('-', '-', $v), 1) }} <i class="fa fa-times-circle"></i></label>
+							@if ($x == 1)
+								<?php $f=1; ?>
+								<content class="filter-more hide">
+							@endif
+							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="checkbox">{{ preg_replace('/ /', ': ', str_replace('-', ' ', $v), 1) }} <i class="fa fa-times-circle"></i></label>
+							<?php $x++; ?>
 						@endforeach
+						@if ($f == 1)
+							</content>
+							<span class="hover-orange text-sm ml-5 more">More..</span>
+						@endif
 					@endif
 				</div>
-				<span class="pull-right">
+				<span class="pull-right" style="position: absolute;right: 15px; top: 10px;">
 					<i class="fa fa-angle-right " aria-hidden="true"></i>
 				</span>
 			</h4>
@@ -25,6 +35,21 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12">
+					<ul class="list-unstyled">
+						<h4 class="mb-5">Category</h4>
+						@foreach ($category as $k => $v)
+							@if ($v['category_id']!=0 && str_is(strtolower($data['type']).'*', $v['slug']))
+								@if (isset(Input::get('categories')[1]) && Input::get('categories')[1] == $v['slug'])
+									<?php $class	= 'text-orange';?>
+								@else
+									<?php $class	= 'hover-orange';?>
+								@endif
+								<li class="p-5">
+									<a href="javascript:void(0);" class="{{ $class }} text-regular" data-categories="{{ Input::get('categories')[0] }}" data-type="categories[]" data-action="{{ $v['slug'] }}" data-url="{{route('balin.product.index', array_merge(['tags' => Input::get('tags')], ['categories[0]' => $v['category']['slug'], 'categories[1]' => $v['slug']]))}}" onClick="ajaxCategory(this);">{{ $v['name'] }}</a>
+								</li>
+							@endif
+						@endforeach
+					</ul>
 					@foreach($data['tag'] as $key => $value)
 						@if($value['category_id']==0)
 							@if($key!=0)

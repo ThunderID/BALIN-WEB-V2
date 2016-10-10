@@ -31,50 +31,53 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-9 col-sm-9 content-data">
-				@if(count($data['offer']))
-					<div class="clearfix">&nbsp;</div>
-					<div class="row mt-xs mb-xs pl-sm pr-sm" id="coming-soon">
-						<div class="col-md-12 text-center">
-							<h3 class="">COMING SOON</h3>
-							<h5 class="">Please stay tuned to be the first to know when our product is ready</h5>
+			<div class="col-md-9 col-sm-9 relative">
+				<div class="ajax-loading mt-lg" style="display:none;"><img src="/images/loading-spinner-grey.gif" /></div>
+				<div class="content-data">
+					@if(count($data['offer']))
+						<div class="clearfix">&nbsp;</div>
+						<div class="row mt-xs mb-xs pl-sm pr-sm" id="coming-soon">
+							<div class="col-md-12 text-center">
+								<h3 class="">COMING SOON</h3>
+								<h5 class="">Please stay tuned to be the first to know when our product is ready</h5>
+							</div>
 						</div>
-					</div>
-					<div class="clearfix">&nbsp;</div>
-					<div class="row mt-xs mb-xs pl-sm pr-sm">
-						<div class="col-md-12 text-left">
-							<h4 class="">Anda Mungkin Suka</h4>
-							<a class="home-product-more" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
+						<div class="clearfix">&nbsp;</div>
+						<div class="row mt-xs mb-xs pl-sm pr-sm">
+							<div class="col-md-12 text-left">
+								<h4 class="">Anda Mungkin Suka</h4>
+								<a class="home-product-more" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
+							</div>
 						</div>
-					</div>
-					<div class="row mt-md mb-sm pl-sm pr-sm">
-						{{-- DATA GRID CARD PRODUCT --}}
-						@include('web_v2.components.card', [
-							'card' 	=> $data['offer'],
-					  		'col'	=> 'col-lg-4 col-md-4 col-sm-6 col-xs-6'
-						])
-					</div>
-				@else
-					<div class="row mt-xs mb-xs pl-sm pr-sm">
-						<div class="col-md-6 col-lg-6 text-left">
-							<p class="">Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results</p>
+						<div class="row mt-md mb-sm pl-sm pr-sm">
+							{{-- DATA GRID CARD PRODUCT --}}
+							@include('web_v2.components.card', [
+								'card' 	=> $data['offer'],
+						  		'col'	=> 'col-lg-4 col-md-4 col-sm-6 col-xs-6'
+							])
 						</div>
-						<div class="col-md-6 col-lg-6 text-right sort-content">
-							{{-- SORT-DESKTOP --}}
-							@include('web_v2.components.sort-desktop')
+					@else
+						<div class="row mt-xs mb-xs pl-sm pr-sm">
+							<div class="col-md-6 col-lg-6 text-left">
+								<p class="">Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results</p>
+							</div>
+							<div class="col-md-6 col-lg-6 text-right sort-content">
+								{{-- SORT-DESKTOP --}}
+								@include('web_v2.components.sort-desktop')
+							</div>
 						</div>
+						<div class="row mt-md mb-sm pl-sm pr-sm">
+							{{-- DATA GRID CARD PRODUCT --}}
+							@include('web_v2.components.card', [
+								'card' 	=> $data['product'],
+						  		'col'	=> 'col-lg-4 col-md-4 col-sm-6 col-xs-6'
+							])
+						</div>
+					@endif
+					<div class="row mt-sm mb-sm">
+						{{-- DATA AJAX PAGINATION --}}
+						@include('web_v2.components.ajax_page')
 					</div>
-					<div class="row mt-md mb-sm pl-sm pr-sm">
-						{{-- DATA GRID CARD PRODUCT --}}
-						@include('web_v2.components.card', [
-							'card' 	=> $data['product'],
-					  		'col'	=> 'col-lg-4 col-md-4 col-sm-6 col-xs-6'
-						])
-					</div>
-				@endif
-				<div class="row mt-sm mb-sm">
-					{{-- DATA AJAX PAGINATION --}}
-					@include('web_v2.components.ajax_page')
 				</div>
 			</div>
 		</div>
@@ -121,6 +124,6 @@
 		fb_link = $('.btn-facebook-share').attr('href');
 		$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
 
-		change_title_page('', '');
+
 	});
 @stop
