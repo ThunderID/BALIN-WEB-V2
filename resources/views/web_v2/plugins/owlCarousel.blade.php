@@ -33,11 +33,11 @@
     float: right;
 }
 #slider .owl-controls{
-  margin-top: -27px;
+  margin-top: 0px;
 }
 @media screen and (min-width: 768px) {
   #slider .owl-controls{
-    margin-top: -30px;
+    margin-top: 10px;
   }
 }
 
