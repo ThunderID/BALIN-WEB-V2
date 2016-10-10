@@ -228,8 +228,11 @@
 									<h4 class="panel-title">
 										Share
 										<span class="pull-right" style="margin-bottom: 10px;">
-											<a class="share" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'),'href' => route('balin.product.show', $data['product']['data']['data'][0]['slug']), 'display' => 'popup']) }}">
+											<a class="share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'),'href' => route('balin.product.show', $data['product']['data']['data'][0]['slug']), 'display' => 'popup']) }}">
 												<i class="fa fa-facebook" aria-hidden="true"></i>
+											</a>
+											<a class="share btn p-0 btn-copy-share grey-tooltip" href="javascript:void(0);" data-clipboard-text="" aria-label="Copied..">
+												<i class="fa fa-link" aria-hidden="true"></i>
 											</a>
 										</span>
 									</h4>
@@ -424,4 +427,6 @@
 		$('.total').text(number_format(total));
 		$('#items').text(items);
 	});
+	
+	$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
 @stop

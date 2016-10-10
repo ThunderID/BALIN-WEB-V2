@@ -16,9 +16,6 @@
 									<a class="share btn p-0 btn-facebook-share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'), 'display' => 'popup']) }}">
 										<i class="fa fa-facebook" aria-hidden="true"></i>
 									</a>
-									<a class="share btn p-0 btn-twitter-share" target="_blank" href="">
-										<i class="fa fa-twitter" aria-hidden="true"></i>
-									</a>
 									<a class="share btn p-0 btn-copy-share grey-tooltip" href="javascript:void(0);" data-clipboard-text="" aria-label="Copied..">
 										<i class="fa fa-link" aria-hidden="true"></i>
 									</a>
