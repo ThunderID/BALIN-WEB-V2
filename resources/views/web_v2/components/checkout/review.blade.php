@@ -82,22 +82,33 @@
 							</div>	
 						</div>
 						@if (isset($data['order']['data']['extend_cost']))
-							<div class="row">
-								<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2 text-left">
-									<span class="text-regular">Bingkisan Tambahan</span>
-								</div>
-							</div>
 							@if (isset($data['order']['data']['transactionextensions']))
-								@foreach($data['order']['data']['transactionextensions'] as $key => $value)
+								@if (empty($data['order']['data']['transactionextensions']))
 									<div class="row">
-										<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left mtm-5">
-											<span class="ml-5 text-grey-dark text-regular">- {{ $value['productextension']['name'] }}</span>
+										<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+											<span class="text-regular">Bingkisan Tambahan</span>
 										</div>
-										<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right mtm-5">
-											<span class="text-regular text-right potongan_voucher">@money_indo( $value['productextension']['price'] )</span>
+										<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
+											<span class="text-regular text-right shipping_cost" data-s="0" data-v="0">@money_indo(0)</span>
 										</div>	
+									</div>								
+								@else
+									<div class="row">
+										<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2 text-left">
+											<span class="text-regular">Bingkisan Tambahan</span>
+										</div>
 									</div>
-								@endforeach
+									@foreach($data['order']['data']['transactionextensions'] as $key => $value)
+										<div class="row">
+											<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left mtm-5">
+												<span class="ml-5 text-grey-dark text-regular">- {{ $value['productextension']['name'] }}</span>
+											</div>
+											<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right mtm-5">
+												<span class="text-regular text-right potongan_voucher">@money_indo( $value['productextension']['price'] )</span>
+											</div>	
+										</div>
+									@endforeach
+								@endif
 							@endif
 						@endif
 						<div class="row">
@@ -167,8 +178,8 @@
 			<div class="row pt pb-md">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">
 					<label class="control control--checkbox line-height-25"> 
-						Saya menyetujui <a href="javascript:void(0);" class="link-black unstyle vertical-baseline" data-toggle="modal" data-target="#tnc"><strong>Syarat & Ketentuan</strong></a> pembelian barang di Balin.
-					    <input type="checkbox" value="1" name="term" required tabindex="8" title='Syarat & Ketentuan harus dicentang' />
+						Dengan ini Anda telah menyetujui <a href="javascript:void(0);" class="link-black unstyle vertical-baseline" data-toggle="modal" data-target="#tnc"><strong>Syarat & Ketentuan</strong></a> pembelian barang di Balin.
+					    <input type="checkbox" value="1" name="term" required tabindex="8" title='Syarat & Ketentuan harus dicentang' checked="checked" class="hidden"/>
 					    <div class="control__indicator"></div>
 						<div class="mt-5 text-error"></div>
 					</label>
