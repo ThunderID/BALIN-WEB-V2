@@ -103,7 +103,3 @@
 @section('js_plugin')
 	@include('web_v2.plugins.owlCarousel')
 @stop
-
-@section('js')
-
-@stop

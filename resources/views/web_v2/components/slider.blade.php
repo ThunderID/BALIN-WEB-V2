@@ -62,7 +62,6 @@
 	</div>		
 </div>
 
-
 <script>
 	function handleError(e) {
 		var id = e.id;
@@ -70,6 +69,7 @@
 		document.getElementById(id).remove();
 	}
 </script>
+
 @section('js')
  	$(window).load(function(){
 		initSlider();
