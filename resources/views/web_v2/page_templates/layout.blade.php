@@ -80,7 +80,6 @@
 		
 		<script type="text/javascript">
 			@yield('js')
-			
 			@if (Session::has('msg') || $errors->any())
 				$('#alert_window').modal('show');
 
@@ -88,7 +87,31 @@
 					$('#alert_window').modal('hide');
 				}, 2500);
 			@endif
+			// 	ev_click = 0;
 
+			// 	<?php (Session::has('click_iteration') ? $ev_click = Session::put('click_iteration') : $ev_click = 0); ?>
+			// 	console.log("{{ Session::get('click_iteration') }}");
+
+			// @if (Session::get('click_iteration')<2 && (!Session::has('event_click')))
+			// 	$(window).scroll(function() {
+			// 		if (ev_click < 1) {
+			// 			if ($(this).scrollTop() > 300) {
+			// 				$('.modal-referral-code').modal('show');
+			// 			}
+			// 			console.log(ev_click);
+			// 		}
+			// 	});
+			// @else
+			// 	<?php Session::put('event_click', true); ?>
+			// @endif
+
+			// $('.close_modal').click(function() {
+			// 	ev_click++;
+			// 	<?php 
+			// 		$ev_click++; 
+			// 		Session::put('click_iteration', $ev_click);
+			// 	?>
+			// });
 			$('.ico_cart').click(function() {
 				$('.cart_dropdown').toggle({'display': 'block'});
 			});

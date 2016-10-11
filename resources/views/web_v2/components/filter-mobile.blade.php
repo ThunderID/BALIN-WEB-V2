@@ -4,23 +4,23 @@
 			<h4 class="panel-title">
 				Filter &nbsp;
 				<div class="inline filter-info">
-					@if (Input::has('tags'))
-						<?php $x= 0; $f=0;?>
-						@foreach (Input::get('tags') as $k => $v)
-							@if ($x == 1)
+					<?php $x=0; $f=0;?>
+					@if (!empty($data['active_search']))
+						@foreach ($data['active_search'] as $k => $v)
+							@if ($k == 1)
 								<?php $f=1; ?>
 								<content class="filter-more hide">
 							@endif
-							<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="{{ $v }}" data-input="checkbox">{{ preg_replace('/ /', ': ', str_replace('-', ' ', $v), 1) }} <i class="fa fa-times-circle"></i></label>
-							<?php $x++; ?>
+							<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="{{ $v['slug'] }}" data-input="{{ ($v['type'] == 'tags') ? 'checkbox' : 'link' }}">{{ $v['value'] }} <i class="fa fa-times-circle"></i></label>
 						@endforeach
 						@if ($f == 1)
 							</content>
-							<span class="hover-orange text-sm ml-5 more">More..</span>
+							<span class="hover-orange text-xs ml-5 more">More..</span>
 						@endif
 					@endif
+					
 				</div>
-				<span class="pull-right" style="position: absolute;right: 15px; top: 10px;">
+				<span class="pull-right absolute" style="right: 15px; top: 10px;">
 					<i class="fa fa-angle-right " aria-hidden="true"></i>
 				</span>
 			</h4>

@@ -29,8 +29,8 @@
 				</div>
 			</div>
 			<div class="col-md-9 col-sm-9 relative">
-				<div class="ajax-loading mt-lg" style="display:none;"><img src="/images/loading-spinner-grey.gif" /></div>
-				<div class="content-data">
+				<div class="ajax-loading mt-lg" style="display:none;"><img src="/images/loading-balin.gif" /></div>
+				<div class="content-data" data-title="{{ isset($page_subtitle) ? $page_subtitle . ' - ' . $page_title : 'BALIN.ID' }}">
 					@if(count($data['offer']))
 						<div class="clearfix">&nbsp;</div>
 						<div class="row mt-xs mb-xs pl-sm pr-sm" id="coming-soon">
@@ -120,7 +120,5 @@
 		$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
 		fb_link = $('.btn-facebook-share').attr('href');
 		$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
-
-
 	});
 @stop

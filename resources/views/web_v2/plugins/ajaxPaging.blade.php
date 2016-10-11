@@ -32,6 +32,8 @@
 				$('.content-data').html($(data).find('.content-data').html());
 				$('.ajax-loading').fadeOut(100);
 				$('.content-data').fadeIn(200);
+				$('.content-data').attr('data-title', $(data).find('.content-data').data('title'));
+				document.title=$(data).find('.content-data').data('title');
 				tmpData = data;
 			},
 			error: function(){
@@ -108,15 +110,15 @@
 		// cek total filter-info
 		$('div.filter-info').find('label[data-input="link"]').remove();
 		if (total_filter_info < 2) {
-			$('div.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('div.filter-info').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
 		} else {
 			// total info lbh dari 1
 			if (total_filter_info == 1) { 
 				$('div.filter-info').append('<content class="filter-more hide"></content>');
 			}
 			$('.more').remove();
-			$('content.filter-more').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
-			$('div.filter-info').append('<span class="hover-orange text-sm ml-5 more">More..</span>');
+			$('content.filter-more').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('div.filter-info').append('<span class="hover-orange text-xs ml-5 more">More..</span>');
 			$('.more').on('click', function(e){click_more($(this), e)});
 		}
 
@@ -151,8 +153,13 @@
 			toUrl 	= toUrl + "&categories[]=" + categories_first;
 		}
 
-		// remove category-info active
-		$('div.category-info label[data-action="' + type + '"]').remove();
+		// remove category filter-info active
+		total_filter_info = $('div.filter-info').find('.panel-action').length;
+		$('div.filter-info label[data-action="' + type + '"]').remove();
+
+		if (total_filter_info <= 2) {
+			$('.more').remove();
+		}
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
@@ -206,18 +213,18 @@
 		// add label info filter active 
 		text = filter.replace(/-/g, ' ').replace(' ', ': ');
 		total_filter_info = $('div.filter-info').children().length;
-		
+
 		// cek total filter-info
 		if (total_filter_info < 1) {
-			$('div.filter-info').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('div.filter-info').append('<label class="btn btn-transparent btn-xs text-sm panel-action mb-1" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
 		} else {
 			// total info lbh dari 1
 			if (total_filter_info == 1) { 
 				$('div.filter-info').append('<content class="filter-more hide"></content>');
 			}
 			$('.more').remove();
-			$('content.filter-more').append('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
-			$('div.filter-info').append('<span class="hover-orange text-sm ml-5 more">More..</span>');
+			$('content.filter-more').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('div.filter-info').append('<span class="hover-orange text-xs ml-5 more">More..</span>');
 			$('.more').on('click', function(e){click_more($(this), e)});
 		}
 
@@ -253,7 +260,12 @@
 		toUrl		= toUrl.replace('&&&', '&');	
 
 		// remove filter-info active
+		total_filter_info = $('div.filter-info').find('.panel-action').length;
 		$('div.filter-info label[data-action="' + filter + '"]').remove();
+
+		if (total_filter_info <= 2) {
+			$('.more').remove();
+		}
 
 		ajaxPage(toUrl);
 		window.history.pushState("", "", toUrl);
