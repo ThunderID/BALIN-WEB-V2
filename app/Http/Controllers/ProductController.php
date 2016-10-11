@@ -92,17 +92,27 @@ class ProductController extends BaseController
 		}
 
 		//1f. Get filter remove
-		$searchresult 							= [];
+		$searchresult 							= '';
 		$index 									= '';
 		foreach (Input::all() as $key => $value) 
 		{
-			if(in_array($key, ['tag', 'label', 'category', 'q']))
+			if(in_array($key, ['tags', 'label', 'categories', 'q']))
 			{
-				$query_string 					= Input::all();
-				unset($query_string['page']);
-				unset($query_string[$key]);
-				$searchresult[$value]			= route('balin.product.index', $query_string);
-				$index 							= $index.' '.$value;
+				$keys 								= [];
+				// $query_string 					= Input::all();
+				// unset($query_string['page']);
+				// unset($query_string[$key]);
+				// $searchresult[$value]			= route('balin.product.index', $query_string);
+				// $index 							= $index.' '.$value;
+				foreach ($value as $key2 => $value2) 
+				{
+					$keys 							= array_merge(explode('-', $value2), $keys);
+				}
+
+				$keys_modified 						= array_unique($keys);
+				
+				$keys_final_modified 				= implode(' ', $keys_modified);
+				$searchresult 						= $searchresult.' '.ucwords($keys_final_modified);
 			}
 		}
 
@@ -191,7 +201,8 @@ class ProductController extends BaseController
 
 		//6. Generate view
 		$this->page_attributes->search 				= $searchresult;
-		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '');
+
+		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '').' '.str_replace('-', ' ', $searchresult);
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
 															'offer' 			=> $offer['data']['data'],
