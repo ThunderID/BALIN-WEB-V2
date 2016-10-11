@@ -6380,6 +6380,42 @@ select {
   color: #ffa339;
   font-style: italic; }
 
+.payment-list {
+  width: 100%;
+  padding: 15px;
+  border: 0.5px solid #e5e5e5;
+  cursor: pointer; }
+
+.payment-list img {
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: .5s ease-in-out;
+  -moz-filter: grayscale(100%);
+  -moz-transition: .5s ease-in-out;
+  -o-filter: grayscale(100%);
+  -o-transition: .5s ease-in-out;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+
+.payment-list:hover img {
+  -webkit-filter: grayscale(50%);
+  -webkit-transition: .5s ease-in-out;
+  -moz-filter: grayscale(50%);
+  -moz-transition: .5s ease-in-out;
+  -o-filter: grayscale(50%);
+  -o-transition: .5s ease-in-out;
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%); }
+
+.payment-list img.active {
+  -webkit-filter: grayscale(0%);
+  -webkit-transition: .5s ease-in-out;
+  -moz-filter: grayscale(0%);
+  -moz-transition: .5s ease-in-out;
+  -o-filter: grayscale(0%);
+  -o-transition: .5s ease-in-out;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%); }
+
 /* 
  *  Owl Carousel - Animate Plugin
  */
@@ -6871,6 +6907,10 @@ a.social-url-footer:hover {
   .checkbox-color .color-item {
     width: 30px;
     height: 30px; } }
+
+@media screen and (max-width: 767px) {
+  .control--checkbox {
+    text-align: center; } }
 
 footer {
   color: #fff;

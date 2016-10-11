@@ -1,13 +1,21 @@
 <div class="row ml-0 mr-0">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div class="row pt-md pb-sm">
-			<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="hidden-xs col-sm-12 col-md-12">
 				<h3 class="mt-0 text-normal">Packaging Option</h3>
-				<h6 class="mt-0 text-normal text-red">Akan dikenakan biaya tambahan</h6>
 			</div>
+			<div class="hidden-lg hidden-md hidden-sm col-xs-12 pb-sm">
+				<h3 class="m-t-none m-b-md">Packaging Option</h3>
+				<p style="margin-top:-5px;">Step 3 from 5</p>
+			</div>	
 		</div>
 		@if (!is_null($data['product_extension']['data']['data']))
 			@forelse ($data['product_extension']['data']['data'] as $k => $v)
+				<div class="row pt-md pb-sm">
+					<div class="col-md-12 pt-0">
+						<h6 class="mt-0 text-normal text-red">* Akan dikenakan biaya tambahan</h6>
+					</div>
+				</div>
 				<div class="row ml-0 mr-0 pt-sm pb-sm border-bottom-1 border-grey-light text-regular line-height-30">
 
 					{!! Form::hidden('flag[]', 0, ['class' => 'extension_flag']) !!}
@@ -44,9 +52,9 @@
 					@endif
 				</div>
 			@empty
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<p class="text-md text-light">Maaf, Packaging Option saat ini belum tersedia</p>
+				<div class="row pt-md pb-sm">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pt-md">
+						<p class="text-md text-light text-center">Maaf, Packaging Option saat ini masih belum tersedia. Silahkan tekan lanjutkan.</p>
 					</div>
 				</div>
 			@endforelse

@@ -1,6 +1,12 @@
 <div class="row ml-0 mr-0">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div class="content_checkout">
+		<div class="row mb-md hidden-lg hidden-md hidden-sm">
+			<div class="col-xs-12 pt-md">
+				<h3 class="m-t-none m-b-md">Summary</h3>
+				<p style="margin-top:-5px;">Step 5 from 5</p>
+			</div>
+		</div>	
 			<div class="row ml-0 mr-0 pt-xs mt-md hidden-xs">
 				<div class="col-md-2 col-sm-2 border-bottom-1 border-grey-light text-grey-dark">
 					<p class="mb-5">Produk</p>
@@ -66,18 +72,18 @@
 				@if ($data['carts'])
 					<div class="col-lg-12 col-md-12 checkout-bottom panel-subtotal" id="panel-subtotal-normal">
 						<div class="row mt-sm">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left text-left border-bottom">
+							<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left text-left border-bottom">
 								<span class="text-regular">Subtotal</span>
 							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
 								<span class="text-regular text-right" id="total">@money_indo($total)</span>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+							<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<span class="text-regular">Biaya Pengiriman</span>
 							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right">
 								<span class="text-regular text-right shipping_cost" data-s="0" data-v="0">@money_indo($data['order']['data']['shipping_cost'])</span>
 							</div>	
 						</div>
@@ -85,10 +91,10 @@
 							@if (isset($data['order']['data']['transactionextensions']))
 								@if (empty($data['order']['data']['transactionextensions']))
 									<div class="row">
-										<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+										<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 											<span class="text-regular">Bingkisan Tambahan</span>
 										</div>
-										<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
+										<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right">
 											<span class="text-regular text-right shipping_cost" data-s="0" data-v="0">@money_indo(0)</span>
 										</div>	
 									</div>								
@@ -100,10 +106,10 @@
 									</div>
 									@foreach($data['order']['data']['transactionextensions'] as $key => $value)
 										<div class="row">
-											<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left mtm-5">
+											<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left mtm-5">
 												<span class="ml-5 text-grey-dark text-regular">- {{ $value['productextension']['name'] }}</span>
 											</div>
-											<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right mtm-5">
+											<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right mtm-5">
 												<span class="text-regular text-right potongan_voucher">@money_indo( $value['productextension']['price'] )</span>
 											</div>	
 										</div>
@@ -112,20 +118,20 @@
 							@endif
 						@endif
 						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+							<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<span class="text-regular">Potongan Point</span>
 							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right">
 								<span class="text-regular text-right" id="point">@money_indo($data['my_point'])</span>
 							</div>	
 						</div>
 						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+							<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<span class="text-regular">
 									Potongan Voucher
 								</span>
 							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
 								<span class="text-regular text-right {{ ($data['order']['data']['voucher_discount']==0) ? 'text-black' : 'text-red' }} voucher_discount" data-unique="{{ $data['order']['data']['voucher_discount'] }}">
 									@if ($data['order']['data']['voucher_discount']==0)
 										@money_indo($data['order']['data']['voucher_discount'])
@@ -136,12 +142,12 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+							<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<span class="text-regular">
 									Potongan Transfer
 								</span>
 							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-right border-bottom">
 								<span class="text-regular text-right { ($data['order']['data']['unique_number']==0) ? 'text-black' : 'text-red' }}">
 									@if ($data['order']['data']['unique_number']==0)
 										@money_indo($data['order']['data']['unique_number'])
@@ -152,10 +158,10 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-6 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
+							<div class="col-xs-7 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2 text-left">
 								<h4 class="text-md">Total Pembayaran</h4>
 							</div>
-							<div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 								<h4 class="text-md text-right text-bold mb-sm sub_total">
 									<?php 
 										$total_pembayaran = $total - $data['my_point'] - $data['order']['data']['voucher_discount'] + $data['order']['data']['shipping_cost'] + (isset($data['order']['data']['extend_cost']) ? $data['order']['data']['extend_cost'] : 0);
