@@ -6,7 +6,6 @@
 		<div class="row form">
 			<div class="col-xs-12 col-sm-12 pl-0 pr-0">
 				<div class="panel-group filter mb-0" id="accordion" role="tablist" aria-multiselectable="true">
-					@include('web_v2.components.category-mobile')
 					@include('web_v2.components.filter-mobile')
 					@include('web_v2.components.sort-mobile')
 					<div class="panel p-0 mb-xs">
@@ -133,5 +132,17 @@
 	fb_link = $('.btn-facebook-share').attr('href');
 	$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
 
-	change_title_page('', '');
+	function click_more(param, e) {
+		e.stopPropagation();
+		if($('.filter-more').hasClass('hide')) {
+			$('.filter-more').removeClass('hide');
+			param.html('Less..');
+		} else {
+			$('.filter-more').addClass('hide');
+			param.html('More..');
+		}
+		//$('.filter-more').fadeToggle(200);
+		//$(this).html($(this).html() == 'More..' ? 'Less..' : 'More..');
+	}
+	$('.more').on('click', function(e){click_more($(this), e)});
 @stop

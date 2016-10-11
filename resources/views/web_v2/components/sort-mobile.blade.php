@@ -28,22 +28,22 @@
 		<div class="panel-body">
 			<ul class="list-unstyled m-0 category-list ajaxDataSort">
 				<li class="p-5">
-					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'date-asc' ? '' : '' }}" data-action="date-asc" data-title="Terbaru" onClick="ajaxSorting(this, 'mobile')">Terbaru</a>
+					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'date-asc' ? '' : '' }} text-regular" data-action="date-asc" data-title="Terbaru" onClick="ajaxSorting(this, 'mobile')">Terbaru</a>
 				</li>
 				<li class="p-5">
-					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'date-desc' ? '' : '' }}" data-action="date-desc" data-title="Terlama" onClick="ajaxSorting(this, 'mobile')">Terlama</a>
+					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'date-desc' ? '' : '' }} text-regular" data-action="date-desc" data-title="Terlama" onClick="ajaxSorting(this, 'mobile')">Terlama</a>
 				</li>
 				<li class="p-5">
-					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'name-asc' ? '' : '' }}" data-action="name-asc" data-title="Nama A-Z" onClick="ajaxSorting(this, 'mobile')">Nama A-Z</a>
+					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'name-asc' ? '' : '' }} text-regular" data-action="name-asc" data-title="Nama A-Z" onClick="ajaxSorting(this, 'mobile')">Nama A-Z</a>
 				</li>
 				<li class="p-5">
-					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'name-desc' ? '' : '' }}" data-action="name-desc" data-title="Nama Z-A" onClick="ajaxSorting(this, 'mobile')">Nama Z-A</a>
+					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'name-desc' ? '' : '' }} text-regular" data-action="name-desc" data-title="Nama Z-A" onClick="ajaxSorting(this, 'mobile')">Nama Z-A</a>
 				</li>
 				<li class="p-5">
-					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'price-asc' ? '' : '' }}" data-action="price-asc" data-title="Harga Termurah" onClick="ajaxSorting(this, 'mobile')">Harga Termurah</a>
+					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'price-asc' ? '' : '' }} text-regular" data-action="price-asc" data-title="Harga Termurah" onClick="ajaxSorting(this, 'mobile')">Harga Termurah</a>
 				</li>
 				<li class="p-5">
-					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'price-desc' ? '' : '' }}" data-action="price-desc" data-title="Harga Termahal" onClick="ajaxSorting(this, 'mobile')">Harga Termahal</a>
+					<a href="javascript:void(0);" class="{{ Input::get('sort') == 'price-desc' ? '' : '' }} text-regular" data-action="price-desc" data-title="Harga Termahal" onClick="ajaxSorting(this, 'mobile')">Harga Termahal</a>
 				</li>
 			</ul>
 		</div>

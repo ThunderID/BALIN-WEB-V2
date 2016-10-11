@@ -6649,6 +6649,12 @@ select {
   transform: translateX(-50%);
   width: 40px !important; }
 
+.ajax-loading {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: 99; }
+
 /**
  * EasyZoom core styles
  */
@@ -6812,7 +6818,6 @@ a.social-url-footer:hover {
     display: inline-block;
     width: 16px;
     height: 16px;
-    margin-right: 10px;
     position: absolute;
     left: 0;
     bottom: 1px;
@@ -6827,9 +6832,9 @@ a.social-url-footer:hover {
 .radio-custom input[type=radio]:checked + label:before {
   content: "\2022";
   color: #000;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
-  line-height: 18px; }
+  line-height: 10px; }
 
 .checkbox-custom label:before {
   border-radius: 0px; }
@@ -6997,6 +7002,9 @@ body {
   color: #ffa500; }
 
 /** mobile **/
+.shop-by-style-mobile {
+  margin-top: 10px; }
+
 .shop-by-style-mobile .title {
   font-family: 'Sacramento', cursive;
   padding-botom: 0.2rem; }
