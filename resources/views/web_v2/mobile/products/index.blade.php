@@ -1,8 +1,7 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	@include('web_v2.components.category-desktop')
-	<section class="container-fluid mb-xs">
+	<section class="container-fluid mtm-xs mb-xs">
 		<div class="row form">
 			<div class="col-xs-12 col-sm-12 pl-0 pr-0">
 				<div class="panel-group filter mb-0" id="accordion" role="tablist" aria-multiselectable="true">
@@ -27,56 +26,59 @@
 			</div>
 		</div>
 	</section>
-	<section class="container mt-xs mb-xs content-data relative">
-		@if(count($data['offer']))
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h3 class="">COMING SOON</h3>
-					<h5 class="">Please stay tuned to be the first to know when our product is ready</h5>
-				</div>
-			</div>
-			<div class="clearfix">&nbsp;</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h4 class="mt-md mb-sm pl-sm pr-sm">Anda Mungkin Suka</h4>
-				</div>
-			</div>
-			<div class="row row-card mt-md mb-sm pl-sm pr-sm">
-				{{-- DATA GRID CARD PRODUCT --}}
-				@include('web_v2.components.card', [
-					'card' 	=> $data['offer'],
-			  		'col'	=> 'col-xs-6 col-sm-6',
-			  		'last' => true
-				])
-			</div>
-			<div class="col-md-12 text-center">
-				<a class="btn btn-orange" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Semua</a>
-			</div>
-		@else
-			<div class="row pb-xs">
-				<div class="col-xs-12 col-sm-12 text-right">
-					<span class="pt-xs">Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12">
-					<div class="row">
-						@include('web_v2.components.card', [
-							'card' 	=> $data['product'],
-					  		'col'	=> 'col-xs-6 col-sm-6 '
-						])
+	<section class="container mt-xs mb-xs relative">
+		<div class="ajax-loading mt-xl" style="display:none;"><img src="/images/loading-balin.gif" /></div>
+		<div class="content-data" data-title="{{ isset($page_subtitle) ? $page_subtitle . ' - ' . $page_title : 'BALIN.ID' }}">
+			@if(count($data['offer']))
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h3 class="">COMING SOON</h3>
+						<h5 class="">Please stay tuned to be the first to know when our product is ready</h5>
 					</div>
 				</div>
-			</div>
-		@endif
+				<div class="clearfix">&nbsp;</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h4 class="mt-md mb-sm pl-sm pr-sm">Anda Mungkin Suka</h4>
+					</div>
+				</div>
+				<div class="row row-card mt-md mb-sm pl-sm pr-sm">
+					{{-- DATA GRID CARD PRODUCT --}}
+					@include('web_v2.components.card', [
+						'card' 	=> $data['offer'],
+				  		'col'	=> 'col-xs-6 col-sm-6',
+				  		'last' => true
+					])
+				</div>
+				<div class="col-md-12 text-center">
+					<a class="btn btn-orange" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Semua</a>
+				</div>
+			@else
+				<div class="row pb-xs">
+					<div class="col-xs-12 col-sm-12 text-right">
+						<span class="pt-xs">Showing {{ $paging_from }} - {{ $paging_to }} of {{ $paging->total() }} results</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12">
+						<div class="row">
+							@include('web_v2.components.card', [
+								'card' 	=> $data['product'],
+						  		'col'	=> 'col-xs-6 col-sm-6 '
+							])
+						</div>
+					</div>
+				</div>
+			@endif
 
-		<div class="row">
-			<div class="col-xs-12 col-sm-12">
-				@include('web_v2.components.ajax_page')
+			<div class="row">
+				<div class="col-xs-12 col-sm-12">
+					@include('web_v2.components.ajax_page')
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			@include('web_v2.plugins.ajaxPaging')
+			<div class="row">
+				@include('web_v2.plugins.ajaxPaging')
+			</div>
 		</div>
 	</section>
 @stop

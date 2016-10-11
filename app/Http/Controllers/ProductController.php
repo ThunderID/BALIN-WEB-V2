@@ -94,6 +94,7 @@ class ProductController extends BaseController
 		//1f. Get filter remove
 		$searchresult 							= '';
 		$index 									= '';
+		$activesearch							= [];
 		foreach (Input::all() as $key => $value) 
 		{
 			if(in_array($key, ['tags', 'label', 'categories', 'q']))
@@ -104,11 +105,27 @@ class ProductController extends BaseController
 				// unset($query_string[$key]);
 				// $searchresult[$value]			= route('balin.product.index', $query_string);
 				// $index 							= $index.' '.$value;
+
 				foreach ($value as $key2 => $value2) 
 				{
 					$keys 							= array_merge(explode('-', $value2), $keys);
-				}
 
+					// create active filter & kategori aktif for mobile
+					if ($key == 'categories')
+					{
+						$rename 					= 'Category: ' . str_replace('-', ' ', $value2);
+						if ($value2 != 'pria' && $value2 != 'wanita') 
+						{
+							$activesearch[]			= ['value' => strtolower($rename), 'slug' => $value2, 'type' => 'categories'];
+						}
+					} 
+					else
+					{
+						$rename						= preg_replace('/ /', ': ', str_replace('-', ' ', $value2), 1);
+						$activesearch[]				= ['value' => strtolower($rename), 'slug' => $value2, 'type' => 'tags'];
+					}
+
+				}
 				$keys_modified 						= array_unique($keys);
 				
 				$keys_final_modified 				= implode(' ', $keys_modified);
@@ -202,15 +219,17 @@ class ProductController extends BaseController
 		//6. Generate view
 		$this->page_attributes->search 				= $searchresult;
 
-		$this->page_attributes->subtitle 			= 'Produk Batik Modern '.$index.' '.(Input::has('page') ? 'Halaman '.Input::get('page') : '').' '.str_replace('-', ' ', $searchresult);
+		$this->page_attributes->subtitle 			= 'Produk Batik Modern ' . (!empty($index) ? $index . '' : '') . (Input::has('page') ? 'Halaman ' . Input::get('page') . ' ' : '') . (!is_null($searchresult) ? str_replace('-', ' ', $searchresult) : '');
 		$this->page_attributes->controller_name 	= $this->controller_name;
 		$this->page_attributes->data				= 	[
 															'offer' 			=> $offer['data']['data'],
 															'product' 			=> $product['data']['data'],
 															'type'				=> explode('0', Input::get('categories')[0])[0],
 															'tag'				=> $get_api_tag['data']['data'],
-															'linked_search'		=> $linked_search
+															'linked_search'		=> $linked_search,
+															'active_search'		=> $activesearch	
 														];
+		// $this->page_attributes->active_search 		= $active_search
 
 		$this->page_attributes->source 				=  $this->page_attributes->source . 'index';
 
