@@ -477,3 +477,10 @@
 		$('.step-checkout').find('div[data-section="' +next+ '"]').addClass('active');
 		$('.step-checkout').find('div[data-section="' +now+ '"]').removeClass('active');
 	}
+
+
+	<!-- payment	 -->
+	$('body').on('click', '.payment-list', function (){
+		$('.payment-list-img').removeClass('active');
+		$(this).children().children().children().first().addClass('active');
+    });	
