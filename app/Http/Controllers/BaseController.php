@@ -46,11 +46,15 @@ abstract class BaseController extends Controller
 			}
 			else
 			{
+				Session::flush();
+				
 				\App::abort(503);
 			}
 
 			if(Session::has('API_token_private'))
 			{
+				Session::flush();
+
 				return Redirect::route('balin.get.login')->withErrors(['Waktu login Anda sudah expire, silahkan login lagi.']);
 			}
 		}
