@@ -1,9 +1,6 @@
-<?php 
-	// dd($carts); 
-?>
-<ul id="desktop-cart-content" class="dropdown-menu dropdown-menu-right text-regular cart_dropdown" aria-labelledby="dLabel">
+<ul id="desktop-cart-content" data-show="false" class="dropdown-menu dropdown-menu-right text-regular cart_dropdown" aria-labelledby="dLabel">
 	<div class="cart-title text-right pt-xs pr-xs">
-		<a href="javascript:void(0);" onclick="closeNav();"  class="hover-orange">
+		<a href="javascript:void(0);" class="close-dropdown hover-orange">
 			Hide 
 			<i class="fa fa-times-circle" aria-hidden="true"></i>
 		</a>
@@ -20,7 +17,6 @@
 					{
 						$qty 		= $qty + $value['quantity'];
 					}
-					// dd($qty*($item['discount']!=0 ? ($item['price'] - ($item['price']-$item['discount'])) : $item['price']));
 				?>
 
 				<!-- SECTION CART DROPDOWN ITEM -->

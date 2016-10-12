@@ -1802,9 +1802,22 @@ EVENT & FUNCTION OTHER
 	// });
 
 // nav
-	function closeNav(){
-		$('.dropdown-menu').toggle({'display': 'none'});
-	}
+	$('body').on("click",".close-dropdown", function(){
+		$(this).parent().parent().toggle({'display': 'none'});
+	});
+	$('.ico_cart').click(function() {
+		if($('.profile_dropdown').css('display') == 'block'){
+			$('.profile_dropdown').css('display','none');
+		}
+
+		$('.cart_dropdown').toggle({'display': 'block'});
+	});
+	$('.profile').click(function() {
+		if($('.cart_dropdown').css('display') == 'block'){
+			$('.cart_dropdown').css('display','none');
+		}
+		$('.profile_dropdown').toggle({'display': 'block'});
+	});
 
 /* SECTION PLUGIN I-CHECK */
 	$('.i-checks').iCheck({

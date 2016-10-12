@@ -10,6 +10,7 @@ Route::group([env('ROUTE_BALIN_ATTRIBUTE') => env('ROUTE_BALIN_VALUE'), 'prefix'
 	Route::get('referral',											['uses' => 'UserController@referrals', 		'as' => 'my.balin.profile.referral']);
 	Route::get('order',												['uses' => 'UserController@orders', 		'as' => 'my.balin.profile.order']);
 	Route::get('resend/activation',									['uses' => 'UserController@activation',		'as' => 'my.balin.profile.activate']);
+	Route::get('myorder',											['uses' => 'UserController@myorder', 			'as' => 'my.balin.profile.myorder']);
 
 	/* page user redeem code */
 	Route::get('redeem',											['uses' => 'RedeemController@index', 		'as' => 'my.balin.redeem.index']);

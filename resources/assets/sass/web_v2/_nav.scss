@@ -142,3 +142,19 @@ ul.dropdown-user{
 		min-height: 60px;
 	}
 }
+
+/* drop down menu profile */
+	.profile_dropdown{
+		right:-110px !important;
+		margin-top: 5px !important; 
+	}
+	.profile_dropdown .avatar {
+	  width: 75px;
+	  height: 75px;
+	  border-radius: 50%;
+	  font-size: 27px;
+	  color: #fff;
+	  line-height: 75px;
+	  text-align: center;
+	  background: #000
+	}

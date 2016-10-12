@@ -41,12 +41,12 @@
 			</div>	
 		@endforeach
 		<div class="row mt-xs mb-xs">
-			<div class="col-xs-5">
+			<div class="col-xs-4">
 				<label class="label-caption">Harga</label>
 			</div>
-			<div class="col-xs-7 text-right">
+			<div class="col-xs-8 text-right">
 				@if($item_discount > 0)
-					<del>@money_indo($item_price)</del>
+					<del>@money_indo($item_price)</del></br>
 					<span class="text-orange">
 						@money_indo($item_price - $item_discount)
 					</span> 
@@ -58,10 +58,10 @@
 			</div>
 		</div>
 		<div class="row pt-sm mb-xs border-top-1 border-grey-light">
-			<div class="col-xs-5">
+			<div class="col-xs-4">
 				Total
 			</div>
-			<div class="col-xs-7 text-right">
+			<div class="col-xs-8 text-right">
 				<span class="total_per_pieces"
 					data-total-piece="{{ ($item_price - $item_discount) * $qty }}">
 					@money_indo( ($item_price - $item_discount) * $qty )
