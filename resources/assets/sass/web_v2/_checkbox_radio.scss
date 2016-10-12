@@ -12,9 +12,8 @@
 			display: inline-block;
 			width: 16px;
 			height: 16px;
-			position: absolute;
 			left: 0;
-			bottom: 1px;
+			position: absolute;
 			background-color: transparent;
 		}
 	}
@@ -28,20 +27,28 @@
 	}
 	input[type=radio]:checked + label:before {
 		content: "\2022";
-		color: $black;
+		color: $grey-dark;
 		font-size: 20px;
 		text-align: center;
 		line-height: 10px;
 	}
 }
 .checkbox-custom {
-	label:before {
-		border-radius: 0px;
+	label{
+		font: normal normal normal 14px/1 FontAwesome;
+		&:before {
+			border-radius: 0px;	
+		}
+		span {
+			font-family: "Lato", sans-serif;
+			-webkit-font-smoothing: subpixel-antialiased;
+			line-height: 15px;
+		}
 	}
 	input[type=checkbox]:checked + label:before {
-		content: "\2713";
-		font-size: 15px;
-		color: $black;
+		content: "\f00c";
+		font-size: 10px;
+		color: $grey-dark;
 		text-align: center;
 		line-height: 15px;
 	}
