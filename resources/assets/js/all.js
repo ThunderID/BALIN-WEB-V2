@@ -157,3 +157,7 @@ function removeStock ($current){
 		return $current;
 	}
 }	
+
+$(function() {
+	$('.lazy').lazy();
+});

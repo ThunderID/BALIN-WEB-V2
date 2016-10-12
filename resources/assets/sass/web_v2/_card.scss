@@ -21,6 +21,14 @@
 				}
 			}
 		}
+		img {
+			background-image: url('/images/loading-balin.gif');
+			background-repeat: no-repeat;
+			background-size: 60px;
+			background-position: 50% 50%;
+			min-height: 226px;
+			max-height: 335px;
+		}
 	}
 	.hover {
 		position: absolute;

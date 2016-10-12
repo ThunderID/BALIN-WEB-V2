@@ -35,6 +35,7 @@
 				$('.content-data').attr('data-title', $(data).find('.content-data').data('title'));
 				document.title=$(data).find('.content-data').data('title');
 				tmpData = data;
+				$('.lazy').lazy();
 			},
 			error: function(){
 				var error = "</br></br><h4 class='text-center m-t-md'>Terjadi masalah penerimaan data, silahkan muat ulang halaman</h4>";

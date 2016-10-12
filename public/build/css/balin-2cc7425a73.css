@@ -6759,6 +6759,13 @@ select {
     top: 0; }
     .card a:hover .hover i {
       display: block; }
+  .card a img {
+    background-image: url("/images/loading-balin.gif");
+    background-repeat: no-repeat;
+    background-size: 60px;
+    background-position: 50% 50%;
+    min-height: 226px;
+    max-height: 335px; }
 
 .card .hover {
   position: absolute;
