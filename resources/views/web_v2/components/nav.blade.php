@@ -57,13 +57,23 @@
 						<a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange @yield('balin-point-nav')">Balin Point</a>
 					@endif
 				</li>
-				<li>
 					@if (Session::has('whoami'))
+					<li class="dropdown dropdown-profile hidden-sm hidden-xs">
+						<a href="javascript:void(0);" class="hover-orange @yield('balin-login-nav') dropdown-toggle profile" >{{Session::get('whoami')['name']}}</a>
+
+						@include('web_v2.components.profile-dropdown') 
+					</li>
+					<li class="hidden-md hidden-lg">
 						<a href="{{route('my.balin.profile')}}" class="hover-orange @yield('balin-login-nav')">{{Session::get('whoami')['name']}}</a>
+					</li>
+					<li class="hidden-md hidden-lg">
+						<a href="{{route('my.balin.profile.myorder')}}" class="hover-orange @yield('balin-login-myorder')">My Order History</a>
+					</li>					
 					@else
+					<li>
 						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">SIGN IN</a>
+					</li>	
 					@endif
-				</li>	
 				<li class="hidden-md hidden-lg">
 					@if (Session::has('whoami'))
 						<a href="{{route('balin.get.logout')}}" class="hover-orange">LOGOUT</a>
