@@ -283,7 +283,6 @@
 
 @section('js_plugin')
 	@include('web_v2.plugins.owlCarousel')
-	@include('web_v2.plugins.notif', ['data' => ['title' => 'Terima Kasih', 'content' => 'Produk telah ditambahkan di cart']])
 	@include('web_v2.plugins.countdown')
 @stop
 
@@ -362,7 +361,8 @@
 								$('.total').text(0);
 								$('.dropdown-menu').toggle({'display': 'block'});
 
-								$('#notif_window').modal('show');
+								setMobileCart();
+								$('#modal-cart').modal('show');
 						   	},
 						   	error: function(){
 								location.reload();
