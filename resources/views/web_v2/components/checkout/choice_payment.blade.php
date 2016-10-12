@@ -1,47 +1,13 @@
-<style>
-.payment-list{
-	width:100%;padding:15px;border: 0.5px solid #e5e5e5;cursor:pointer;
-}
-.payment-list img{
-  -webkit-filter: grayscale(100%);
-  -webkit-transition: .5s ease-in-out;
-  -moz-filter: grayscale(100%); 
-  -moz-transition: .5s ease-in-out;
-  -o-filter: grayscale(100%); 
-  -o-transition: .5s ease-in-out;
-  filter: grayscale(100%);
-}
-.payment-list:hover img{
-  -webkit-filter: grayscale(50%);
-  -webkit-transition: .5s ease-in-out;
-  -moz-filter: grayscale(50%);
-  -moz-transition: .5s ease-in-out;
-  -o-filter: grayscale(50%);
-  -o-transition: .5s ease-in-out;
-  filter: grayscale(50%);
-} 
-
-.payment-list img.active{
-  -webkit-filter: grayscale(0%);
-  -webkit-transition: .5s ease-in-out;
-  -moz-filter: grayscale(0%);
-  -moz-transition: .5s ease-in-out;
-  -o-filter: grayscale(0%);
-  -o-transition: .5s ease-in-out;
-  filter: grayscale(0%);
-} 
-
-</style>
-
 <div class="row ml-0 mr-0">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<form id="choice_payment">
 			<div class="row pt-md pb-sm">
-				<div class="hidden-lg hidden-md hidden-sm col-xs-12">
-					<span class="m-t-none m-b-md">Pilih Pembayaran</span>
-				</div>	
 				<div class="col-md-12 hidden-xs">
-					<h3 class="mt-0 text-normal">Pilih Pembayaran</h3>
+					<h3 class="m-t-none m-b-md">Pilih Pembayaran</h3>
+				</div>
+				<div class="hidden-lg hidden-md hidden-sm col-xs-12 pb-0">
+					<h3 class="m-t-none m-b-md">Pilih Pembayaran</h3>
+					<p style="margin-top:-5px;">Step 4 from 5</p>
 				</div>
 			</div>
 

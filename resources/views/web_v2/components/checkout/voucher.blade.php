@@ -2,13 +2,19 @@
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 bg-white border-1 border-solid border-grey-light no-border-xs">
 		<div id="content_voucher">
 			@if (!isset($data['order']['data']['voucher']))
-				<div class="row pt-md pb-sm panel_form_voucher">
-					<div class="col-md-12 mb-sm">
-						<span class="text-lg voucher-title">Punya Kode Voucher ?</span>
+				<div class="row mb-sm">
+					<div class="hidden-xs col-md-12">
+						<h3 class="text-normal">Punya Kode Voucher ?</h3>
 					</div>	
+					<div class="hidden-lg hidden-md hidden-sm col-xs-12 pt-md">
+						<h3 class="m-t-none m-b-md">Punya Kode Voucher ?</h3>
+						<p style="margin-top:-5px;">Step 2 from 5</p>
+					</div>
+				</div>	
+				<div class="row pt-md pb-sm panel_form_voucher">
 					<div class="col-md-12 mb-xs">
-						<span class="text-regular">Masukkan kode voucher Anda dan dapatkan diskon terbaik dari kami. </br> <span style="font-size:10px;">*Kosongkan bila tidak ada</span></span>
-						<div class="mt-xs" style="position:relative">
+						<p class="text-light">Masukan kode voucher Anda dan dapatkan diskon terbaik dari kami. </br> <span style="font-size:11px;">*Kosongkan bila tidak ada</span></p>
+						<div class="mt-xs mb-xs" style="position:relative">
 							<div class="text-center hide loading loading_voucher" style="z-index:99;">
 								{!! Html::image('images/loading.gif', null, []) !!}
 							</div>
@@ -19,7 +25,7 @@
 								'data-action'	=> route('my.balin.checkout.voucher')
 							]) !!}
 						</div>
-							<label id="voucher-error" class="warning" for="voucher" style="display:none;">Kode Voucher yang Anda masukkan tidak valid. Silahkan cek ulang kode Anda atau kosongkan untuk melanjutkan.</label>
+							<label id="voucher-error" class="warning" for="voucher" style="display:none;">Kode Voucher yang Anda masukan tidak valid. Silahkan cek ulang kode Anda atau kosongkan untuk melanjutkan.</label>
 					</div>
 				</div>
 			@else
