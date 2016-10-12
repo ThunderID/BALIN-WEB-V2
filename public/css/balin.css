@@ -5371,6 +5371,18 @@ p {
 .mrm-xs {
   margin-right: -10px !important; }
 
+.mtm-8 {
+  margin-top: -8px !important; }
+
+.mbm-8 {
+  margin-bottom: -8px !important; }
+
+.mlm-8 {
+  margin-left: -8px !important; }
+
+.mrm-8 {
+  margin-right: -8px !important; }
+
 .mtm-5 {
   margin-top: -5px !important; }
 
@@ -6146,12 +6158,12 @@ ul.dropdown-user {
   height: 25px;
   width: 25px; }
 
-.filter {
+.filter-mobile {
   position: fixed;
   right: 0;
   left: 0;
   z-index: 1030; }
-  .filter ul.category-list > li > span, .filter ul.sort-list > li > span {
+  .filter-mobile ul.category-list > li > span, .filter-mobile ul.sort-list > li > span {
     width: 14.23px;
     height: 13px;
     font-size: 11px; }
@@ -6778,9 +6790,8 @@ a.social-url-footer:hover {
     display: inline-block;
     width: 16px;
     height: 16px;
-    position: absolute;
     left: 0;
-    bottom: 1px;
+    position: absolute;
     background-color: transparent; }
 
 .radio-custom input[type=radio], .radio-custom input[type=checkbox], .checkbox-custom input[type=radio], .checkbox-custom input[type=checkbox] {
@@ -6802,7 +6813,8 @@ a.social-url-footer:hover {
     border-radius: 0px; }
   .checkbox-custom label span {
     font-family: "Lato", sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased; }
+    -webkit-font-smoothing: subpixel-antialiased;
+    line-height: 15px; }
 
 .checkbox-custom input[type=checkbox]:checked + label:before {
   content: "\f00c";

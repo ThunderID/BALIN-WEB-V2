@@ -12,9 +12,8 @@
 			display: inline-block;
 			width: 16px;
 			height: 16px;
-			position: absolute;
 			left: 0;
-			bottom: 1px;
+			position: absolute;
 			background-color: transparent;
 		}
 	}
@@ -43,6 +42,7 @@
 		span {
 			font-family: "Lato", sans-serif;
 			-webkit-font-smoothing: subpixel-antialiased;
+			line-height: 15px;
 		}
 	}
 	input[type=checkbox]:checked + label:before {

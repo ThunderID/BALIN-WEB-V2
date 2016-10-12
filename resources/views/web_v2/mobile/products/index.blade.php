@@ -4,14 +4,14 @@
 	<section class="container-fluid mtm-xs mb-xs">
 		<div class="row form">
 			<div class="col-xs-12 col-sm-12 pl-0 pr-0">
-				<div class="panel-group filter mb-0" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel-group filter-mobile mb-0" id="accordion" role="tablist" aria-multiselectable="true">
 					@include('web_v2.components.filter-mobile')
 					@include('web_v2.components.sort-mobile')
 					<div class="panel panel-default p-0 mt-0">
-						<div class="panel-heading pt-0 bg-white" role="tab" id="headingOne">
-							<h4 class="panel-title mt-xs">
+						<div class="panel-heading bg-white" role="tab" id="headingOne">
+							<h4 class="panel-title">
 								Share
-								<span class="pull-right mtm-xs">
+								<span class="pull-right mtm-8">
 									<a class="share btn p-0 btn-facebook-share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'), 'display' => 'popup']) }}">
 										<i class="fa fa-facebook" aria-hidden="true"></i>
 									</a>
