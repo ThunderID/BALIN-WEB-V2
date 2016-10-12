@@ -42,7 +42,7 @@
 				<div class="checkbox-custom">
 					{!! Form::checkbox('tags[]', $value['slug'], (Input::has('tags') && in_array($value['slug'], Input::get('tags'))) ? true : null, ['id' => $value['slug'], 'class' => 'checkbox-filter', 'data-type' => 'tags', 'data-filter' => $value['slug'], 'data-action' => $value['slug'], 'onClick' => 'ajaxFilter(this);']) !!} 
 					<label for="{{$value['slug']}}">
-						{{$value['name']}} 
+						<span>{{$value['name']}}</span>
 					</label>
 				</div>
 			</li>

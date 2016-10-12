@@ -110,17 +110,20 @@
 		// cek total filter-info
 		$('div.filter-info').find('label[data-input="link"]').remove();
 		if (total_filter_info < 2) {
-			$('div.filter-info').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('div.filter-info').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1 text-capitalize" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
 		} else {
 			// total info lbh dari 1
 			if (total_filter_info == 1) { 
 				$('div.filter-info').append('<content class="filter-more hide"></content>');
 			}
 			$('.more').remove();
-			$('content.filter-more').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('content.filter-more').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1 text-capitalize" data-action="' + categories + '" data-input="link"> Category: ' + text + ' <i class="fa fa-times-circle"></i></label> ');
 			$('div.filter-info').append('<span class="hover-orange text-xs ml-5 more">More..</span>');
 			$('.more').on('click', function(e){click_more($(this), e)});
 		}
+
+		$('ul.category-list li').find('span').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+		$(e).parent().find('span').html('<i class="fa fa-check text-grey-dark">');
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
@@ -160,6 +163,8 @@
 		if (total_filter_info <= 2) {
 			$('.more').remove();
 		}
+
+		$(e).parent().find('span').html('&nbsp;&nbsp;&nbsp;&nbsp;');
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
@@ -216,14 +221,14 @@
 
 		// cek total filter-info
 		if (total_filter_info < 1) {
-			$('div.filter-info').append('<label class="btn btn-transparent btn-xs text-sm panel-action mb-1" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('div.filter-info').append('<label class="btn btn-transparent btn-xs text-sm panel-action mb-1 text-capitalize" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
 		} else {
 			// total info lbh dari 1
 			if (total_filter_info == 1) { 
 				$('div.filter-info').append('<content class="filter-more hide"></content>');
 			}
 			$('.more').remove();
-			$('content.filter-more').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
+			$('content.filter-more').append('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1 text-capitalize" data-action="' + filter + '" data-input="checkbox"> ' + text + ' <i class="fa fa-times-circle"></i></label> ');
 			$('div.filter-info').append('<span class="hover-orange text-xs ml-5 more">More..</span>');
 			$('.more').on('click', function(e){click_more($(this), e)});
 		}
@@ -311,8 +316,11 @@
 		}	
 
 		// add label-info sort
-		$('div.sort-info').html('<label class="btn btn-transparent btn-xs panel-action mb-5" data-action="' + type + '" data-input="link"> ' + title +
+		$('div.sort-info').html('<label class="btn btn-transparent btn-xs text-xs panel-action mb-1 text-capitalize" data-action="' + type + '" data-input="link"> ' + title +
 										' <i class="fa fa-times-circle"></i></label> ');
+
+		$('ul.sort-list li').find('span').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+		$(e).parent().find('span').html('<i class="fa fa-check text-grey-dark">');
 
 		toUrl		= toUrl.replace('?&', '?');
 		toUrl		= toUrl.replace('??', '?');
@@ -347,6 +355,8 @@
 		// remove sort-info active
 		$('div.sort-info label[data-action="' + type + '"]').remove();
 
+		$(e).parent().find('span').html('&nbsp;&nbsp;&nbsp;&nbsp;');
+
 		ajaxPage(toUrl, id);
 		window.history.pushState("", "", toUrl);
 	}
@@ -378,13 +388,5 @@
 		$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
 		fb_link = $('.btn-facebook-share').attr('href');
 		$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
-	}
-
-	function change_title_page(param, value) {
-		title = document.title.split('-');
-		base = title[1];
-		title = title[0];
-		
-		// document.title = title + ' ' + param + ': ' + value + ' - ' + base;
 	}
 </script>

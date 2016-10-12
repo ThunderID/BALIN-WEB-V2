@@ -165,6 +165,11 @@ p{								line-height: 2em;}
 .mlm-xs{									margin-left: -$space-xs !important;}
 .mrm-xs{									margin-right: -$space-xs !important;}
 
+.mtm-8{										margin-top: -$space-8 !important;}
+.mbm-8{										margin-bottom: -$space-8 !important;}
+.mlm-8{										margin-left: -$space-8 !important;}
+.mrm-8{										margin-right: -$space-8 !important;}
+
 .mtm-5{										margin-top: -$space-5 !important;}
 .mbm-5{										margin-bottom: -$space-5 !important;}
 .mlm-5{										margin-left: -$space-5 !important;}
@@ -509,4 +514,5 @@ p{								line-height: 2em;}
 .right{					right: $space-0 !important;}
 
 .overflowellipsis{		overflow: ellipsis;} 
+.overflowscroll{		overflow: scroll;}
 .vertical-baseline{ 	vertical-align: baseline !important;}

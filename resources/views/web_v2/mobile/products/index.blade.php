@@ -4,14 +4,14 @@
 	<section class="container-fluid mtm-xs mb-xs">
 		<div class="row form">
 			<div class="col-xs-12 col-sm-12 pl-0 pr-0">
-				<div class="panel-group filter mb-0" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel-group filter-mobile mb-0" id="accordion" role="tablist" aria-multiselectable="true">
 					@include('web_v2.components.filter-mobile')
 					@include('web_v2.components.sort-mobile')
-					<div class="panel p-0 mb-xs">
-						<div class="panel-heading pt-0 bg-white" role="tab" id="headingOne">
-							<h4 class="panel-title mt-xs">
+					<div class="panel panel-default p-0 mt-0">
+						<div class="panel-heading bg-white" role="tab" id="headingOne">
+							<h4 class="panel-title">
 								Share
-								<span class="pull-right mtm-xs">
+								<span class="pull-right mtm-8">
 									<a class="share btn p-0 btn-facebook-share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'), 'display' => 'popup']) }}">
 										<i class="fa fa-facebook" aria-hidden="true"></i>
 									</a>
@@ -26,8 +26,8 @@
 			</div>
 		</div>
 	</section>
-	<section class="container mt-xs mb-xs relative">
-		<div class="ajax-loading mt-xl" style="display:none;"><img src="/images/loading-balin.gif" /></div>
+	<section class="container pt-xl mb-xs relative" style="margin-top: 110px;">
+		<div class="ajax-loading pt-xl" style="display:none; margin-top: 100px;"><img src="/images/loading-balin.gif" /></div>
 		<div class="content-data" data-title="{{ isset($page_subtitle) ? $page_subtitle . ' - ' . $page_title : 'BALIN.ID' }}">
 			@if(count($data['offer']))
 				<div class="row">
@@ -126,25 +126,26 @@
 		});
 	});
 
+	{{-- event filter active click --}}
 	$('h4.panel-title').on('click', 'label.panel-action', function(e) {
 		stop_double_event(e, $(this));
 	});
 
+	{{-- btn share --}}
 	$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
 	fb_link = $('.btn-facebook-share').attr('href');
 	$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
 
+	{{-- event click more in active filter --}}
 	function click_more(param, e) {
 		e.stopPropagation();
-		if($('.filter-more').hasClass('hide')) {
+		if ($('.filter-more').hasClass('hide')) {
 			$('.filter-more').removeClass('hide');
 			param.html('Less..');
 		} else {
 			$('.filter-more').addClass('hide');
 			param.html('More..');
 		}
-		//$('.filter-more').fadeToggle(200);
-		//$(this).html($(this).html() == 'More..' ? 'Less..' : 'More..');
 	}
 	$('.more').on('click', function(e){click_more($(this), e)});
 @stop
