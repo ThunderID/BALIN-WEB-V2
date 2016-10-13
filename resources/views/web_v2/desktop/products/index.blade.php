@@ -29,7 +29,13 @@
 				</div>
 			</div>
 			<div class="col-md-9 col-sm-9 relative">
-				<div class="ajax-loading mt-lg" style="display:none;"><img src="/images/loading-balin.gif" /></div>
+				<div class="ajax-loading mt-lg" style="display:none;">
+					<img src="/images/loading-balin.gif" />
+					<h3>
+						All in good time ...</br>
+						<small>a moment till we're ready</small>
+					</h3>
+				</div>
 				<div class="content-data" data-title="{{ isset($page_subtitle) ? $page_subtitle . ' - ' . $page_title : 'BALIN.ID' }}">
 					@if(count($data['offer']))
 						<div class="clearfix">&nbsp;</div>

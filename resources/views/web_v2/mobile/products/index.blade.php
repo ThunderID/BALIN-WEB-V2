@@ -27,7 +27,13 @@
 		</div>
 	</section>
 	<section class="container pt-xl mb-xs relative" style="margin-top: 110px;">
-		<div class="ajax-loading pt-xl" style="display:none; margin-top: 100px;"><img src="/images/loading-balin.gif" /></div>
+		<div class="ajax-loading pt-xl" style="display:none; margin-top: 50px;">
+			<img src="/images/loading-balin.gif" />
+			<h4>
+				All in good time ...</br>
+				<small>a moment till we're ready</small>
+			</h4>
+		</div>
 		<div class="content-data" data-title="{{ isset($page_subtitle) ? $page_subtitle . ' - ' . $page_title : 'BALIN.ID' }}">
 			@if(count($data['offer']))
 				<div class="row">
