@@ -1,5 +1,8 @@
 <div class="dropdown">
-	<a class="dropdown-toggle label-sort hover-orange" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	<span>
+		Urutkan : 
+	</span>
+	<a class="dropdown-toggle label-sort text-orange" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 		@if (Input::get('sort') == 'newest-asc')
 			Terbaru
 		@elseif (Input::get('sort') == 'newest-desc')
