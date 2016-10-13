@@ -1,28 +1,6 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<div class="row mb-md ml-0 mr-0 hidden-xs">
-		<div class="hidden-xs col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 text-center mt-lg pl-0 pr-0">
-			<div class="step-checkout text-light">
-				<div class="" data-section="#sc1">
-					<span>Pengiriman</span>
-				</div>
-				<div class="" data-section="#sc2">
-					<span>Kode Voucher</span>
-				</div>
-				<div class="" data-section="#sc3">
-					<span>Packaging Option</span>
-				</div>
-				<div class="" data-section="#sc4">
-					<span>Pilih Pembayaran</span>
-				</div>
-				<div class="" data-section="#sc5">
-					<span>Summary</span>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- SECTION FORM CHECKOUT -->
 	{!! Form::hidden('voucher_id', (isset($data['voucher_id']) ? $data['voucher_id'] : ''), ['class' => 'voucher_code']) !!}
 	{!! Form::hidden('order_id', $data['order']['data']['id']) !!}

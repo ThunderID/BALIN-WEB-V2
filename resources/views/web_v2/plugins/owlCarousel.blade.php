@@ -8,15 +8,15 @@
 @media screen and (max-width: 767px) {
   #slider .owl-wrapper-outer{
     height: 55vw;
-  } 
+  }
 }
 @media screen and (min-width: 768px) {
   #slider .owl-wrapper-outer{
     height: 40vw;
-  } 
+  }    
 }
 #slider .owl-controls .owl-buttons {
-  top: 47.5% !important;
+  top: 40% !important;
   transform: translateY(-50%);
     position: absolute;
     width: 100%;
@@ -33,14 +33,16 @@
     float: right;
 }
 #slider .owl-controls{
-  margin-top: -27px;
+  margin-top: 0px;
 }
 @media screen and (min-width: 768px) {
   #slider .owl-controls{
-    margin-top: -30px;
+    margin-top: 10px;
   }
 }
-
+#slider .owl-controls .owl-pagination{
+  border: 1px solid white;
+}
 
 /*carousel*/
 .carousel .owl-controls .owl-buttons {
@@ -129,18 +131,21 @@
 </style>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#slider").owlCarousel({
-			autoPlay : 3000,
-			navigation : true,
-			slideSpeed : 300,
-			paginationSpeed : 400,
-  		transitionStyle:"fade",
-  		goToFirstSpeed : 2000,
-  		scrollPerPage : false,
-  		singleItem: true,
-  		navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]
-		});
+  function initSlider(){
+    $("#slider").owlCarousel({
+      autoPlay : 3000,
+      navigation : true,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      transitionStyle:"fade",
+      goToFirstSpeed : 2000,
+      scrollPerPage : false,
+      singleItem: true,
+      navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>","<i class='fa fa-angle-right' aria-hidden='true'></i>"]
+    });
+  }
+
+  $(document).ready(function(){
 
 		$(".carousel").owlCarousel({
       autoPlay : 3000,

@@ -130,6 +130,7 @@ class AuthController extends BaseController
 			Session::put('API_token_private', $result['data']['token']['token']);
 			Session::put('whoami', $result['data']['me']);
 			Session::set('API_token', Session::get('API_token_private'));	
+			Session::set('API_expired_token', Carbon::parse('+ 115 minutes')->format('Y-m-d H:i:s'));
 
 			if (!Session::has('carts'))
 			{
@@ -284,131 +285,146 @@ class AuthController extends BaseController
 													'client_secret'	=> env('CLIENT_SECRET'),
 												];
 
-		$api 								= new API;
-		$result 							= json_decode($api->post($api_url, $api_data), true);
+		$validator 							= 	[
+													'email' 	=> 'required|email',
+													'password'	=> 'required'
+												];
 
-		if ($result['status'] == "success")
+		$validating 						= Validator::make($api_data, $validator);
+		
+		if($validating->passes())
 		{
-			$API_me 						= new APIUser;
-			Session::put('API_token_private', $result['data']['token']['token']);
+			$api 								= new API;
+			$result 							= json_decode($api->post($api_url, $api_data), true);
 
-			$whoami 						= $API_me->getMeDetail([
-																'user_id' 	=> $result['data']['me']['id'],
-																'token' 	=> Session::get('API_token_private'),
-															]);
-			Session::put('whoami', $whoami['data']);
-
-			Session::put('API_token', Session::get('API_token_private'));	
-
-			//check user before login carts
-			if (!Session::has('carts'))
+			if ($result['status'] == "success")
 			{
-				$me_order_in_cart 						= $API_me->getMeOrderInCart([
-																'user_id' 	=> Session::get('whoami')['id'],
-															]);
-				if ($me_order_in_cart['status'] == 'success')
+				$API_me 						= new APIUser;
+				Session::put('API_token_private', $result['data']['token']['token']);
+				Session::set('API_expired_token', Carbon::parse('+ 115 minutes')->format('Y-m-d H:i:s'));
+
+				$whoami 						= $API_me->getMeDetail([
+																	'user_id' 	=> $result['data']['me']['id'],
+																	'token' 	=> Session::get('API_token_private'),
+																]);
+				Session::put('whoami', $whoami['data']);
+
+				Session::put('API_token', Session::get('API_token_private'));	
+
+				//check user before login carts
+				if (!Session::has('carts'))
 				{
-					$carts 									= $me_order_in_cart;
-					$temp_carts 							= [];
-
-					foreach ($carts['data']['transactiondetails'] as $k => $v)
+					$me_order_in_cart 						= $API_me->getMeOrderInCart([
+																	'user_id' 	=> Session::get('whoami')['id'],
+																]);
+					if ($me_order_in_cart['status'] == 'success')
 					{
-						$temp_carts[$v['varian']['product_id']]		= 	[
-								'product_id'		=> $v['varian']['product_id'],
-								'slug'				=> $v['varian']['product']['slug'],
-								'name'				=> $v['varian']['product']['name'],
-								'discount'			=> $v['discount'],
-								'current_stock'		=> $v['varian']['current_stock'],
-								'thumbnail'			=> $v['varian']['product']['thumbnail'],
-								'price'				=> $v['price'],
-						];
+						$carts 									= $me_order_in_cart;
+						$temp_carts 							= [];
 
-						$temp_varian 	=	[
-								'varian_id'			=> $v['varian_id'],
-								'sku'				=> $v['varian']['sku'],
-								'quantity'			=> $v['quantity'],
-								'size'				=> $v['varian']['size'],
-								'current_stock'		=> $v['varian']['current_stock'],
-								'message'			=> null,
-						];
-
-						$temp_carts[$v['varian']['product_id']]['varians'][$v['varian']['id']]	= $temp_varian;
-					}
-
-					Session::put('carts', $temp_carts);
-				}
-			}
-			//check user no before login carts
-			else
-			{
-				if (count(Session::get('carts')) != 0 )
-				{
-					/* SET API TOKEN USE TOKEN PRIVATE */
-					$temp_carts 			= 	[
-												'id'					=> '',
-												'user_id'				=> Session::get('whoami')['id'],
-												'transact_at'			=> date('Y-m-d H:i:s'),
-												'transactiondetails'	=> [],
-												'transactionlogs'		=> 	[
-																				'id'		=> '',
-																				'status'	=> 'cart',
-																				'change_at'	=> '',
-																				'notes'		=> ''
-																			],
-												'payment'				=> [],
-												'shipment'				=> []
-											];
-
-					$session_cart 			= Session::get('carts');
-					$temp_varian 			= [];
-
-					foreach($session_cart as $k => $v)
-					{
-						foreach($v['varians'] as $k2 => $v2)
+						foreach ($carts['data']['transactiondetails'] as $k => $v)
 						{
-							$temp_varian[] 		= 	[
-														'id' 				=> '',
-														'transaction_id'	=> '',
-														'quantity' 			=> $v2['quantity'],
-														'price'				=> $v['price'],
-														'discount'			=> $v['discount'],
-														'varian_id'			=> $v2['varian_id'],
-														'varians'			=> [
-															'id'				=> $v2['varian_id'],
-															'product_id'		=> $k,
-															'sku'				=> $v2['sku'],
-															'size'				=> $v2['size'],
-														]
-													];
-							
+							$temp_carts[$v['varian']['product_id']]		= 	[
+									'product_id'		=> $v['varian']['product_id'],
+									'slug'				=> $v['varian']['product']['slug'],
+									'name'				=> $v['varian']['product']['name'],
+									'discount'			=> $v['discount'],
+									'current_stock'		=> $v['varian']['current_stock'],
+									'thumbnail'			=> $v['varian']['product']['thumbnail'],
+									'price'				=> $v['price'],
+							];
+
+							$temp_varian 	=	[
+									'varian_id'			=> $v['varian_id'],
+									'sku'				=> $v['varian']['sku'],
+									'quantity'			=> $v['quantity'],
+									'size'				=> $v['varian']['size'],
+									'current_stock'		=> $v['varian']['current_stock'],
+									'message'			=> null,
+							];
+
+							$temp_carts[$v['varian']['product_id']]['varians'][$v['varian']['id']]	= $temp_varian;
+						}
+
+						Session::put('carts', $temp_carts);
+					}
+				}
+				//check user no before login carts
+				else
+				{
+					if (count(Session::get('carts')) != 0 )
+					{
+						/* SET API TOKEN USE TOKEN PRIVATE */
+						$temp_carts 			= 	[
+													'id'					=> '',
+													'user_id'				=> Session::get('whoami')['id'],
+													'transact_at'			=> date('Y-m-d H:i:s'),
+													'transactiondetails'	=> [],
+													'transactionlogs'		=> 	[
+																					'id'		=> '',
+																					'status'	=> 'cart',
+																					'change_at'	=> '',
+																					'notes'		=> ''
+																				],
+													'payment'				=> [],
+													'shipment'				=> []
+												];
+
+						$session_cart 			= Session::get('carts');
+						$temp_varian 			= [];
+
+						foreach($session_cart as $k => $v)
+						{
+							foreach($v['varians'] as $k2 => $v2)
+							{
+								$temp_varian[] 		= 	[
+															'id' 				=> '',
+															'transaction_id'	=> '',
+															'quantity' 			=> $v2['quantity'],
+															'price'				=> $v['price'],
+															'discount'			=> $v['discount'],
+															'varian_id'			=> $v2['varian_id'],
+															'varians'			=> [
+																'id'				=> $v2['varian_id'],
+																'product_id'		=> $k,
+																'sku'				=> $v2['sku'],
+																'size'				=> $v2['size'],
+															]
+														];
+								
+							}
+						}
+						$temp_carts['transactiondetails']	= $temp_varian;
+						$temp_carts['status']				= 'cart';
+
+						$API_order 							= new APIUser;
+						$result 							= $API_order->postMeOrder($temp_carts);
+
+					// result
+						if (isset($result['message']))
+						{
+							$error 							= $result['message'];
 						}
 					}
-					$temp_carts['transactiondetails']	= $temp_varian;
-					$temp_carts['status']				= 'cart';
-
-					$API_order 							= new APIUser;
-					$result 							= $API_order->postMeOrder($temp_carts);
-
-				// result
-					if (isset($result['message']))
-					{
-						$error 							= $result['message'];
-					}
+				}	
+			
+				if(Session::has('redirect_url'))
+				{
+					$redirect 							= Session::get('redirect_url');
+					Session::forget('redirect_url');
+					return Redirect::to($redirect);
 				}
+
+				return Redirect::route('my.balin.redeem.index');
 			}
 
-			if(Session::has('redirect_url'))
-			{
-				$redirect 							= Session::get('redirect_url');
-				Session::forget('redirect_url');
-				return Redirect::to($redirect);
-			}
-
-			return Redirect::route('my.balin.redeem.index');
+			return Redirect::route('balin.get.login', ['type' => 'login'])
+							->withErrors($result['message'])
+							->with('msg-type', 'danger');
 		}
-		
+
 		return Redirect::route('balin.get.login', ['type' => 'login'])
-						->withErrors($result['message'])
+						->withErrors($validating->errors())
 						->with('msg-type', 'danger');
 	}
 

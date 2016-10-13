@@ -31,11 +31,11 @@
 				<a class="home-product-more" href="{{route('balin.product.index', $data['linked_search'])}}">Lihat Koleksi&nbsp;<i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 			</div>
 		</div>
-		<div class="container pt-md pb-md mb-sm">
+		<div class="container pt-md mb-xs">
 			<div class="row">
 			  	@include('web_v2.components.card', [
 			  		'card' 	=> $data['new_release'],
-			  		'col'	=> 'col-md-3 col-sm-3 col-xs-6',
+			  		'col'	=> 'col-md-3 col-sm-3 col-xs-6 mb-md',
 			  		'data'	=> ['type' => 'women']
 			  	])
 			</div>
@@ -47,9 +47,13 @@
 	<section class="container mt-xl">
 		<div class="row pb-xs">
 			<div class="col-md-12 text-center">
-				<p class="m-0">Make sure you follow us on</p>
-				<h3 class="text-uppercase mtm-5 mbm-5">INSTAGRAM</h3>
-				<p class="m-0"><em><a href="{{$balin['info']['instagram_url']['value']}}" class="hover-orange">@balin.id</a></em></p>
+				<p class="m-0">Make sure you follow us</p>
+				<h3 class="text-uppercase mtm-5 mbm-5">
+					<a href="{{$balin['info']['instagram_url']['value']}}" class="hover-orange" target="_blank">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+						balin.id
+					</a>
+				</h3>
 			</div>
 		</div>
 		<div class="row pt-md pb-md mb-sm">
@@ -64,7 +68,4 @@
 
 @section('js_plugin')
 	@include('web_v2.plugins.owlCarousel')
-@stop
-
-@section('js')  
 @stop

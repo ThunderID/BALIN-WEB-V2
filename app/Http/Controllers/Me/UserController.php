@@ -283,4 +283,58 @@ class UserController extends BaseController
 
 		return $this->generateRedirectRoute('my.balin.profile');	
 	}
+
+	/**
+	 * function to get my order
+	 * 
+	 * 1. Get My order information
+	 * 2. Generate breadcrumb
+	 * 3. Generate view
+	 * @return view
+	 */
+	public function myorder()
+	{	
+		//1. Get My detail information
+		$APIUser 									= new APIUser;
+
+		$whoami 									= $APIUser->getMeDetail(['user_id' 	=> Session::get('whoami')['id']]);
+
+		//2. Check page
+		if (is_null(Input::get('page')))
+		{
+			$page 									= 1;
+		}
+		else
+		{
+			$page 									= Input::get('page');
+		}
+
+		//temporary order
+		$me_orders									= $APIUser->getMeOrder(['user_id'	=> Session::get('whoami')['id'], 
+																			'take'		=> $this->take,
+																			'skip'		=> ($page - 1) * $this->take,
+														]);
+
+		//2. Generate breadcrumb
+		$breadcrumb									= 	[
+															'Profile' => route('my.balin.profile')
+														];
+
+		$this->page_attributes->breadcrumb			= array_merge($this->page_attributes->breadcrumb, $breadcrumb);
+
+		//2. paginate order 
+		$this->paginate(route('my.balin.profile'), $me_orders['data']['count'], $page);
+
+		//3. Generate view
+		$this->page_attributes->data				= 	[
+															'me' 		=> $whoami,
+															'me_orders'	=> $me_orders,
+														];
+		$this->page_attributes->subtitle 			= 'My Order';
+		$this->page_attributes->source 				=  $this->page_attributes->source . 'myorder';
+		$this->page_attributes->controller_name		= $this->controller_name;
+		$this->base_path_view 						= '';
+
+		return $this->generateView();
+	}
 }

@@ -107,7 +107,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
 						<div class="row">
 							<a href="{{ route('balin.product.index') }}" class="btn btn-orange btn-lg text-lg pull-left">
-								Lihat Produk Lainnya
+								Lanjut Belanja
 							</a>
 							@if (!empty($data['carts']))
 								<a href="{{ route('my.balin.checkout.get') }}" class="btn btn-orange-full btn-lg text-lg pull-right btn-checkout">

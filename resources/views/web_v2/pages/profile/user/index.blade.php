@@ -1,6 +1,7 @@
 <?php 
 	$status 	= ['abandoned' => 'Terabaikan', 'cart' => 'Keranjang', 'wait' => 'Checkout', 'veritrans_processing_payment' => 'Menunggu Pembayaran via Veritrans', 'paid' => 'Pembayaran Diterima', 'packed' => 'Menunggu Pengiriman', 'shipping' => 'Dalam Pengiriman', 'delivered' => 'Pesanan Complete', 'canceled' => 'Pesanan Dibatalkan'];
 ?>
+
 @extends('web_v2.page_templates.layout')
 
 @section('content')
@@ -27,7 +28,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 				<p class="m-t-md user-hello">
-					<strong>Halo, {{ ($data['me']['data']['gender'] == 'male') ? 'Mr. ' : 'Mrs. ' }} {{ $data['me']['data']['name'] }}</strong>
+					<strong>HALO, {{ ($data['me']['data']['gender'] == 'male') ? 'MR. ' : 'MRS. ' }} {{ strtoupper($data['me']['data']['name']) }}</strong>
 				</p>
 			</div>
 			<div class="hidden-xs hidden-sm col-md-4 col-lg-4 text-right">
@@ -53,7 +54,7 @@
 		<!-- SECTION POINT INFO & REFERRAL CODE -->
 		<div class="row point-info bg-grey ml-0 mr-0">
 			<!-- SECTION REFERRAL CODE -->
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 border-top-1 border-white">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 border-top-1 border-grey">
 				<div class="row ">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-md pb-xs">
 						<h4 class="relative mb-xs">Referal Code 
@@ -99,7 +100,7 @@
 			<!-- END SECTION REFERRAL CODE -->
 
 			<!-- SECTION POINT INFO -->
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 border-top-1 border-white">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 border-top-1 border-grey">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-md pb-xs">
 						<h4 class="relative">Balin Point
@@ -145,14 +146,14 @@
 		<!-- END SECTION POINT INFO & REFERRAL CODE -->
 		<div class="clearfix">&nbsp;</div>
 		<!-- SECTION INFORMATION AKUN -->
-		<div class="row bg-grey-dark ml-0 mr-0 text-white">
+		<div class="row bg-grey ml-0 mr-0">
 			<div class="col-sm-12">
 				<h4 class="text-uppercase">Informasi Akun</h4>
 			</div>
 		</div>
-		<div class="row bg-grey ml-0 mr-0">
+		<div class="row ml-0 mr-0">
 			<!-- SECTION INFORMATION GENERAL -->
-			<div class="col-sm-6 border-top-1 border-white">
+			<div class="col-sm-6 border-top-1 border-grey">
 				<h5 class="text-uppercase mt-sm mb-md text-bold">
 					Profil Saya
 					<small>
@@ -231,7 +232,7 @@
 			<!-- END SECTION INFORMATION GENERAL -->
 
 			<!-- SECTION INFORMATION ANGGOTA BALIN -->
-			<div class="col-sm-6 border-top-1 border-white">
+			<div class="col-sm-6 border-top-1 border-grey">
 				<h5 class="text-uppercase mt-sm mb-md text-bold">Keanggotaan</h5>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
@@ -332,15 +333,15 @@
 		<div class="clearfix">&nbsp;</div>
 
 		<!-- SECTION INFORMATION TRACKING ORDER -->
-		<div class="row bg-grey-dark ml-0 mr-0 text-white">
+		<div class="row bg-grey ml-0 mr-0">
 			<div class="col-sm-12">
 				<h4 class="text-uppercase">Informasi Pengiriman & Tracking Order</h4>
 			</div>
 		</div>
-		<div class="row bg-grey ml-0 mr-0">
+		<div class="row ml-0 mr-0">
 			<div class="col-sm-12 mt-5 mb-5">
 				@forelse($data['me_orders']['data']['data'] as $k => $v)
-					<div class="row mt-xs pb-xs {{ ($v != end($data['me_orders']['data']['data']) ? 'border-bottom-1 border-white' : '') }}">
+					<div class="row mt-xs pb-xs {{ ($v != end($data['me_orders']['data']['data']) ? 'border-bottom-1 border-grey' : '') }}">
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<span class="label 
 								@if ($v['status']=='wait') label-default 

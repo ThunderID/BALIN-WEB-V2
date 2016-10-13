@@ -73,7 +73,7 @@
 					</div>
 					@foreach($item_list_size as $key => $value)
 						<div class="row text-regular">
-							<div class="col-xs-3">
+							<div class="col-xs-4">
 								<span class="m-t-xxs m-b-xxs">
 									@if (strpos($value['size'], '.')==true)
 										<?php $frac = explode('.', $value['size']); ?>
@@ -83,7 +83,7 @@
 									@endif
 								</span>
 							</div>
-							<div class="col-xs-9 text-right">
+							<div class="col-xs-8 text-right">
 								<span class="m-b-sm label-item m-r-sm">
 									{{ $value['quantity'] }}
 								</span>
@@ -91,36 +91,36 @@
 						</div>
 					@endforeach
 					<div class="row text-regular">
-						<div class="col-xs-3">
+						<div class="col-xs-4">
 							<span class="text-regular">Harga</span>
 							<span class="pull-right">:</span>
 						</div>
-						<div class="col-xs-9 text-right">
+						<div class="col-xs-8 text-right">
 							<span class="label-item">
 								@money_indo($item_list_normal_price) 
 							</span>
 						</div>
 					</div>
 					<div class="row text-regular pb-5 border-bottom-1 border-grey">
-						<div class="col-xs-3">
+						<div class="col-xs-4">
 							<span class="text-regular">Diskon</span>
 							<span class="pull-right">:</span>
 						</div>
-						<div class="col-xs-9 text-right">
+						<div class="col-xs-8 text-right">
 							<span class="m-b-sm label-item m-r-sm">
 								@money_indo($item_list_discount_price) 
 							</span>
 						</div>
 					</div>
 					<div class="row text-regular mt-5">
-						<div class="col-xs-3 hidden-xs">
+						<div class="col-xs-4 hidden-xs">
 							<span>Total</span>
 							<span class="pull-right">:</span>
 						</div>
-						<div class="col-xs-3 hidden-sm hidden-md hidden-lg">
+						<div class="col-xs-4 hidden-sm hidden-md hidden-lg">
 							&nbsp;
 						</div>
-						<div class="col-xs-9 text-right">
+						<div class="col-xs-8 text-right">
 							<span class="label-item m-r-sm">
 								@money_indo($item_list_total_price)
 							</span>

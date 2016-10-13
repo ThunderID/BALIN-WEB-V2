@@ -36,6 +36,7 @@ $space-2:				2px;
 $space-3:				3px;
 $space-4:				4px;
 $space-5:				5px;
+$space-8:				8px;
 $space-xs:				10px;
 $space-sm:				15px;
 $space-md:				20px;
@@ -79,6 +80,7 @@ html, body {
 	height: 90%;
 }
 body {
+	-webkit-font-smoothing: subpixel-antialiased;
 	font-weight: 400;
 	letter-spacing: 0.04em;
 }
@@ -173,6 +175,10 @@ body {
 
 
 /** mobile **/
+.shop-by-style-mobile{
+	margin-top: 10px;
+}
+
 .shop-by-style-mobile .title{
 	font-family: 'Sacramento', cursive;
 	padding-botom: 0.2rem;
@@ -199,6 +205,12 @@ body {
 		margin-bottom: 0px;
 	}
 }
+.footer-mobile .info{
+	line-height: 1.6em;
+    font-size: 11px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
 
 /** tablet **/
 @media screen and (min-width: 768px) and (max-width: 992px){
@@ -216,8 +228,8 @@ body {
 .shop-by-style-desktop .title{
 	font-family: 'Sacramento', cursive;
 	font-size: 6.2rem;
-	padding-top: 0.3rem;
-	padding-bottom: 1.2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 
 /** Product Show **/

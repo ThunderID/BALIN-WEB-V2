@@ -47,7 +47,7 @@
 					@endforeach
 				@else
 					<div class="row mr-0 ml-0 p-sm">
-						<div class="col-xs-12">
+						<div class="col-xs-12" style="padding-top: 25vh;">
 							<h4 class="text-center text-md">Tidak ada item di cart</h4>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 				<!-- SECTION FOOTER CART MOBILE -->
 				<div class="row border-bottom-1 solid border-white pb-lg">
 					<div class="col-xs-12" >
-						@if (!empty($data['carts']))
+						@if (!empty($data['carts']) && $data['carts'] != 'remove carts')
 							<div class="row cart-footer">
 								<div class="col-xs-12">
 									<h3 class="text-center">SubTotal</h3>
@@ -86,7 +86,7 @@
 						<div class="row mt-sm mb-sm">
 							<div class="col-xs-12">
 								<a href="{{ route('balin.product.index') }}" class="btn btn-orange white btn-block btn-lg text-uppercase">
-									Pilih Produk Lain
+									Lanjut Belanja
 								</a>
 							</div>
 						</div>

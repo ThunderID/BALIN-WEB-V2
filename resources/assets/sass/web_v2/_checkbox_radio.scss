@@ -8,14 +8,12 @@
 		font-size: $text_regular;
 		&:before {
 			content: "";
-			border: 1px solid $black;
+			border: 1px solid #d5d5d5;
 			display: inline-block;
 			width: 16px;
 			height: 16px;
-			margin-right: 10px;
-			position: absolute;
 			left: 0;
-			bottom: 1px;
+			position: absolute;
 			background-color: transparent;
 		}
 	}
@@ -29,20 +27,28 @@
 	}
 	input[type=radio]:checked + label:before {
 		content: "\2022";
-		color: $black;
-		font-size: 30px;
+		color: $grey-dark;
+		font-size: 20px;
 		text-align: center;
-		line-height: 18px;
+		line-height: 10px;
 	}
 }
 .checkbox-custom {
-	label:before {
-		border-radius: 0px;
+	label{
+		font: normal normal normal 14px/1 FontAwesome;
+		&:before {
+			border-radius: 0px;	
+		}
+		span {
+			font-family: "Lato", sans-serif;
+			-webkit-font-smoothing: subpixel-antialiased;
+			line-height: 15px;
+		}
 	}
 	input[type=checkbox]:checked + label:before {
-		content: "\2713";
-		font-size: 15px;
-		color: $black;
+		content: "\f00c";
+		font-size: 10px;
+		color: $grey-dark;
 		text-align: center;
 		line-height: 15px;
 	}
@@ -50,23 +56,40 @@
 .checkbox-color {
 	li {
 		vertical-align: top;
-		margin-left: 5px;
-		margin-right: 5px;
 		padding-left: 0px;
 		padding-right: 0px;
+		border: 1px solid $grey;
 		&.active {
-			border: 1px solid $black;
+			border: 2px solid $black;
 			.color-item {
-				border: 1px solid $white;
-				width: 14px;
-				height: 14px;
+				border: 2px solid $white;
+				width: 20px;
+				height: 20px;
 			}
 		}
 	}
 	.color-item {
-		width: 16px;;
-		height: 16px;
+		width: 24px;;
+		height: 24px;
 		display: block;
 		cursor: pointer;
+	}
+	@media screen and (max-width: 767px) {
+		li.active {
+			.color-item {
+				width: 26px;
+				height: 26px;
+			}
+		}
+		.color-item {
+			width: 30px;
+			height: 30px;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.control--checkbox{
+		text-align:center;
 	}
 }

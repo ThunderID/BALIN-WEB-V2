@@ -217,7 +217,7 @@
 				change_action($(this), parsing);
 			}
 		});
-	});	
+	});
 @stop
 
 @section('js_plugin')

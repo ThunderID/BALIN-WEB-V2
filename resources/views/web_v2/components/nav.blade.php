@@ -6,7 +6,7 @@
 					data-toggle="collapse" aria-controls="#bs-example-navbar-collapse-1" data-target="#bs-example-navbar-collapse-1">
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
-			<a id="cart-mobile"  href="{{ route('balin.cart.index') }}" class=" border-0 ico_cart navbar-cart";
+			<btn id="cart-mobile" data-toggle="modal" data-target="#modal-cart" class=" border-0 ico_cart navbar-cart";
 			    ">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span id="mobile-cart-count">
@@ -16,7 +16,7 @@
 						</strong>
 					</span>
 				</span>
-			</a>
+			</btn>
 			<a class="navbar-brand" href="{{ route('balin.home.index') }}">
 				{!! HTML::image('images/white_logo_balin.png', null, ['class' => 'img-responsive']) !!}
 			</a>
@@ -26,7 +26,7 @@
 		<div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li id="cart-desktop" class="dropdown dropdown-cart  hidden-xs hidden-sm text-light">
-					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart @yield('shopping-bag-nav') hover-orange">
+					<a href="javascript:void(0);" class="dropdown-toggle text-white pt-xs mt-5 ico_cart hover-orange">
 						Shopping Bag
 					</a>
 					<span id="desktop-cart-count">
@@ -57,13 +57,23 @@
 						<a href="{{route('balin.info.index', ['type' => 'why-join'])}}" class="hover-orange @yield('balin-point-nav')">Balin Point</a>
 					@endif
 				</li>
-				<li>
 					@if (Session::has('whoami'))
+					<li class="dropdown dropdown-profile hidden-sm hidden-xs">
+						<a href="javascript:void(0);" class="hover-orange @yield('balin-login-nav') dropdown-toggle profile" >{{Session::get('whoami')['name']}}</a>
+
+						@include('web_v2.components.profile-dropdown') 
+					</li>
+					<li class="hidden-md hidden-lg">
 						<a href="{{route('my.balin.profile')}}" class="hover-orange @yield('balin-login-nav')">{{Session::get('whoami')['name']}}</a>
+					</li>
+					<li class="hidden-md hidden-lg">
+						<a href="{{route('my.balin.profile.myorder')}}" class="hover-orange @yield('balin-login-myorder')">My Order History</a>
+					</li>					
 					@else
+					<li>
 						<a href="{{route('balin.get.login')}}" class="hover-orange @yield('balin-login-nav')">SIGN IN</a>
+					</li>	
 					@endif
-				</li>	
 				<li class="hidden-md hidden-lg">
 					@if (Session::has('whoami'))
 						<a href="{{route('balin.get.logout')}}" class="hover-orange">LOGOUT</a>
@@ -148,3 +158,5 @@
 		</div>		
 	</div>
 </nav>
+
+@include('web_v2.components.modal-cart') 

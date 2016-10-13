@@ -2,7 +2,6 @@
 
 @section('content')
 	@include('web_v2.components.category-desktop')
-	@include('web_v2.components.breadcrumb')
 	<section class="container mt-0 mb-lg">
 		<div class="row">
 			<!-- SECTION IMAGE SLIDER PRODUCT -->
@@ -94,7 +93,7 @@
 				</div>
 
 
-				<!-- START SECTION TRANSACTION MENU -->
+				<!-- START SECTION TRANSACTION MENU -->				
 				<div class="row">
 					<div class="col-md-12">
 						<div class="panel-group product-detail" id="accordion" role="tablist" aria-multiselectable="true">
@@ -167,7 +166,7 @@
 								<div class="panel-heading" role="tab" id="headingFour">
 									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 										<h4 class="panel-title">
-											Pilih Ukuran
+											Size
 											<span class="pull-right active">
 												<i class="fa fa-angle-right " aria-hidden="true"></i>
 											</span>											
@@ -200,6 +199,11 @@
 												</div>
 											</div>
 										@endforeach
+										<div class="col-md-12 pt-xs text-right">
+											<small>
+												Not Sure? <a class="hover-orange" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Check Fit & Measurement</a>
+											</small>
+										</div>										
 									</div>
 								</div>
 							</div>
@@ -209,7 +213,7 @@
 							<div class="panel panel-default mt-0">
 								<div class="panel-heading" role="tab" id="headingOne">
 									<h4 class="panel-title">
-										Total
+										Total (<span id="items">0</span>)
 										<span class="pull-right">
 											IDR <span class="total">0</span>
 										</span>
@@ -218,6 +222,23 @@
 							</div>
 					<!-- START SECTION TOTAL -->
 
+					<!-- START SHARE-->
+							<div class="panel panel-default mt-0">
+								<div class="panel-heading bg-white pb-sm" role="tab" id="headingOne">
+									<h4 class="panel-title">
+										Share
+										<span class="pull-right mtm-5">
+											<a class="share btn p-0" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'),'href' => route('balin.product.show', $data['product']['data']['data'][0]['slug']), 'display' => 'popup']) }}">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+											</a>
+											<a class="share btn p-0 btn-copy-share grey-tooltip" href="javascript:void(0);" data-clipboard-text="" aria-label="Copied..">
+												<i class="fa fa-link" aria-hidden="true"></i>
+											</a>
+										</span>
+									</h4>
+								</div>
+							</div>
+					<!-- END SHARE -->					
 
 						</div>
 					</div>
@@ -226,7 +247,7 @@
 
 				<div class="row">
 					<div class="col-md-12 text-right">
-						<p id="warning" class="pull-left warning hidden">* Silahkan Pilih Ukuran Terlebih Dahulu</p>
+						<p id="warning" class="pull-left warning hidden" style="font-size: 12px !important;">* Please select size!</p>
 						<a href="javascript:void(0);" class="btn btn-orange buy pl-sm pr-sm">
 							<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 							&nbsp;Buy Now
@@ -245,9 +266,6 @@
 					<h3 class="text-uppercase m-0">PILIHAN LAIN</h3>
 					<a class="home-product-more" href="{{route('balin.product.index', ['categories' => [$data['type']]])}}">Lihat Semua <i class="fa fa-chevron-right" aria-hidden="true" style="font-size:10px;"></i></a>
 				</div>			
-				<?php
-					// dd($data['related']);
-				?>
 					@include('web_v2.components.card', [
 						'card' 	=> $data['related'],
 						'col'	=> 'col-md-3 col-sm-3 col-xs-6',
@@ -406,13 +424,18 @@
 	});
 	$(document).on('change', '.cart', function(){
 		var total = 0;
+		var items = 0;
 		var price = {{ $data['product']['data']['data'][0]['promo_price'] == 0 ? $data['product']['data']['data'][0]['price'] : $data['product']['data']['data'][0]['promo_price']}}
 		$('.cart').each(function() {
 			if($(this).text() > 0){
 				total = total + (parseInt($(this).text()) * price);
+				items = items + parseInt($(this).text());
 			}
 		});
 		<!-- total = total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") -->
 		$('.total').text(number_format(total));
+		$('#items').text(items);
 	});
+	
+	$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
 @stop

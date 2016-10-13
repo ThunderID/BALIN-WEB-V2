@@ -33,3 +33,16 @@
 .product-detail .panel{
 	border: none;
 }
+.share{
+     -webkit-transition: background-color 300ms;
+    -moz-transition: background-color 300ms;
+    -o-transition: background-color 300ms;
+    transition: background-color 300ms;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+}
+.share:hover{
+    color: #0097D3;
+    background-color: #f5f5f5;
+}
