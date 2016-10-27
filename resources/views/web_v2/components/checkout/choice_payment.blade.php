@@ -116,7 +116,12 @@
 				<div class="col-md-12">
 				 	<label id="choice_payment_error" class="warning" for="voucher" style="display:none;">Anda belum memilih metode pembayaran</label>
 				</div>
-			</div>									
+			</div>	
+			<div class="row mt-md mb-md">
+				<div class="col-md-12">
+					<h5>Powered by &nbsp; {!!Html::image('/images/midtrans_black.png', 'midtrans', ['style' => 'height: 14px;'])!!}</h5>
+				</div>
+			</div>								
 		</form>
 		<div class="row pt-md pb-md">
 			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">

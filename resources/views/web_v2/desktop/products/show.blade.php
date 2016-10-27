@@ -371,7 +371,7 @@
 								}else{
 									var display = $('#desktop-cart-content').css('display');
 									if(display != 'block'){
-										$('.dropdown-menu').toggle({'display': 'block'});
+										$('.cart_dropdown').toggle({'display': 'block'});
 									}
 								}
 						   	},
