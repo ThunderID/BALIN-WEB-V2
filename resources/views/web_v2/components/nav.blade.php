@@ -128,21 +128,20 @@
 		</div>
 		<!-- /.navbar-collapse -->
 
+		<?php $extend_search = [];?>
+
+		@if(Input::has('tags'))
+			<?php $extend_search = array_merge($extend_search, Input::only('tags'));?>
+		@endif
+
+		@if(Input::has('sort'))
+			<?php $extend_search = array_merge($extend_search, Input::only('sort'));?>
+		@endif
 		<div class="text-center center-nav desktop-only" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="text-light right">
-					<?php $extend_search = [];?>
-
-					@if(Input::has('tags'))
-						<?php $extend_search = array_merge($extend_search, Input::only('tags'));?>
-					@endif
-
-					@if(Input::has('sort'))
-						<?php $extend_search = array_merge($extend_search, Input::only('sort'));?>
-					@endif
-
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class="@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange active @endif hover-orange woman-menu">
-						Wanita
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class="@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange active @endif hover-orange man-menu">
+						Pria
 					</a>
 				</li>
 				<li>
@@ -150,8 +149,8 @@
 					</div>
 				</li>
 				<li class="text-light left">
-					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'pria'], $extend_search) ) }}" class="@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'pria') text-orange active @endif hover-orange man-menu">
-						Pria
+					<a href="{{ route('balin.product.index', array_merge(['categories[]' => 'wanita'], $extend_search) ) }}" class="@if(isset(Input::get('categories')[0]) && Input::get('categories')[0] == 'wanita') text-orange active @endif hover-orange woman-menu">
+						Wanita
 					</a>
 				</li>					
 			</ul>

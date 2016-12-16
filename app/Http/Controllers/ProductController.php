@@ -4,7 +4,7 @@ use App\API\Connectors\APIProduct;
 use App\API\Connectors\APITag;
 use App\API\Connectors\APICategory;
 
-use Response, Input, Collection, Session, BalinMail, Route;
+use Response, Input, Collection, Session, BalinMail, Route, App;
 
 /**
  * Used for Product Controller
@@ -153,6 +153,12 @@ class ProductController extends BaseController
 															'take'		=> $this->take,
 															'skip'		=> ($page - 1) * $this->take,
 														]);
+
+		// throw 404 if no data
+		if($product['data']['count'] == 0){
+			App::abort(404);
+		}
+
 
 		if(Input::has('categories'))
 		{
