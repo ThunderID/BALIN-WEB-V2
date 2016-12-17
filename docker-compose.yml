@@ -1,0 +1,3 @@
+#balinapi
+balinapi:
+    build: ./
