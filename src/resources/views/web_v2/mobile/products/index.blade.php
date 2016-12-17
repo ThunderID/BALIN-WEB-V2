@@ -3,7 +3,7 @@
 @section('content')
 	<section class="container-fluid mtm-xs mb-xs">
 		<div class="row form">
-			<div class="col-xs-12 col-sm-12 pl-0 pr-0">
+			<div class="col-xs-12 col-sm-12 pl-0 pr-0" style="z-index:1;">
 				<div class="panel-group filter-mobile mb-0" id="accordion" role="tablist" aria-multiselectable="true">
 					@include('web_v2.components.filter-mobile')
 					@include('web_v2.components.sort-mobile')

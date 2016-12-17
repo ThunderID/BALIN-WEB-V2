@@ -31,6 +31,9 @@
 	    top: 50%;
 	    transform: translateY(-50%);
 	}
+	#slide-loader.hideBackground{
+		background:transparent!important;
+	}
 </style>
 
 <div id="slide-loader">
@@ -76,5 +79,6 @@
  		$('#slider').addClass("white");
  		$('#slider').removeClass("hidden");
  		$('#loader').addClass("hidden");
+ 		$('#slide-loader').addClass("hideBackground");
 	});		
 @append
