@@ -79,6 +79,22 @@
 		@yield('js_plugin')
 		
 		<script type="text/javascript">
+			$(document).ready(function() {
+				set_ig_mobile();
+			});
+
+			$(window).on('resize', function(){
+				set_ig_mobile();
+			});
+
+			function set_ig_mobile(){
+
+				$.each($('.ig_mobile'), function() {
+					h = $('.ig_mobile').width();
+					$('.ig_mobile').height(h);
+				});
+			}
+
 			@yield('js')
 			@if (Session::has('msg') || $errors->any())
 				$('#alert_window').modal('show');

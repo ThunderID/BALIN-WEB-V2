@@ -55,7 +55,7 @@ class HomeController extends BaseController
 			$product 								= $APIProduct->getIndex([
 															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
-															'take'		=> 8,
+															'take'		=> 12,
 															'skip'		=> 0,
 														]);
 		}
@@ -73,7 +73,7 @@ class HomeController extends BaseController
 			$product 								= $APIProduct->getIndex([
 															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
-															'take'		=> 8,
+															'take'		=> 12,
 															'skip'		=> 0,
 														]);
 		}

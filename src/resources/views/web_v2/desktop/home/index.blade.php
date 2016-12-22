@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div class="row pt-md pb-md mb-sm">
-			@include('web_v2.components.card_no_description', [
+			@include('web_v2.components.card_ig', [
 				'card'	=> $data['instagram'],
 				'col'	=> 'col-md-3 col-sm-3 col-xs-6'
 			])
@@ -68,4 +68,10 @@
 
 @section('js_plugin')
 	@include('web_v2.plugins.owlCarousel')
+@stop
+
+@section('js')
+	$( document ).ready(function() {
+		alert(1);
+	});
 @stop
