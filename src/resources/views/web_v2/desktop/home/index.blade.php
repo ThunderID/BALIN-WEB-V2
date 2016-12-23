@@ -69,9 +69,3 @@
 @section('js_plugin')
 	@include('web_v2.plugins.owlCarousel')
 @stop
-
-@section('js')
-	$( document ).ready(function() {
-		alert(1);
-	});
-@stop
