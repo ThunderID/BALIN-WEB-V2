@@ -83,7 +83,7 @@
 						<div class="item">
 							<div class="col-xs-12 pl-0 pr-0">
 								<div class="tile text-center">
-										{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive']) !!}
+										{!! Html::image($data['image_sm'], null, ['class' => 'img-responsive ig_mobile']) !!}
 									<div class="jumbotron">
 									</div>
 								</div>
