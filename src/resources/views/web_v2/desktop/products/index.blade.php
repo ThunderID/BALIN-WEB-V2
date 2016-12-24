@@ -6,24 +6,26 @@
 
 	<section class="container mt-sm mb-sm">
 		<div class="row form mr-0 ml-0">
-			<div class="col-md-3 col-sm-3">
-				<div class="panel-group product-detail mt-5" id="accordion" role="tablist" aria-multiselectable="true">
-					{{-- FILTER-DESKTOP --}}
-					@include('web_v2.components.filter-desktop')
+			<div class="col-md-3 col-sm-3 hidden-xs">
+				<div id="left_menu" style="position: fixed; width: 20%;">
+					<div class="panel-group product-detail mt-5" id="accordion" role="tablist" aria-multiselectable="true">
+						{{-- FILTER-DESKTOP --}}
+						@include('web_v2.components.filter-desktop')
 
-					<div class="panel-body p-0 mt-md">
-						<div class="panel-heading pt-0 bg-white border-top-1 border-grey" role="tab" id="headingOne">
-							<h4 class="panel-title mt-sm">
-								Share
-								<span class="pull-right mtm-5">
-									<a class="share btn p-0 btn-facebook-share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'), 'display' => 'popup']) }}">
-										<i class="fa fa-facebook" aria-hidden="true"></i>
-									</a>
-									<a class="share btn p-0 btn-copy-share grey-tooltip" href="javascript:void(0);" data-clipboard-text="" aria-label="Copied..">
-										<i class="fa fa-link" aria-hidden="true"></i>
-									</a>
-								</span>
-							</h4>
+						<div class="panel-body p-0 mt-md">
+							<div class="panel-heading pt-0 bg-white border-top-1 border-grey" role="tab" id="headingOne">
+								<h4 class="panel-title mt-sm">
+									Share
+									<span class="pull-right mtm-5">
+										<a class="share btn p-0 btn-facebook-share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'), 'display' => 'popup']) }}">
+											<i class="fa fa-facebook" aria-hidden="true"></i>
+										</a>
+										<a class="share btn p-0 btn-copy-share grey-tooltip" href="javascript:void(0);" data-clipboard-text="" aria-label="Copied..">
+											<i class="fa fa-link" aria-hidden="true"></i>
+										</a>
+									</span>
+								</h4>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -96,6 +98,21 @@
 
 @section('js')  
 	$(document).ready(function(){
+		{{-- MENU FIXED --}}
+		pos = $('#left_menu').offset();
+		$(this).scroll(function() {
+			h_footer = $('.divider_footer').offset().top - 55;
+			if($(this).scrollTop() > 40){
+				$('#left_menu').css({ top: '65px' });
+				ideal_pos =  h_footer - $('#left_menu').height();
+				if($(this).scrollTop() >= ideal_pos ) {
+					$('#left_menu').css({ top: ideal_pos - $(this).scrollTop() + 55 + 'px' });
+				}
+			}else{
+				$('#left_menu').css({ top: pos.top + 'px' });
+			}
+		});
+
 		{{-- FUNCTION CHECKBOX FILTER COLOR CLICK --}}
 		$('span.color-item').click(function(){
 			item = $(this).parent();
