@@ -49,3 +49,17 @@ API_PORT=
 
 CLIENT_ID=
 CLIENT_SECRET=
+
+
+##Slider Req:
+
+####Spec
+
+1. dimensi gambar 3279x1752
+2. ukuran gambar (200~300kb)
+
+####Komposisi gambar
+
+1. headroom (15% dari tinggi)
+2. content (75% dari tinggi)
+3. scale area (dipotong 10% dari tinggi pada bagian bawah)
