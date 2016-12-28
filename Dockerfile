@@ -10,6 +10,7 @@ ENV composer_hash aa96f26c2b67226a324c27919f1eb05f21c248b987e6195cad9690d5c1ff71
 RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
     echo /etc/apk/respositories && \
     apk update && \
+    apk add tzdata && \
     apk add --no-cache bash \
     openssh-client \
     wget \
@@ -117,8 +118,12 @@ RUN chmod 755 /usr/bin/pull && chmod 755 /usr/bin/push && chmod 755 /usr/bin/let
 ADD src/ /var/www/html/
 ADD errors/ /var/www/errors/
 
+RUN cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+
+RUN apk del tzdata
+
 # run composer install
-RUN cd /var/www/html && composer install
+RUN cd /var/www/html && composer install && composer update
 
 # share .env file
 #ADD ./.env /var/www/html/.env
