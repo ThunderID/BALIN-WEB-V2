@@ -33,7 +33,7 @@ class ProductController extends BaseController
 		$this->page_attributes->breadcrumb			=	[
 															'Produk' 	=> route('balin.product.index'),
 														];
-		$this->take 								= 6;
+		$this->take 								= 12;
 	}
 
 	/**
