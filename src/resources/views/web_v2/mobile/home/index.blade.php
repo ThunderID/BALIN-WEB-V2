@@ -1,27 +1,51 @@
 @extends('web_v2.page_templates.layout')
 
 @section('content')
-	<section class="container-fluid mtm-xs mb-xs">
-		<div class="row form">
-			<div class="col-xs-12 col-sm-12 pl-0 pr-0" style="z-index:2;">
-				<div class="panel-group filter-mobile mb-0" id="accordion" role="tablist" aria-multiselectable="true">
-					@include('web_v2.components.filter-mobile')
-					@include('web_v2.components.sort-mobile')
-					<div class="panel panel-default p-0 mt-0">
-						<div class="panel-heading bg-white" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								Share
-								<span class="pull-right mtm-8">
-									<a class="share btn p-0 btn-facebook-share" target="_blank" href="{{'https://www.facebook.com/dialog/share?'.http_build_query(['app_id' => env('FACEBOOK_CLIENT_ID'), 'display' => 'popup']) }}">
-										<i class="fa fa-facebook" aria-hidden="true"></i>
-									</a>
-									<a class="share btn p-0 btn-copy-share grey-tooltip" href="javascript:void(0);" data-clipboard-text="" aria-label="Copied..">
-										<i class="fa fa-link" aria-hidden="true"></i>
-									</a>
-								</span>
-							</h4>
-						</div>
-					</div>
+	@if(isset($data['shop_by_style']))
+	 <section class="container home">
+	 	<div class="row">
+	 		@include('web_v2/components/slider', ['sliders' => $data['sliders']])
+	 	</div>
+	 
+	 	<div class="container shop-by-style-mobile">
+	 		<h2 class="text-center title">
+	 			Shop By Style
+	 		</h2>
+	 		<div class="content">
+	 			@include('web_v2.components.tile-mobile')
+	 		</div>
+	 	</div>
+	 </section>
+	 @endif
+	 
+	 @if(count($data['new_release']))
+	 <section class="container-fluid bg-grey mt-xl pt-sm">
+	 	<div class="row mt-sm mb-sm">
+	 		<div class="container text-center">
+	 			<div class="col-md-12">
+	 				@if(!$data['premium'])
+	 					<h3 class="text-uppercase m-0">NEW RELEASE</h3>
+	 				@else
+	 					<h5 class="text-uppercase m-0 text-orange">NEW RELEASE</h5>
+	 					<h3 class="text-uppercase m-0">PREMIUM COTTON</h3>
+	 				@endif
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<div class="container pt-md pb-sm">
+	 		<div class="row">
+	 		  	@include('web_v2.components.card', [
+	 		  		'card' 	=> $data['new_release'],
+	 		  		'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
+	 		  	])
+	 		</div>
+	 	</div>
+	 	<div class="container text-center">
+	 		<div class="row">
+	 			<div class="col-md-12">
+	 				<a href="{{route('balin.product.index', $data['linked_search'])}}" class="btn btn-orange buy">
+	 					Lihat Semua
+	 				</a>
 				</div>
 			</div>
 		</div>
