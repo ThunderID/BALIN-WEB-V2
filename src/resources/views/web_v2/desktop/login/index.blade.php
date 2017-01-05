@@ -74,21 +74,21 @@ if(Session::has('type')){
 				</div>
 				<div class="row">
 					<div class="col-md-12 auth">
-						<p class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
+						<p class="signup text-white" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
 							Sudah Terdaftar?
-							<a href="javascript:void(0);" class="btn-signin">
+							<a href="javascript:void(0);" class="text-orange btn-signin">
 								Sign In
 							</a> 
 						</p>
-						<p class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
+						<p class="signin text-white" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
 							Belum Punya Akun?
-							<a href="javascript:void(0);" class="btn-signup">
+							<a href="javascript:void(0);" class="text-orange btn-signup">
 								Sign Up
 							</a> 
 						</p>
-						<p class="forgot" style="display:none; color:white !important;">
+						<p class="forgot text-white" style="display:none; color:white !important;">
 							Belum Punya Akun?
-							<a href="javascript:void(0);" class="btn-signup">
+							<a href="javascript:void(0);" class="text-orange btn-signup">
 								Sign Up
 							</a> 
 						</p>												
