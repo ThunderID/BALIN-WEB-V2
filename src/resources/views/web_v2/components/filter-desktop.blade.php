@@ -1,4 +1,4 @@
-<div class="panel panel-default mt-0">
+<div class="panel panel-default mt-0" style="box-shadow: none !important;">
 	<div class="panel-heading bg-white pb-sm pl-5 pr-5" role="tab" id="headingOne">
 		<h4 class="panel-title">Filter
 			<span class="pull-right">
