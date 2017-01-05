@@ -7,7 +7,7 @@
 	<section class="container mt-sm mb-sm">
 		<div class="row form mr-0 ml-0">
 			<div class="col-md-3 col-sm-3 hidden-xs">
-				<div id="left_menu" style="position: fixed; width: 20%;">
+				<div id="left_menu" style="position: fixed; width: 19%;">
 					<div class="panel-group product-detail mt-5" id="accordion" role="tablist" aria-multiselectable="true">
 						{{-- FILTER-DESKTOP --}}
 						@include('web_v2.components.filter-desktop')
