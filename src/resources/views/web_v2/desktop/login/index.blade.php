@@ -45,28 +45,6 @@ if(Session::has('type')){
 						Fashionable Model
 					</p>
 				</div>
-				<div class="row">
-					<div class="col-md-12 auth">
-						<p class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
-							Sudah Terdaftar?
-							<a href="javascript:void(0);" class="btn-signin">
-								Sign In
-							</a> 
-						</p>
-						<p class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
-							Belum Punya Akun?
-							<a href="javascript:void(0);" class="btn-signup">
-								Sign Up
-							</a> 
-						</p>
-						<p class="forgot" style="display:none; color:white !important;">
-							Belum Punya Akun?
-							<a href="javascript:void(0);" class="btn-signup">
-								Sign Up
-							</a> 
-						</p>												
-					</div>
-				</div>
 			</div>
 
 			{{-- signup , signin , register --}}
@@ -93,7 +71,29 @@ if(Session::has('type')){
 						</div>
 					</div>	
 					<div class="clearfix">&nbsp;</div>
-				</div>                        
+				</div>
+				<div class="row">
+					<div class="col-md-12 auth">
+						<p class="signup" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
+							Sudah Terdaftar?
+							<a href="javascript:void(0);" class="btn-signin">
+								Sign In
+							</a> 
+						</p>
+						<p class="signin" style="{{ $type == 'login' ? 'display:block;' : 'display:none;' }}">
+							Belum Punya Akun?
+							<a href="javascript:void(0);" class="btn-signup">
+								Sign Up
+							</a> 
+						</p>
+						<p class="forgot" style="display:none; color:white !important;">
+							Belum Punya Akun?
+							<a href="javascript:void(0);" class="btn-signup">
+								Sign Up
+							</a> 
+						</p>												
+					</div>
+				</div>
 			</div>
 		</div>
 
