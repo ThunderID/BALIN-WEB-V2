@@ -30,7 +30,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-9 col-sm-9 relative">
+			<div class="col-md-9 col-sm-9 relative page_holder">
 				<div class="ajax-loading mt-lg" style="display:none;">
 					<img src="/images/loading-balin.gif" />
 					<h3>
@@ -98,6 +98,8 @@
 
 @section('js')  
 	$(document).ready(function(){
+		$('.page_holder').css('min-height', $('#left_menu').height());
+
 		{{-- MENU FIXED --}}
 		pos = $('#left_menu').offset();
 		$(this).scroll(function() {
