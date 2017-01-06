@@ -15,7 +15,8 @@ use App\Http\Controllers\Me\Veritrans\Veritrans_VtDirect;
 use App\Http\Controllers\Me\Veritrans\Veritrans_VtWeb;
 use App\Http\Controllers\Me\Veritrans\Veritrans_Sanitizer;
 
-use Input, Response, Redirect, Session, Request, BalinMail;
+use Input, Response, Redirect, Session, BalinMail;
+use Illuminate\Http\Request;
 
 /**
  * Used for Checkout Controller

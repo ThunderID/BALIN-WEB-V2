@@ -3,7 +3,9 @@
 use App\API\Connectors\APIProduct;
 use App\API\Connectors\APIUser;
 
-use Input, Response, Redirect, Session, Collection, Request;
+use Input, Response, Redirect, Session, Collection;
+
+use Illuminate\Http\Request;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
