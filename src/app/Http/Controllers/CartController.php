@@ -3,7 +3,9 @@
 use App\API\Connectors\APIProduct;
 use App\API\Connectors\APIUser;
 
-use Input, Response, Redirect, Session, Collection, Request;
+use Input, Response, Redirect, Session, Collection;
+
+use Illuminate\Http\Request;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
@@ -183,12 +185,12 @@ class CartController extends BaseController
 		{
 			return response()
             ->json(['carts' => $cart['data']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 		}
 		
 		return response()
             ->json(['carts' => $cart['data'], 'message' => $cart['message']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 	}
 
 	/**
@@ -243,12 +245,12 @@ class CartController extends BaseController
 		{
 			return response()
             ->json(['carts' => $cart['data']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 		}
 		
 		return response()
             ->json(['carts' => $cart['data'], 'message' => $cart['message']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 	}
 
 	/**
