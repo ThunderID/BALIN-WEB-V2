@@ -52,7 +52,7 @@
 					{{-- DATA GRID CARD PRODUCT --}}
 					@include('web_v2.components.card', [
 						'card' 	=> $data['offer'],
-				  		'col'	=> 'col-xs-6 col-sm-6',
+				  		'col'	=> 'col-xs-6 col-sm-6 card_product_desktop',
 				  		'last' => true
 					])
 				</div>
@@ -70,7 +70,7 @@
 						<div class="row">
 							@include('web_v2.components.card', [
 								'card' 	=> $data['product'],
-						  		'col'	=> 'col-xs-6 col-sm-6 '
+						  		'col'	=> 'col-xs-6 col-sm-6 card_product_desktop'
 							])
 						</div>
 					</div>
