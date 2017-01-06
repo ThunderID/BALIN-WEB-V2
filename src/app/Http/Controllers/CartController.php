@@ -3,7 +3,7 @@
 use App\API\Connectors\APIProduct;
 use App\API\Connectors\APIUser;
 
-use Input, Response, Redirect, Session, Collection;
+use Input, Response, Redirect, Session, Collection, Request;
 
 use Illuminate\Support\MessageBag as MessageBag;
 
@@ -16,9 +16,11 @@ class CartController extends BaseController
 {
 	protected $controller_name 					= 'cart';
 
-	public function __construct()
+	public function __construct(Request $request)
 	{
 		parent::__construct();
+
+		$this->request 							= $request;
 
 		if (Session::has('whoami'))
 		{
@@ -179,10 +181,14 @@ class CartController extends BaseController
 		//4. return response
 		if($cart['status']==true)
 		{
-			return Response::json(['carts' => $cart['data']], 200);
+			return response()
+            ->json(['carts' => $cart['data']])
+            ->withCallback($this->request->input('callback'));
 		}
 		
-		return Response::json(['carts' => $cart['data'], 'message' => $cart['message']], 200);
+		return response()
+            ->json(['carts' => $cart['data'], 'message' => $cart['message']])
+            ->withCallback($this->request->input('callback'));
 	}
 
 	/**
@@ -235,10 +241,14 @@ class CartController extends BaseController
 		//4. return response
 		if($cart['status']=='success')
 		{
-			return Response::json(['carts' => $cart['data']], 200);
+			return response()
+            ->json(['carts' => $cart['data']])
+            ->withCallback($this->request->input('callback'));
 		}
 		
-		return Response::json(['carts' => $cart['data'], 'message' => $cart['message']], 200);
+		return response()
+            ->json(['carts' => $cart['data'], 'message' => $cart['message']])
+            ->withCallback($this->request->input('callback'));
 	}
 
 	/**
