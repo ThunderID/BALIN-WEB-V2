@@ -183,12 +183,12 @@ class CartController extends BaseController
 		{
 			return response()
             ->json(['carts' => $cart['data']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 		}
 		
 		return response()
             ->json(['carts' => $cart['data'], 'message' => $cart['message']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 	}
 
 	/**
@@ -243,12 +243,12 @@ class CartController extends BaseController
 		{
 			return response()
             ->json(['carts' => $cart['data']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 		}
 		
 		return response()
             ->json(['carts' => $cart['data'], 'message' => $cart['message']])
-            ->withCallback($this->request->input('callback'));
+            ->setCallback($this->request->input('callback'));
 	}
 
 	/**
