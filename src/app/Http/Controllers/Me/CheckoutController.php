@@ -26,9 +26,11 @@ class CheckoutController extends BaseController
 {
 	protected $controller_name 					= 'checkout';
 
-	public function __construct()
+	public function __construct(Request $request)
 	{
 		parent::__construct();
+
+		$this->request 							= $request;
 
 		Session::put('API_token', Session::get('API_token_private'));
 
@@ -281,7 +283,7 @@ class CheckoutController extends BaseController
 
 		if ($me_order_in_cart['status']!= 'success')
 		{
-			return Response::json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'], 200);
+			return response()->json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'])->withCallback($this->request->input('callback'));
 		}
 		//2. Store voucher
 		$voucher 										= Input::get('voucher');
@@ -292,20 +294,20 @@ class CheckoutController extends BaseController
 		//3. Return result
 		if (isset($result['message']))
 		{
-			return Response::json(['type' => 'error', 'msg' => $result['message']], 200);
+			return response()->json(['type' => 'error', 'msg' => $result['message']])->withCallback($this->request->input('callback'));
 		}
 
 		if ($result['data']['voucher']['type']=='free_shipping_cost')
 		{
-			return Response::json(['type' => 'success', 'msg' => 'Selamat! Anda mendapat potongan : gratis biaya pengiriman.', 'discount' => $result['data']['voucher_discount'], 'action' => route('my.balin.checkout.get.order', $result['data']['id']) ], 200);
+			return response()->json(['type' => 'success', 'msg' => 'Selamat! Anda mendapat potongan : gratis biaya pengiriman.', 'discount' => $result['data']['voucher_discount'], 'action' => route('my.balin.checkout.get.order', $result['data']['id']) ])->withCallback($this->request->input('callback'));
 		}
 		elseif($result['data']['voucher'])
 		{
-			return Response::json(['type' => 'success', 'msg' => 'Selamat! Anda mendapat bonus balin point sebesar '.$result['data']['voucher']['value'].' (Balin Point akan ditambahkan jika pesanan sudah dibayar)', 'discount' => false, 'action' => route('my.balin.checkout.get.order', $result['data']['id'])], 200);
+			return response()->json(['type' => 'success', 'msg' => 'Selamat! Anda mendapat bonus balin point sebesar '.$result['data']['voucher']['value'].' (Balin Point akan ditambahkan jika pesanan sudah dibayar)', 'discount' => false, 'action' => route('my.balin.checkout.get.order', $result['data']['id'])])->withCallback($this->request->input('callback'));
 		}
 		else
 		{
-			return Response::json(['type' => 'success', 'msg' => 'Selamat! Voucher Anda di konversikan menjadi point untuk pembayaran.', 'discount' => false, 'action' => route('my.balin.checkout.get.order', $result['data']['id'])], 200);
+			return response()->json(['type' => 'success', 'msg' => 'Selamat! Voucher Anda di konversikan menjadi point untuk pembayaran.', 'discount' => false, 'action' => route('my.balin.checkout.get.order', $result['data']['id'])])->withCallback($this->request->input('callback'));
 		}
 	}
 
@@ -326,7 +328,7 @@ class CheckoutController extends BaseController
 
 		if($me_order_in_cart['status']!= 'success')
 		{
-			return Response::json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'], 200);
+			return response()->json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'])->withCallback($this->request->input('callback'));
 		}
 
 		//2. Store shipment
@@ -368,7 +370,7 @@ class CheckoutController extends BaseController
 
 			$result2															= $APIUser->postMeOrder($me_order_in_cart['data']);
 
-			return Response::json(['type' => 'error', 'msg' => $result['message']], 200);
+			return response()->json(['type' => 'error', 'msg' => $result['message']])->withCallback($this->request->input('callback'));
 		}
 
 		// parsing array to json to parsing in form address
@@ -378,7 +380,7 @@ class CheckoutController extends BaseController
 						'zipcode'			=> $result['data']['shipment']['address']['zipcode'],
 					];
 					
-		return Response::json(['action' => route('my.balin.checkout.get.order', $result['data']['id']), 'address' => $address], 200);
+		return response()->json(['action' => route('my.balin.checkout.get.order', $result['data']['id']), 'address' => $address])->withCallback($this->request->input('callback'));
 	}
 
 	/**
@@ -398,7 +400,7 @@ class CheckoutController extends BaseController
 
 		if($me_order_in_cart['status']!= 'success')
 		{
-			return Response::json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'], 200);
+			return response()->json(['type' => 'error', 'msg' => 'Tidak ada keranjang.'])->withCallback($this->request->input('callback'));
 		}
 
 		//2. Store extension
@@ -422,10 +424,10 @@ class CheckoutController extends BaseController
 		//3. Return result
 		if (isset($result['message']))
 		{
-			return Response::json(['type' => 'error', 'msg' => $result['message']], 200);
+			return response()->json(['type' => 'error', 'msg' => $result['message']])->withCallback($this->request->input('callback'));
 		}
 
-		return Response::json(['type' => 'success', 'msg' => 'Bingkisan sudah tersimpan (akan dikenakan biaya sesuai yang tertera).', 'action' => route('my.balin.checkout.get.order', $result['data']['id'])], 200);
+		return response()->json(['type' => 'success', 'msg' => 'Bingkisan sudah tersimpan (akan dikenakan biaya sesuai yang tertera).', 'action' => route('my.balin.checkout.get.order', $result['data']['id'])])->withCallback($this->request->input('callback'));
 	}
 
 	public function choice_payment()
@@ -441,7 +443,7 @@ class CheckoutController extends BaseController
 			Session::forget('veritrans_payment');
 		}
 
-		return Response::json(['type' => 'success', 'msg' => $payment_method], 200);
+		return response()->json(['type' => 'success', 'msg' => $payment_method])->withCallback($this->request->input('callback'));
 	}
 
 	/**
