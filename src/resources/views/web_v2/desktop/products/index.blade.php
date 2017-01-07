@@ -145,5 +145,9 @@
 		$('.btn-copy-share').attr('data-clipboard-text', window.location.href);
 		fb_link = $('.btn-facebook-share').attr('href');
 		$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
+
+		//$('.pagination-link').bind('click', function(e){
+		//	e.preventDefault();
+		//});
 	});
 @stop

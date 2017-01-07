@@ -7,26 +7,30 @@
 				<i class="fa fa-bars fa-lg"></i>
 			</button>
 			<btn id="cart-mobile" data-toggle="modal" data-target="#modal-cart" class=" border-0 ico_cart navbar-cart";
-			    ">
+				">
 				<i class="fa fa-shopping-bag fa-lg vertical-baseline"></i>
 				<span id="mobile-cart-count">
 					<?php 
 						$count = 0;
 
-						foreach (Session::get('carts') as $k => $v)
+						if (Session::has('carts'))
 						{
-						    if (count($v['varians']) > 1) 
-						    {
-						        foreach ($v['varians'] as $k2 => $v2)
-						        {
-						            $count = $count+1;
-						        }
-						    }
-						    else 
-						    {
-						        $count = $count+1;
-						    }
-						}					
+							foreach (Session::get('carts') as $k => $v)
+							{
+								if (count($v['varians']) > 1) 
+								{
+									foreach ($v['varians'] as $k2 => $v2)
+									{
+										$count = $count+1;
+									}
+								}
+								else 
+								{
+									$count = $count+1;
+								}
+							}					
+							
+						}
 					?>
 					<span class="cart-count {{ (Session::has('carts') && $count >0) ? 'bg-orange text-white' : '' }}">
 						<strong>

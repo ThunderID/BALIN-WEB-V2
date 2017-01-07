@@ -7,8 +7,8 @@
 	 * @return {[type]}   [description]
 	 */
 	function ajaxPaging(e) {
-		var toUrl = $(e).attr("data-url");
-		ajaxPage(toUrl);
+		var toUrl = $(e).attr("href");
+		// ajaxPage(toUrl);
 		window.history.pushState("", "", toUrl);
 		get_url_send_to_btn_share();
 	};
