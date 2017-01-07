@@ -16,7 +16,7 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400|Sacramento" rel="stylesheet">
 		<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> -->
 
 		@if(isset($page_subtitle))

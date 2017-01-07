@@ -1,9 +1,5 @@
 @extends('web_v2.page_templates.layout')
 
-@section('font')
-	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-@append
-
 @section('content')
 	<section class="home-slider">
 		@include('web_v2/components/slider', ['sliders' => $data['sliders']])
