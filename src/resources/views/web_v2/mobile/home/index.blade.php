@@ -36,7 +36,8 @@
 	 		<div class="row">
 	 		  	@include('web_v2.components.card', [
 	 		  		'card' 	=> $data['new_release'],
-	 		  		'col'	=> 'col-md-3 col-sm-3 col-xs-6' 
+	 		  		'col'	=> 'col-md-3 col-sm-3 col-xs-6 card_product_desktop',
+			  		'data'	=> ['type' => 'women']
 	 		  	])
 	 		</div>
 	 	</div>
