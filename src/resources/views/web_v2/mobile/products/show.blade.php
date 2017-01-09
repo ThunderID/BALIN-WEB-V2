@@ -6,8 +6,8 @@
 			<!-- SECTION IMAGE SLIDER PRODUCT -->
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
 				<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails border-1 border-solid border-grey-light hidden-xs" style="width:100%;">
-					<a class="img-large" href="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : '' }}" >
-						<img class="img img-responsive text-center canvas-image"  src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : '' }}" style="width:100%">
+					<a class="img-large" href="{{ isset($data['product']['data']['data'][0]['image_lg']) ? $data['product']['data']['data'][0]['image_lg'] : '' }}" >
+						<img class="img img-responsive text-center canvas-image"  src="{{ isset($data['product']['data']['data'][0]['image_lg']) ? $data['product']['data']['data'][0]['image_lg'] : '' }}" style="width:100%">
 					</a>
 				</div>
 				<div class="row mb-lg">
@@ -16,8 +16,8 @@
 							<div class="carousel-stacked gallery-product">
 								@foreach ($data['product']['data']['data'][0]['images'] as $i => $img)
 									<div class="item item-carousel">
-										<a href="{{ $img['thumbnail'] }}" data-standard="{{ $img['thumbnail'] }}">
-											<img class="img img-responsive canvasSource pull-left" id="canvasSource{{ $i }}" src="{{ $img['thumbnail'] }}" alt="" style="width:70px">
+										<a href="{{ $img['image_lg'] }}" data-standard="{{ $img['image_lg'] }}">
+											<img class="img img-responsive canvasSource pull-left" id="canvasSource{{ $i }}" src="{{ $img['image_lg'] }}" alt="" style="width:70px">
 										</a>
 									</div>
 								@endforeach
@@ -25,8 +25,8 @@
 						@else
 							<div class="carousel-stacked gallery-product">
 								<div class="item item-carousel">
-									<a href="{{ $data['product']['data']['data'][0]['thumbnail'] }}" data-standard="{{ $data['product']['data']['data'][0]['thumbnail'] }}">
-										<img class="img img-responsive canvasSource pull-left" src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : '' }}" alt="{{ $data['product']['data']['data'][0]['name'] }}" style="width:70px">
+									<a href="{{ $data['product']['data']['data'][0]['image_lg'] }}" data-standard="{{ $data['product']['data']['data'][0]['image_lg'] }}">
+										<img class="img img-responsive canvasSource pull-left" src="{{ isset($data['product']['data']['data'][0]['image_lg']) ? $data['product']['data']['data'][0]['image_lg'] : '' }}" alt="{{ $data['product']['data']['data'][0]['name'] }}" style="width:70px">
 									</a>
 								</div>
 							</div>
@@ -39,15 +39,15 @@
 									@if (count($data['product']['data']['data'][0]['images']) != 0)
 										@foreach ($data['product']['data']['data'][0]['images'] as $i => $img)
 											<div class="item item-carousel">
-												<a href="{{ $img['thumbnail'] }}" data-standard="{{ $img['thumbnail'] }}">
-													<img class="img img-responsive canvasSource" id="canvasSource{{ $i }}" src="{{ $img['thumbnail'] }}" alt="" style="width:100%;">
+												<a href="{{ $img['image_lg'] }}" data-standard="{{ $img['image_lg'] }}">
+													<img class="img img-responsive canvasSource" id="canvasSource{{ $i }}" src="{{ $img['image_lg'] }}" alt="" style="width:100%;">
 												</a>
 											</div>
 										@endforeach
 									@else
 										<div class="item item-carousel">
-											<a href="{{ $data['product']['data']['data'][0]['thumbnail'] }}" data-standard="{{ $data['product']['data']['data'][0]['thumbnail'] }}">
-												<img class="img img-responsive canvasSource" src="{{ isset($data['product']['data']['data'][0]['thumbnail']) ? $data['product']['data']['data'][0]['thumbnail'] : 'http://drive.thunder.id/file/public/4/1/2015/12/06/05/avani-short-front.jpg' }}" alt="" style="width:100%;">
+											<a href="{{ $data['product']['data']['data'][0]['image_lg'] }}" data-standard="{{ $data['product']['data']['data'][0]['image_lg'] }}">
+												<img class="img img-responsive canvasSource" src="{{ isset($data['product']['data']['data'][0]['image_lg']) ? $data['product']['data']['data'][0]['image_lg'] : 'http://drive.thunder.id/file/public/4/1/2015/12/06/05/avani-short-front.jpg' }}" alt="" style="width:100%;">
 											</a>
 										</div>									
 									@endif

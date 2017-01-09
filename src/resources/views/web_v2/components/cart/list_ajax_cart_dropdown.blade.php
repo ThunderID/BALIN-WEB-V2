@@ -67,7 +67,7 @@
 			<li class="{{ ($item != end($recommend['data']) ? 'border-bottom-1 border-grey-light' : '') }}">
 				@include('web_v2.components.cart.cart_recommendation', [
 					'label_id'				=> $k,
-					'label_image'			=> $item['image_lg'],
+					'label_image'			=> $item['thumbnail'],
 					'label_name'			=> $item['name'],
 					'label_price'			=> $item['price'],
 					'label_size'			=> $item['varians'],
