@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<link rel="shortcut icon" href="{{ url('images/favicon.ico') }} "/>
+		<link rel="shortcut icon" href="{{ url('http://drive.thunder.id/file/public/4/10/2017/01/09/16/favicon-balin.png') }} "/>
 		{!! Html::style(elixir('css/balin.css')) !!}
 		@yield('font')
 
