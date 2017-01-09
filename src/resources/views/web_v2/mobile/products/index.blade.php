@@ -154,4 +154,10 @@
 		}
 	}
 	$('.more').on('click', function(e){click_more($(this), e)});
+
+	{{-- event link pagination ajax --}}
+	$('.pagination-link').bind('click', function(e){
+		e.preventDefault();
+		ajaxPaging($(this));
+	});
 @stop

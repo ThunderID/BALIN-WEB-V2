@@ -8,7 +8,7 @@
 			@endforeach
 			
 			<a href="{{ route('balin.product.show', array_merge(['slug' => $v['slug']], $categories) ) }}">
-				<img src="" class="card-image-top center-block card-image img-responsive lazy" data-src="{{ $v['thumbnail'] }}"/>
+				<img src="" class="card-image-top center-block card-image img-responsive lazy" data-src="{{ $v['image_sm'] }}"/>
 				<div class="hover"></div>
 			</a>
 			<div class="card-block">

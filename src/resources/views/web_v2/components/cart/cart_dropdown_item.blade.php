@@ -92,25 +92,6 @@
 				</div>
 				@endif
 				<!-- END SECTION DISCOUT -->
-				<?php
-				// <!-- SECTION TOTAL PRICE PRODUCT -->
-				// <div class="row text-regular">
-				// 	<div class="col-xs-12"> 
-				// 		<div class="row">
-				// 			<div class="col-xs-2">
-				// 				<span class="info">Total</span>
-				// 			</div>
-				// 			<div class="col-xs-1">
-				// 				<span class="info">:</span>
-				// 			</div>
-				// 			<div class="col-xs-8 text-right">
-				// 				<span class="info">@money_indo($label_total)</span>
-				// 			</div>
-				// 		</div>                                             
-				// 	</div>
-				// </div>
-				?>
-				<!-- END SECTION TOTAL PRICE PRODUCT -->
 			</div> 
 		</div>
 	</div>                                                                                                                       

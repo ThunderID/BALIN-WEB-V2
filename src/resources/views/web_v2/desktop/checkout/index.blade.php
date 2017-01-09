@@ -77,42 +77,6 @@
 	<div class="col-xs-12 hidden-sm hidden-md hidden-lg clearfix">&nbsp;</div>
 	<div class="col-xs-12 hidden-sm hidden-md hidden-lg clearfix">&nbsp;</div>
 
-	{{-- <div class="row mr-0 ml-0">
-		<div class="col-sm-12 pt-md pb-md">
-			<div id="shipped" class="hide">
-				
-			</div>
-			<div id="voucher" class="hide">
-				@include('web_v2.components.checkout.voucher')
-			</div>
-			<div id="review" class="hide">
-				@include('web_v2.components.checkout.review')
-			</div>
-		</div>
-	</div> --}}
-
-	<!-- SECTION CHECKBOX TERM & CONDITION FOR MOBILE & TABLET -->
-	{{-- <div class="col-xs-12 hidden-lg hidden-md pt-sm">
-		<div class="checkbox i-checks">
-			<label class="text-regular"> 
-				<input type="checkbox" value="1" name="term" class="" required>
-				Saya menyetujui <a href="#" class="link-black unstyle vertical-baseline" data-toggle="modal" data-target="#tnc"><strong>Syarat & Ketentuan</strong></a> pembelian barang di Balin.
-			</label>
-		</div>
-	</div> --}}
-	<!-- END SECTION CHECKBOX TERM & CONDITION FOR MOBILE & TABLET  -->
-
-	<!-- SECTION BUTTON CHECKOUT FOR MOBILE & TABLET -->
-	{{-- <div class="clearfix">&nbsp;</div>
-	<div class="row p-b-md p-t-xs hidden-md hidden-lg">
-		<div class="col-md-12">
-			<div class="form-group text-right">
-				<button type="submit" class="btn btn-black-hover-white-border-black btn-block text-lg" tabindex="7">Checkout</button>
-			</div>        
-		</div>        
-	</div>  --}} 			
-	<!-- END SECTION BUTTON CHECKOUT FOR MOBILE & TABLET -->
-
 	<!-- Term and Condition -->
 	<div id="tnc" class="modal modal-left modal-fullscreen fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 		<div class="modal-dialog modal-lg">

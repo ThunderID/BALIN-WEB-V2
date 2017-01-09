@@ -146,8 +146,10 @@
 		fb_link = $('.btn-facebook-share').attr('href');
 		$('.btn-facebook-share').attr('href', fb_link + '&href=' +window.location.href);
 
-		//$('.pagination-link').bind('click', function(e){
-		//	e.preventDefault();
-		//});
+		{{-- event link pagination ajax --}}
+		$('.pagination-link').bind('click', function(e){
+			e.preventDefault();
+			ajaxPaging($(this));
+		});
 	});
 @stop

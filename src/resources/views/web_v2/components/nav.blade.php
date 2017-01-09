@@ -100,52 +100,7 @@
 					@if (Session::has('whoami'))
 						<a href="{{route('balin.get.logout')}}" class="hover-orange">LOGOUT</a>
 					@endif
-				</li>							
-				<?php
-				// <li>
-				// 	<a href="{{ route('balin.product.index') }}" class="{{$controller_name == 'product'? 'active':''}}">Produk</a>
-				// </li>
-				// {{-- <li>
-				// 	<a href="" data-scroll>Why Join</a>
-				// </li> --}}
-				// @if (Session::has('whoami'))
-				// 	<li>
-				// 		<a href="{{ route('my.balin.redeem.index') }}">Referal &amp; Point
-				// 			<span class="badge badge-hollow text-white"><i class="fa fa-exclamation"></i></span>
-				// 		</a>
-				// 	</li>
-				// @endif
-				// @if (!Session::has('whoami'))
-				// 	<li>
-				// 		<a href="{{ route('balin.get.login') }}" class="{{$controller_name == 'Login'? 'active':''}}">Sign In</a>
-				// 	</li>
-				// @endif
-				// <!-- <li > -->
-				// 	<!-- <a href="" data-scroll>About Us</a> -->
-				// <!-- </li> -->
-				// <!-- <li>
-				// 	<a href="" data-scroll>Contact Us</a>
-				// </li> -->
-				// @if (Session::has('whoami'))
-				// 	<li class="dropdown hidden-xs hidden-sm">
-				// 		<a href="javascript:void(0);" class="dropdown-toggle">Akun Anda <span class="caret"></span></a>
-				// 		<ul class="dropdown-menu dropdown-menu-right dropdown-user user_dropdown" style="margin-top: 1px">
-				// 			<li class="p-xs">
-				// 				<a href="{{ route('my.balin.profile') }}" class="dropdown-toggle">Profile</a>
-				// 			</li> 
-				// 			<li class="p-xs">
-				// 				<a href="{{ route('balin.get.logout') }}">Log out</a>
-				// 			</li>
-				// 		</ul>
-				// 	</li> 
-				// 	<li class="dropdown hidden-md hidden-lg">
-				// 		<a href="{{ route('my.balin.profile') }}" class="dropdown-toggle">Profile</a>
-				// 	</li> 
-				// 	<li class="hidden-md hidden-lg">
-				// 		<a href="{{ route('balin.get.logout') }}">Log out</a>
-				// 	</li>
-				// @endif
-				?>
+				</li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
