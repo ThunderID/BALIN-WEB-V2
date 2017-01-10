@@ -46,7 +46,6 @@
 	});
 
 	function setMobileCart(){
-		console.log(1);
 		var htmlString = $('#cart-content').html();
 		$('#content-cart-mobile').html( htmlString );
 	}

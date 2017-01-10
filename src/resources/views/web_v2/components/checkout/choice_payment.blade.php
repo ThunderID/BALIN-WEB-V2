@@ -22,7 +22,7 @@
 					<label class="control control--radio payment-list">
 						<div class="row">
 							<div class="col-md-11 col-sm-10 col-xs-10">
-								{!!Html::image('/images/mastercard.png', 'veritrans', ['class' => 'payment-list-img'])!!}
+								<i class="sprite-vendor vendor-master-card payment-list-img"></i>
 								<span class="pl-lg hidden-xs">Bayar Dengan MasterCard Credit Card</span>
 								<span class="pl-sm hidden-lg hidden-md hidden-sm">MasterCard</span>
 							</div>
@@ -39,7 +39,7 @@
 					<label class="control control--radio payment-list">
 						<div class="row">
 							<div class="col-md-11 col-sm-10 col-xs-10">
-								{!!Html::image('/images/visa.png', 'veritrans', ['class' => 'payment-list-img'])!!}
+								<i class="sprite-vendor vendor-visa payment-list-img"></i>
 								<span class="pl-lg hidden-xs">Bayar Dengan Visa Credit Card</span>
 								<span class="pl-sm hidden-lg hidden-md hidden-sm">Visa</span>
 							</div>
@@ -64,7 +64,7 @@
 					<label class="control control--radio payment-list">
 						<div class="row">
 							<div class="col-md-11 col-sm-10 col-xs-10">
-								{!!Html::image('/images/bca.png', 'transfer', ['class' => 'payment-list-img'])!!}
+								<i class="sprite-vendor vendor-bca payment-list-img"></i>
 								<span class="pl-lg hidden-xs">Bayar Via Bank BCA</span>
 								<span class="pl-sm hidden-lg hidden-md hidden-sm">BCA</span>							
 							</div>
@@ -81,7 +81,7 @@
 					<label class="control control--radio payment-list">
 						<div class="row">
 							<div class="col-md-11 col-sm-10 col-xs-10">
-								{!!Html::image('/images/mandiri.png', 'transfer', ['class' => 'payment-list-img'])!!}
+								<i class="sprite-vendor vendor-mandiri payment-list-img"></i>
 								<span class="pl-lg hidden-xs">Bayar Via Bank Mandiri</span>
 								<span class="pl-sm hidden-lg hidden-md hidden-sm">Mandiri</span>							
 							</div>
@@ -99,7 +99,7 @@
 					<label class="control control--radio payment-list">
 						<div class="row">
 							<div class="col-md-11 col-sm-10 col-xs-10">
-								{!!Html::image('/images/atm_bersama.png', 'veritrans', ['class' => 'payment-list-img'])!!}
+								<i class="sprite-vendor vendor-atm-bersama payment-list-img"></i>
 								<span class="pl-lg hidden-xs">Bayar Via Jaringan ATM Bersama</span>
 								<span class="pl-sm hidden-lg hidden-md hidden-sm">ATM Bersama</span>
 							</div>
@@ -119,7 +119,7 @@
 			</div>	
 			<div class="row mt-md mb-md">
 				<div class="col-md-12">
-					<h5>Powered by &nbsp; {!!Html::image('/images/midtrans_black.png', 'midtrans', ['style' => 'height: 14px;'])!!}</h5>
+					<h5>Powered by &nbsp; <span class="sprite-vendor vendor-midtrans"></span></h5>
 				</div>
 			</div>								
 		</form>

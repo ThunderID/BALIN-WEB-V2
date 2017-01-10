@@ -2,6 +2,9 @@
 .sprite, .man-menu, .woman-menu {
   background: url("../../images/sprite.png") no-repeat; }
 
+.sprite-vendor {
+  background: url("../../images/sprite-vendor.png") no-repeat; }
+
 .man-white {
   width: 20px;
   height: 56px;
@@ -73,6 +76,49 @@
   height: 26px;
   display: inline-block;
   background-position: 0 -354px; }
+
+.vendor-bca {
+  background-position: -3px 5px;
+  vertical-align: middle;
+  width: 70px;
+  height: 47px;
+  display: inline-block; }
+
+.vendor-visa {
+  background-position: -80px 1px;
+  vertical-align: middle;
+  width: 70px;
+  height: 47px;
+  display: inline-block; }
+
+.vendor-atm-bersama {
+  background-position: -79px -45px;
+  vertical-align: middle;
+  width: 70px;
+  height: 47px;
+  display: inline-block; }
+
+.vendor-master-card {
+  background-position: 0 -47px;
+  vertical-align: middle;
+  width: 70px;
+  height: 47px;
+  display: inline-block; }
+
+.vendor-mandiri {
+  background-position: -8px -138px;
+  vertical-align: middle;
+  width: 70px;
+  height: 47px;
+  display: inline-block; }
+
+.vendor-midtrans {
+  background-position: 0 -70px;
+  vertical-align: middle;
+  width: 100px;
+  height: 14px;
+  display: inline-block;
+  background-size: 100%; }
 
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -6448,7 +6494,7 @@ select {
   border: 0.5px solid #e5e5e5;
   cursor: pointer; }
 
-.payment-list img {
+.payment-list i {
   -webkit-filter: grayscale(100%);
   -webkit-transition: .5s ease-in-out;
   -moz-filter: grayscale(100%);
@@ -6457,7 +6503,7 @@ select {
   -o-transition: .5s ease-in-out;
   filter: grayscale(100%); }
 
-.payment-list:hover img {
+.payment-list:hover i {
   -webkit-filter: grayscale(50%);
   -webkit-transition: .5s ease-in-out;
   -moz-filter: grayscale(50%);
@@ -6466,7 +6512,7 @@ select {
   -o-transition: .5s ease-in-out;
   filter: grayscale(50%); }
 
-.payment-list img.active {
+.payment-list i.active {
   -webkit-filter: grayscale(0%);
   -webkit-transition: .5s ease-in-out;
   -moz-filter: grayscale(0%);

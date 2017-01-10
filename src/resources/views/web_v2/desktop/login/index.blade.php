@@ -69,10 +69,9 @@ if(Session::has('type')){
 							@include('web_v2.components.alert-box')
 							@include('web_v2.components.forgot.form')
 						</div>
-					</div>	
-					<div class="clearfix">&nbsp;</div>
+					</div>
 				</div>
-				<div class="row">
+				<div class="row p-xs">
 					<div class="col-md-12 auth">
 						<p class="signup text-white" style="{{ $type == 'signup' ? 'display:block;' : 'display:none;' }}">
 							Sudah Terdaftar?

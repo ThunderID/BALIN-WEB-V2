@@ -1,6 +1,27 @@
 .sprite {
 	background: url("../../images/sprite.png") no-repeat;
 }
+.sprite-vendor {
+	background: url("../../images/sprite-vendor.png") no-repeat;	
+}
+
+@mixin sprite-vendor-logo($position) {
+	background-position: $position;
+	vertical-align: middle;
+	width: 100px;
+	height: 14px;
+	display: inline-block;
+	background-size: 100%; 
+}
+
+@mixin sprite-vendor($position) {
+	background-position: $position;
+	vertical-align: middle;
+	width: 70px;
+	height: 47px;
+	display: inline-block;
+}
+
 @mixin sprite-large($position) {
 	width: 20px;
 	height: 56px;
@@ -31,7 +52,7 @@
 .woman-orange {
 	@include sprite-large(0 -168px);
 }
-// navbar shortcut
+// sprite for navbar shortcut
 .man-black-medium {
 	@include sprite-medium(0 -224px);
 }
@@ -49,4 +70,24 @@
 }
 .signout-black-medium {
 	@include sprite-medium(0 -354px);
+}
+// sprite for list vendor payment
+.vendor-bca {
+	@include sprite-vendor(-3px 5px);
+}
+.vendor-visa {
+	@include sprite-vendor(-80px 1px);
+}
+.vendor-atm-bersama {
+	@include sprite-vendor(-79px -45px);
+}
+.vendor-master-card {
+	@include sprite-vendor(0 -47px);
+}
+.vendor-mandiri {
+	@include sprite-vendor(-8px -138px);
+}
+// for vendor logo
+.vendor-midtrans {
+	@include sprite-vendor-logo(0 -70px);
 }
