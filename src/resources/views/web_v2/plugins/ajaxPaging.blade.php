@@ -8,7 +8,7 @@
 	 */
 	function ajaxPaging(e) {
 		var toUrl = $(e).attr("href");
-		// ajaxPage(toUrl);
+		ajaxPage(toUrl);
 		window.history.pushState("", "", toUrl);
 		get_url_send_to_btn_share();
 	};
