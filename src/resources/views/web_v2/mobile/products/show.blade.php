@@ -131,7 +131,7 @@
 									</a>
 								</div>
 								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									<div class="panel-body">
+									<div class="panel-body img-fit">
 										{!! $description['fit'] !!}
 									</div>
 								</div>
@@ -152,7 +152,7 @@
 									</a>
 								</div>
 								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">
+									<div class="panel-body img-fit">
 										{!! $description['care'] !!}
 									</div>
 								</div>
