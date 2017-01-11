@@ -101,7 +101,7 @@
 		$('.page_holder').css('min-height', $('#left_menu').height());
 
 		{{-- MENU FIXED --}}
-		pos = $('#left_menu').offset();
+		pos = 125;
 		$(this).scroll(function() {
 			h_footer = $('.divider_footer').offset().top - 55;
 			if($(this).scrollTop() > 40){
@@ -111,7 +111,7 @@
 					$('#left_menu').css({ top: ideal_pos - $(this).scrollTop() + 55 + 'px' });
 				}
 			}else{
-				$('#left_menu').css({ top: pos.top + 'px' });
+				$('#left_menu').css({ top: pos + 'px' });
 			}
 		});
 

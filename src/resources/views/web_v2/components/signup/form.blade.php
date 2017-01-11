@@ -13,7 +13,7 @@
 	</div>
 	<div class="form-group row ml-0 mr-0">
 		<div class="col-xs-3 col-sm-3 pl-0 pr-5">
-			{!! Form::select('gender', [0 => 'Mr.', 1 => 'Mrs.'], null, ['class' => 'form-control input-lg text-lg text-center drop-down', 'required' => 'required', 'tabindex' => 3]) !!}
+			{!! Form::select('gender', ['male' => 'Mr.', 'female' => 'Mrs.'], null, ['class' => 'form-control input-lg text-lg text-center drop-down', 'required' => 'required', 'tabindex' => 3]) !!}
 		</div>
 		<div class="col-xs-9 col-sm-9 pl-5 pr-0">
 			{!! Form::text('name', null, ['class' => 'form-control input-lg text-lg', 'placeholder' => 'Name', 'required' => 'required', 'tabindex' => 4]) !!}
