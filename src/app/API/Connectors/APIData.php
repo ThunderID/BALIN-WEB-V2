@@ -23,36 +23,7 @@ abstract class APIData
 
 	protected function get()
 	{
-		$queryString 				= Null;
-
-		foreach ($this->api_data as $title => $data) {
-			if(is_array($data))
-			{
-				foreach ($data as $subTitle => $subData) {
-					if(!is_null($subData) || !empty($subData))
-					{
-						if(is_array($subData))
-						{
-							foreach ($subData as $subTitle2 => $subData2) {
-								if(!is_null($subData2) || !empty($subData2))
-								{
-									$queryString = $queryString . $title . "[" .  $subTitle . "][" .  $subTitle2 . "]=" . $subData2 . "&";				
-								}
-							}
-						}
-						else
-						{
-							$queryString = $queryString . $title . "[" .  $subTitle . "]=" . $subData . "&";				
-						}
-
-					}
-				}
-			}
-			else
-			{
-				$queryString 		= $queryString . $title . "=" . $data . "&";
-			}		
-		}
+		$queryString 				= http_build_query($this->api_data);
 
 		$queryString 				= str_replace(' ', '%20', $queryString);
 
