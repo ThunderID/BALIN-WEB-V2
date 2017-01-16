@@ -4,7 +4,7 @@ use App\API\Connectors\APIProduct;
 use App\API\Connectors\APITag;
 use App\API\Connectors\APICategory;
 
-use Response, Input, Collection, Session, BalinMail, Route, App;
+use Response, Input, Collection, Session, BalinMail, Route, App, Cache;
 
 /**
  * Used for Product Controller
@@ -143,16 +143,33 @@ class ProductController extends BaseController
 			$page 									= Input::get('page');
 		}
 
+
+		// dd($search);
 		//3. Get data from API
 		//3a. API Product
-		$APIProduct 								= new APIProduct;
 
-		$product 									= $APIProduct->getIndex([
+		// get cache
+		$qs 										= http_build_query($search);
+
+		$product 									= Cache::get("product" . $qs);	
+
+
+		if($product == null){		
+			// get data from API
+			$APIProduct 							= new APIProduct;
+
+			$product 								= $APIProduct->getIndex([
 															'search' 	=> $search,
 															'sort' 		=> $sort,
 															'take'		=> $this->take,
 															'skip'		=> ($page - 1) * $this->take,
 														]);
+
+
+			// save cache
+			Cache::put("product" . $qs, $product, $this->ttlCache);
+		}
+
 
 		// throw 404 if no data
 		if($product['data']['count'] == 0){
@@ -172,22 +189,42 @@ class ProductController extends BaseController
 		$offer['data']['data'] 						= [];
 		if(!count($product['data']['data']))
 		{
-			$offer 									= $APIProduct->getIndex([
-														'search' 	=> $linked_search,
-														'sort' 		=> ['newest' => 'desc'],
-														'take'		=> 3,
-														'skip'		=> 0,
-													]);
+			// Get from cache
+			$offer 									= Cache::get("offer[". $linked_search['categories'][0]  ."]");
+
+			if($offer == null){
+				$offer 								= $APIProduct->getIndex([
+															'search' 	=> $linked_search,
+															'sort' 		=> ['newest' => 'desc'],
+															'take'		=> 3,
+															'skip'		=> 0,
+														]);
+
+				// strore cache
+				Cache::put("offer[". $linked_search['categories'][0]  ."]", $offer, $this->ttlCache);
+			}
 		}
 
-		//3c. API Tag
-		$API_tag 									= new APITag;
-		$get_api_tag								= $API_tag->getIndex([
+		//3c. API Filters
+
+		// Get filters from cache
+		$get_api_tag 								= Cache::get("filter[". $linked_search['categories'][0]  ."]");	
+
+
+		if($get_api_tag == null){
+			$API_tag 								= new APITag;
+			$get_api_tag							= $API_tag->getIndex([
 															'search' 	=> 	$linked_search,
 															'sort' 		=> 	[
 																				'path'	=> 'asc',
 																			],
 														]);
+
+			// strore cache
+			Cache::put("filter[". $linked_search['categories'][0]  ."]", $get_api_tag, $this->ttlCache);
+		}
+
+
 
 		$color_chart 								= $this->getcolorchart();
 		
