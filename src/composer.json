@@ -10,6 +10,7 @@
         "laravelcollective/html": "5.1.*",
         "barryvdh/laravel-debugbar": "^2.1@dev",
         "laravel/socialite": "^3.0@dev",
+        "predis/predis": "dev-master",
         "guzzlehttp/guzzle": "~5.3|~6.0"
     },
     "require-dev": {
