@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\API\Connectors\APIProduct;
-use Session, Config, Input;
+use Session, Config, Input, Cache;
+
+use App\Http\Controllers\Modules\cacheManager;
 
 class HomeController extends BaseController 
 {	
@@ -27,6 +29,7 @@ class HomeController extends BaseController
 	 */
 	public function index()
 	{
+
 		//get data
 		$APIProduct 								= new APIProduct;
 		$sort										= ['name' => 'asc'];
@@ -34,6 +37,7 @@ class HomeController extends BaseController
 
 		if(Session::has('whoami'))
 		{
+			//get session proofile
 			if(Session::get('whoami')['gender']=='male')
 			{
 				$categories[] 						= 'pria';
@@ -43,39 +47,77 @@ class HomeController extends BaseController
 				$categories[] 						= 'wanita';
 			}
 
+
+			// Premium Product
 			if($this->premium)
 			{
 				$linked_search 						= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+						
+				// Get data from cache
+				$product 							= Cache::get("recomendation_product['premium'][" . $categories[0] . "]");
 			}
 			else
 			{
 				$linked_search 						= ['categories' => $categories];
+
+				// Get data from cache
+				$product 							= Cache::get("recomendation_product['normal'][" . $categories[0] . "]");				
 			}
 
-			$product 								= $APIProduct->getIndex([
+
+			// if cached data not presents, gather the data again 
+			if($product == null){
+				$product 							= $APIProduct->getIndex([
 															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 12,
 															'skip'		=> 0,
 														]);
+
+
+				//store cache
+				if($this->premium){
+					Cache::put("recomendation_product['premium'][" . $categories[0] . "]", $product, $this->ttlCache);
+				}else{
+					Cache::put("recomendation_product['normal'][" . $categories[0] . "]", $product, $this->ttlCache);
+				}
+			}
 		}
 		else
 		{
+			// Premium Product
 			if($this->premium)
 			{
 				$linked_search 						= ['tags' => ['fabric-premium-cotton']];
+
+				// Get data from cache
+				$product 							= Cache::get("recomendation_product['premium']['all']");
 			}
 			else
 			{
 				$linked_search 						= [];
+
+				// Get data from cache
+				$product 							= Cache::get("recomendation_product['normal']['all']");
 			}
 
-			$product 								= $APIProduct->getIndex([
+			// if cached data not presents, gather the data again 
+			if($product == null){
+				$product 							= $APIProduct->getIndex([
 															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 12,
 															'skip'		=> 0,
 														]);
+
+
+				//store cache
+				if($this->premium){
+					Cache::put("recomendation_product['premium']['all']", $product, $this->ttlCache);
+				}else{
+					Cache::put("recomendation_product['normal']['all']", $product, $this->ttlCache);
+				}				
+			}
 		}
 
 		//temporary data
@@ -127,6 +169,7 @@ class HomeController extends BaseController
 		$this->page_attributes->data['premium']		= $this->premium;
 
 		$this->page_attributes->source 				= $this->page_attributes->source . 'index';
+
 
 		return $this->generateView();
 	}

@@ -52,6 +52,7 @@ class AuthController extends BaseController
 												'gender'		=> Input::get('gender'),
 												'role'			=> 'customer'
 											];
+		dd($data);
 		
 		if (Input::has('password') || is_null($id))
 		{

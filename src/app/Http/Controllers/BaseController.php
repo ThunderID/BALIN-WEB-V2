@@ -25,6 +25,7 @@ abstract class BaseController extends Controller
 		
 		$this->errors 				= new MessageBag();
 		$this->page_attributes 		= new \Stdclass;
+		$this->ttlCache 			= env('ttlCache', 120);
 
 		if(!Session::has('API_token') || Session::get('API_expired_token') < Carbon::now()->format('Y-m-d H:i:s'))
 		{
@@ -60,9 +61,16 @@ abstract class BaseController extends Controller
 		}
 
   		//generate balin information
-  		$APIConfig 									= new APIConfig;
-		
-		$config 									= $APIConfig->getIndex([
+
+		//check from cache
+		$config 									= Cache::get("balin");
+
+		if($config == null){
+
+			// get config
+	  		$APIConfig 								= new APIConfig;
+			
+			$config 								= $APIConfig->getIndex([
 														'search' 	=> 	[
 																			'default'	=> 'true',
 																		],
@@ -70,6 +78,11 @@ abstract class BaseController extends Controller
 																			'name'	=> 'asc',
 																		],
 														]);
+
+
+			// set cache
+			Cache::put("config", $config, $this->ttlCache);
+		}
 
 		$balin 										= $config['data'];
 
