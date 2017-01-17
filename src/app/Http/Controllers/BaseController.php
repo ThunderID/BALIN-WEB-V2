@@ -125,8 +125,13 @@ abstract class BaseController extends Controller
   		{
   			if (!Session::has('whoami'))
   			{
-  				$APIProduct 					= new APIProduct;
-  				$recommend 						= $APIProduct->getIndex([
+				// Get data from cache
+				$recommend 						= Cache::get("recommend");
+
+				if($recommend == null){
+					// if cached data not presents, gather the data again 
+	  				$APIProduct 				= new APIProduct;
+	  				$recommend 					= $APIProduct->getIndex([
   														'search' 	=> 	[
   																			'name' 	=> Input::get('q'),
   																			'recommended' => 0,
@@ -137,6 +142,13 @@ abstract class BaseController extends Controller
   														'take'		=> 2,
   														'skip'		=> '',
   													]);
+
+	  				// store cache
+					Cache::put("recommend", $recommend, $this->ttlCache);
+				}
+
+
+
   			}
   			else
   			{

@@ -324,29 +324,56 @@ class ProductController extends BaseController
 			}
 
 			//2. Get Related product
-			$related 							= $API_product->getIndex([
-														'search' 	=> 	[
-																			'categories' 	=> $slugs,
-																			'notid' 		=> $product['data']['data'][0]['id'],
-																		],
+			$search 							= 	[
+														'categories' 	=> $slugs,
+														'notid' 		=> $product['data']['data'][0]['id'],
+													];
+
+			$qs 								= http_build_query($search);
+
+			//get from cache
+			$related 							= Cache::get($qs);	
+
+			if($related == null){
+				//if no cache get from api
+				$related 						= $API_product->getIndex([
+														'search' 	=> 	$search,
 														'sort' 		=> 	[
 																			'name'	=> 'asc',
 																		],																		
 														'take'		=> 8,
 													]);	
-	
+					
+				// store cache
+				Cache::put($qs, $related, $this->ttlCache);
+			}
+
+
 			if(!count($related['data']['data']))
 			{
-				$related 						= $API_product->getIndex([
-														'search' 	=> 	[
-																			'categories' 	=> $type,
-																			'notid' 		=> $product['data']['data'][0]['id'],
-																		],
+				$search 						= 	[
+														'categories' 	=> $type,
+														'notid' 		=> $product['data']['data'][0]['id'],
+													];
+
+				$qs 							= http_build_query($search);
+
+				//get from cache
+				$related 						= Cache::get($qs);	
+
+				if($related == null){
+					//if no cache get from api
+					$related 					= $API_product->getIndex([
+														'search' 	=> 	$search,
 														'sort' 		=> 	[
 																			'name'	=> 'asc',
 																		],																		
 														'take'		=> 8,
 													]);	
+
+					// store cache
+					Cache::put($qs, $related, $this->ttlCache);					
+				}
 			}
 
 			$carts 									= Session::get('carts');

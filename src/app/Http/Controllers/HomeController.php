@@ -214,12 +214,23 @@ class HomeController extends BaseController
 				$linked_search 						= ['categories' => $categories];
 			}
 
-			$product 								= $APIProduct->getIndex([
+			//check from cache
+			$qs 									= http_build_query($linked_search);
+
+			$product 								= Cache::get("404product" . $qs);
+
+			if($product == null){		
+				// check if cached data exist
+				$product 							= $APIProduct->getIndex([
 															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
 														]);
+
+				// store data
+				Cache::put("404product" . $qs, $product, $this->ttlCache);
+			}
 		}
 		else
 		{
@@ -232,12 +243,22 @@ class HomeController extends BaseController
 				$linked_search 						= [];
 			}
 
-			$product 								= $APIProduct->getIndex([
+			//check from cache
+			$qs 									= http_build_query($linked_search);
+
+			$product 								= Cache::get("404product" . $qs);
+
+			if($product == null){
+				// check if cached data exist
+				$product 							= $APIProduct->getIndex([
 															'search' 	=> $linked_search,
 															'sort' 		=> $sort,
 															'take'		=> 4,
 															'skip'		=> 0,
 														]);
+				// store data
+				Cache::put("404product" . $qs, $product, $this->ttlCache);				
+			}
 
 			$type 									= explode('0', Input::get('categories')[0])[0];
 		}
