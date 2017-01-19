@@ -65,6 +65,11 @@
 		{!! HTML::style('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css') !!}
 
 		{{-- JS --}}
+		
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 		{!! HTML::script(elixir('js/balin.js')) !!}
 
 		@yield('js_plugin')
