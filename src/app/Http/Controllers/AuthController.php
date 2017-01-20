@@ -34,14 +34,26 @@ class AuthController extends BaseController
 	public function postSignUp($id = "")
 	{
 		$type 							= 'login';
-		if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
-		{
+		// if (preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]))
+		// {
+		// }
+		// else
+		// {
+		// 	$dob						= Carbon::createFromFormat('d-m-Y', Input::get('dob'))->format('Y-m-d H:i:s');
+		// }
+
+		try {
 			$dob						= Carbon::createFromFormat('d-m-Y', Input::get('dob'))->format('Y-m-d H:i:s');
+		} catch (Exception $e) {
+			if($dob == null){
+				$this->errors 			= 'Tanggal lahir belum di isi!';
+			}else{
+				$this->errors 			= 'Format tanggal lahir tidak benar!';
+			}
+
+			return $this->generateRedirectRoute('balin.get.login', ['type' => 'signup']);
 		}
-		else
-		{
-			$dob						= Carbon::createFromFormat('d-m-Y', Input::get('dob'))->format('Y-m-d H:i:s');
-		}
+
 		
 		$data 							=	[
 												'id'			=> $id,
@@ -52,7 +64,6 @@ class AuthController extends BaseController
 												'gender'		=> Input::get('gender'),
 												'role'			=> 'customer'
 											];
-		dd($data);
 		
 		if (Input::has('password') || is_null($id))
 		{
