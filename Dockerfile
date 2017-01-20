@@ -123,7 +123,7 @@ RUN cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 RUN apk del tzdata
 
 # run composer install
-RUN cd /var/www/html && composer install && composer update
+RUN cd /var/www/html && composer install 
 
 # share .env file
 #ADD ./.env /var/www/html/.env
