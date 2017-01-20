@@ -25,8 +25,9 @@ abstract class BaseController extends Controller
 		
 		$this->errors 				= new MessageBag();
 		$this->page_attributes 		= new \Stdclass;
-		$this->ttlCache 			= env('ttlCache', 120);
 
+		//1. Set access token
+		$whoami 					= ['id' => 0];
 		if(!Session::has('API_token') || Session::get('API_expired_token') < Carbon::now()->format('Y-m-d H:i:s'))
 		{
 			$api_url 					= '/oauth/client/access_token';
@@ -59,153 +60,47 @@ abstract class BaseController extends Controller
 				return Redirect::route('balin.get.login')->withErrors(['Waktu login Anda sudah expire, silahkan login lagi.']);
 			}
 		}
-
-  		//generate balin information
-
-		//check from cache
-		$config 									= Cache::get("balin");
-
-		if($config == null){
-
-			// get config
-	  		$APIConfig 								= new APIConfig;
-			
-			$config 								= $APIConfig->getIndex([
-														'search' 	=> 	[
-																			'default'	=> 'true',
-																		],
-														'sort' 		=> 	[
-																			'name'	=> 'asc',
-																		],
-														]);
-
-
-			// set cache
-			Cache::put("config", $config, $this->ttlCache);
-		}
-
-		$balin 										= $config['data'];
-
-		unset($balin['info']);
-		foreach ($config['data']['info'] as $key => $value) 
+		elseif(Session::has('API_token_private'))
 		{
-			$balin['info'][$value['type']]			= $value;
+			$whoami 				= ['id' => Session::get('whoami')['id']];
+  			Session::set('API_token', Session::get('API_token_private'));
 		}
 
-		$this->balin 								= $balin;
+		//2. Set base layout
+		$this->layout 				= view('web_v2.page_templates.layout');
 
-		//base layout
-		$this->layout 								= view('web_v2.page_templates.layout');
-
-		//detect mobile or desktop
-		$Mobile_Detect 								= new mobile_detect;
+		$Mobile_Detect 				= new mobile_detect;
 		if($Mobile_Detect->isMobile() == true && $Mobile_Detect->isTablet() == false)
 		{
-			$this->base_path_view 					= 'web_v2.mobile.';
-		}else{
-			$this->base_path_view 					= 'web_v2.desktop.';
+			$this->base_path_view 	= 'web_v2.mobile.';
 		}
-	}
+		else
+		{
+			$this->base_path_view 	= 'web_v2.desktop.';
+		}
 
-	public function generateView()
-  	{
-  		//require
-  		if (!isset($this->page_attributes->breadcrumb)){ $this->page_attributes->breadcrumb = []; }
-  		if (!isset($this->page_attributes->title)){ $this->page_attributes->title = null; }
-  		if (!isset($this->page_attributes->subtitle)){ $this->page_attributes->subtitle = null; }
-  		if (!isset($this->page_attributes->data)){ $this->page_attributes->data = null; }
-  		if (!isset($this->page_attributes->paginator)){$this->page_attributes->paginator = null;}
-  		if (!isset($this->page_attributes->paginator_item_from)){$this->page_attributes->paginator_item_from = null;}
-  		if (!isset($this->page_attributes->paginator_item_to)){$this->page_attributes->paginator_item_to = null;}
-  		if (!isset($this->page_attributes->type_form)){$this->page_attributes->type_form = null;}
-  		if (!isset($this->page_attributes->metas)){$this->page_attributes->metas = null;}
-  		if (!isset($this->page_attributes->controller_name)){$this->page_attributes->controller_name = null;}
+		//3. get balin value
+		$this->balin 				= Cache::remember('config_balin', 20, function()
+			{
+				return $this->getBalin();
+			});
+		
+		//4. get recommendation
+		$this->recommend 			= Cache::remember('recommendation_'.http_build_query($whoami), 20, function()
+			{
+				return $this->getRecommendation();
+			});
 
-  		if (!Session::has('carts') || is_null(Session::get('carts')) || empty(Session::get('carts'))) 
-  		{
-  			if (!Session::has('whoami'))
-  			{
-				// Get data from cache
-				$recommend 						= Cache::get("recommend");
-
-				if($recommend == null){
-					// if cached data not presents, gather the data again 
-	  				$APIProduct 				= new APIProduct;
-	  				$recommend 					= $APIProduct->getIndex([
-  														'search' 	=> 	[
-  																			'name' 	=> Input::get('q'),
-  																			'recommended' => 0,
-  																		],
-  														'sort' 		=> 	[
-  																			'name'	=> 'asc',
-  																		],
-  														'take'		=> 2,
-  														'skip'		=> '',
-  													]);
-
-	  				// store cache
-					Cache::put("recommend", $recommend, $this->ttlCache);
-				}
-
-
-
-  			}
-  			else
-  			{
-  				Session::set('API_token', Session::get('API_token_private'));
-
-				$APIProduct 					= new APIProduct;
-				$recommend 						= $APIProduct->getIndex([
-														'search' 	=> 	[
-																			'name' 	=> Input::get('q'),
-																			'recommended' => Session::get('whoami')['id'],
-																		],
-														'sort' 		=> 	[
-																			'name'	=> 'asc',
-																		],
-														'take'		=> 2,
-														'skip'		=> '',
-													]);
-  			}
-  		}
-  		else
-  		{
-  			$recommend 			= [];
-  		}
-
-		$APICategory 			= new APICategory;
-		$category 				= $APICategory->getIndex();
-
-  		$balin 					= $this->balin;
-  		
-		//paginator
-  		$paging					= $this->page_attributes->paginator;
-  		$paging_from 			= $this->page_attributes->paginator_item_from;
-  		$paging_to 				= $this->page_attributes->paginator_item_to;
-
-		//initialize view
-  		$this->layout 			= view($this->base_path_view . $this->page_attributes->source, compact('paging', 'paging_from', 'paging_to'))
-									->with('breadcrumb', $this->page_attributes->breadcrumb)
-									->with('page_title', $this->page_attributes->title)
-									->with('page_subtitle', $this->page_attributes->subtitle)
-									->with('data', $this->page_attributes->data)
-									->with('balin', $balin)
-									->with('recommend', $recommend)
-									->with('category', $category['data']['data'])
-									->with('metas', $this->page_attributes->metas)
-									->with('controller_name', $this->page_attributes->controller_name)
-									->with('type', $this->page_attributes->type_form)
-									->with('veritrans_option', env('VERITRANS_OPTION', true))
-									;
-
-  		//optional data
-  		if (isset($this->page_attributes->search))
-  		{
-  			$this->layout 		= $this->layout->with('searchResult', $this->page_attributes->search);
-  		}
-
-  		// return view
-		return $this->layout;		
+		//5. default metas
+		$this->page_attributes->metas	= 	[
+												'og:type' 			=> 'website', 
+												'og:title' 			=> 'BALIN.ID', 
+												'og:description' 	=> 'Fashionable and Modern Batik',
+												'og:url' 			=> $this->balin['info']['url']['value'],
+												'og:image' 			=> $this->balin['info']['logo']['value'],
+												'og:site_name' 		=> 'balin.id',
+												'fb:app_id' 		=> \Config::get('fb_app.id'),
+											];
 	}
 
 	public function generateRedirectRoute($to = null, $parameter = null)
@@ -234,7 +129,7 @@ abstract class BaseController extends Controller
 		//$count : number of data. $count = count($data)
 		//$current : current page. $current = input::get($page)
 
-		$this->page_attributes->paginator 			= new LengthAwarePaginator($count, $count, $this->take, $current);
+		$this->page_attributes->paginator = new LengthAwarePaginator($count, $count, $this->take, $current);
 	    $this->page_attributes->paginator->setPath($route);
 
 	    // get item from to
@@ -253,8 +148,61 @@ abstract class BaseController extends Controller
 	    }
 	    
 
-	    $this->page_attributes->paginator_item_from	= $paginate_item_from;
-	    $this->page_attributes->paginator_item_to	= $paginate_item_to;
+	    return ['paginate_item_from' => $paginate_item_from, 'paginate_item_to' => $paginate_item_to, 'paging' => $paginate];
+	}
+
+	public function getRecommendation()
+	{
+		$user_id			= 0;
+		if(Session::has('whoami'))
+		{
+			$user_id 		= Session::get('whoami')['id'];
+		}
+		
+		$recommend 			= [];
+
+		if (!Session::has('carts') || is_null(Session::get('carts')) || empty(Session::get('carts'))) 
+  		{
+  			$APIProduct 					= new APIProduct;
+			$recommend 						= $APIProduct->getIndex([
+													'search' 	=> 	[
+																		'name' 	=> Input::get('q'),
+																		'recommended' => $user_id,
+																	],
+													'sort' 		=> 	[
+																		'name'	=> 'asc',
+																	],
+													'take'		=> 2,
+													'skip'		=> '',
+												]);
+		}
+
+		return $recommend;
+	}
+
+	public function getBalin()
+	{
+  		$APIConfig 								= new APIConfig;
+		
+		$config 								= $APIConfig->getIndex([
+													'search' 	=> 	[
+																		'default'	=> 'true',
+																	],
+													'sort' 		=> 	[
+																		'name'	=> 'asc',
+																	],
+													]);
+
+
+		$balin 										= $config['data'];
+
+		unset($balin['info']);
+		foreach ($config['data']['info'] as $key => $value) 
+		{
+			$balin['info'][$value['type']]			= $value;
+		}
+
+		return $balin;
 	}
 
 	public function getcolorchart()
@@ -271,4 +219,26 @@ abstract class BaseController extends Controller
 
 		return $this->color_chart;
 	}
+
+	public function generateView()
+  	{
+  		if (!isset($this->page_attributes->type_form)){$this->page_attributes->type_form = null;}
+  		
+		//initialize view
+  		$this->layout 			= view($this->base_path_view . $this->page_attributes->source)
+									->with('breadcrumb', $this->page_attributes->breadcrumb)
+									->with('page_title', $this->page_attributes->title)
+									->with('page_subtitle', $this->page_attributes->subtitle)
+									->with('data', $this->page_attributes->data)
+									->with('balin', $this->balin)
+									->with('recommend', $this->recommend)
+									// ->with('category', $category['data']['data'])
+									->with('metas', $this->page_attributes->metas)
+									->with('type', $this->page_attributes->type_form)
+									->with('veritrans_option', env('VERITRANS_OPTION', true))
+									;
+  		// return view
+		return $this->layout;		
+	}
+
 }

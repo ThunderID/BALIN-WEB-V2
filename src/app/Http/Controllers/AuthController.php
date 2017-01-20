@@ -269,12 +269,13 @@ class AuthController extends BaseController
 			return Redirect::route('my.balin.redeem.index');
 		}
 		
-		$breadcrumb										= ['Sign In' => route('balin.get.login')];
+		$breadcrumb									= ['Sign In' => route('balin.get.login')];
 
 		$this->page_attributes->subtitle 			= 'Sign In';
 		$this->page_attributes->controller_name		= $this->controller_name;
 		$this->page_attributes->breadcrumb			= $breadcrumb;
 		$this->page_attributes->type_form			= 'login';
+		$this->page_attributes->data 				= '';
 		$this->page_attributes->source 				= 'login.index';
 
 		return $this->generateView();

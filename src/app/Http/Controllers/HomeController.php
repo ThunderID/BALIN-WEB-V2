@@ -1,9 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\API\Connectors\APIProduct;
+use App\API\Connectors\APICategory;
 use Session, Config, Input, Cache;
-
-use App\Http\Controllers\Modules\cacheManager;
 
 class HomeController extends BaseController 
 {	
@@ -16,7 +15,6 @@ class HomeController extends BaseController
 		Session::set('API_token', Session::get('API_token_public'));
 
 		$this->page_attributes->title 				= 'BALIN.ID';
-		$this->page_attributes->source 				= 'home.';
 		$this->page_attributes->breadcrumb			= [];
 		$this->take 								= 20;
 		$this->premium 								= env('BALIN_RELEASE_PREMIUM', true);
@@ -29,119 +27,42 @@ class HomeController extends BaseController
 	 */
 	public function index()
 	{
-
-		//get data
-		$APIProduct 								= new APIProduct;
-		$sort										= ['name' => 'asc'];
-		$page 										= 1;
-
+		$categories[0]					= 'wanita';
 		if(Session::has('whoami'))
 		{
-			//get session proofile
 			if(Session::get('whoami')['gender']=='male')
 			{
-				$categories[] 						= 'pria';
+				$categories[0] 			= 'pria';
 			}
 			else
 			{
-				$categories[] 						= 'wanita';
-			}
-
-
-			// Premium Product
-			if($this->premium)
-			{
-				$linked_search 						= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
-						
-				// Get data from cache
-				$product 							= Cache::get("recomendation_product['premium'][" . $categories[0] . "]");
-			}
-			else
-			{
-				$linked_search 						= ['categories' => $categories];
-
-				// Get data from cache
-				$product 							= Cache::get("recomendation_product['normal'][" . $categories[0] . "]");				
-			}
-
-
-			// if cached data not presents, gather the data again 
-			if($product == null){
-				$product 							= $APIProduct->getIndex([
-															'search' 	=> $linked_search,
-															'sort' 		=> $sort,
-															'take'		=> 12,
-															'skip'		=> 0,
-														]);
-
-
-				//store cache
-				if($this->premium){
-					Cache::put("recomendation_product['premium'][" . $categories[0] . "]", $product, $this->ttlCache);
-				}else{
-					Cache::put("recomendation_product['normal'][" . $categories[0] . "]", $product, $this->ttlCache);
-				}
-			}
-		}
-		else
-		{
-			// Premium Product
-			if($this->premium)
-			{
-				$linked_search 						= ['tags' => ['fabric-premium-cotton']];
-
-				// Get data from cache
-				$product 							= Cache::get("recomendation_product['premium']['all']");
-			}
-			else
-			{
-				$linked_search 						= [];
-
-				// Get data from cache
-				$product 							= Cache::get("recomendation_product['normal']['all']");
-			}
-
-			// if cached data not presents, gather the data again 
-			if($product == null){
-				$product 							= $APIProduct->getIndex([
-															'search' 	=> $linked_search,
-															'sort' 		=> $sort,
-															'take'		=> 12,
-															'skip'		=> 0,
-														]);
-
-
-				//store cache
-				if($this->premium){
-					Cache::put("recomendation_product['premium']['all']", $product, $this->ttlCache);
-				}else{
-					Cache::put("recomendation_product['normal']['all']", $product, $this->ttlCache);
-				}				
+				$categories[0] 			= 'wanita';
 			}
 		}
 
-		//temporary data
-		$datas['sliders']							= 	$this->balin['sliders'];
-
-		$shop_by_style								= 	$this->balin['banners'];
-
-		foreach ($shop_by_style as $key => $value) 
+		//1. Get Slider
+		$datas['sliders']				= $this->balin['sliders'];
+		
+		//2. Get Banner & instagram
+		foreach ($this->balin['banners'] as $key => $value) 
 		{
 			if($value['type']=='banner')
 			{
 				$tmp 										= json_decode($value['value'],true);
-				$datas['shop_by_style'][$tmp['position']]	= 	[
-																	'images' 	=> 	[
-																						'thumbnail'		=> $value['thumbnail'],
-																						'image_xs'		=> $value['image_xs'],
-																						'image_sm'		=> $value['image_sm'],
-																						'image_md'		=> $value['image_md'],
-																						'image_lg'		=> $value['image_lg'],
-																					],
-																	'action_url'=> $tmp['action_url'],
-																	'caption'	=> $tmp['caption'],
-																	'position'	=> $tmp['position'],
-																];
+				$datas['shop_by_style'][$tmp['position']]	= 	
+					[
+						'images' 		=> 	
+							[
+								'thumbnail'		=> $value['thumbnail'],
+								'image_xs'		=> $value['image_xs'],
+								'image_sm'		=> $value['image_sm'],
+								'image_md'		=> $value['image_md'],
+								'image_lg'		=> $value['image_lg'],
+							],
+						'action_url'	=> $tmp['action_url'],
+						'caption'		=> $tmp['caption'],
+						'position'		=> $tmp['position'],
+					];
 			}
 			else
 			{
@@ -149,29 +70,56 @@ class HomeController extends BaseController
 			}
 		}
 
-		$datas['new_release']					= 	$product['data']['data'];
-		$datas['linked_search']					= 	$linked_search;
+		//4. New Release
+		$APIProduct 		= new APIProduct;
+		$sort				= ['name' => 'asc'];
+		$page 				= 1;
 
-		$this->page_attributes->metas 			= 	[
-														'og:type' 			=> 'website', 
-														'og:title' 			=> 'BALIN.ID', 
-														'og:description' 	=> 'Fashionable and Modern Batik',
-														'og:url' 			=> $this->balin['info']['url']['value'],
-														'og:image' 			=> $this->balin['info']['logo']['value'],
-														'og:site_name' 		=> 'balin.id',
-														'fb:app_id' 		=> Config::get('fb_app.id'),
-													];
+		if($this->premium)
+		{
+			$linked_search 	= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
+		}
+		else
+		{
+			$linked_search 	= ['categories' => $categories];
+		}
+	
+		$product 			= Cache::remember('new_release_8_0', 20, function()use($APIProduct, $linked_search, $sort) 
+				{
+					return $APIProduct->getIndex([
+													'search' 	=> $linked_search,
+													'sort' 		=> $sort,
+													'take'		=> 8,
+													'skip'		=> 0,
+												]);
+				;
+				});
 
-		$this->page_attributes->controller_name		= $this->controller_name;
-		$this->page_attributes->subtitle 			= 'Fashionable and Modern Batik';
-		
-		$this->page_attributes->data				= $datas;
-		$this->page_attributes->data['premium']		= $this->premium;
+		$datas['new_release']	= $product['data']['data'];
+		$datas['linked_search']	= $linked_search;
+		$datas['premium']		= $this->premium;
 
-		$this->page_attributes->source 				= $this->page_attributes->source . 'index';
+		//5. Metas
+		$metas	= 	[
+						'og:type' 			=> 'website', 
+						'og:title' 			=> 'BALIN.ID', 
+						'og:description' 	=> 'Fashionable and Modern Batik',
+						'og:url' 			=> $this->balin['info']['url']['value'],
+						'og:image' 			=> $this->balin['info']['logo']['value'],
+						'og:site_name' 		=> 'balin.id',
+						'fb:app_id' 		=> Config::get('fb_app.id'),
+					];
 
-
-		return $this->generateView();
+		//6. return View
+  		return view($this->base_path_view . 'home.index')
+					->with('breadcrumb', $this->page_attributes->breadcrumb)
+					->with('page_title', $this->page_attributes->title)
+					->with('page_subtitle', 'Fashionable and Modern Batik')
+					->with('data', $datas)
+					->with('balin', $this->balin)
+					->with('recommend', $this->recommend)
+					->with('metas', $metas)
+						;
 	}
 
 
@@ -188,92 +136,79 @@ class HomeController extends BaseController
 	 */
 	public function notfound()
 	{
-		$APIProduct 								= new APIProduct;
-		$sort										= ['name' => 'asc'];
-		$page 										= 1;
-
+		$categories[0]			= 'wanita';
 		if(Session::has('whoami'))
 		{
 			if(Session::get('whoami')['gender']=='male')
 			{
-				$categories[] 						= 'pria';
-				$type 								= 'pria';
+				$categories[0] 	= 'pria';
 			}
 			else
 			{
-				$categories[] 						= 'wanita';
-				$type 								= 'wanita';
+				$categories[0] 	= 'wanita';
 			}
+		}
 
-			if($this->premium)
-			{
-				$linked_search 						= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
-			}
-			else
-			{
-				$linked_search 						= ['categories' => $categories];
-			}
-
-			//check from cache
-			$qs 									= http_build_query($linked_search);
-
-			$product 								= Cache::get("404product" . $qs);
-
-			if($product == null){		
-				// check if cached data exist
-				$product 							= $APIProduct->getIndex([
-															'search' 	=> $linked_search,
-															'sort' 		=> $sort,
-															'take'		=> 4,
-															'skip'		=> 0,
-														]);
-
-				// store data
-				Cache::put("404product" . $qs, $product, $this->ttlCache);
-			}
+		//1. Find Product
+		if($this->premium)
+		{
+			$linked_search		= ['categories' => $categories, 'tags' => ['fabric-premium-cotton']];
 		}
 		else
 		{
-			if($this->premium)
-			{
-				$linked_search 						= ['tags' => ['fabric-premium-cotton']];
-			}
-			else
-			{
-				$linked_search 						= [];
-			}
-
-			//check from cache
-			$qs 									= http_build_query($linked_search);
-
-			$product 								= Cache::get("404product" . $qs);
-
-			if($product == null){
-				// check if cached data exist
-				$product 							= $APIProduct->getIndex([
-															'search' 	=> $linked_search,
-															'sort' 		=> $sort,
-															'take'		=> 4,
-															'skip'		=> 0,
-														]);
-				// store data
-				Cache::put("404product" . $qs, $product, $this->ttlCache);				
-			}
-
-			$type 									= explode('0', Input::get('categories')[0])[0];
+			$linked_search		= ['categories' => $categories];
 		}
 
-		//6. Generate view
-		$this->page_attributes->subtitle 			= 'Produk Batik Modern';
-		$this->page_attributes->controller_name 	= $this->controller_name;
-		$this->page_attributes->data				= 	[
-															'offer' 			=> $product['data']['data'],
-															'linked_search' 	=> $linked_search,
-															'type'				=> $type,
-														];
+		$APIProduct 			= new APIProduct;
+		$sort					= ['name' => 'asc'];
+		$page 					= 1;
 
-		$this->page_attributes->source 				=  $this->page_attributes->source . '404';
+		$product 				= Cache::remember('recommend_0_4'.http_build_query($linked_search), 20, function()use($APIProduct, $linked_search, $sort) 
+			{
+				return $APIProduct->getIndex([
+												'search' 	=> $linked_search,
+												'sort' 		=> $sort,
+												'take'		=> 4,
+												'skip'		=> 0,
+											]);
+			;
+			});
 
-		return $this->generateView();
+		//2 . Get balin & data
+		$datas	= 	[
+						'offer' 			=> $product['data']['data'],
+						'linked_search' 	=> $linked_search,
+						'type'				=> $categories[0],
+					];
+
+		$APICategory	= new APICategory;
+		$category 		= Cache::remember('category_all', 20, function()use($APICategory) 
+			{
+				return $APICategory->getIndex();
+			;
+			});
+
+		//3. Metas
+		$metas	= 	[
+						'og:type' 			=> 'website', 
+						'og:title' 			=> 'BALIN.ID', 
+						'og:description' 	=> 'Fashionable and Modern Batik',
+						'og:url' 			=> $this->balin['info']['url']['value'],
+						'og:image' 			=> $this->balin['info']['logo']['value'],
+						'og:site_name' 		=> 'balin.id',
+						'fb:app_id' 		=> Config::get('fb_app.id'),
+					];
+
+		//4. Generate view
+  		return view($this->base_path_view . 'home.404')
+					->with('breadcrumb', $this->page_attributes->breadcrumb)
+					->with('page_title', $this->page_attributes->title)
+					->with('page_subtitle', 'Fashionable and Modern Batik')
+					->with('recommend', $this->recommend)
+					->with('data', $datas)
+					->with('balin', $this->balin)
+					->with('metas', $metas)
+					->with('category', $category['data']['data'])
+						;
 	}
 }
