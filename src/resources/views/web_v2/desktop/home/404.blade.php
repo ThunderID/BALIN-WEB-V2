@@ -25,7 +25,7 @@
 					{{-- DATA GRID CARD PRODUCT --}}
 					@include('web_v2.components.card', [
 						'card' 	=> $data['offer'],
-				  		'col'	=> 'col-lg-3 col-md-3 col-sm-3 col-xs-6'
+				  		'col'	=> 'col-lg-3 col-md-3 col-sm-3 col-xs-6 card_product_desktop'
 					])
 				</div>
 			</div>

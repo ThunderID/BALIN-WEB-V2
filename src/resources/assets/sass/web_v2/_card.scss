@@ -68,6 +68,14 @@
 		}
 	}
 }
-.card_product_desktop{
-	min-height: 463px;
+
+@media screen and (min-width: 768px) {
+	.card_product_desktop{
+		min-height: 463px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.card_product_desktop{
+		min-height: 410px;
+	}
 }
