@@ -5,6 +5,9 @@
 @stop
 
 @section('content')
+	<?php 
+	// dd(Session::get('carts')); 
+	?>
 	<section class="container pt-xxl pb-lg">
 		<div class="row">
 			<div class="col-sm-12 col-md-12 col-lg-12">

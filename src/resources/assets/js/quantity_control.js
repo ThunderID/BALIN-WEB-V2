@@ -852,7 +852,15 @@ EVENT & FUNCTION OTHER
 			async: true,
 			data: {qty: item_qty},
 			success: function(result) {
-				count_cart 	= Object.keys(result.carts).length; 
+				count_cart 	= 0;
+				tmp_carts 	= result.carts;
+
+				$.each(tmp_carts, function( index, value ) {
+					$.each(value.varians, function( index2, value2 ) {
+						count_cart = parseInt(count_cart) + parseInt(value2.quantity);
+					});
+				});
+
 				$('.cart-count').find('strong').html(count_cart);
 				if (count_cart == 0){
 					$('.cart-count').removeClass('bg-orange text-white');
@@ -863,6 +871,8 @@ EVENT & FUNCTION OTHER
 						// $('chart-dropdown').html("<img src='/Balin/web/image/loading.gif'/>");
 					},
 					success: function(msg) {
+						// console.log(data);
+						// $('#mobile-cart-count').html(data.find('#mobile-cart-count').html());
 						$('.cart_dropdown').html(msg);
 					},
 				   	fail: function(){

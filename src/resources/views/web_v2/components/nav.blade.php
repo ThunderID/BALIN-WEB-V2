@@ -12,22 +12,21 @@
 				<span id="mobile-cart-count">
 					<?php 
 						$count = 0;
-
 						if (Session::has('carts'))
 						{
 							foreach (Session::get('carts') as $k => $v)
 							{
-								if (count($v['varians']) > 1) 
-								{
+								// if (count($v['varians']) > 1) 
+								// {
 									foreach ($v['varians'] as $k2 => $v2)
 									{
-										$count = $count+1;
+										$count = $count+$v2['quantity'];
 									}
-								}
-								else 
-								{
-									$count = $count+1;
-								}
+								// }
+								// else 
+								// {
+								// 	$count = $count+$v['quantity'];
+								// }
 							}					
 							
 						}
