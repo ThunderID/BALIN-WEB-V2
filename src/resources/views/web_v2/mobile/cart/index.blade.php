@@ -33,7 +33,7 @@
 						?>
 						@include('web_v2.components.cart.item-list-mobile', array(
 							"item_id"			=> $k,
-							"item_thumbnail"	=> $item['thumbnail'],
+							"item_thumbnail"	=> $item['image_xs'],
 							"item_name" 		=> $item['name'],
 							"item_qty"			=> $qty,
 							"item_price"		=> $item['price'],
